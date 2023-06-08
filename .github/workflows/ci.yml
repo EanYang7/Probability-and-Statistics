@@ -1,0 +1,25 @@
+name: ci 
+on:
+  push:
+    branches:
+      - dev
+permissions:
+  contents: write
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with:
+          python-version: 3.x
+      - uses: actions/cache@v3
+        with:
+          key: mkdocs-material-${{ github.ref }} 
+          path: .cache
+          restore-keys: |
+            mkdocs-material-
+      - run: pip install mkdocs-material 
+      - run: pip install mkdocs-jupyter
+      - run: pip install mkdocs-git-revision-date-localized-plugin
+      - run: mkdocs gh-deploy --force
