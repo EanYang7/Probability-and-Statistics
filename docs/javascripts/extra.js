@@ -1,4 +1,4 @@
-var url = 'https://raw.githubusercontent.com/mozilla/pdf.js/ba2edeae/examples/learning/helloworld.pdf';
+var url = 'https://github.com/EanYang7/Probability-and-Statistics/blob/main/docs/javascripts/a.pdf';
 
 // Loaded via <script> tag, create shortcut to access PDF.js exports.
 var pdfjsLib = window['pdfjs-dist/build/pdf'];
