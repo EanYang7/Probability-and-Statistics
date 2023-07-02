@@ -7,6 +7,7 @@ repo_name: EanYang7/Probability-and-Statistics
 theme:
   language: zh 
   name: material
+  custom_dir: overrides
   logo: 封面.jpg
   favicon: 封面.jpg
   features:
@@ -144,6 +145,23 @@ extra:
     - icon: fontawesome/brands/github
       link: https://github.com/EanYang7/cs231n
   generator: false 
+  analytics:
+    provider: google
+    property: G-XXXXXXXXXX
+    feedback:
+      title: 对当前页面有任何疑问吗？
+      ratings:
+        - icon: material/thumb-up-outline
+          name: This page was helpful
+          data: 1
+          note: >-
+            感谢您的反馈！
+        - icon: material/thumb-down-outline
+          name: This page could be improved
+          data: 0
+          note: >- 
+            感谢您的反馈！请点击这里<a href="https://github.com/EanYang7/Probability-and-Statistics/issues" target="_blank" rel="noopener">这里</a>提供问题反馈.
+
 
 extra_css:
 - stylesheets/extra.css
