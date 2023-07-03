@@ -25,8 +25,8 @@ $A=\{\text { 今天下午 } 6 \text { 时前不会下雨 }\}$
 
 ③在涉及利益(经济和其他)的得失的决策问题中，处于不同地位和掌握情报多少不同的人，对某事件可能性大小要参照这些情况及可能的后果去作衡量。适合于某人的决策，虽则风险较小，不必适合于另一个人，因对他而言，这一决策可能风险仍太大。因此，主观概率这个概念也有其实用基础。事实上，许多决策都难免要包含个人判断的成分，而这就是主观概率。
 
-<object data="https://eanyang7.github.io/Probability-and-Statistics/docs/assets/1/1.1.pdf" type="application/pdf" width="700px" height="700px">
-    <embed src="https://eanyang7.github.io/Probability-and-Statistics/docs/assets/1/1.1.pdf">
-        <p>This browser does not support PDFs. Please download the PDF to view it: <a href="https://eanyang7.github.io/Probability-and-Statistics/docs/assets/1/1.1.pdf">下载 PDF</a>.</p>
+<object data="https://eanyang7.github.io/Probability-and-Statistics/assets/1/1.1.pdf" type="application/pdf" width="700px" height="700px">
+    <embed src="https://eanyang7.github.io/Probability-and-Statistics/assets/1/1.1.pdf">
+        <p>This browser does not support PDFs. Please download the PDF to view it: <a href="https://eanyang7.github.io/Probability-and-Statistics/assets/1/1.1.pdf">下载 PDF</a>.</p>
     </embed>
 </object>
