@@ -8,12 +8,6 @@ comments: true
 
 这个概念笼统地说起来很容易理解，但各从理论或者说从哲学的高度去分析，就可提出以一大堆的问题。虽然在本课程范围内我们不必去深入讨论这些问题各个方面，但仍希望，通过下文的叙述，使谈者对“什么是概率”这个问题，有一个较为全面的理解。
 
-## <object data="https://eanyang7.github.io/Probability-and-Statistics/assets/1/answers.pdf" type="application/pdf" width="700px" height="700px">
-    <embed src="https://eanyang7.github.io/Probability-and-Statistics/assets/1/answers.pdf">
-        <p>This browser does not support PDFs. Please download the PDF to view it: <a href="https://eanyang7.github.io/Probability-and-Statistics/assets/1/answers.pdf">下载 PDF</a>.</p>
-    </embed>
-</object>
-
 甲、乙、丙、丁四人一早进城去办事，要傍晚才能回来。为了决定是否带伞，各自在出发前，对
 
 $A=\{\text { 今天下午 } 6 \text { 时前不会下雨 }\}$
