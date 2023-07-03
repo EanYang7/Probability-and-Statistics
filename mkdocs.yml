@@ -8,8 +8,8 @@ theme:
   language: zh 
   name: material
   custom_dir: overrides
-  logo: 封面.jpg
-  favicon: 封面.jpg
+  logo: cover.jpg
+  favicon: cover.jpg
   features:
     - navigation.instant
     - navigation.top
@@ -66,9 +66,10 @@ plugins:
  - git-revision-date-localized:
     enable_creation_date: true
  - search
+ 
 
 
-edit_uri: "edit/dev/docs/"
+edit_uri: "tree/main/docs/"
 
 nav:
   - 首页: 
@@ -81,61 +82,45 @@ nav:
         - 1.2 古典概率计算: 'courses/1-Probability-of-events/2-Classical-Probability-Calculation.md'
         - 1.3 事件的运算、条件概率与独立性: 'courses/1-Probability-of-events/3-Operation-Conditional-probability-and-independence-of-events.md'
         - 习题: 'courses/1-Probability-of-events/exercises.md'
+        - 答案: 'courses/1-Probability-of-events/answers.md'
       - 第2章 随机变量及概率分布: 
-        - 2.1 一维随机变量: '课程/02-第2章-随机变量及概率分布/01-一维随机变量.md'
-        - 2.2 多维随机变量（随机向量）: '课程/02-第2章-随机变量及概率分布/02-多维随机变量（随机向量）.md'
-        - 2.3 条件概率分布与随机变量的独立性: '课程/02-第2章-随机变量及概率分布/03-条件概率分布与随机变量的独立性.md'
-        - 2.4 随机变量的函数的概率分布: '课程/02-第2章-随机变量及概率分布/04-随机变量的函数的概率分布.md'
-        - 附录: '附录、习题与答案/第2单元附录.md'
-        - 习题: '附录、习题与答案/第2单元习题.md'
+        - 2.1 一维随机变量: 'courses/2-Random-Variables-and-Probability-Distribution/1-One-dimensional-random-variable.md'
+        - 2.2 多维随机变量（随机向量）: 'courses/2-Random-Variables-and-Probability-Distribution/2-Multidimensional-random-variables-random-vectors.md'
+        - 2.3 条件概率分布与随机变量的独立性: 'courses/2-Random-Variables-and-Probability-Distribution/3-Independence-of-Conditional-probability-distribution-and-random-variable.md'
+        - 2.4 随机变量的函数的概率分布: 'courses/2-Random-Variables-and-Probability-Distribution/4-Probability-Distribution-of-Functions-of-Random-Variables.md'
+        - 附录: 'courses/2-Random-Variables-and-Probability-Distribution/appendix.md'
+        - 习题: 'courses/2-Random-Variables-and-Probability-Distribution/exercises.md'
+        - 答案: 'courses/2-Random-Variables-and-Probability-Distribution/answers.md'
       - 第3章 随机变量的数字特征: 
-        - 3.1 数学期望（均值）与中位数: '课程/03-第3章-随机变量的数字特征/01-数学期望（均值）与中位数.md'
-        - 3.2 方差与矩: '课程/03-第3章-随机变量的数字特征/02-方差与矩.md'
-        - 3.3 协方差与相关系数: '课程/03-第3章-随机变量的数字特征/03-协方差与相关系数.md'
-        - 3.4 大数定理和中心极限定理: '课程/03-第3章-随机变量的数字特征/04-大数定理.md'
-        - 习题: '附录、习题与答案/第3单元习题.md'
+        - 3.1 数学期望（均值）与中位数: 'courses/3-Numerical-Characteristics-of-Random-Variables/1-Mathematica-Expectations-Mean-and-Median.md'
+        - 3.2 方差与矩: 'courses/3-Numerical-Characteristics-of-Random-Variables/2-Variance-and-Moment.md'
+        - 3.3 协方差与相关系数: 'courses/3-Numerical-Characteristics-of-Random-Variables/3-Covariance-and-correlation-coefficient.md'
+        - 3.4 大数定理和中心极限定理: 'courses/3-Numerical-Characteristics-of-Random-Variables/4-Theorem-of-Large-Numbers.md'
+        - 习题: 'courses/3-Numerical-Characteristics-of-Random-Variables/exercises.md'
+        - 答案: 'courses/3-Numerical-Characteristics-of-Random-Variables/answers.md'
       - 第4章 参数估计: 
-        - 4.1 数理统计学的基本概念: '课程/04-第4章-参数估计/01-数理统计学的基本概念.md'
-        - 4.2 矩估计、极大似然估计和贝叶斯估计: '课程/04-第4章-参数估计/02-矩估计、极大似然估计和贝叶斯估计.md'
-        - 4.3 点估计的优良性准则: '课程/04-第4章-参数估计/03-点估计的优良性准则.md'
-        - 4.4 区间估计: '课程/04-第4章-参数估计/04-区间估计.md'
-        - 习题: '附录、习题与答案/第4单元习题.md'
+        - 4.1 数理统计学的基本概念: '/courses/4-Parameter-Estimates/1-Basic-concepts-of-Mathematical-statistics.md'
+        - 4.2 矩估计、极大似然估计和贝叶斯估计: '/courses/4-Parameter-Estimates/2-Moment-estimation-maximum-likelihood-estimation-and-Bayesian-estimation.md'
+        - 4.3 点估计的优良性准则: '/courses/4-Parameter-Estimates/3-Excellence-criterion-of-Point-estimation.md'
+        - 4.4 区间估计: '/courses/4-Parameter-Estimates/4-Interval-estimation.md'
+        - 习题: '/courses/4-Parameter-Estimates/exercises.md'
+        - 答案: '/courses/4-Parameter-Estimates/answers.md'
       - 第5章 假设检验: 
-        - 5.1 问题提法和基本概念: '课程/05-第5章-假设检验/01-问题提法和基本概念.md'
-        - 5.2 重要参数检验: '课程/05-第5章-假设检验/02-重要参数检验.md'
-        - 5.3 拟合优度检验: '课程/05-第5章-假设检验/03-拟合优度检验.md'
-        - 附录: '附录、习题与答案/第5单元附录.md'
-        - 习题: '附录、习题与答案/第5单元习题.md'
+        - 5.1 问题提法和基本概念: 'courses/5-Hypothesis-Testing/1-Problem-formulation-and-basic-concepts.md'
+        - 5.2 重要参数检验: 'courses/5-Hypothesis-Testing/2-Important-parameter-inspection.md'
+        - 5.3 拟合优度检验: 'courses/5-Hypothesis-Testing/3-goodness-of-fit-test.md'
+        - 附录: 'courses/5-Hypothesis-Testing/appendix.md'
+        - 习题: 'courses/5-Hypothesis-Testing/exercises.md'
+        - 答案: 'courses/5-Hypothesis-Testing/answers.md'
       - 第6章 回归、相关与方差分析: 
-        - 6.1 回归分析基本概念: '课程/06-第6章-回归、相关与方差分析/01-回归分析基本概念.md'
-        - 6.2 一元线性回归: '课程/06-第6章-回归、相关与方差分析/02-一元线性回归.md'
-        - 6.3 多元线性回归: '课程/06-第6章-回归、相关与方差分析/03-多元线性回归.md'
-        - 6.4 相关分析: '课程/06-第6章-回归、相关与方差分析/04-相关分析.md'
-        - 6.5 方差分析: '课程/06-第6章-回归、相关与方差分析/05-方差分析.md'
-        - 附录: '附录、习题与答案/第6单元附录.md'
-        - 习题: '附录、习题与答案/第6单元习题.md'
-  - 作业: 
-    - " ":
-      - 第1单元:
-        - 习题: '附录、习题与答案/第1单元习题.md'
-        - 答案: '附录、习题与答案/第1单元答案.md'
-      - 第2单元:
-        - 习题: '附录、习题与答案/第2单元习题.md'
-        - 答案: '附录、习题与答案/第2单元答案.md'   
-      - 第3单元:
-        - 习题: '附录、习题与答案/第3单元习题.md'
-        - 答案: '附录、习题与答案/第3单元答案.md'   
-      - 第4单元:
-        - 习题: '附录、习题与答案/第4单元习题.md'
-        - 答案: '附录、习题与答案/第4单元答案.md'   
-      - 第5单元:
-        - 习题: '附录、习题与答案/第5单元习题.md'
-        - 答案: '附录、习题与答案/第5单元答案.md'   
-      - 第6单元:
-        - 习题: '附录、习题与答案/第6单元习题.md'
-        - 答案: '附录、习题与答案/第6单元答案.md'   
-
-  - 附表: '附录、习题与答案/附表.md'
+        - 6.1 回归分析基本概念: 'courses/6-Regression-Correlation-and-Analysis-of-Variance/1-Basic-concepts-of-regression-analysis.md'
+        - 6.2 一元线性回归: 'courses/6-Regression-Correlation-and-Analysis-of-Variance/2-Univariate-linear-regression.md'
+        - 6.3 多元线性回归: 'courses/6-Regression-Correlation-and-Analysis-of-Variance/3-Multiple-linear-regression.md'
+        - 6.4 相关分析: 'courses/6-Regression-Correlation-and-Analysis-of-Variance/4-Correlation-analysis.md'
+        - 6.5 方差分析: 'courses/6-Regression-Correlation-and-Analysis-of-Variance/5-Analysis-of-variance.md'
+        - 附录: 'courses/6-Regression-Correlation-and-Analysis-of-Variance/appendix.md'
+        - 习题: 'courses/6-Regression-Correlation-and-Analysis-of-Variance/exercises.md'
+        - 答案: 'courses/6-Regression-Correlation-and-Analysis-of-Variance/answers.md'
   - PDF: '《概率论与数理统计》陈希孺，中国科学技术大学出版社.pdf'
 
 
