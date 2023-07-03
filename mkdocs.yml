@@ -99,12 +99,12 @@ nav:
         - 习题: 'courses/3-Numerical-Characteristics-of-Random-Variables/exercises.md'
         - 答案: 'courses/3-Numerical-Characteristics-of-Random-Variables/answers.md'
       - 第4章 参数估计: 
-        - 4.1 数理统计学的基本概念: '/courses/4-Parameter-Estimates/1-Basic-concepts-of-Mathematical-statistics.md'
-        - 4.2 矩估计、极大似然估计和贝叶斯估计: '/courses/4-Parameter-Estimates/2-Moment-estimation-maximum-likelihood-estimation-and-Bayesian-estimation.md'
-        - 4.3 点估计的优良性准则: '/courses/4-Parameter-Estimates/3-Excellence-criterion-of-Point-estimation.md'
-        - 4.4 区间估计: '/courses/4-Parameter-Estimates/4-Interval-estimation.md'
-        - 习题: '/courses/4-Parameter-Estimates/exercises.md'
-        - 答案: '/courses/4-Parameter-Estimates/answers.md'
+        - 4.1 数理统计学的基本概念: 'courses/4-Parameter-Estimates/1-Basic-concepts-of-Mathematical-statistics.md'
+        - 4.2 矩估计、极大似然估计和贝叶斯估计: 'courses/4-Parameter-Estimates/2-Moment-estimation-maximum-likelihood-estimation-and-Bayesian-estimation.md'
+        - 4.3 点估计的优良性准则: 'courses/4-Parameter-Estimates/3-Excellence-criterion-of-Point-estimation.md'
+        - 4.4 区间估计: 'courses/4-Parameter-Estimates/4-Interval-estimation.md'
+        - 习题: 'courses/4-Parameter-Estimates/exercises.md'
+        - 答案: 'courses/4-Parameter-Estimates/answers.md'
       - 第5章 假设检验: 
         - 5.1 问题提法和基本概念: 'courses/5-Hypothesis-Testing/1-Problem-formulation-and-basic-concepts.md'
         - 5.2 重要参数检验: 'courses/5-Hypothesis-Testing/2-Important-parameter-inspection.md'
