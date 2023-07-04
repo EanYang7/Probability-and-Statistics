@@ -134,7 +134,7 @@ extra:
   generator: false 
   analytics:
     provider: google
-    property: G-XXXXXXXXXX
+    property: G-GEDRLMN4ML
     feedback:
       title: 对当前页面有任何疑问吗？
       ratings:
