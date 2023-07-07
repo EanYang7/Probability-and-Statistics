@@ -131,7 +131,7 @@ extra:
   social:
     - icon: fontawesome/brands/github
       link: https://github.com/EanYang7/cs231n
-  generator: false 
+  # generator: false 
   analytics:
     provider: google
     property: G-GEDRLMN4ML
