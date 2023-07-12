@@ -46,13 +46,14 @@ theme:
 markdown_extensions:
   - toc:
       permalink: ⚓︎
-  
-  - pymdownx.highlight
-  - pymdownx.superfences
   - pymdownx.tasklist:
       custom_checkbox: true
   - pymdownx.arithmatex:
       generic: true
+  - admonition
+  - pymdownx.highlight
+  - pymdownx.superfences
+  - pymdownx.details
 
 extra_javascript:
   - javascripts/mathjax.js
