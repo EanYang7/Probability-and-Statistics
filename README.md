@@ -1,12 +1,12 @@
 # 《概率论与数理统计》
 
-> **<font color="red">pdf已经被OCR文字识别，但精准度欠佳，希望有精力的同学踊跃指正校订，不甚感激</font>**
+> ***pdf已经被OCR文字识别，但精准度欠佳，希望有精力的同学踊跃指正校订，不甚感激***
 >
 > ---
 >
 > 待校订页面：
 >
-> https://eanyang7.github.ioProbability-and-Statistics/tags/
+> https://eanyang7.github.io/Probability-and-Statistics/tags/
 >
 > ---
 >
