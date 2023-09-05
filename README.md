@@ -1,5 +1,21 @@
 # 《概率论与数理统计》
 
+> **<font color="red">pdf已经被OCR文字识别，但精准度欠佳，希望有精力的同学踊跃指正校订，不甚感激</font>**
+>
+> ---
+>
+> 待校订页面：
+>
+> https://eanyang7.github.ioProbability-and-Statistics/tags/
+>
+> ---
+>
+> 选择某一页后点击右上角可进行编辑
+>
+> ![image-20230905094917097](./README.assets/image-20230905094917097.png) 
+
+
+
 陈希孺，中国科学技术大学出版社
 
 ## 介绍
