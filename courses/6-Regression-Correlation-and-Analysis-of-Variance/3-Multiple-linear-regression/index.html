@@ -1,0 +1,2429 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="《概率论与数理统计》陈希孺，中国科学技术大学出版社">
+      
+      
+      
+        <link rel="canonical" href="https://eanyang7.github.io/Probability-and-Statistics/courses/6-Regression-Correlation-and-Analysis-of-Variance/3-Multiple-linear-regression/">
+      
+      
+        <link rel="prev" href="../2-Univariate-linear-regression/">
+      
+      
+        <link rel="next" href="../4-Correlation-analysis/">
+      
+      
+      <link rel="icon" href="../../../cover.jpg">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.2">
+    
+    
+      
+        <title>6.3 多元线性回归 - 概率论与数理统计</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.50c56a3b.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-GEDRLMN4ML"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-GEDRLMN4ML",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-GEDRLMN4ML",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#63" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../.." title="概率论与数理统计" class="md-header__button md-logo" aria-label="概率论与数理统计" data-md-component="logo">
+      
+  <img src="../../../cover.jpg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            概率论与数理统计
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              6.3 多元线性回归
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换为暗黑模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换为暗黑模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5c-.84 0-1.65.15-2.39.42L12 2M3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29L3.34 7m.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14L3.36 17M20.65 7l-1.77 3.79a7.023 7.023 0 0 0-2.38-4.15l4.15.36m-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29L20.64 17M12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44L12 22Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换为浅色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换为浅色模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3 3.19.09m3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95 2.06.05m-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/EanYang7/Probability-and-Statistics" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    EanYang7/Probability-and-Statistics
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../.." class="md-tabs__link">
+          
+  
+  首页
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      
+  
+  
+    
+  
+  
+    
+    
+      
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../1-Probability-of-events/1-What-is-the-probability/" class="md-tabs__link">
+          
+  
+  课程
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../%E3%80%8A%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1%E3%80%8B%E9%99%88%E5%B8%8C%E5%AD%BA%EF%BC%8C%E4%B8%AD%E5%9B%BD%E7%A7%91%E5%AD%A6%E6%8A%80%E6%9C%AF%E5%A4%A7%E5%AD%A6%E5%87%BA%E7%89%88%E7%A4%BE.pdf" class="md-tabs__link">
+        
+  
+    
+  
+  PDF
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="概率论与数理统计" class="md-nav__button md-logo" aria-label="概率论与数理统计" data-md-component="logo">
+      
+  <img src="../../../cover.jpg" alt="logo">
+
+    </a>
+    概率论与数理统计
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/EanYang7/Probability-and-Statistics" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    EanYang7/Probability-and-Statistics
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    首页
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            首页
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    简介
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    课程
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            课程
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    章节
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            章节
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1_1" id="__nav_2_1_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    第1章 事件的概率
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1_1">
+            <span class="md-nav__icon md-icon"></span>
+            第1章 事件的概率
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1-Probability-of-events/1-What-is-the-probability/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1.1 概率是什么
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1-Probability-of-events/2-Classical-Probability-Calculation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1.2 古典概率计算
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1-Probability-of-events/3-Operation-Conditional-probability-and-independence-of-events/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1.3 事件的运算、条件概率与独立性
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1-Probability-of-events/exercises/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    习题
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1-Probability-of-events/answers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    答案
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1_2" id="__nav_2_1_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    第2章 随机变量及概率分布
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1_2">
+            <span class="md-nav__icon md-icon"></span>
+            第2章 随机变量及概率分布
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2-Random-Variables-and-Probability-Distribution/1-One-dimensional-random-variable/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2.1 一维随机变量
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2-Random-Variables-and-Probability-Distribution/2-Multidimensional-random-variables-random-vectors/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2.2 多维随机变量（随机向量）
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2-Random-Variables-and-Probability-Distribution/3-Independence-of-Conditional-probability-distribution-and-random-variable/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2.3 条件概率分布与随机变量的独立性
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2-Random-Variables-and-Probability-Distribution/4-Probability-Distribution-of-Functions-of-Random-Variables/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2.4 随机变量的函数的概率分布
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2-Random-Variables-and-Probability-Distribution/appendix/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    附录
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2-Random-Variables-and-Probability-Distribution/exercises/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    习题
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2-Random-Variables-and-Probability-Distribution/answers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    答案
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1_3" id="__nav_2_1_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    第3章 随机变量的数字特征
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1_3">
+            <span class="md-nav__icon md-icon"></span>
+            第3章 随机变量的数字特征
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3-Numerical-Characteristics-of-Random-Variables/1-Mathematica-Expectations-Mean-and-Median/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3.1 数学期望（均值）与中位数
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3-Numerical-Characteristics-of-Random-Variables/2-Variance-and-Moment/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3.2 方差与矩
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3-Numerical-Characteristics-of-Random-Variables/3-Covariance-and-correlation-coefficient/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3.3 协方差与相关系数
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3-Numerical-Characteristics-of-Random-Variables/4-Theorem-of-Large-Numbers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3.4 大数定理和中心极限定理
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3-Numerical-Characteristics-of-Random-Variables/exercises/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    习题
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3-Numerical-Characteristics-of-Random-Variables/answers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    答案
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1_4" id="__nav_2_1_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    第4章 参数估计
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1_4">
+            <span class="md-nav__icon md-icon"></span>
+            第4章 参数估计
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../4-Parameter-Estimates/1-Basic-concepts-of-Mathematical-statistics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4.1 数理统计学的基本概念
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../4-Parameter-Estimates/2-Moment-estimation-maximum-likelihood-estimation-and-Bayesian-estimation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4.2 矩估计、极大似然估计和贝叶斯估计
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../4-Parameter-Estimates/3-Excellence-criterion-of-Point-estimation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4.3 点估计的优良性准则
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../4-Parameter-Estimates/4-Interval-estimation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4.4 区间估计
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../4-Parameter-Estimates/exercises/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    习题
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../4-Parameter-Estimates/answers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    答案
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1_5" id="__nav_2_1_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    第5章 假设检验
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1_5">
+            <span class="md-nav__icon md-icon"></span>
+            第5章 假设检验
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../5-Hypothesis-Testing/1-Problem-formulation-and-basic-concepts/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5.1 问题提法和基本概念
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../5-Hypothesis-Testing/2-Important-parameter-inspection/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5.2 重要参数检验
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../5-Hypothesis-Testing/3-goodness-of-fit-test/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5.3 拟合优度检验
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../5-Hypothesis-Testing/appendix/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    附录
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../5-Hypothesis-Testing/exercises/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    习题
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../5-Hypothesis-Testing/answers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    答案
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1_6" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2_1_6" id="__nav_2_1_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    第6章 回归、相关与方差分析
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_1_6">
+            <span class="md-nav__icon md-icon"></span>
+            第6章 回归、相关与方差分析
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1-Basic-concepts-of-regression-analysis/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6.1 回归分析基本概念
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2-Univariate-linear-regression/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6.2 一元线性回归
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    6.3 多元线性回归
+  </span>
+  
+
+      </a>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4-Correlation-analysis/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6.4 相关分析
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5-Analysis-of-variance/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6.5 方差分析
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../appendix/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    附录
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../exercises/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    习题
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../answers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    答案
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../appendix/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    附表
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../%E3%80%8A%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1%E3%80%8B%E9%99%88%E5%B8%8C%E5%AD%BA%EF%BC%8C%E4%B8%AD%E5%9B%BD%E7%A7%91%E5%AD%A6%E6%8A%80%E6%9C%AF%E5%A4%A7%E5%AD%A6%E5%87%BA%E7%89%88%E7%A4%BE.pdf" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    PDF
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+  
+<nav class="md-tags" >
+  
+    
+    
+    
+      <a href="../../../tags/#" class="md-tag">校订中……</a>
+    
+  
+</nav>
+
+
+  
+    <a href="https://github.com/EanYang7/Probability-and-Statistics/tree/main/docs/courses/6-Regression-Correlation-and-Analysis-of-Variance/3-Multiple-linear-regression.md" title="编辑此页" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
+    </a>
+  
+  
+    
+      
+    
+    <a href="https://github.com/EanYang7/Probability-and-Statistics/tree/main/docs/courses/6-Regression-Correlation-and-Analysis-of-Variance/3-Multiple-linear-regression.md" title="查看本页的源代码" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0 8a5 5 0 0 1-5-5 5 5 0 0 1 5-5 5 5 0 0 1 5 5 5 5 0 0 1-5 5m0-12.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5Z"/></svg>
+    </a>
+  
+
+
+<h1 id="63">6.3 多元线性回归<a class="headerlink" href="#63" title="Permanent link">⚓︎</a></h1>
+<object data="https://eanyang7.github.io/Probability-and-Statistics/assets/6/6.3.pdf" type="application/pdf" width="700px" height="700px">
+    <embed src="https://eanyang7.github.io/Probability-and-Statistics/assets/6/6.3.pdf">
+        <p>This browser does not support PDFs. Please download the PDF to view it: <a href="https://eanyang7.github.io/Probability-and-Statistics/assets/6/6.3.pdf">下载 PDF</a>.</p>
+    </embed>
+</object>
+<h1 id="63_1">6.3 多元线性回归<a class="headerlink" href="#63_1" title="Permanent link">⚓︎</a></h1>
+<p>本节我们考虑有 <span class="arithmatex">\(p\)</span> 个自变量 <span class="arithmatex">\(X_{1}, \cdots, X_{p}\)</span> 的情形, 因变量纫记 为 <span class="arithmatex">\(Y\)</span>. 模型为</p>
+<div class="arithmatex">\[
+Y=b_{0}+b_{1} X_{1}+\cdots+b_{p} X_{p}+e
+\]</div>
+<p>其解释与 (2.1) 相同. 这里也有自变量为随机或非随机的区别, 今 后我们一律把自变量视为非随机的. 在 (3.1)式中, <span class="arithmatex">\(b_{0}\)</span> 为常数项或 截距, <span class="arithmatex">\(b_{k}\)</span> 称为 <span class="arithmatex">\(Y\)</span> 对 <span class="arithmatex">\(X_{k}\)</span> 的回归系数, 或称偏回归系数 <span class="arithmatex">\({ }^{*} . e\)</span> 仍为随机 误差.</p>
+<p>现设对 <span class="arithmatex">\(X_{1}, \cdots, X_{p}\)</span> 和 <span class="arithmatex">\(Y\)</span> 进行观察, 第 <span class="arithmatex">\(i\)</span> 次观察时它们的取值 分别记为 <span class="arithmatex">\(X_{1 i}, \cdots, X_{p i}\)</span> 和 <span class="arithmatex">\(Y_{i}\)</span>, 随机误差为 <span class="arithmatex">\(e_{i}\)</span> (注意 <span class="arithmatex">\(e_{i}\)</span> 不可观察), 则 得到方程</p>
+<div class="arithmatex">\[
+Y_{i}=b_{0}+b_{1} X_{1 i}+\cdots+b_{p} X_{p i}+e_{i}, i=1, \cdots, n
+\]</div>
+<p>这里假定</p>
+<div class="arithmatex">\[
+e_{1}, \cdots, e_{n} \text { 独立同分布, } E\left(e_{i}\right)=0,0&lt;\operatorname{Var}\left(e_{i}\right)=\sigma^{2}&lt;\infty
+\]</div>
+<p>误差方差 <span class="arithmatex">\(\sigma^{2}\)</span> 末知.</p>
+<p>统计问题仍和一元回归时一样: 要根据所得数据</p>
+<div class="arithmatex">\[
+\left(X_{1 i}, \cdots, X_{p i}, Y_{i}\right), i=1, \cdots, n
+\]</div>
+<p>对 <span class="arithmatex">\(b_{0}, \cdots, b_{p}\)</span> 和误差方差 <span class="arithmatex">\(\sigma^{2}\)</span> 进行估计, 对回归函数 <span class="arithmatex">\(b_{0}+b_{1} x_{1}+\cdots\)</span> <span class="arithmatex">\(b_{p} x_{p}\)</span> 进行估计,在自变量的给定之值 <span class="arithmatex">\(\left(x_{1}^{0}, \cdots, x_{p}^{0}\right)\)</span> 处对因变量 <span class="arithmatex">\(Y\)</span> 的取值进行预测, 及有关的假设检验问题等. 在上节中对一元情况 引进的不少方法和概念仍适用于此处多元的情况，但在计算和理 论方面,都较一元的情况复杂. 就本课程而言, 我们不能对这些进 行仔细的论述,只能把一些重要的结果和公式不加证明地写出来.</p>
+<p>在讨论一元的情况时我们曾实行“中心化”, 即用 (2.6) 代替 (2.4), 这一变换对多元的情况很有用,方法也一样: 算出每个自变 量 <span class="arithmatex">\(X_{k}\)</span> 在 <span class="arithmatex">\(n\)</span> 次观察中取值的算术平均 <span class="arithmatex">\(\bar{X}_{k}=\left(X_{k 1}+\cdots+X_{k n}\right) / n\)</span>, 而 后令</p>
+<div class="arithmatex">\[
+X_{k i}^{*}=X_{k i}-\bar{X}_{k}, i=1, \cdots, n ; k=1, \cdots, p
+\]</div>
+<p>即可将 (3.2)写为</p>
+<div class="arithmatex">\[
+Y_{i}=\beta_{0}+\beta_{1} X_{1 i}^{*}+\cdots+\beta_{p} X_{p i}^{*}+e_{i}, i=1, \cdots, n
+\]</div>
+<ul>
+<li>这“偏”字的意思, 约略与微积分中偏导数中的“偏”字相当, 其真实含义是: 若只 取…自变量 <span class="arithmatex">\(X_{k}\)</span> 而考虑 <span class="arithmatex">\(Y\)</span> 与 <span class="arithmatex">\(X_{k}\)</span> 之问的一元回归, 则回归系数 <span class="arithmatex">\(b_{k}^{*}\)</span> 将与 (3.1)中的 <span class="arithmatex">\(b_{k}\)</span> 不同. <span class="arithmatex">\(\beta_{k}\)</span> 等与 <span class="arithmatex">\(b_{k}\)</span> 等的关系是:</li>
+</ul>
+<div class="arithmatex">\[
+\beta_{k}=b_{k}, k=1, \cdots, p ; \beta_{0}=b_{0}+b_{1} \bar{X}_{1}+\cdots+b_{p} \bar{X}_{p}
+\]</div>
+<p>如在模型 (3.6) 之下对 <span class="arithmatex">\(\beta_{k}\)</span> 等作了估计, 则可用 (3.7) 将其转化为对 <span class="arithmatex">\(b_{k}\)</span> 等的估计. 在 <span class="arithmatex">\((3.6)\)</span> 中有</p>
+<div class="arithmatex">\[
+X_{k 1}^{*}+\cdots+X_{k n}^{*}=0, k=1, \cdots, p
+\]</div>
+<p>以后我们只讨论 (3.6), 且为书写方便计, 略去 <span class="arithmatex">\(X_{k i}^{*}\)</span> 中的“*”号, 即 仍记为 <span class="arithmatex">\(X_{k i}\)</span> :</p>
+<div class="arithmatex">\[
+Y_{i}=\beta_{0}+\beta_{1} X_{1 i}+\cdots+\beta_{p} X_{p i}+e_{i}, i=1, \cdots, n
+\]</div>
+<p>记住(3.8) 中的 <span class="arithmatex">\(X_{k i}\)</span> 已是经过中心化的, 与 (3.2) 中的 <span class="arithmatex">\(X_{k i}\)</span> 不同.</p>
+<p>在讨论多元线性回归时, 采用矩阵和向量的记号很方便. <span class="arithmatex">\(m\)</span> 行 <span class="arithmatex">\(n\)</span> 列的矩阵常用一个大字字 (如 <span class="arithmatex">\(X, A\)</span> 等) 去记, 有时也记为 <span class="arithmatex">\(\left(a_{i j}\right), a_{i j}\)</span> 为该矩阵的 <span class="arithmatex">\((i, j)\)</span> 元, 即第 <span class="arithmatex">\(i\)</span> 行第 <span class="arithmatex">\(j\)</span> 列之元. 当 <span class="arithmatex">\(m=n\)</span> 时 称为 <span class="arithmatex">\(n\)</span> 阶方阵. <span class="arithmatex">\(n\)</span> 阶方阵 <span class="arithmatex">\(A=\left(a_{i j}\right)\)</span>, 苻 <span class="arithmatex">\(a_{i j}=1\)</span>, 当 <span class="arithmatex">\(i=j, a_{i j}=0\)</span> 当 <span class="arithmatex">\(i \neq j\)</span>, 则称为 <span class="arithmatex">\(n\)</span> 阶单位阵并记为 <span class="arithmatex">\(I\)</span> 或 <span class="arithmatex">\(I_{n}\)</span>. 方阵 <span class="arithmatex">\(A\)</span> 的逆方阵 (如存 在) 记为 <span class="arithmatex">\(A^{-1}\)</span>. 矩阵 <span class="arithmatex">\(A\)</span> 的转置矩阵将记为 <span class="arithmatex">\(A^{\prime}\)</span>.</p>
+<p>向量 <span class="arithmatex">\(a\)</span> 一般理解为列向量, 如</p>
+<div class="arithmatex">\[
+a=\left(\begin{array}{c}
+a_{1} \\
+\vdots \\
+a_{k}
+\end{array}\right)
+\]</div>
+<p>为 <span class="arithmatex">\(k\)</span> 维列㣌量, <span class="arithmatex">\(a_{i}\)</span> 为其第 <span class="arithmatex">\(i\)</span> 个分量. <span class="arithmatex">\(a\)</span> 则是行向量 <span class="arithmatex">\(\left(a_{1}, \cdots, a_{k}\right)\)</span>. 在 矩阵或向量运算中, 0 表示各元皆为零的矩阵或向量,有相应的维 数.</p>
+<p>若 <span class="arithmatex">\(A\)</span> 为 <span class="arithmatex">\(m \times n\)</span> 预阵, <span class="arithmatex">\(a\)</span> 为 <span class="arithmatex">\(n\)</span> 维向量, 则按矩阵乘法定义, <span class="arithmatex">\(A a\)</span> 为 <span class="arithmatex">\(m\)</span> 维向量, 当 <span class="arithmatex">\(A\)</span> 为 <span class="arithmatex">\(n\)</span> 阶方阵, 而 <span class="arithmatex">\(a\)</span> 为 <span class="arithmatex">\(n\)</span> 维向量时, <span class="arithmatex">\(a^{\prime} A a\)</span> 是一个 数,这形式称为二次型。一般在讨论一次型时总假定 <span class="arithmatex">\(A\)</span> 为对称方 阵, 即其 <span class="arithmatex">\((i, j)\)</span> 元等于其 <span class="arithmatex">\((j, i)\)</span> 元, 或 <span class="arithmatex">\(A=A\)</span>.</p>
+<h3 id="01-1">0.1. 1 最小二乘估计<a class="headerlink" href="#01-1" title="Permanent link">⚓︎</a></h3>
+<p>与一元的情形一样, 令</p>
+<div class="arithmatex">\[
+Q\left(\alpha_{0}, \alpha_{1}, \cdots, \alpha_{p}\right)=\sum_{i=1}^{n}\left(Y_{i}-\alpha_{0}-X_{1 i} \alpha_{1}-\cdots-X_{p i} \alpha_{p}\right)^{2}
+\]</div>
+<p>然后找 <span class="arithmatex">\(\alpha_{0}, \cdots, \alpha_{p}\)</span> 之值, 记为 <span class="arithmatex">\(\hat{\beta}_{0}, \cdots, \hat{\beta}_{p}\)</span>, 使上式达到最小. <span class="arithmatex">\(\hat{\beta}_{i}\)</span> 等就 是 <span class="arithmatex">\(\beta_{i}\)</span> 等的最小二乘估计. 作方程</p>
+<div class="arithmatex">\[
+\partial Q / \partial \alpha_{0}=0, \partial Q / \partial \alpha_{1}=0, \cdots, \partial Q / \partial \alpha_{p}=0
+\]</div>
+<p>升加以简单的整理, 即得</p>
+<div class="arithmatex">\[
+\begin{gathered}
+n \alpha_{0}=\sum_{i=1}^{n} Y_{i}, \text { 解为 } \hat{\beta}_{0}=\bar{Y} \\
+l_{11} \alpha_{1}+l_{12} \alpha_{2}+\cdots+l_{1 p} \alpha_{p}=\sum_{i=1}^{n} X_{1 i} Y_{i} \\
+\cdots \cdots \cdots \cdots \\
+l_{p 1} \alpha_{1}+l_{p 2} \alpha_{2}+\cdots+l_{p p} \alpha_{p}=\sum_{i=1}^{n} X_{p i} Y_{i}
+\end{gathered}
+\]</div>
+<p>此处 <span class="arithmatex">\(l_{u i i^{\prime}}=\sum_{i=1}^{n} X_{u i} X_{u i}\)</span>. 若引进以下的矩阵和们量 <span class="arithmatex">\({ }^{*}\)</span></p>
+<div class="arithmatex">\[
+\begin{gathered}
+X=\left(\begin{array}{cccc}
+X_{11} &amp; X_{12} &amp; \cdots &amp; X_{1 n} \\
+X_{21} &amp; X_{22} &amp; \cdots &amp; X_{2 n} \\
+\cdots &amp; \cdots &amp; \cdots &amp; \cdots \\
+X_{p 1} &amp; X_{p 2} &amp; \cdots &amp; X_{p n}
+\end{array}\right), L=\left(\begin{array}{cccc}
+l_{11} &amp; l_{12} &amp; \cdots &amp; l_{1 p} \\
+l_{21} &amp; l_{22} &amp; \cdots &amp; l_{2 p} \\
+\cdots &amp; \cdots &amp; \cdots &amp; \cdots \\
+l_{p 1} &amp; l_{p 2} &amp; \cdots &amp; l_{p p}
+\end{array}\right) \\
+Y_{(n)}=\left(\begin{array}{c}
+Y_{1} \\
+\vdots \\
+Y_{n}
+\end{array}\right), \beta=\left(\begin{array}{c}
+\beta_{1} \\
+\vdots \\
+\beta_{p}
+\end{array}\right), \hat{\beta}=\left(\begin{array}{c}
+\hat{\beta}_{1} \\
+\vdots \\
+\hat{\beta}_{p}
+\end{array}\right), \alpha=\left(\begin{array}{c}
+\alpha_{1} \\
+\vdots \\
+\alpha_{p}
+\end{array}\right)
+\end{gathered}
+\]</div>
+<p>则 <span class="arithmatex">\(L=X X^{\prime}\)</span>, 方程组 (3.10) 右边各元分别是向量 <span class="arithmatex">\(X Y_{(n)}\)</span> 的相应元. 于是方程组 (3.10) 可简写为</p>
+<div class="arithmatex">\[
+L \alpha=X Y_{(n)}
+\]</div>
+<p>方程组 (3.10), 即 (3.12), 称为正则方程. 其解, 即 <span class="arithmatex">\(\beta\)</span> 的最小二乘</p>
+<p>*知阵 <span class="arithmatex">\(\mathrm{X}\)</span> 称为设计矩阵, 但一般设计箍阵是指末经过中心化的, 由原来的 <span class="arithmatex">\(\mathrm{X}_{i j}\)</span> 所构 成的矩阵. 估计,可表为</p>
+<div class="arithmatex">\[
+\hat{\beta}=L^{-1} X Y_{(n)}
+\]</div>
+<p>一元情况中最小二乘估计的性质, 在此也对 <span class="arithmatex">\({ }^{*}\)</span> :</p>
+<ol>
+<li><span class="arithmatex">\(\hat{\beta}_{0}, \hat{\beta}\)</span> 分别是 <span class="arithmatex">\(\beta_{0}\)</span> 和 <span class="arithmatex">\(\beta\)</span> 的无偏估计.</li>
+</ol>
+<p><span class="arithmatex">\(2 . \operatorname{Cov}\left(\hat{\beta}_{0}, \hat{\beta}_{j}\right)=0, j=1, \cdots, p\)</span>, 即 <span class="arithmatex">\(\hat{\beta}_{0}\)</span> 与每个 <span class="arithmatex">\(\hat{\beta}_{j}\)</span> 都不相关.</p>
+<p><span class="arithmatex">\(3 \cdot \operatorname{Var}\left(\hat{\beta}_{0}\right)=\sigma^{2} / n\)</span>; 若记</p>
+<div class="arithmatex">\[
+C=\left(c_{i j}\right)=L^{-1}
+\]</div>
+<p>则 <span class="arithmatex">\(\operatorname{Var}\left(\hat{\beta}_{j}\right)=c_{j j} \sigma^{2}, \operatorname{Cov}\left(\hat{\beta}_{j}, \hat{\beta}_{k}\right)=c_{j k} \sigma^{2}\)</span>. 由于这个性质, 方阵 <span class="arithmatex">\(L^{-1}\)</span> 在 回归分析中有很大的重要性, 一般都需要算出来. 不然的话, 解方 程 (3.10) 可用通常的消元法更简便，而无须用(3.13).</p>
+<h3 id="02-2-sigma2">0.2. 2 误差方差 <span class="arithmatex">\(\sigma^{2}\)</span> 的估计<a class="headerlink" href="#02-2-sigma2" title="Permanent link">⚓︎</a></h3>
+<p>仍如-一元回归一样,定义残差</p>
+<div class="arithmatex">\[
+\delta_{i}=Y_{i}-\left(\hat{\beta}_{0}+X_{1 i} \hat{\beta}_{1}+\cdots+X_{p i} \hat{\beta}_{p}\right), i=1, \cdots, n
+\]</div>
+<p>及残差平方和 <span class="arithmatex">\(\delta_{1}^{2}+\cdots+\delta_{n}^{2}\)</span>. 可证明</p>
+<div class="arithmatex">\[
+\hat{\sigma}^{2}=\left(\delta_{1}^{2}+\cdots+\delta_{n}^{2}\right) /(n-p-1)
+\]</div>
+<p>是 <span class="arithmatex">\(\sigma^{2}\)</span> 的一个无偏估计.</p>
+<p>当随机误差服从正态分布时, 可证明 <span class="arithmatex">\(\sum_{i=1}^{n} \delta_{i}^{2} / \sigma^{2}\)</span> 服从自由度 <span class="arithmatex">\(n-p-1\)</span> 的 <span class="arithmatex">\(\chi^{2}\)</span> 分布. 这里有 <span class="arithmatex">\(p+1\)</span> 个参数 <span class="arithmatex">\(\beta_{01}, \beta_{1}, \cdots, \beta_{p}\)</span> 要估计, 故 自由度减少了 <span class="arithmatex">\(p+1\)</span>.</p>
+<p>对此处多元的情况,类似于 (2.23)式的结果也成立:</p>
+<div class="arithmatex">\[
+\sum_{i=1}^{n} \delta_{i}^{2}=\sum_{i=1}^{n}\left(Y_{i}-\bar{Y}\right)^{2}-\left(\hat{\beta}_{1} \sum_{i=1}^{n} X_{1 i} Y_{i}+\cdots+\hat{\beta}_{p} \sum_{i=1}^{n} X_{p i} Y_{i}\right)
+\]</div>
+<p>× 证明见三题 7 . 此式的方便之处在于:(3.17) 右边括号内的各项, 在列出正则方程 组 (3.10) 时已算出了, 而在估计 <span class="arithmatex">\(\sigma^{2}\)</span> 时, 一般先估计 <span class="arithmatex">\(\beta_{j}\)</span>, 故 <span class="arithmatex">\(\hat{\beta}_{1}, \cdots\)</span>, <span class="arithmatex">\(\hat{\beta}_{p}\)</span> 等也已算出了.</p>
+<h3 id="03-3">0.3. 3 区间估计与预测<a class="headerlink" href="#03-3" title="Permanent link">⚓︎</a></h3>
+<p>在作区间估计和预测时, 要假定随机误差服从正态分布, 即要 把(3.3)加强为</p>
+<div class="arithmatex">\[
+e_{1}, \cdots, e_{n} \text { 独立同分布, } e_{i}-N\left(0, \sigma^{2}\right), i=1, \cdots, n(3.18)
+\]</div>
+<p>这时, 因 <span class="arithmatex">\(\hat{\beta}_{0}, \cdots, \hat{\beta}_{p}\)</span> 都是 <span class="arithmatex">\(Y_{1}, \cdots, Y_{n}\)</span> 的线性函数, 它们都服从正态 分布.</p>
+<ol>
+<li>回归系数 <span class="arithmatex">\(\beta_{j}\)</span> 的区间估计</li>
+</ol>
+<p>已知 <span class="arithmatex">\(E\left(\hat{\beta}_{j}\right)=\beta_{j}, \operatorname{Var}\left(\hat{\beta}_{j}\right)=c_{j j} \sigma^{2}\)</span>, 故有 <span class="arithmatex">\(\left(\hat{\beta}_{j}-\beta_{j}\right) /\left(\sqrt{c_{j j}} \sigma\right) \sim\)</span> <span class="arithmatex">\(N(0,1)\)</span>. 以 <span class="arithmatex">\(\sigma\)</span> 的估计 <span class="arithmatex">\(\hat{\sigma}\)</span> 代替上式中的 <span class="arithmatex">\(\sigma\)</span>, 则可以证明</p>
+<div class="arithmatex">\[
+\left(\hat{\beta}_{j}-\beta_{j}\right) /\left(\hat{\sigma} \sqrt{c_{j j}}\right) \sim t_{n-p-1}
+\]</div>
+<p>与一元情况相似, 由此就可以作出 <span class="arithmatex">\(\beta_{j}\)</span> 的区间估计</p>
+<div class="arithmatex">\[
+\hat{\beta}_{j}-\hat{\sigma} \sqrt{c_{j j}} t_{n-p-1}(\alpha / 2) \leqslant \beta_{j} \leqslant \hat{\beta}_{j}+\hat{\sigma} \sqrt{c_{j j}} t_{n-p-1}(\alpha / 2)
+\]</div>
+<p>置信系数为 <span class="arithmatex">\(1-\alpha\)</span>. 类似地作出 <span class="arithmatex">\(\beta_{j}\)</span> 的置信上、下界.</p>
+<ol>
+<li>回归函数的区间估计</li>
+</ol>
+<p>仍记问归函数为</p>
+<div class="arithmatex">\[
+m(x)=\beta_{0}+\beta_{1}\left(x_{1}-\bar{X}_{1}\right)+\cdots+\beta_{p}\left(x_{p}-\bar{X}_{p}\right)
+\]</div>
+<p><span class="arithmatex">\(\bar{X}_{j}\)</span> 的意义前已指出, 为 <span class="arithmatex">\(\bar{X}_{j}=\left(X_{j 1}+\cdots+X_{j n}\right) / n, x=\left(x_{1}, \cdots\right.\)</span>, <span class="arithmatex">\(\left.x_{p}\right)^{\prime}\)</span>.</p>
+<p><span class="arithmatex">\(m(x)\)</span> 的点估计为</p>
+<div class="arithmatex">\[
+\hat{m}(x)=\hat{\beta}_{0}+\hat{\beta}_{1}\left(x_{1}-\bar{X}_{1}\right)+\cdots+\hat{\beta}_{p}\left(x_{p}-\bar{X}_{p}\right)
+\]</div>
+<p>其期望值为 <span class="arithmatex">\(m(x)\)</span>. 其方差可根据 <span class="arithmatex">\(\hat{\beta}_{0}, \cdots, \hat{\beta}_{p}\)</span> 的方差与协方差算 出, 结果为</p>
+<div class="arithmatex">\[
+\lambda^{2}(x) \sigma^{2}=\left(\frac{1}{n}+\sum_{j, k=1}^{p}\left(x_{j}-\bar{X}_{j}\right)\left(x_{k}-\bar{X}_{k}\right) c_{j k}\right) \sigma^{2}
+\]</div>
+<p>于是得到 <span class="arithmatex">\((\hat{m}(x)-m(x)) /(\lambda(x) \sigma) \sim N(0,1)\)</span>. 以 <span class="arithmatex">\(\hat{\sigma}\)</span> 代替 <span class="arithmatex">\(\sigma\)</span>, 得到</p>
+<div class="arithmatex">\[
+(\hat{m}(x)-m(x)) /(\lambda(x) \hat{\sigma}) \sim t_{n-p-1}
+\]</div>
+<p>由此就可作出 <span class="arithmatex">\(m(x)\)</span> 的区间估计为</p>
+<div class="arithmatex">\[
+\begin{aligned}
+&amp; \hat{m}(x)-\hat{\sigma} \lambda(x) \dot{t}_{n-p-1}(\alpha / 2) \\
+&amp; \quad \leqslant m(x) \leqslant \hat{m}(x)+\hat{\sigma} \lambda(x) t_{n-p-1}(\alpha / 2)
+\end{aligned}
+\]</div>
+<p>置信系数为 <span class="arithmatex">\(1-\alpha\)</span>.</p>
+<p>在 (3.22) 式中令 <span class="arithmatex">\(x_{1}=\cdots=x_{p}=0\)</span>, 得到原模型 (3.2) 中的常数 项 <span class="arithmatex">\(b_{0}\)</span> 的区间估计.</p>
+<ol>
+<li>在自变量的值 <span class="arithmatex">\(x_{0}=\left(x_{10}, \cdots, x_{p 0}\right)\)</span> 处预测因变量 <span class="arithmatex">\(Y\)</span> 之取值 <span class="arithmatex">\(y_{0}\)</span></li>
+</ol>
+<p>作为点预测, 就用 <span class="arithmatex">\(\hat{m}\left(x_{0}\right)\)</span>. 其区间预测与回归函数区间估计 的差别, 就在于方差多了一个 <span class="arithmatex">\(\sigma^{2}\)</span>, 故只须把 (3.22) 式中的 <span class="arithmatex">\(\lambda(x)\)</span> 改 为 <span class="arithmatex">\(\sqrt{1+\lambda^{2}\left(x_{0}\right)}\)</span> 即可:</p>
+<div class="arithmatex">\[
+\begin{aligned}
+&amp; \hat{m}\left(x_{0}\right)-\hat{\sigma} \sqrt{1+\lambda^{2}\left(x_{0}\right)} t_{n-p-1}(\alpha / 2) \\
+\leqslant &amp; y_{0} \leqslant \hat{m}\left(x_{0}\right)+\hat{\sigma} \sqrt{1+\lambda^{2}\left(x_{0}\right)} t_{n-p-1}(\alpha / 2)
+\end{aligned}
+\]</div>
+<p>其置信系数为 <span class="arithmatex">\(1-\alpha\)</span>.</p>
+<h3 id="04-4">0.4. 4 假设检验问题<a class="headerlink" href="#04-4" title="Permanent link">⚓︎</a></h3>
+<p>在多元回归中, 因包含了多个回归系数, 可以考虑的假设检验 问题，比一元情况要多些. 本段仍要假设随机误差服从正态分布.</p>
+<ol>
+<li>单个回归系数 <span class="arithmatex">\(\beta_{j}\)</span> 的检验</li>
+</ol>
+<p>考虑原假设 <span class="arithmatex">\(H_{0}: \beta_{j}=c, c\)</span> 为给定常数,利用 (3.19), 仿照一元 情况的处理方式, 得 <span class="arithmatex">\(t\)</span> 检验:</p>
+<p>当 <span class="arithmatex">\(\left|\hat{\beta}_{j}-c\right| \leqslant \hat{\sigma} \sqrt{c_{j j}} t_{n-p-1}(\alpha / 2)\)</span> 时接受 <span class="arithmatex">\(H_{0}\)</span>, 不然就否定 <span class="arithmatex">\(H_{0}\)</span> 类似地可考虑单边假设 <span class="arithmatex">\(\beta_{j} \leqslant c\)</span> 或 <span class="arithmatex">\(\beta_{j} \geqslant c\)</span> 的检验问题.</p>
+<p>在应用上, 主要考虑的一种情况是 <span class="arithmatex">\(c=0\)</span>. 如果假设 <span class="arithmatex">\(\beta_{j}=0\)</span> 被 接受, 则可能解释为: 自变量 <span class="arithmatex">\(X_{j}\)</span> 对 <span class="arithmatex">\(Y\)</span> 无影响, 因而可以从回归函 数中删去. 但这种解释要慎重. 一则是样本可能太少, 二则还有其 他原因, 见 6.3.5.</p>
+<ol>
+<li>全体回归系数皆为 0 的检验</li>
+</ol>
+<p>即原假设为</p>
+<div class="arithmatex">\[
+H_{0}: \beta_{1}=\beta_{2}=\cdots=\beta_{p}=0
+\]</div>
+<p>这个假设的检验常称为 “回归显著性检验”, 其意思如下: 若 (3.25) 通过了, 则有可能, 所选的自变量 <span class="arithmatex">\(X_{1}, \cdots, X_{p}\)</span> 其实对因变量 <span class="arithmatex">\(Y\)</span> 无 影响或影响很小. 这样, 配出的经验回归方程也就没有多大意义. 任实用上, 这有两种情况: - - 是确实 <span class="arithmatex">\(\beta_{1}, \cdots, \beta_{p}\)</span> 都为 0 或很小, 这时 我们选错了自变量; 一是样本太少, 随机误差的干扰太大, 以致各 自变量的作用显示不出来. 到底是哪种情况, 当然须得对具体问题 作具体分析. 但无论如何, 如果假设 <span class="arithmatex">\(H_{0}\)</span> 被接受, 则总是显示, 由数 据配出的经验回归方程不理想, 不宜迳直用于实际.</p>
+<p>反之,若 <span class="arithmatex">\(H_{0}\)</span> 被否定,则这说明了: 所选定的自变量 <span class="arithmatex">\(X_{1}, \cdots\)</span>, <span class="arithmatex">\(X_{p}\)</span>, 对因变量 <span class="arithmatex">\(Y\)</span> 确有一定的影响, 并非无的放矢. 通常把这说成 回归达到了显著性, 并进而引伸解释为: 所配的回归方程成立, 可 以有效地使用了. 这样的解释还需慎重, 因为检验的结果只是告诉 我们: 所选自变量中, 至少有一部分是重要的, 但也可能尚留有并 非重要的; 尤其是, 并不能排斥遗漏了其他重要因素的可能性. 这 一切要看前期工作做得如何, 不能都委之于这个检验. 我们认为, 这个检验的基本意义是事后验证性的: 研究者在事前根据专业知 识及经验, 认为已把较重要的自变量选人了, 且在一定的误差限度 内, 认为回归函数可取为线性的. 经过试验得出数据后, 他可以通 过这个检验验证一下, 原来的考虑是否有毛病. 这时, 若 <span class="arithmatex">\(H_{0}\)</span> 被否 定, 他可以合理地解释为: 数据与他事前 (试验前) 的设想并不矛 盾. 反之, 若 <span class="arithmatex">\(H_{0}\)</span> 被接受, 则提醒他, 也许他事前的考虑有欠周到之 处, 值得再研究-..下. 这里所谈的实质上涉及一个选择回归自变量的问题. 在一项 大型的研究中,看来与因变量 <span class="arithmatex">\(Y\)</span> 有关的因素往往很多,而在回归 方程中却只宜选进一部分关系最密切的, 选多了反而不好, 前面我 们强调专业知识和经验在处理这个问题中的作用,但这并不排斥 统计分析的作用. 实际上, 回归自变量的选择问题是回归分析中很 受重视的一个课题, 近 30 年来出现了大量的工作. 这些在本书中 无法细述了, 有兴趣的读者, 可参看陈希擩和王松桂所著《近代回 归分析》的第三章.</p>
+<p>现在我们回到假设 (3.25) 的检验问题. 我们只能解释一下导 出检验的思想,而不能仔细证明其中所涉及的分布问题.</p>
+<p>前面我们在原模型 (3.8)之下算出了残差平方和 (3.17), 其值 暂记为 <span class="arithmatex">\(R_{1}\)</span>. 现如假设 (3.25) 成立, 则无异乎说我们采纳新模型</p>
+<div class="arithmatex">\[
+Y_{i}=\beta_{0}+e_{i}, i=1, \cdots, n
+\]</div>
+<p>在此模型下也计算其残差平方和 <span class="arithmatex">\(R_{2}\)</span>, 结果为</p>
+<div class="arithmatex">\[
+R_{2}=\min _{\beta_{0}} \sum_{i=1}^{n}\left(Y_{i}-\beta_{0}\right)^{2}=\sum_{i=1}^{n}\left(Y_{i}-\bar{Y}\right)^{2}
+\]</div>
+<p>对任一模型, 残差平方和愈小, 则说明数据对它的拟合愈好. 容易 看出: 数据对模型 (3.26) 的拟合程度, 快不能优于其对 (3.8) 的拟 合程度, 因为 (3.8) 中可供选择的余地比 (3.26) 大. 但拟合程度相 差多少, 则取决于模型 (3.26) 是否正确, 即假设 (3.25) 是否成立. 若 (3.26) 正确, 则差距要小些, 否则就大些 * . 这样, <span class="arithmatex">\(R_{2}\)</span> 和 <span class="arithmatex">\(R_{1}\)</span> 之差 <span class="arithmatex">\(R_{2}-R_{1}\)</span> 可作为假设 <span class="arithmatex">\(H_{0}\)</span> 正确性的一种度量: <span class="arithmatex">\(R_{2}-R_{1}\)</span> 愈小, <span class="arithmatex">\(H_{0}\)</span> 愈 像是成立. 理论上可以证明: 当 <span class="arithmatex">\(H_{0}\)</span> 成立时有</p>
+<div class="arithmatex">\[
+\frac{1}{\sigma^{2}}\left(R_{2}-R_{1}\right)-\chi_{p}^{2}, R_{2}-R_{1} \text { 与 } \hat{\sigma}^{2} \text { 独立 }
+\]</div>
+<p>这样,再注意当随机误差服从正态分布时有</p>
+<p>入这是一种直观的想法, 其根据在丁: 与数据拟合最好的模型, 是在真模型附近而 不是远离它一一如果远离它(这并非不叮能), 则表示经验问盺方程 趾很人,整个分析就没有多大意义广。</p>
+<div class="arithmatex">\[
+(n-p-1) \hat{\sigma}^{2} / \sigma^{2}-\chi^{2} \cdot p-1
+\]</div>
+<p>平是, 由 <span class="arithmatex">\(F\)</span> 分布的定义, 知当原假设 <span class="arithmatex">\(H_{0}\)</span> 成立时有</p>
+<div class="arithmatex">\[
+\frac{1}{p}\left(R_{2}-R_{1}\right) / \hat{\sigma}^{2} \sim F_{p, n-p-1}
+\]</div>
+<p>按 (3.27) 和 (3.17), 得</p>
+<div class="arithmatex">\[
+R_{2}-R_{1}=\hat{\beta}_{1} \sum_{i=1}^{n} X_{1 i} Y_{i}+\cdots+\hat{\beta}_{p} \sum_{i=1}^{n} X_{p i} Y_{i}
+\]</div>
+<p>于是得到 (3.25) 的 <span class="arithmatex">\(H_{0}\)</span> 的下述检验法:</p>
+<div class="arithmatex">\[
+\begin{gathered}
+\text { 当 } \frac{1}{p} \sum_{j=1}^{p} \hat{\beta}_{j} \sum_{i-1}^{n} X_{j i} Y_{i} / \hat{\sigma}^{2} \leqslant F_{p, n-p-1}(\alpha) \text { 时接受 } H_{0} \text {, } \\
+\text { 不然就否定 } H_{0}
+\end{gathered}
+\]</div>
+<p>检验水平为 <span class="arithmatex">\(\alpha\)</span>. 这个检验称为 <span class="arithmatex">\(H_{0}\)</span> 的 <span class="arithmatex">\(F\)</span> 检验.</p>
+<ol>
+<li>一部分回归系数为 0 , 即</li>
+</ol>
+<div class="arithmatex">\[
+H_{0}: \beta_{1}=\cdots=\beta_{r}=0 \quad(1 \leqslant r \leqslant p)
+\]</div>
+<p>检验的背景是:全体自变量按其性质分成一些组，而 <span class="arithmatex">\(X_{1}, \cdots\)</span>, <span class="arithmatex">\(X_{r}\)</span> 是反映某方面性质的因子.(3.31) 的意义是: 这方面的因子其 实不影响因变量 <span class="arithmatex">\(Y\)</span> 之值.</p>
+<p>检验方法与(3.25) 同: 以 <span class="arithmatex">\(R_{3}\)</span> 记当 (3.31) 成立时的残差平方 和, 即</p>
+<div class="arithmatex">\[
+R_{3}=\min _{\alpha_{0}, a_{r+1}, \cdots, \alpha_{p}} \sum_{i=1}^{n}\left(Y_{i}-\alpha_{0}-X_{r+1, i} \alpha_{r+1}-\cdots-X_{p i} \alpha_{p}\right)^{2}
+\]</div>
+<p>然后, 可以证明: 当随机误差服从正态分布而 <span class="arithmatex">\(H_{0}\)</span> 成立时, 有</p>
+<div class="arithmatex">\[
+\frac{1}{r}\left(R_{3}-R_{1}\right) / \hat{\sigma}^{2} \sim F_{r, n-p-1}
+\]</div>
+<p>于是得到(3.31) 的下述检验法:</p>
+<div class="arithmatex">\[
+\text { 当 } \frac{1}{r}\left(R_{3}-R_{1}\right) / \hat{\sigma}^{2} \leqslant F_{r, n-p-1}(\alpha) \text { 时接受 } H_{0} \text {, 不然就否定 } H_{0}
+\]</div>
+<p>检验水平为 <span class="arithmatex">\(\alpha\)</span>. 这个检验通称为假设 (3.31) 的 <span class="arithmatex">\(F\)</span> 检验. 称呼的来 由显然是,所用的检验统计量有 <span class="arithmatex">\(F\)</span> 分布. 直接计算 <span class="arithmatex">\(R_{3}\)</span> 需要在新模型</p>
+<div class="arithmatex">\[
+Y_{i}=\beta_{0}+\beta_{r+1} X_{r+1, i}+\cdots+\beta_{p} X_{p i}+e_{i}, i=1, \cdots, n
+\]</div>
+<p>之下算出 <span class="arithmatex">\(\beta_{0}, \beta_{r+1}, \cdots, \beta_{p}\)</span> 的最小二乘估计 <span class="arithmatex">\(\beta_{0}^{*}, \beta_{r+1}^{*}, \cdots, \beta_{p}^{*} \cdot \beta_{0}^{*}\)</span> 仍为 <span class="arithmatex">\(\bar{Y}\)</span>, 但 <span class="arithmatex">\(\beta_{r+1}^{*}, \cdots, \beta_{p}^{*}\)</span> 已与在原模型 (3.8) 之下求出的 <span class="arithmatex">\(\beta_{r+1}, \cdots\)</span>, <span class="arithmatex">\(\beta_{p}\)</span> 的最小二乘估计 <span class="arithmatex">\(\hat{\beta}_{r+1}, \cdots, \hat{\beta}_{p}\)</span> 不同，因此涉及较多计算. 下面的 公式则只须用到原模型 (3.8) 下有关的量, 不须涉及新模型 (3.33), 因此较为简单. 为引进这公式, 把(3.11) 式却义的方阵 <span class="arithmatex">\(L\)</span> 分块为</p>
+<p><img alt="" src="https://cdn.mathpix.com/cropped/2023_07_12_bc9f09d8cb8aa2497ca0g-11.jpg?height=223&amp;width=394&amp;top_left_y=1008&amp;top_left_x=785" /></p>
+<p>其中 <span class="arithmatex">\(L_{11}\)</span> 为 <span class="arithmatex">\(r\)</span> 阶方阵, 记方阵</p>
+<div class="arithmatex">\[
+D=\left(d_{i j}\right)=L_{11}-L_{12} L_{22}^{-1} L_{21}
+\]</div>
+<p>则</p>
+<div class="arithmatex">\[
+R_{3}-R_{1}=\sum_{i, j=1}^{r} d_{i j} \hat{\beta}_{i} \hat{\beta}_{j}
+\]</div>
+<p>(3.34)中, <span class="arithmatex">\(\hat{\beta}_{i}\)</span> 等是在原模型 (3.8) 之下已求得的.</p>
+<p>线性回归是统计学应用中碰得最多的. 本节方法中涉及的运 算, 早已编人各种统计软件包, 如有这种设备, 则只须输入数据即 可，这类简化公式也就没有多大实际意义了.</p>
+<p>例 3.1 本例引述自张启锐著《实用回归分析》p. 60 . 其目的 纯粹是为了显示, 本节提出的那些抽象公式是怎样使用的.</p>
+<p>本例共有三个自变量 <span class="arithmatex">\(X_{1}, X_{2}, X_{3}\)</span>, 因变量 <span class="arithmatex">\(Y\)</span>. 对这些变量进行 了 <span class="arithmatex">\(n=48\)</span> 次观测, 原始数据 <span class="arithmatex">\(\left(X_{1 i}, X_{2 i}, X_{3 i}, Y_{i}\right), i=1, \cdots, 48\)</span>, 没有 写出, 但与本节公式的应用有关的量的计算结果为</p>
+<div class="arithmatex">\[
+\begin{aligned}
+&amp; \bar{X}_{1}=18.98, \bar{X}_{2}=2.55, \bar{X}_{3}=3.125, \bar{Y}=3.843 \\
+&amp; L=\left(\begin{array}{rrr}
+2052.98 &amp; 49.15 &amp; 782.12 \\
+49.15 &amp; 12.46 &amp; 13.50 \\
+782.12 &amp; 13.50 &amp; 577.25
+\end{array}\right), \sum_{i=1}^{+8}\left(Y_{i}-\bar{Y}\right)^{2}=74.15
+\end{aligned}
+\]</div>
+<div class="arithmatex">\[
+\begin{gathered}
+\sum_{i=1}^{48}\left(X_{1 i}-\bar{X}_{1}\right) Y_{i}=-257.59, \sum_{i=1}^{48}\left(X_{2 i}-\bar{X}_{2}\right) Y_{i}=-11.72, \\
+\sum_{i=1}^{48}\left(X_{3 i}-\bar{X}_{3}\right) Y_{i}=-141.37
+\end{gathered}
+\]</div>
+<ol>
+<li>常数项 <span class="arithmatex">\(\beta_{0}\)</span> 的最小二乘估计为 <span class="arithmatex">\(\bar{Y}=3.843\)</span>, 而回归系数 <span class="arithmatex">\(\beta_{1}\)</span>, <span class="arithmatex">\(\beta_{2}, \beta_{3}\)</span> 的最小二乘估计则是下述方程组的解:</li>
+</ol>
+<div class="arithmatex">\[
+\begin{gathered}
+2052.98 \alpha_{1}+49.15 \alpha_{2}+782.12 \alpha_{3}=-257.59 \\
+49.15 \alpha_{1}+12.46 \alpha_{2}+13.50 \alpha_{3}=-11.72 \\
+782.12 \alpha_{1}+13.50 \alpha_{2}+577.25 \alpha_{3}=-141.37
+\end{gathered}
+\]</div>
+<p>解 <span class="arithmatex">\(\alpha_{1}, \alpha_{2}, \alpha_{3}\)</span>, 即 <span class="arithmatex">\(\beta_{1}, \beta_{2}, \beta_{3}\)</span> 的最小二乘估计 <span class="arithmatex">\(\hat{\beta}_{1}, \hat{\beta}_{2}, \hat{\beta}_{3}\)</span>, 结果为 <span class="arithmatex">\(\hat{\beta}_{1}\)</span> <span class="arithmatex">\(=-0.0488, \hat{\beta}_{2}=-0.5688, \hat{\beta}_{3}=-0.1655\)</span>. 而经验回归方程为 <span class="arithmatex">\(y=3.843-0.0488\left(x_{1}-18.98\right)-0.5688\left(x_{2}-2.55\right)\)</span></p>
+<div class="arithmatex">\[
+\begin{aligned}
+&amp; -0.1655\left(x_{3}-3.125\right) \\
+= &amp; 6.737-0.0488 x_{1}-0.5688 x_{2}-0.1655 x_{3}
+\end{aligned}
+\]</div>
+<p>为计算 <span class="arithmatex">\(\hat{\beta}_{0}, \cdots, \hat{\beta}_{3}\)</span> 的方差协方差, 要算出 <span class="arithmatex">\(L\)</span> 的逆方阵 <span class="arithmatex">\(C=L^{-1}\)</span>, 结 果为</p>
+<div class="arithmatex">\[
+C=L^{-1}=10^{-3}\left(\begin{array}{rrr}
+1.0931 &amp; -2.7775 &amp; -1.4160 \\
+-2.7775 &amp; 89.4009 &amp; 1.6725 \\
+-1.4160 &amp; 1.6725 &amp; 3.6119
+\end{array}\right)
+\]</div>
+<p>于是得到</p>
+<div class="arithmatex">\[
+\begin{aligned}
+&amp; \operatorname{Var}\left(\hat{\beta}_{0}\right)=\sigma^{2} / 48=0.0208 \sigma^{2}, \operatorname{Cov}\left(\hat{\beta}_{0}, \hat{\beta}_{j}\right)=0, j=1,2,3 \\
+&amp; \operatorname{Var}\left(\hat{\beta}_{1}\right)=10^{-3} \times 1.0931 \sigma^{2}, \operatorname{Var}\left(\hat{\beta}_{2}\right)=10^{-3} \times 89.4009 \sigma^{2} \\
+&amp; \operatorname{Var}\left(\hat{\beta}_{3}\right)=10^{-3} \times 3.6119 \sigma^{2} \\
+&amp; \operatorname{Cov}\left(\hat{\beta}_{1}, \hat{\beta}_{2}\right)=10^{-3} \times(-2.7775) \sigma^{2} \\
+&amp; \operatorname{Cov}\left(\hat{\beta}_{1}, \hat{\beta}_{3}\right)=10^{-3} \times(-1.4160) \sigma^{2}
+\end{aligned}
+\]</div>
+<p><span class="arithmatex">\(\operatorname{Cov}\left(\hat{\beta}_{2}, \hat{\beta}_{3}\right)=10^{-3} \times 3.6119 \sigma^{2}\)</span></p>
+<ol>
+<li>残差平方和按公式 (3.17) 计算, 结果为</li>
+</ol>
+<div class="arithmatex">\[
+\begin{aligned}
+\sum_{i=1}^{18} \delta_{i}^{2}= &amp; 74.15-(-0.0488)(-257.59) \\
+&amp; -(-0.5688)(-11.72) \\
+&amp; -(-0.1655)(-141.37) \\
+= &amp; 31.5165
+\end{aligned}
+\]</div>
+<p>自由度为 <span class="arithmatex">\(n-p-1=48-3-1=44\)</span>, 而得到误差方差 <span class="arithmatex">\(\sigma^{2}\)</span> 的无偏 估计 <span class="arithmatex">\(\hat{\sigma}^{2}\)</span> 为: <span class="arithmatex">\(\hat{\sigma}^{2}=31.5216 / 44=0.7163\)</span>.</p>
+<ol>
+<li>各回归系数的区间估计, 取置信系数 <span class="arithmatex">\(1-\alpha=0.95\)</span>, 查 <span class="arithmatex">\(t\)</span> 分 布表, <span class="arithmatex">\(t_{4+}(0.025)=2.02108\)</span>. 于是按 <span class="arithmatex">\((3.20), \beta_{j}\)</span> 的区间估计有 <span class="arithmatex">\(\hat{\beta}_{j} \pm\)</span> <span class="arithmatex">\(\sqrt{0.7163} \times \sqrt{c_{j j}} \times 2.02108\)</span> 的形式. 以(3.36)中的 <span class="arithmatex">\(c_{j j}\)</span> 具体值代人, 算出结果为:</li>
+</ol>
+<div class="arithmatex">\[
+\begin{aligned}
+&amp; \beta_{1}:-0.0488 \pm 0.0564 ; \beta_{2}:-0.5688 \pm 0.5100 ; \\
+&amp; \beta_{3}:-0.1655 \pm 0.1026
+\end{aligned}
+\]</div>
+<ol>
+<li>回归函数</li>
+</ol>
+<div class="arithmatex">\[
+m(x)=\beta_{0}+\beta_{1}\left(x_{1}-18.98\right)+\beta_{2}\left(x_{2}-2.55\right)+\beta_{3}\left(x_{3}-\right.
+\]</div>
+<p><span class="arithmatex">\(3.125)\)</span> 的区间估计, 按公式 (3.22), 应为 <span class="arithmatex">\(\hat{m}(x) \pm \sqrt{0.7164} \times\)</span> <span class="arithmatex">\(\lambda(x) \times 2.02108\)</span>. 其中 <span class="arithmatex">\(\hat{m}(x)\)</span> 即为方程 <span class="arithmatex">\((3.35)\)</span> 的右边的表达式, 而</p>
+<div class="arithmatex">\[
+\begin{aligned}
+\lambda^{2}(x)= &amp; 1 / 48+\left\{1.0931\left(x_{1}-18.98\right)^{2}+89.4009\left(x_{2}-2.55\right)^{2}\right. \\
+&amp; +3.6119\left(x_{3}-3.125\right)^{2} \\
+&amp; -2 \times 2.7775\left(x_{1}-18.98\right)\left(x_{2}-2.55\right) \\
+&amp; -2 \times 1.416\left(x_{1}-18.98\right)\left(x_{3}-3.125\right) \\
+&amp; \left.+2 \times 1.6725\left(x_{2}-2.55\right)\left(x_{3}-3.125\right)\right\} \times 10^{-3}
+\end{aligned}
+\]</div>
+<p>例如,对点 <span class="arithmatex">\(x=(18,2.7,3)^{\prime}\)</span>, 上式计算结果为</p>
+<div class="arithmatex">\[
+\lambda^{2}(x)=0.02443, \hat{m}(x)=3.8263
+\]</div>
+<p>而得到其置信系数 0.95 的区间估计为</p>
+<div class="arithmatex">\[
+\begin{gathered}
+3.8263 \pm \sqrt{0.7164} \times \sqrt{0.02443} \times 2.02108 \\
+=3.8163 \pm 0.2674
+\end{gathered}
+\]</div>
+<p>在 <span class="arithmatex">\(x\)</span> 点处 <span class="arithmatex">\(Y\)</span> 的预测值 <span class="arithmatex">\(y_{0}\)</span> 的 0.95 置信区间为 <span class="arithmatex">\(\hat{m}(x) \pm \sqrt{0.7164}\)</span> <span class="arithmatex">\(\left(1+\lambda^{2}(x)\right)^{12} \times 2.02108\)</span>. 在点 <span class="arithmatex">\(x=(18,2.7,3)^{\prime}\)</span> 处, 结果为</p>
+<div class="arithmatex">\[
+\begin{gathered}
+3.8263 \pm \sqrt{0.7164} \times \sqrt{1.02443} \times 2.02108 \\
+=3.8263 \pm 1.7314
+\end{gathered}
+\]</div>
+<p>看出预测的精度比回归函数估计的精度差得多.</p>
+<h2 id="1-5">1. 5. 假设检验<a class="headerlink" href="#1-5" title="Permanent link">⚓︎</a></h2>
+<p>一个问归系数为 0 的检验结果 (取水平 <span class="arithmatex">\(\alpha=0.05\)</span> ), 从各回归 系数的区间估计即得出: 凡是 <span class="arithmatex">\(\beta_{j}\)</span> 的置信区间包含 0 者, 原假设 <span class="arithmatex">\(\beta_{j}\)</span> <span class="arithmatex">\(=0\)</span> 就被接受,不然就被否定. 因此, 从 (3.37) 看出, <span class="arithmatex">\(\beta_{1}=0\)</span> 被接受, 而 <span class="arithmatex">\(\beta_{2}=0\)</span> 及 <span class="arithmatex">\(\beta_{3}=0\)</span> 都被否定.</p>
+<p><span class="arithmatex">\(\beta_{1}=0\)</span> 虽然被接受, 但这许不等于说一定可以把自变量 <span class="arithmatex">\(X_{1}\)</span> 去 掉. 这个问题还要根据具体情况全面地去考虑, 不能单华这个检验 就作出决定.</p>
+<p>其次看原假设 <span class="arithmatex">\(H_{0}: \beta_{1}=0, \beta_{2}=0\)</span>. 用检验 (3.32), 要按 (3.34) 式算出 <span class="arithmatex">\(R_{3}-R_{1}\)</span>. 有</p>
+<div class="arithmatex">\[
+\begin{aligned}
+&amp; L_{11}=\left(\begin{array}{rr}
+2052.98 &amp; 49.15 \\
+49.15 &amp; 12.46
+\end{array}\right), L_{12}=\left(\begin{array}{r}
+782.12 \\
+13.50
+\end{array}\right) \\
+&amp; L_{21}=(782.12,13.50), L_{22}=(577.25)
+\end{aligned}
+\]</div>
+<p>于是</p>
+<div class="arithmatex">\[
+\begin{aligned}
+D &amp; =L_{11}-L_{12} L_{22}^{-1} L_{21}=\left(\begin{array}{rr}
+2052.98 &amp; 49.15 \\
+49.15 &amp; 12.46
+\end{array}\right) \\
+&amp; -\left(\begin{array}{rr}
+782.12 \\
+13.50
+\end{array}\right)\left(\frac{1}{577.25}\right)(782.12,13.50) \\
+&amp; =\left(\begin{array}{cc}
+2052.98 &amp; 49.15 \\
+49.15 &amp; 12.46
+\end{array}\right)-\left(\begin{array}{rr}
+1059.70 &amp; 18.29 \\
+18.29 &amp; 0.32
+\end{array}\right) \\
+&amp; =\left(\begin{array}{cc}
+993.18 &amp; 30.86 \\
+30.86 &amp; 12.14
+\end{array}\right)
+\end{aligned}
+\]</div>
+<p>f: 是, 据 <span class="arithmatex">\(\hat{\beta}_{1}=-0.0488, \hat{\beta}_{2}=-0.5688\)</span>, 用 <span class="arithmatex">\((3.34)\)</span>, 得</p>
+<div class="arithmatex">\[
+\begin{aligned}
+R_{3}-R_{1}= &amp; 993.18(0.0488)^{2}+12.14(0.5688)^{2} \\
+&amp; +2(30.86)(0.0488)(0.5688)=8.006
+\end{aligned}
+\]</div>
+<p><span class="arithmatex">\(r=2, \hat{\sigma}^{2}=0.7164\)</span>. 故</p>
+<div class="arithmatex">\[
+\frac{1}{r}\left(R_{3}-R_{1}\right) / \hat{\sigma}^{2}=\frac{1}{2} \times 8.006 / 0.7164=5.588
+\]</div>
+<p>查 <span class="arithmatex">\(F\)</span> 分布表, 知 <span class="arithmatex">\(F_{r, n-p-1}(\alpha)=F_{2 .+4}(0.05) \approx 3.21\)</span>. 故 <span class="arithmatex">\(H_{0}\)</span> 被否 定.</p>
+<p>最后考虑检验问题 <span class="arithmatex">\(H_{0}: \beta_{1}=\beta_{2}=\beta_{3}=0\)</span>. 用检验 (3.30), 其检 验统计量之分子为</p>
+<div class="arithmatex">\[
+\begin{gathered}
+\frac{1}{3}((-0.0488)(-257.59)+(-0.5688)(-11.72) \\
+-(-0.1655)(-141.347))=14.211
+\end{gathered}
+\]</div>
+<p>故 (3.30) 中的检验统计量之值为 <span class="arithmatex">\(14.211 / 0.7164=19.837\)</span>.</p>
+<p>因为 <span class="arithmatex">\(F_{p, n \cdots p-1}(\alpha)=F_{3,44}(0.05) \approx 2.82\)</span>, 故 <span class="arithmatex">\(H_{0}\)</span> 被否定.</p>
+<h3 id="11-5">1.1. 5 应用上值得注意的几个问题<a class="headerlink" href="#11-5" title="Permanent link">⚓︎</a></h3>
+<p>在一-元回归应用上所曾提出过的那些值得注意之点, 在此仍 然有效. 多元回归情况更加复杂, 在其结果的解释上更应慎重.</p>
+<ol>
+<li>设 <span class="arithmatex">\(Y\)</span> 对自变量 <span class="arithmatex">\(X_{j}\)</span> 的回归系数估计值为 <span class="arithmatex">\(\hat{\beta}_{j}\)</span>, 通常把它解释 为: 当 <span class="arithmatex">\(X_{j}\)</span> 增减 1 单位时,平均说来因变量 <span class="arithmatex">\(Y\)</span> 增减 <span class="arithmatex">\(\hat{\beta}_{j}\)</span> 单位. 如果 <span class="arithmatex">\(X_{j}\)</span> 的取值能由人控制, 其范围在建立经验回归方程时所用数据的范 围内, 且在尔后的使用时, 其条件与建立回归方程时的条件相当, 则这个解释可以认为是合理的.</li>
+</ol>
+<p>如果 <span class="arithmatex">\(X_{j}\)</span> 本身也是随机的,则情况复杂,不仅在一元情况下所 茾的那些问题此处都存在，而且还有一个各白变量之间的相关问 题. 如果自变量为随机的, 它们一般不见得独立, 即一个变量, 例如 <span class="arithmatex">\(\mathrm{X}_{i}\)</span>, 其值的变动往往会带动其他变量的值作变动. 这时, 各回归系 数的值, 都是在全体自变量值的联合变动的格局内起作用, 㧓立. 地 抽…个去考察就不一定很现实了. 在这种情况下, 尤其不能人为地 去设法变动其中一个 (例如 <span class="arithmatex">\(\left.X_{j}\right)\)</span> 之值而强行压住其他自变量值保 持不变. 在这样人为干预下所作的预测往往与实际相去甚远.</p>
+<p>在使用线性回归时我们必须军记一个基本点: 真实的回归函 数,特别在较大的范围内, 很少是线性的. 线性是一种近似. 它包含 了一种从实际角度看往往不…企合理的假定: 它认为各变量的作 用与其他变量取什么值无关, 月各变量的作用可以叠加. 因为, 若 <span class="arithmatex">\(y=b_{0}+b_{1} x_{1}+\cdots+b_{p} x_{p}\)</span>, 则不论你把 <span class="arithmatex">\(x_{2}, \cdots, x_{p}\)</span> 之值固定在何 处,当 <span class="arithmatex">\(x_{1}\)</span> 增减 1 单位时: <span class="arithmatex">\(y\)</span> 总是增减 <span class="arithmatex">\(b_{1}\)</span> 单位. 事实常不如此. 例 如, 以 <span class="arithmatex">\(Y\)</span> 记某种农作物的亩产量, <span class="arithmatex">\(X_{1}, X_{2}, X_{3}\)</span> 记每亩播种量, 施肥 量与耕作深度, 则 <span class="arithmatex">\(X_{1}\)</span> 起的作用如何, 与 <span class="arithmatex">\(X_{2}, X_{3}\)</span> 之值有关, 其他亦 然. 这种现象称为各因素之间的“交互作肘”, 如果专业知识或经验 告诉我们, 至少有一部分自变量之间有显著的交互作用存在, 则在 自变量值较大的范围内采用线性回归就不会有很好的效果. 且在 这种情况下, 单个回归系数意义的解释, 也应是基于其他变量的平 均而雷。</p>
+<ol>
+<li>在实际应用中, 一个回归模型内可包含为数甚多的自变 量, 其中难免有些是密切相关的. 例如, 若 <span class="arithmatex">\(X_{1}\)</span> 和 <span class="arithmatex">\(X_{2}\)</span> 高度线性相 关, 则 <span class="arithmatex">\(X_{1}\)</span> 起的作用, 基本上可由 <span class="arithmatex">\(X_{2}\)</span> 挑起来. 反之亦然. 这样, 如果 你从方程中删除自变量 <span class="arithmatex">\(X_{1}, X_{2}\)</span> 中的一个, 而对剩下的 <span class="arithmatex">\(p-1\)</span> 个自 变量再配出方程, 实际效果与原来的相当. 这就造成下述在假设检 验上看来矛盾的现象: “ <span class="arithmatex">\(\beta_{1}=0\)</span> ” 或 “ <span class="arithmatex">\(\beta_{2}=0\)</span> ” 都可以被接受,而 “ <span class="arithmatex">\(\beta_{1}=\)</span> <span class="arithmatex">\(\beta_{2}=0\)</span> ”则被否定.</li>
+</ol>
+<p>所以, 如果自变量是随机的, 则对它们之间的相关性的了解很 重要. 这有助丁删去那些不需要的白变量, 使配出的回归方程有更. 好的稳定性, 并简化对回归方程的解释.</p>
+<ol>
+<li>为得出回归系数的估计值, 要解线性方程组 (3.10), 如果 系数方阵 <span class="arithmatex">\(L\)</span> 的行列式 <span class="arithmatex">\(|L|=0\)</span>, 则方程组 (3.10) 无解. 在应用上可 能碰到这样的情况: <span class="arithmatex">\(|L|\)</span> 不为 0 但很接近于 0 . 这时, 诸系数 <span class="arithmatex">\(l_{l i v}\)</span> 在 计算上-..点点误差也可能导致方程组 (3.10) 的解的重大改变, 因 涧回归系数的估计值就失掉了其稳全性和可信性。</li>
+</ol>
+<p>这种情况在统计上称为“复共线性”, 意指若干个自变量之间 存在着高度的线性关系，在作多元线性回归分析时，复共线性是一 个很有破坏性的东西. 凡是可能, 应极力予以避免. 如果各自变量 取值叮人为控制，自可通过适当的设计达到这一点. 如果自变量是 随机的. 通过分析其相关性并脜去若干不必要的(可由其他自变量 代替的)自变量,可能达到这一点. 如这些都不成,则不宜强行使用 最小二乘法, 可考虑用其他更富稳定性的方法取代之. 这个问题涉 及太宽,不能在此细述. 关于复共线性, 张启锐的《实用回归分析》 第六章可以参考. 关于回归系数的种种估计方法 (最小二乘法以外 的方法), 可参看陈希擩及王松桂的《近代回归分析》第四章, 及上 引张启锐的书第九章.</p>
+<h3 id="12-6">1.2. 6 可转化为线性回归的模型<a class="headerlink" href="#12-6" title="Permanent link">⚓︎</a></h3>
+<p>有时,回归函数并非自变量的线性函数,但通过取用新自变 量, 可以转化为线性回归去处理. 举几个例子说明这一点.</p>
+<p>例 3.2 设有一... 个自变量 <span class="arithmatex">\(X\)</span> 和因变量 <span class="arithmatex">\(Y\)</span>. 如从某种理论考虑 或数据的启示, 认为回归模型有指数形式</p>
+<div class="arithmatex">\[
+Y=b_{0}+b_{1} \mathrm{e}^{\mathrm{cX}}+e
+\]</div>
+<p>其中常数 <span class="arithmatex">\(c\)</span> 已知, <span class="arithmatex">\(b_{0}, b_{1}\)</span> 末知, <span class="arithmatex">\(e\)</span> 为随机误差. 则通过取新自变量 <span class="arithmatex">\(Z\)</span> <span class="arithmatex">\(=\mathrm{e}^{\mathrm{c}}\)</span> 将其转化为一元线性回归:</p>
+<div class="arithmatex">\[
+Y=b_{0}+b_{1} Z+e
+\]</div>
+<p>若在原模型下对 <span class="arithmatex">\((X, Y)\)</span> 有了观测数据 <span class="arithmatex">\(\left(X_{1}, Y_{1}\right), \cdots,\left(X_{n}, Y_{n}\right)\)</span>, 则 等于在新模型下有了观测数据 <span class="arithmatex">\(\left(Z_{1}, Y_{1}\right), \cdots,\left(Z_{n}, Y_{n}\right)\)</span>, 其中 <span class="arithmatex">\(Z_{i}=\)</span> <span class="arithmatex">\(\mathrm{e}^{\mathrm{c}}, i=1, \cdots, n\)</span>. 若 <span class="arithmatex">\(c\)</span> 也末知,则这一做法失效.</p>
+<p>例 3.3 仍设有一个自变量 <span class="arithmatex">\(X\)</span> 和因变量 <span class="arithmatex">\(Y\)</span>, 并认为回归函数 为 <span class="arithmatex">\(X\)</span> 的多项式:</p>
+<div class="arithmatex">\[
+Y=b_{0}+b_{1} X+b_{2} X^{2}+\cdots+b_{p} X^{p}+e
+\]</div>
+<p>引进 <span class="arithmatex">\(p\)</span> 个新自变量 <span class="arithmatex">\(X_{1}, \cdots, X_{p}\)</span>, 其中 <span class="arithmatex">\(X_{j}=X^{j}, j=1, \cdots, p\)</span>, 则模型 (3.39)转化为有 <span class="arithmatex">\(p\)</span> 个自变量 <span class="arithmatex">\(X_{1}, \cdots, X_{p}\)</span> 的多元线性回归</p>
+<div class="arithmatex">\[
+Y=b_{0}+b_{1} X_{1}+\cdots+b_{p} X_{p}+e
+\]</div>
+<p>若在原模型下对 <span class="arithmatex">\((X, Y)\)</span> 有了观测数据 <span class="arithmatex">\(\left(X_{1}, Y_{1}\right), \cdots,\left(X_{n}, Y_{n}\right)\)</span>, 则 等于在新模型 <span class="arithmatex">\((3.40)\)</span> 下有了观测数据</p>
+<div class="arithmatex">\[
+\left(X_{1 i}, \cdots, X_{p i}, Y_{i}\right), i=1, \cdots, n
+\]</div>
+<p>其中 <span class="arithmatex">\(X_{j i}=X_{i}^{j}, j=1, \cdots, p, i=1, \cdots, n\)</span>.</p>
+<p>(3.39)称为“多项式回归”, 是一个应用较多的回归模型. 经过 转化后的回归模型 (3.40) 成为多元的. 变换以后的自变量 <span class="arithmatex">\(X_{1}, \cdots\)</span>, <span class="arithmatex">\(X_{p}\)</span> 之间有严格的函数关系, 这没有关系. 因为在前面讨论线性回 归时, 并没有对自变量之间可能有的关系作过任何限制.</p>
+<p>在模型 (3.39) 之下, 假设“ <span class="arithmatex">\(b_{p}=0\)</span> ”有特殊的意义, 比方说,一开 始我们较有把握认为取 2 阶多项式已够了, 但还不太放心, 希望检 验一下. 于是我们取模型 (3.39) 而令 <span class="arithmatex">\(p=3\)</span>. 若假设 “ <span class="arithmatex">\(b_{3}=0\)</span> ” 通过 了, 则数据不与我们原先的想法 (回归取为 2 阶多项式已足) 矛盾. 否则就须调整原来的想法.</p>
+<p>多个变元的多项式回归也一样变换. 例如, 包含两个自变量 <span class="arithmatex">\(X_{1}, X_{2}\)</span> 的二次多项式回归模型</p>
+<div class="arithmatex">\[
+Y=b_{0}+b_{1} X_{1}+b_{2} X_{2}+b_{3} X_{1}^{2}+b_{4} X_{2}^{2}+b_{5} X_{1} X_{2}+e
+\]</div>
+<p>可通过采用新自变量</p>
+<div class="arithmatex">\[
+Z_{1}=X_{1}, Z_{2}=X_{2}, Z_{3}=X_{1}^{2}, Z_{4}=X_{2}^{2}, Z_{5}=X_{1} X_{2}
+\]</div>
+<p>化为多元线性模型</p>
+<div class="arithmatex">\[
+Y=b_{0}+b_{1} Z_{1}+\cdots+b_{5} Z_{5}+e
+\]</div>
+<p>在有些情况下, 不仅自变量可施行变换, 对因变量也这样做. 例如 <span class="arithmatex">\(X, Y\)</span> 有回归方程 <span class="arithmatex">\(y=b_{0} \mathrm{e}^{b_{1} \cdot x}, b_{0}, b_{1}\)</span> 末知, 这不是线性的, 也 不能通过自变量的变换化为线性的. 但若令 <span class="arithmatex">\(Z=\log Y\)</span>, 则 <span class="arithmatex">\(Z=\)</span> <span class="arithmatex">\(\log b_{0}+b_{1} X=\beta_{0}+\beta_{1} X\left(\beta_{0}=\log b_{0}, \beta_{1}=b_{1}\right)\)</span>, 而化为线性的.</p>
+<p>不过对因变量所作的变换, 较之对自变量所作的变换, 存在一 个理论上的问题. 即自变量的变换不改变模型中的随机误差 <span class="arithmatex">\(e\)</span> 这 一项. 因此, 有关 <span class="arithmatex">\(e\)</span> 的假设 (如均值为 0 , 方差非 0 有限, 或 <span class="arithmatex">\(e\)</span> 服从 正态分布之类)全都保持有效, 对因变量之变换则不然. 拿本例来 说, 原模型为</p>
+<div class="arithmatex">\[
+Y=b_{0} \mathrm{e}^{b_{1} X}+e
+\]</div>
+<p>把 <span class="arithmatex">\(Y\)</span> 换成 <span class="arithmatex">\(Z=\log Y\)</span>, 得 <span class="arithmatex">\(Z=\log \left(b_{0} \mathrm{e}^{b_{1} X}+e\right)\)</span>. 形式上可写为</p>
+<div class="arithmatex">\[
+Z=b_{0}+b_{1} X+\varepsilon, \dot{\varepsilon}=\log \left(1+e b_{0}^{-1} \mathrm{e}^{-b_{1} X}\right)
+\]</div>
+<p><span class="arithmatex">\(\varepsilon\)</span> 已不能满足 <span class="arithmatex">\(e\)</span> 原有的条件, 其至还和 <span class="arithmatex">\(X\)</span> 有关.</p>
+<p>因此,在对因变量作变换时,我们不是拘泥于从 (3.41) 到 (3.42) 这种形式运算. 而是从头开始: 我们觉得并认定, 若取 <span class="arithmatex">\(Z=\)</span> <span class="arithmatex">\(\log Y\)</span> 为因变量, 则 <span class="arithmatex">\(X, Z\)</span> 的回归很近似线性, 不妨就认为它有 (3.42) 的形式而 <span class="arithmatex">\(\varepsilon\)</span> 满足以往对 <span class="arithmatex">\(e\)</span> 施加的条件. 这有其道理可讲: 因 为反正原模型 (3.41) 中 <span class="arithmatex">\(e\)</span> 的性质, 也无非是一种假定而已, 并非先 天绝对无误. 转化成 (3.42) 后, 我们末䟫不可对 <span class="arithmatex">\(\varepsilon\)</span> 作出类似的假 定, 并无先天的理由认为: 对 <span class="arithmatex">\(\varepsilon\)</span> 的假定一定不如对 <span class="arithmatex">\(e\)</span> 的假定那样符 合事实.</p>
+<p>更进一步, 为达到线性回归, 有时对自变量和因变量都要施加 变换, 其方法和道理与上同, 例如, 若回归方程为 <span class="arithmatex">\(y=b_{0} \mathrm{e}^{b_{1} / x}\)</span>, 则通 过变换 <span class="arithmatex">\(u=1 / x, v=\log y\)</span>, 转化为线性型 <span class="arithmatex">\(v=\log b_{0}+b_{1} u\)</span>.</p>
+
+
+
+
+
+
+
+  
+    
+  
+  
+    
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="最后更新">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">December 21, 2023</span>
+  </span>
+
+    
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="创建日期">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3h-2Z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">December 21, 2023</span>
+  </span>
+
+    
+    
+    
+  </aside>
+
+
+  
+
+
+
+  <form class="md-feedback" name="feedback" hidden>
+    <fieldset>
+      <legend class="md-feedback__title">
+        对当前页面有任何疑问吗？
+      </legend>
+      <div class="md-feedback__inner">
+        <div class="md-feedback__list">
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="This page was helpful" data-md-value="1">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 9v12H1V9h4m4 12a2 2 0 0 1-2-2V9c0-.55.22-1.05.59-1.41L14.17 1l1.06 1.06c.27.27.44.64.44 1.05l-.03.32L14.69 8H21a2 2 0 0 1 2 2v2c0 .26-.05.5-.14.73l-3.02 7.05C19.54 20.5 18.83 21 18 21H9m0-2h9.03L21 12v-2h-8.79l1.13-5.32L9 9.03V19Z"/></svg>
+            </button>
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="This page could be improved" data-md-value="0">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 15V3h4v12h-4M15 3a2 2 0 0 1 2 2v10c0 .55-.22 1.05-.59 1.41L9.83 23l-1.06-1.06c-.27-.27-.44-.64-.44-1.06l.03-.31.95-4.57H3a2 2 0 0 1-2-2v-2c0-.26.05-.5.14-.73l3.02-7.05C4.46 3.5 5.17 3 6 3h9m0 2H5.97L3 12v2h8.78l-1.13 5.32L15 14.97V5Z"/></svg>
+            </button>
+          
+        </div>
+        <div class="md-feedback__note">
+          
+            <div data-md-value="1" hidden>
+              
+              
+                
+              
+              感谢您的反馈！
+            </div>
+          
+            <div data-md-value="0" hidden>
+              
+              
+                
+              
+              感谢您的反馈！请点击这里<a href="https://github.com/EanYang7/Probability-and-Statistics/issues" target="_blank" rel="noopener">这里</a>提供问题反馈.
+            </div>
+          
+        </div>
+      </div>
+    </fieldset>
+  </form>
+
+
+<h2 id="__comments">评论</h2>
+<p>登录github的账号后，可以直接在下方评论框中输入。</p>
+<p>
+  如果想进行更详细的讨论(如排版、上传图片等)，选择一个反应后并点击上方的文字，进入论坛页面。
+</p>
+<!-- Insert generated snippet here -->
+<script
+  src="https://giscus.app/client.js"
+  data-repo="EanYang7/Probability-and-Statistics"
+  data-repo-id="R_kgDOJszf0w"
+  data-category="Q&A"
+  data-category-id="DIC_kwDOJszf084CXnYR"
+  data-mapping="title"
+  data-strict="0"
+  data-reactions-enabled="1"
+  data-emit-metadata="0"
+  data-input-position="top"
+  data-theme="preferred_color_scheme"
+  data-lang="zh-CN"
+  crossorigin="anonymous"
+  async
+></script>
+<!-- Synchronize Giscus theme with palette -->
+<script>
+  var giscus = document.querySelector("script[src*=giscus]");
+
+  /* Set palette on initial load */
+  var palette = __md_get("__palette");
+  if (palette && typeof palette.color === "object") {
+    var theme = palette.color.scheme === "slate" ? "dark" : "light";
+    giscus.setAttribute("data-theme", theme);
+  }
+
+  /* Register event handlers after documented loaded */
+  document.addEventListener("DOMContentLoaded", function () {
+    var ref = document.querySelector("[data-md-component=palette]");
+    ref.addEventListener("change", function () {
+      var palette = __md_get("__palette");
+      if (palette && typeof palette.color === "object") {
+        var theme = palette.color.scheme === "slate" ? "dark" : "light";
+
+        /* Instruct Giscus to change theme */
+        var frame = document.querySelector(".giscus-frame");
+        frame.contentWindow.postMessage(
+          { giscus: { setConfig: { theme } } },
+          "https://giscus.appa"
+        );
+      }
+    });
+  });
+</script>
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/EanYang7/cs231n" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant", "navigation.top", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.path", "toc.follow", "content.action.edit", "content.action.view"], "search": "../../../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.d7c377c4.min.js"></script>
+      
+        <script src="../../../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

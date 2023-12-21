@@ -1,0 +1,2185 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="《概率论与数理统计》陈希孺，中国科学技术大学出版社">
+      
+      
+      
+        <link rel="canonical" href="https://eanyang7.github.io/Probability-and-Statistics/assets/4/4.4/">
+      
+      
+      
+      
+      <link rel="icon" href="../../../cover.jpg">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.2">
+    
+    
+      
+        <title>4.4 区间估计 - 概率论与数理统计</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/main.50c56a3b.min.css">
+      
+        
+        <link rel="stylesheet" href="../../stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-GEDRLMN4ML"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-GEDRLMN4ML",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-GEDRLMN4ML",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#44" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../.." title="概率论与数理统计" class="md-header__button md-logo" aria-label="概率论与数理统计" data-md-component="logo">
+      
+  <img src="../../../cover.jpg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            概率论与数理统计
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              4.4 区间估计
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换为暗黑模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换为暗黑模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5c-.84 0-1.65.15-2.39.42L12 2M3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29L3.34 7m.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14L3.36 17M20.65 7l-1.77 3.79a7.023 7.023 0 0 0-2.38-4.15l4.15.36m-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29L20.64 17M12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44L12 22Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换为浅色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换为浅色模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3 3.19.09m3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95 2.06.05m-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/EanYang7/Probability-and-Statistics" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    EanYang7/Probability-and-Statistics
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../.." class="md-tabs__link">
+          
+  
+  首页
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      
+  
+  
+  
+    
+    
+      
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../courses/1-Probability-of-events/1-What-is-the-probability/" class="md-tabs__link">
+          
+  
+  课程
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../%E3%80%8A%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1%E3%80%8B%E9%99%88%E5%B8%8C%E5%AD%BA%EF%BC%8C%E4%B8%AD%E5%9B%BD%E7%A7%91%E5%AD%A6%E6%8A%80%E6%9C%AF%E5%A4%A7%E5%AD%A6%E5%87%BA%E7%89%88%E7%A4%BE.pdf" class="md-tabs__link">
+        
+  
+    
+  
+  PDF
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="概率论与数理统计" class="md-nav__button md-logo" aria-label="概率论与数理统计" data-md-component="logo">
+      
+  <img src="../../../cover.jpg" alt="logo">
+
+    </a>
+    概率论与数理统计
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/EanYang7/Probability-and-Statistics" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    EanYang7/Probability-and-Statistics
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    首页
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            首页
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    简介
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    课程
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            课程
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    章节
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            章节
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1_1" id="__nav_2_1_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    第1章 事件的概率
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1_1">
+            <span class="md-nav__icon md-icon"></span>
+            第1章 事件的概率
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../courses/1-Probability-of-events/1-What-is-the-probability/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1.1 概率是什么
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../courses/1-Probability-of-events/2-Classical-Probability-Calculation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1.2 古典概率计算
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../courses/1-Probability-of-events/3-Operation-Conditional-probability-and-independence-of-events/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1.3 事件的运算、条件概率与独立性
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../courses/1-Probability-of-events/exercises/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    习题
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../courses/1-Probability-of-events/answers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    答案
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1_2" id="__nav_2_1_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    第2章 随机变量及概率分布
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1_2">
+            <span class="md-nav__icon md-icon"></span>
+            第2章 随机变量及概率分布
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../courses/2-Random-Variables-and-Probability-Distribution/1-One-dimensional-random-variable/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2.1 一维随机变量
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../courses/2-Random-Variables-and-Probability-Distribution/2-Multidimensional-random-variables-random-vectors/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2.2 多维随机变量（随机向量）
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../courses/2-Random-Variables-and-Probability-Distribution/3-Independence-of-Conditional-probability-distribution-and-random-variable/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2.3 条件概率分布与随机变量的独立性
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../courses/2-Random-Variables-and-Probability-Distribution/4-Probability-Distribution-of-Functions-of-Random-Variables/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2.4 随机变量的函数的概率分布
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../courses/2-Random-Variables-and-Probability-Distribution/appendix/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    附录
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../courses/2-Random-Variables-and-Probability-Distribution/exercises/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    习题
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../courses/2-Random-Variables-and-Probability-Distribution/answers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    答案
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1_3" id="__nav_2_1_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    第3章 随机变量的数字特征
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1_3">
+            <span class="md-nav__icon md-icon"></span>
+            第3章 随机变量的数字特征
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../courses/3-Numerical-Characteristics-of-Random-Variables/1-Mathematica-Expectations-Mean-and-Median/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3.1 数学期望（均值）与中位数
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../courses/3-Numerical-Characteristics-of-Random-Variables/2-Variance-and-Moment/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3.2 方差与矩
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../courses/3-Numerical-Characteristics-of-Random-Variables/3-Covariance-and-correlation-coefficient/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3.3 协方差与相关系数
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../courses/3-Numerical-Characteristics-of-Random-Variables/4-Theorem-of-Large-Numbers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3.4 大数定理和中心极限定理
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../courses/3-Numerical-Characteristics-of-Random-Variables/exercises/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    习题
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../courses/3-Numerical-Characteristics-of-Random-Variables/answers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    答案
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1_4" id="__nav_2_1_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    第4章 参数估计
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1_4">
+            <span class="md-nav__icon md-icon"></span>
+            第4章 参数估计
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../courses/4-Parameter-Estimates/1-Basic-concepts-of-Mathematical-statistics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4.1 数理统计学的基本概念
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../courses/4-Parameter-Estimates/2-Moment-estimation-maximum-likelihood-estimation-and-Bayesian-estimation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4.2 矩估计、极大似然估计和贝叶斯估计
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../courses/4-Parameter-Estimates/3-Excellence-criterion-of-Point-estimation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4.3 点估计的优良性准则
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../courses/4-Parameter-Estimates/4-Interval-estimation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4.4 区间估计
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../courses/4-Parameter-Estimates/exercises/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    习题
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../courses/4-Parameter-Estimates/answers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    答案
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1_5" id="__nav_2_1_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    第5章 假设检验
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1_5">
+            <span class="md-nav__icon md-icon"></span>
+            第5章 假设检验
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../courses/5-Hypothesis-Testing/1-Problem-formulation-and-basic-concepts/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5.1 问题提法和基本概念
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../courses/5-Hypothesis-Testing/2-Important-parameter-inspection/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5.2 重要参数检验
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../courses/5-Hypothesis-Testing/3-goodness-of-fit-test/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5.3 拟合优度检验
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../courses/5-Hypothesis-Testing/appendix/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    附录
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../courses/5-Hypothesis-Testing/exercises/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    习题
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../courses/5-Hypothesis-Testing/answers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    答案
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1_6" id="__nav_2_1_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    第6章 回归、相关与方差分析
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1_6">
+            <span class="md-nav__icon md-icon"></span>
+            第6章 回归、相关与方差分析
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../courses/6-Regression-Correlation-and-Analysis-of-Variance/1-Basic-concepts-of-regression-analysis/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6.1 回归分析基本概念
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../courses/6-Regression-Correlation-and-Analysis-of-Variance/2-Univariate-linear-regression/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6.2 一元线性回归
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../courses/6-Regression-Correlation-and-Analysis-of-Variance/3-Multiple-linear-regression/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6.3 多元线性回归
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../courses/6-Regression-Correlation-and-Analysis-of-Variance/4-Correlation-analysis/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6.4 相关分析
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../courses/6-Regression-Correlation-and-Analysis-of-Variance/5-Analysis-of-variance/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6.5 方差分析
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../courses/6-Regression-Correlation-and-Analysis-of-Variance/appendix/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    附录
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../courses/6-Regression-Correlation-and-Analysis-of-Variance/exercises/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    习题
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../courses/6-Regression-Correlation-and-Analysis-of-Variance/answers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    答案
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../courses/appendix/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    附表
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../%E3%80%8A%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1%E3%80%8B%E9%99%88%E5%B8%8C%E5%AD%BA%EF%BC%8C%E4%B8%AD%E5%9B%BD%E7%A7%91%E5%AD%A6%E6%8A%80%E6%9C%AF%E5%A4%A7%E5%AD%A6%E5%87%BA%E7%89%88%E7%A4%BE.pdf" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    PDF
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#01-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      0.1. 1 基本概念
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      0.2. 2 枢轴变量法
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-t-barx" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 一良好的点估计 (此例 \(T\) 为 \(\bar{X}\) );
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. 一良好的点估计 (此例 \(T\) 为 \(\bar{X}\) );">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.1. 3 大样本法
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-4" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.2. 4 置信界
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-5" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.3. 5 贝叶斯法
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+    <a href="https://github.com/EanYang7/Probability-and-Statistics/tree/main/docs/assets/4/4.4.md" title="编辑此页" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
+    </a>
+  
+  
+    
+      
+    
+    <a href="https://github.com/EanYang7/Probability-and-Statistics/tree/main/docs/assets/4/4.4.md" title="查看本页的源代码" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0 8a5 5 0 0 1-5-5 5 5 0 0 1 5-5 5 5 0 0 1 5 5 5 5 0 0 1-5 5m0-12.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5Z"/></svg>
+    </a>
+  
+
+
+<h1 id="44">4.4 区间估计<a class="headerlink" href="#44" title="Permanent link">⚓︎</a></h1>
+<h3 id="01-1">0.1. 1 基本概念<a class="headerlink" href="#01-1" title="Permanent link">⚓︎</a></h3>
+<p>如前所述, 点估计是用一个点 (即一个数) 去估计末知参数. 顾 名思义, 区间估计就是用一个区间去估计末知参数, 即把末知参数 值估计在某两界限之间. 例如, 估计一个人的年龄在 30 到 35 岁之 间; 估计所需费用在 <span class="arithmatex">\(1000-1200\)</span> 元之间等等. 区间估计是一种很 常用的估计形式,其好处是把可能的误差用醒目的形式标出来了. 你估计费用需 1000 元, 我相信多少会有误差. 误差多少? 单从你 提出的 1000 这个数字还给不出什么信息, 你若估计费用在 800 1200 元之间,则人们会相信你在作出这估计时, 已把可能出现的 误差考虑到了,多少给人们以更大的信任感. 现今最流行的一种区间估计理论是原籍波兰的美国统计学家 <span class="arithmatex">\(\mathrm{J}\)</span>. 奈曼在本世纪 30 年代建立起来的. 他的理论的基本概念很简 单. 为书写简单计, 我们暂设总体分布只包含一个末知参数 <span class="arithmatex">\(\theta\)</span>, 且 要估计的就是 <span class="arithmatex">\(\theta\)</span> 本身.如果总体分布包含若干个末知参数 <span class="arithmatex">\(\theta_{1}, \cdots\)</span>, <span class="arithmatex">\(\theta_{k}\)</span>, 而要估计的是 <span class="arithmatex">\(g\left(\theta_{1}, \cdots, \theta_{k}\right)\)</span>, 基本概念并无不同. 这将在后面 的例子中看到。</p>
+<p>设 <span class="arithmatex">\(X_{1}, \cdots, X_{n}\)</span> 是从该总体中抽出的样本. 所谓 <span class="arithmatex">\(\theta\)</span> 的区间估计, 就是满足条件 <span class="arithmatex">\(\hat{\theta}_{1}\left(X_{1}, \cdots, X_{n}\right) \leqslant \hat{\theta}_{2}\left(X_{1}, \cdots, X_{n}\right)\)</span> 的两个统计量 <span class="arithmatex">\(\hat{\theta}_{1}\)</span>, <span class="arithmatex">\(\hat{\theta}_{2}\)</span> 为端点的区间 <span class="arithmatex">\(\left[\hat{\theta}_{1}, \hat{\theta}_{2}\right]\)</span>. 一旦有了样本 <span class="arithmatex">\(X_{1}, \cdots, X_{n}\)</span>, 就把 <span class="arithmatex">\(\theta\)</span> 估计 在区间 <span class="arithmatex">\(\left[\hat{\theta}_{1}\left(X_{1}, \cdots, X_{n}\right), \hat{\theta}_{2}\left(X_{1}, \cdots, X_{n}\right)\right]\)</span> 之内, 不难理解, 这里有 两个要求:</p>
+<ol>
+<li><span class="arithmatex">\(\theta\)</span> 要以很大的可能性落在区间 <span class="arithmatex">\(\left[\hat{\theta}_{1}, \hat{\theta}_{2}\right]\)</span> 内, 也就是说, 概率</li>
+</ol>
+<div class="arithmatex">\[
+P_{\theta}\left(\hat{\theta}_{1}\left(X_{1}, \cdots, X_{n}\right) \leqslant \theta \leqslant \hat{\theta}_{2}\left(X_{i}, \cdots, X_{n}\right)\right)
+\]</div>
+<p>要尽可能大.</p>
+<ol>
+<li>估计的精密度要尽可能高. 比方说, 要求区间的长度 <span class="arithmatex">\(\hat{\theta}_{2}-\)</span> <span class="arithmatex">\(\hat{\theta}_{1}\)</span> 尽可能小, 或某种能体现这个要求的其他准则.</li>
+</ol>
+<p>例如,估一个人的年龄在某一区间内,例如 <span class="arithmatex">\([30,35]\)</span> 内. 我们要 求这估计尽量可靠, 即该人的年龄有很大把握确在这区间内, 同 时, 也要求区间不能太长: 比如, 估计一人的年龄在 10-90 岁之 间, 当然可靠了,但精度太差,用处不大.</p>
+<p>但这两个要求是相互矛盾的. 区间估计理论和方法的基本问 题, 莫不在于在已有的样本资源的限制下,怎样找出更好的估计方 法, 以尽量提高此二者一一可靠性和精度, 但终归有一定的限度. 奈曼所提出并为现今所广泛接受的原则是: 先保证可靠度,在这个 前提下尽量使精度提高. 为此他引进了如下的定义.</p>
+<p>定义 4.1 给定一个很小的数 <span class="arithmatex">\(\alpha&gt;0\)</span>. 如果对参数 <span class="arithmatex">\(\theta\)</span> 的任何 值, 概率 <span class="arithmatex">\((4.1)\)</span> 都等于 <span class="arithmatex">\(1-\alpha\)</span>, 则称区间估计 <span class="arithmatex">\(\left[\hat{\theta}_{1}, \hat{\theta}_{2}\right]\)</span> 的置信系数为 <span class="arithmatex">\(1-\alpha\)</span>.</p>
+<p>区间估计也常称为“置信区间”, 字面上的意思是: 对该区间能 包含末知参数 <span class="arithmatex">\(\theta\)</span> 可置信到何种程度.</p>
+<p>有时, 我们无法证明概率 (4.1) 对一切 <span class="arithmatex">\(\theta\)</span> 都恰好等于 <span class="arithmatex">\(1-\alpha\)</span>, 但 知道它不会小于 <span class="arithmatex">\(1-\alpha\)</span>,则我们称 <span class="arithmatex">\(1-\alpha\)</span> 是 <span class="arithmatex">\(\left[\hat{\theta}_{1}, \hat{\theta}_{2}\right]\)</span> 的 “置信水平”. 按此, 置信水平不是一个唯一的数. 因为, 若概率 (4.1) 总不小于 0.8 , 那它也总不小于 <span class="arithmatex">\(0.7,0.6\)</span>, <span class="arithmatex">\(\cdots\)</span> 等. 就是说, 若 <span class="arithmatex">\(\beta\)</span> 为置信水平, 则 小于 <span class="arithmatex">\(\beta\)</span> 的数也是置信水平, 置信系数是置信水平中的最大者. 在 实用上, 人们并不总是把这两个术语严加区别, 这要看各人的习 惯.</p>
+<p>定义 4.1 中的 <span class="arithmatex">\(\alpha\)</span>,一般以取为 0.05 的最多,还有 <span class="arithmatex">\(0.01,0.10\)</span>, 以至 0.001 等,也视情况需要而使用. 这几个数字本身并无特殊意 义, 主要是这样标准化了以后对造表方便.</p>
+<p>区间估计理论的主要问题,按奈曼的上述原则, 就是在保证给 定的置信系数之下, 去寻找有优良精度的区间估计.而这个“优 良”, 也可以有种种准则. 这方面现已有了一些结果, 但在本课程范 围之内, 我们无法去涉及这些较深的理论问题,我们所能做的, 就 是从直观出发如何去构造看来是合理的区间估计. 这就是下面两 段要讨论的问题.</p>
+<h3 id="02-2">0.2. 2 枢轴变量法<a class="headerlink" href="#02-2" title="Permanent link">⚓︎</a></h3>
+<p>从一个简单例子人手. 设 <span class="arithmatex">\(X_{1}, \cdots, X_{n}\)</span> 为抽自正态总体 <span class="arithmatex">\(N(\mu\)</span>, <span class="arithmatex">\(\left.\sigma^{2}\right)\)</span> 的样本, <span class="arithmatex">\(\sigma^{2}\)</span> 已知, 要求 <span class="arithmatex">\(\mu\)</span> 的区间估计.</p>
+<p>先找一个 <span class="arithmatex">\(\mu\)</span> 的良好的点估计. 在此可选择样本均值 <span class="arithmatex">\(\bar{X}\)</span>. 由总 体为正态易知</p>
+<div class="arithmatex">\[
+\sqrt{n}(\bar{X}-\mu) / \sigma \sim N(0,1)
+\]</div>
+<p>以 <span class="arithmatex">\(\Phi\)</span> 记 <span class="arithmatex">\(N(0,1)\)</span> 的分布函数. 对 <span class="arithmatex">\(0&lt;\beta&lt;1\)</span> (一般是 <span class="arithmatex">\(\beta\)</span> 很小), 用方程</p>
+<div class="arithmatex">\[
+\Phi\left(u_{\beta}\right)=1-\beta
+\]</div>
+<p>定义记号 <span class="arithmatex">\(u_{\beta} \cdot u_{\beta}\)</span> 称为分布 <span class="arithmatex">\(N(0,1)\)</span> 的 “上 <span class="arithmatex">\(\beta\)</span> 分位点”. 其意义是: <span class="arithmatex">\(N(0,1)\)</span> 分布中大于 <span class="arithmatex">\(u_{\beta}\)</span> 的那部分的概率, 就是 <span class="arithmatex">\(\beta\)</span>. 图 4.2 中画出的 是 <span class="arithmatex">\(N(0,1)\)</span> 的密度函数 <span class="arithmatex">\(\varphi(x)=(\sqrt{2 \pi})^{-1} \mathrm{e}^{-x^{2} / 2}\)</span> 的图形, 涂黑部分 标出的面积为 <span class="arithmatex">\(\beta\)</span>.</p>
+<p><img alt="" src="https://cdn.mathpix.com/cropped/2023_07_12_fb0679705a8a961fa128g-04.jpg?height=362&amp;width=557&amp;top_left_y=550&amp;top_left_x=293" /></p>
+<p>图 4.2</p>
+<p>上 <span class="arithmatex">\(\beta\)</span> 分位点的概念可推广到任 何分布 <span class="arithmatex">\(F\)</span> : 满足条件 <span class="arithmatex">\(F\left(v_{\beta}\right)=1-\beta\)</span> 的 点 <span class="arithmatex">\(v_{\beta}\)</span>, 就是分布函数 <span class="arithmatex">\(F\)</span> 的上 <span class="arithmatex">\(\beta\)</span> 分位 点. 在数理统计学的应用中, 除正态 分布外,“统计三大分布”的上分位点 很常用. 以后, 我们分别用 <span class="arithmatex">\(x_{n}^{2}(\beta), t_{n}\)</span> <span class="arithmatex">\((\beta)\)</span> 和 <span class="arithmatex">\(F_{n, m}(\beta)\)</span> 记自由度 <span class="arithmatex">\(n\)</span> 的卡方 分布, 自由度 <span class="arithmatex">\(n\)</span> 的 <span class="arithmatex">\(t\)</span> 分布, 以及自由 度为 <span class="arithmatex">\((n, m)\)</span> 的 <span class="arithmatex">\(F\)</span> 分布的上 <span class="arithmatex">\(\beta\)</span> 分位点,这些都有表可查.</p>
+<p>另外，读者还须注意: 在有的著作中使用“下分位点”,分布函 数 <span class="arithmatex">\(F\)</span> 的下 <span class="arithmatex">\(\beta\)</span> 分位点是指满足条件 <span class="arithmatex">\(F\left(w_{\beta}\right)=\beta\)</span> 的点 <span class="arithmatex">\(w_{\beta}\)</span>. 上、下分位 点之间的换算不难: 分布 <span class="arithmatex">\(F\)</span> 的 <span class="arithmatex">\(\beta\)</span> 下分位点, 就是其 <span class="arithmatex">\(1-\beta\)</span> 上分位 点. 当分布 <span class="arithmatex">\(F\)</span> 的密度函数 <span class="arithmatex">\(f\)</span> 关于原点对称 (即 <span class="arithmatex">\(f(-x)=f(x)\)</span> ) 时, <span class="arithmatex">\(F\)</span> 的上、下 <span class="arithmatex">\(\beta\)</span> 分位点只相差一个符号, 本书以后只使用上分位点.</p>
+<p>现在回到 <span class="arithmatex">\(\mu\)</span> 的区间估计问题. 由 (4.2) 及 <span class="arithmatex">\(\mu_{\beta}\)</span> 的定义, 并注意 到 <span class="arithmatex">\(\Phi(-t)=1-\Phi(t)\)</span>, 有</p>
+<div class="arithmatex">\[
+\begin{aligned}
+&amp; P\left(-u_{\alpha / 2} \leqslant \sqrt{n}(\bar{X}-\mu) / \sigma \leqslant u_{\alpha / 2}\right)=\Phi\left(u_{\alpha / 2}\right)-\Phi\left(-u_{\alpha / 2}\right) \\
+&amp; \quad=(1-\alpha / 2)-\alpha / 2=1-\alpha
+\end{aligned}
+\]</div>
+<p>此式可改写为</p>
+<div class="arithmatex">\[
+P\left(\bar{X}-\sigma u_{\alpha / 2} / \sqrt{n} \leqslant \mu \leqslant \bar{X}+\sigma u_{\alpha / 2} / \sqrt{n}\right)=1-\alpha
+\]</div>
+<p>此式指出</p>
+<div class="arithmatex">\[
+\left[\hat{\theta}_{1}, \hat{\theta}_{2}\right]=\left[\bar{X}-\sigma u_{\alpha / 2} / \sqrt{n}, \bar{X}+\sigma u_{\alpha / 2} / \sqrt{n}\right]
+\]</div>
+<p>可作为 <span class="arithmatex">\(\mu\)</span> 的区间估计,置信系数为 <span class="arithmatex">\(1-\alpha\)</span>.</p>
+<p>由这个例子悟出一种找区间估计的一般方法, 可总结为以下 几条 :</p>
+<p><span class="arithmatex">\(1^{\circ}\)</span> 找一个与要估计的参数 <span class="arithmatex">\(g(\theta)\)</span> 有关的统计量 <span class="arithmatex">\(T\)</span>, 一般是其</p>
+<h2 id="1-t-barx">1. 一良好的点估计 (此例 <span class="arithmatex">\(T\)</span> 为 <span class="arithmatex">\(\bar{X}\)</span> );<a class="headerlink" href="#1-t-barx" title="Permanent link">⚓︎</a></h2>
+<p><span class="arithmatex">\(2^{\circ}\)</span> 设法找出 <span class="arithmatex">\(T\)</span> 和 <span class="arithmatex">\(g(\theta)\)</span> 的某一函数 <span class="arithmatex">\(S(T, g(\theta))\)</span>, 其分布 <span class="arithmatex">\(F\)</span> 要与 <span class="arithmatex">\(\theta\)</span> 无关 (在此例中, <span class="arithmatex">\(S(T, g(\theta))\)</span> 为 <span class="arithmatex">\(\sqrt{n}(\bar{X}-\mu) / \sigma\)</span>, 分布 <span class="arithmatex">\(F\)</span> 就 是 <span class="arithmatex">\(\Phi)\)</span>. <span class="arithmatex">\(S\)</span> 称为“枢轴变量”;</p>
+<p><span class="arithmatex">\(3^{\circ}\)</span> 对任何常数 <span class="arithmatex">\(a&lt;b\)</span>, 不等式 <span class="arithmatex">\(a \leqslant S(T, g(\theta)) \leqslant b\)</span> 要能改写 为等价的形式 <span class="arithmatex">\(A \leqslant g(\theta) \leqslant B, A, B\)</span> 只与 <span class="arithmatex">\(T, a, b\)</span> 有关而与 <span class="arithmatex">\(\theta\)</span> 无关;</p>
+<p><span class="arithmatex">\(4^{\circ}\)</span> 取分布 <span class="arithmatex">\(F\)</span> 的上 <span class="arithmatex">\(\alpha / 2\)</span> 分位点 <span class="arithmatex">\(w_{\alpha / 2}\)</span> 和上 <span class="arithmatex">\((1-\alpha / 2)\)</span> 分位点 <span class="arithmatex">\(w_{1-\alpha / 2}\)</span>. 有 <span class="arithmatex">\(F\left(w_{\alpha / 2}\right)-F\left(w_{1-\alpha / 2}\right)=1-\alpha\)</span>. 因此</p>
+<div class="arithmatex">\[
+P\left(w_{1-\alpha / 2} \leqslant S(T, g(\theta)) \leqslant w_{\alpha / 2}\right)=1-\alpha
+\]</div>
+<p>根据第 3 条, 不等式 <span class="arithmatex">\(w_{1-\alpha / 2} \leqslant S(T, g(\theta)) \leqslant w_{\alpha / 2}\)</span> 可改写为 <span class="arithmatex">\(A \leqslant\)</span> <span class="arithmatex">\(g(\theta) \leqslant B\)</span> 的形式, <span class="arithmatex">\(A, B\)</span> 与 <span class="arithmatex">\(T\)</span> 有关因而与样本有关. <span class="arithmatex">\([A, B]\)</span> 就是 <span class="arithmatex">\(g\)</span> <span class="arithmatex">\((\theta)\)</span> 的一个置信系数 <span class="arithmatex">\(1-\alpha\)</span> 的区间估计.</p>
+<p>现在举一些例子来说明这个方法,这些例子包含了许多常用 的重要区间估计.</p>
+<p>例 4.1 从正态总体 <span class="arithmatex">\(N\left(\mu, \sigma^{2}\right)\)</span> 中抽样本 <span class="arithmatex">\(X_{1}, \cdots, X_{n}, \mu\)</span> 和 <span class="arithmatex">\(\sigma^{2}\)</span> 都末知,求 <span class="arithmatex">\(\mu\)</span> 的区间估计.</p>
+<p><span class="arithmatex">\(\mu\)</span> 的点估计仍取为样本均值 <span class="arithmatex">\(\bar{X}\)</span>. 作为枢轴变量, 再取 <span class="arithmatex">\(\sqrt{n}(\bar{X}-\)</span> <span class="arithmatex">\(\mu) / \sigma\)</span> 已不行. 因为虽然这变量的分布 <span class="arithmatex">\(N(0,1)\)</span> 与参数无关, 但因 <span class="arithmatex">\(\sigma\)</span> 末知, 条件 <span class="arithmatex">\(3^{\circ}\)</span> 已不满足. 现把 <span class="arithmatex">\(\sigma\)</span> 改为样本标准差 <span class="arithmatex">\(S\)</span>, 则枢轴变量一 切条件都满足了, 因为 (见第二章 (4.34)) 变量 <span class="arithmatex">\(\sqrt{n}(\bar{X}-\mu) / S\)</span> 服 从自由度为 <span class="arithmatex">\(n-1\)</span> 的 <span class="arithmatex">\(t\)</span> 分布, 与参数无关. 由此出发用 <span class="arithmatex">\(4^{\circ}\)</span>, 并注意 <span class="arithmatex">\(t\)</span> 分布密度关于 0 对称因而 <span class="arithmatex">\(t_{n-1}(1-\alpha / 2)=-t_{n-1}(\alpha / 2)\)</span>, 得 <span class="arithmatex">\(\mu\)</span> 的 区间估计</p>
+<div class="arithmatex">\[
+\left[\bar{X}-S t_{n-1}(\alpha / 2) / \sqrt{n}, \bar{X}+S t_{n-1}(\alpha / 2) / \sqrt{n}\right]
+\]</div>
+<p>置信系数为 <span class="arithmatex">\(1-\alpha\)</span>. 它称为“一样本 <span class="arithmatex">\(t\)</span> 区间估计”.</p>
+<p>例如,为估计一物件的重量 <span class="arithmatex">\(\mu\)</span>, 把它在天平上重复秤了 5 次, 得结果为 (单位为克)</p>
+<div class="arithmatex">\[
+5.52,5.48,5.64,5.51,5.43
+\]</div>
+<p>假定此天平无系统误差且随机误差服从正态分布. 则总体分布为 <span class="arithmatex">\(N\left(\mu, \sigma^{2}\right), \mu\)</span> 即末知的重量, 方差 <span class="arithmatex">\(\sigma^{2}\)</span> 也末知. 算出</p>
+<div class="arithmatex">\[
+\begin{aligned}
+\bar{X} &amp; =(5.52+\cdots 5.43) / 5=5.516 \\
+S &amp; =\sqrt{\frac{1}{5-1}\left[(5.52-5.516)^{2}+\cdots+(5.43-5.516)^{2}\right]} \\
+&amp; =\frac{1}{2} \sqrt{0.02412}=0.078
+\end{aligned}
+\]</div>
+<p>查表, 知 <span class="arithmatex">\(t_{4}(0.025)=2.776\)</span>. 以这些数值代人 (4.5), 得 <span class="arithmatex">\(\mu\)</span> 的置信 系数 0.95 的区间估计为 <span class="arithmatex">\([5.419,5.613]\)</span>.</p>
+<p><span class="arithmatex">\([5.419,5.613]\)</span> 是一个具体的区间, <span class="arithmatex">\(\mu\)</span> 是一个虽然末知, 但其 值确定的数. <span class="arithmatex">\([5.419,5.613]\)</span> 这区间或者包含 <span class="arithmatex">\(\mu\)</span>, 或者不包含, 二者 只居其一. 说这区间的置信系数为 0.95 , 其确切意义应当是: 它是 根据所有的数据, 用一个其置信系数为 0.95 的方法作出的. 可见 置信系数一词是针对方法: 用这方法作出的区间估计,平均 100 次 中 95 次确包含所要估计的值. 一旦算出具体区间, 就不能再说它 有 <span class="arithmatex">\(95 \%\)</span> 的机会包含要估计的值了. 这一点意义上的理解必须分 清, 正如说一个人长于挑西瓜: 他挑的瓜, 平均 100 个中有 95 个好 的. 某天他给你挑一个,结果或好或坏,必居其一, 不是 <span class="arithmatex">\(95 \%\)</span> 的好. 但是, 考虑到他挑瓜的技术, 我对他挑的比较放心, 这就是置信系 数.</p>
+<p>区间估计 (4.5) 叫做一样本 <span class="arithmatex">\(t\)</span> 区间估计. “一样本”是指这里只 有一个总体, 因而只有一组样本, 以别于下例.</p>
+<p>例 4.2 设有两个正态总体, 其分布分别为 <span class="arithmatex">\(N\left(\mu_{1}, \sigma^{2}\right)\)</span> 和 <span class="arithmatex">\(N\left(\mu_{2}, \sigma^{2}\right)\)</span>. 注意方差相同. 设 <span class="arithmatex">\(\mu_{1}, \mu_{2}, \sigma^{2}\)</span> 都末知. 现从这两个总体 分别抽出样本 <span class="arithmatex">\(X_{1}, \cdots, X_{n}\)</span> 和 <span class="arithmatex">\(Y_{1}, \cdots, Y_{m}\)</span>. 要求 <span class="arithmatex">\(\mu_{1}-\mu_{2}\)</span> 的区间估 计.</p>
+<p>记 <span class="arithmatex">\(\bar{X}\)</span> 和 <span class="arithmatex">\(\bar{Y}\)</span> 分别为 <span class="arithmatex">\(X_{i}\)</span> 和 <span class="arithmatex">\(Y_{j}\)</span> 的样本均值, 而</p>
+<div class="arithmatex">\[
+\left.S=\sum_{i=1}^{n}\left(X_{i}-\bar{X}\right)^{2}+\sum_{j=1}^{m}\left(Y_{j}-\bar{Y}\right)^{2}\right]^{1 / 2} / \sqrt{n+m-2}
+\]</div>
+<p>据第二章 <span class="arithmatex">\((4.36)\)</span> 式,知</p>
+<div class="arithmatex">\[
+T=\sqrt{\frac{m n}{m+n}} \cdot\left((\bar{X}-\bar{Y})-\left(\mu_{1}-\mu_{2}\right)\right) / S \sim t_{n+m-2}
+\]</div>
+<p>的分布不依赖于参数 <span class="arithmatex">\(\mu_{1}, \mu_{2}, \sigma^{2}\)</span>. 它适合于作为枢轴变量的条件, 按 <span class="arithmatex">\(4^{\circ}\)</span>, 定出 <span class="arithmatex">\(\mu_{1}-\mu_{2}\)</span> 的区间估计为</p>
+<div class="arithmatex">\[
+\begin{gathered}
+{\left[(\bar{X}-\bar{Y})-S t_{n+m-2}(\alpha / 2) \sqrt{\frac{n+m}{n m}},\right.} \\
+\left.(\bar{X}-\bar{Y})+S t_{n+m-2}(\alpha / 2) \sqrt{\frac{n+m}{n m}}\right]
+\end{gathered}
+\]</div>
+<p>置信系数为 <span class="arithmatex">\(1-\alpha\)</span>. 这个区间称为 “两样本 <span class="arithmatex">\(t\)</span> 区间估计”, 是应用上 常用的区间估计之一。</p>
+<p>如考虑上例, 设有另一物件, 其重量 <span class="arithmatex">\(\mu_{2}\)</span> 也末知. 在这国一架 天平上科 4 次, 得结果为</p>
+<div class="arithmatex">\[
+5.45,5.40,5.34,5.51
+\]</div>
+<p>把上例中的 <span class="arithmatex">\(\mu\)</span> 记为 <span class="arithmatex">\(\mu_{1}\)</span>. 因是同一架天平, 方差不变. 要对两物件重 量之差 <span class="arithmatex">\(\mu_{1}-\mu_{2}\)</span> 作区间估计. 可用(4.6). 算出</p>
+<div class="arithmatex">\[
+\begin{aligned}
+\bar{Y} &amp; =(5.45+\cdots+5.51) / 4=5.425 \\
+\sum_{j=1}^{n}\left(Y_{j}-\bar{Y}\right)^{2} &amp; =(5.45-5.425)^{2}+\cdots+(5.51-5.425)^{2} \\
+&amp; =0.01570
+\end{aligned}
+\]</div>
+<p>结合前例数据,算出</p>
+<div class="arithmatex">\[
+\begin{aligned}
+\bar{X}-\bar{Y} &amp; =-0.091, S=\sqrt{0.024} \overline{12+0.01570} / \sqrt{5+4-2} \\
+&amp; =0.075
+\end{aligned}
+\]</div>
+<p>又 <span class="arithmatex">\(\sqrt{(n+m) / n m}=\sqrt{9 / 20}=0.671\)</span>. 取 <span class="arithmatex">\(\alpha=0.05\)</span>, 查 <span class="arithmatex">\(t\)</span> 分布表得 <span class="arithmatex">\(t_{7}(0.025)=2.365\)</span>. 把这些都代入 (4.6), 算出 <span class="arithmatex">\(\mu_{1}-\mu_{2}\)</span> 的区间估计 为 <span class="arithmatex">\([-0.210,0.028]\)</span>, 置信系数 0.95 .</p>
+<p>在实际问题中,两总体方差相等的假定往往只是近似成立. 当 方差之比接近 1 时,用(4.6) 产生的误差不大(这里的“误差”一词 是指实际的置信系数与名义的置信系数 <span class="arithmatex">\(1-\alpha\)</span> 有出入). 如果差别 较大, 则必须假定两正态总体分别有方差 <span class="arithmatex">\(\sigma_{1}^{2}\)</span> 和 <span class="arithmatex">\(\sigma_{2}^{2}, \sigma_{1}^{2}\)</span> 和 <span class="arithmatex">\(\sigma_{2}^{2}\)</span> 都末 知. 在这样的假定下求 <span class="arithmatex">\(\mu_{1}-\mu_{2}\)</span> 的区间估计问题, 是数理统计学上 一个著名的问题,叫贝伦斯一费歇尔问题. 因为这两位学者分别在 1929 和 1930 年研究过这个问题, 他们以及后来的研究者提出过 一些解法, 但还没有一个被公认为是最满意的.</p>
+<p>例 4.3 再考虑例 4.1 , 但现在要求作 <span class="arithmatex">\(\sigma^{2}\)</span> 的区间估计.</p>
+<p>据第二章 <span class="arithmatex">\((4.33)\)</span>, 有 <span class="arithmatex">\((n-1) S^{2} / \sigma^{2}-\chi_{n-1}^{2}\)</span>. 于是 <span class="arithmatex">\((n-1) S^{2} / \sigma^{2}\)</span> 适合枢轴变量的条件. 按 <span class="arithmatex">\(4^{\circ}\)</span>, 得 <span class="arithmatex">\(\sigma^{2}\)</span> 的区间估计为</p>
+<div class="arithmatex">\[
+\left[(n-1) S^{2} / \chi_{n-1}^{2}(\alpha / 2),(n-1) S^{2} / \chi_{n-1}^{2}(1-\alpha / 2)\right](4.7)
+\]</div>
+<p>置信系数为 <span class="arithmatex">\(1-\alpha\)</span>. 类似地, 若另有一正态总体 <span class="arithmatex">\(N\left(\mu, \sigma_{2}^{2}\right)\)</span> 及从中抽 出的样本 <span class="arithmatex">\(Y_{1}, \cdots, Y_{m}\)</span>, 要作方差比 <span class="arithmatex">\(\sigma_{1}^{2} / \sigma_{2}^{2}\)</span> 的区间估计. 记 <span class="arithmatex">\(S_{1}^{2}\)</span> 和 <span class="arithmatex">\(S_{2}^{2}\)</span> 分别为 <span class="arithmatex">\(X_{1}, \cdots, X_{n}\)</span> 和 <span class="arithmatex">\(Y_{1}, \cdots, Y_{m}\)</span> 的样本方差, 按第二章 (4.35), 有</p>
+<div class="arithmatex">\[
+\left(S_{2}^{2} / \sigma_{2}^{2}\right) /\left(S_{1}^{2} / \sigma_{1}^{2}\right) \sim F_{m-1, n-1}
+\]</div>
+<p>即 <span class="arithmatex">\(\lambda \cdot S_{2}^{2} / S_{1}^{2} \sim F_{m-1, n-1}\)</span>, 其中 <span class="arithmatex">\(\lambda=\sigma_{1}^{2} / \sigma_{2}^{2}\)</span>. 于是得到枢轴变量. 按 <span class="arithmatex">\(4^{\circ}\)</span>, 得出比值 <span class="arithmatex">\(\lambda\)</span> 的置信系数 <span class="arithmatex">\(1-\alpha\)</span> 的区间估计为</p>
+<div class="arithmatex">\[
+\left[\left(S_{1}^{2} / S_{2}^{2}\right) F_{m-1, n-1}(1-\alpha / 2),\left(S_{1}^{2} / S_{2}^{2}\right) F_{m-1, n-1}(\alpha / 2)\right]
+\]</div>
+<p>例 4.4 设 <span class="arithmatex">\(X_{1}, \cdots, X_{n}\)</span> 为抽自指数分布总体的样本, 要求其 参数 <span class="arithmatex">\(\lambda\)</span> 的区间估计.</p>
+<p>在第二章 2.4 .3 小节中曾证明 <span class="arithmatex">\(2 n \lambda \bar{X} \sim \chi^{2} 2 n\)</span>. 故 <span class="arithmatex">\(2 n \lambda \bar{X}\)</span> 可作为 枢轴变量. 由 <span class="arithmatex">\(4^{\circ}\)</span>,得 <span class="arithmatex">\(\lambda\)</span> 的区间估计为</p>
+<div class="arithmatex">\[
+\left[\chi^{2} 2 n(1-\alpha / 2) /(2 n \bar{X}), \chi_{2 n}^{2}(\alpha / 2) /(2 n \bar{X})\right]
+\]</div>
+<p>置信系数为 <span class="arithmatex">\(1-\alpha\)</span>. 若要求总体均值 <span class="arithmatex">\(1 / \lambda\)</span> 的区间估计, 则为</p>
+<div class="arithmatex">\[
+\left[2 n \bar{X} / \chi^{2} n(\alpha / 2), 2 n \bar{X} / \chi^{2} 2^{2}(1-\alpha / 2)\right]
+\]</div>
+<p>从这些例子可以看出“枢轴变量法”这名称的由来.拿本例来 说, 变量 <span class="arithmatex">\(2 n \lambda \bar{X}\)</span> 起了一个“轴心”的作用, 把一个变量 (即 <span class="arithmatex">\(2 n \lambda \bar{X})\)</span> 介 于某两个界限之间的不等式轻轻一转, 就成为末知参数 <span class="arithmatex">\(\lambda\)</span> 介于某 两个界限之间的不等式.</p>
+<p>对离散型变量来说, 枢轴变量法不易使用. 不仅由于满足条件 <span class="arithmatex">\(1^{\circ}-4^{\circ}\)</span> 的枢轴变量 <span class="arithmatex">\(S(T, g(\theta))\)</span> 大多不存在, 即使存在了, 由于其 分布 <span class="arithmatex">\(F\)</span> 为离散, 对指定的 <span class="arithmatex">\(\beta\)</span>,一般也不一定存在确切的上 <span class="arithmatex">\(\beta\)</span> 分位 点. 对离散型总体的参数去找具有所指定的置信系数的区间估计 方法, 超出本书范围之外. 在下一段中, 对二项和波哇松分布参数 这两个重要情况, 将给出一种基于极限分布的方法.</p>
+<p>在实用中, 除了指定的置信系数外, 往往还对于区间估计的长 度, 或其他某种反映其精度的量, 有一定的要求. 在有些情况下这 个问题比较好处理. 例如, <span class="arithmatex">\(N\left(\mu, \sigma^{2}\right)\)</span> 当 <span class="arithmatex">\(\sigma^{2}\)</span> 已知时, <span class="arithmatex">\(\mu\)</span> 的区间估计 (4.4) 的长为 <span class="arithmatex">\(2 \sigma u_{\alpha / 2} / \sqrt{n}\)</span>. 为要使这个长度不超过指定的 <span class="arithmatex">\(L&gt;0\)</span>, 只 须取 <span class="arithmatex">\(n\)</span> 为不小于 <span class="arithmatex">\(\left(2 \sigma u_{\alpha / 2} / L\right)^{2}\)</span> 的最小整数即可.</p>
+<p>对例 4.3 正态分布方差或方差比的估计, 由于方差本身的意 义, 在实际问题中, 考虑估计值与它相差多少倍, 往往比考虑估计 值与其差的绝对值更好. 这就要求, 例如, 区间(4.7)的右端不超过 左端的 <span class="arithmatex">\(L\)</span> 倍 <span class="arithmatex">\((L&gt;1)\)</span>, 即</p>
+<div class="arithmatex">\[
+\chi_{n-1}^{2}(\alpha / 2) / \chi_{n-1}^{2}(1-\alpha / 2) \leqslant L
+\]</div>
+<p>在给定了 <span class="arithmatex">\(L\)</span> 之后, 可以查 <span class="arithmatex">\(\chi^{2}\)</span> 分布表,找一个最小的 <span class="arithmatex">\(n\)</span> 使上式成立 即可，对方差比的情况，以及指数分布参数 <span class="arithmatex">\(\lambda\)</span> (或 <span class="arithmatex">\(1 / \lambda\)</span> ) 的情况，也 完全类似地处理.</p>
+<p>对 <span class="arithmatex">\(t\)</span> 区间估计, 则情况不同，拿一样本 <span class="arithmatex">\(t\)</span> 区间估计 (4.5) 来说, 其长 <span class="arithmatex">\(2 S t_{n-1}(\alpha / 2) / \sqrt{n}\)</span> 与 <span class="arithmatex">\(S\)</span> 有关, 而 <span class="arithmatex">\(S\)</span> 与样本有关, 故无法决定这 样一个 <span class="arithmatex">\(n\)</span>, 它能保证在任何情况下都有 <span class="arithmatex">\(2 S t_{n-1}(\alpha / 2) / \sqrt{n} \leqslant L\)</span>. 1945 年, 美国统计学家斯泰因提出了一个“两阶段抽样”的方法来 解决这个问题: 先抽出样本 <span class="arithmatex">\(X_{1}, \cdots, X_{n}\)</span>, 算出样本标准差 <span class="arithmatex">\(S\)</span> 如前. 根据 <span class="arithmatex">\(S\)</span> 的大小决定追加抽样的数目: <span class="arithmatex">\(S\)</span> 愈大,追加抽样次数愈多. 具体公式如下: 先引进记号 <span class="arithmatex">\([\alpha]=\)</span> 不超过 <span class="arithmatex">\(\alpha\)</span> 的最大整数, 例如 <span class="arithmatex">\([3.12]=3\)</span>, [2] <span class="arithmatex">\(=2\)</span> 等, 追加抽样次数 <span class="arithmatex">\(m\)</span> 的公式为</p>
+<div class="arithmatex">\[
+m=\left\{\begin{array}{l}
+0, \text { 若 } n \geqslant\left[4 t_{n-1}^{2}(\alpha / 2) S^{2} / L^{2}\right]+1 \\
+n-1-\left[4 t_{n-1}^{2}(\alpha / 2) S^{2} / L^{2}\right], \text { 其他情况 }
+\end{array}\right.
+\]</div>
+<p>记原有样本和追加样本全体的样本均值为 <span class="arithmatex">\(\widetilde{X}\)</span>, 则可以证明, 长为 <span class="arithmatex">\(L\)</span> 的区间估计 <span class="arithmatex">\([\tilde{X}-L / 2, \tilde{X}+L / 2]\)</span> 有置信系数 <span class="arithmatex">\(1-\alpha\)</span>.</p>
+<h3 id="11-3">1.1. 3 大样本法<a class="headerlink" href="#11-3" title="Permanent link">⚓︎</a></h3>
+<p>大样本法就是利用极限分布, 主要是中心极限定理, 以建立枢 轴变量, 它近似满足枢轴变量的条件 <span class="arithmatex">\(2^{\circ}\)</span>. 最好通过例子来说明.</p>
+<p>例 4.5 某事件 <span class="arithmatex">\(A\)</span> 在每次试验中发生的概率为 <span class="arithmatex">\(p\)</span>. 作 <span class="arithmatex">\(n\)</span> 次独 立试验, 以 <span class="arithmatex">\(Y_{n}\)</span> 记 <span class="arithmatex">\(A\)</span> 发生的次数,要求 <span class="arithmatex">\(p\)</span> 的区间估计.</p>
+<p>设 <span class="arithmatex">\(n\)</span> 相当大, 则按定理 4.3 ,近似地有 <span class="arithmatex">\(\left(Y_{n}-n p\right) / \sqrt{n p(1-p)}\)</span> <span class="arithmatex">\(\sim N(0,1)\)</span>. 于是 <span class="arithmatex">\(\left(Y_{n}-n p\right) / \sqrt{n p(1-p)} \sim N(0,1)\)</span> 可取为枢轴变 量. 由</p>
+<div class="arithmatex">\[
+P\left(-u_{\sigma / 2} \leqslant\left(Y_{n}-n p\right) / \sqrt{n p(1-p)} \leqslant u_{\sigma / 2}\right) \approx 1-\alpha
+\]</div>
+<p>可政写为</p>
+<div class="arithmatex">\[
+P(A \leqslant p \leqslant B) \approx 1-\alpha
+\]</div>
+<p>其中 <span class="arithmatex">\(A, B\)</span> 是二次方程</p>
+<div class="arithmatex">\[
+\left(Y_{n}-n p\right)^{2} /(n p(1-p))=u_{a / 2}^{2}
+\]</div>
+<p>的两个根, 即</p>
+<div class="arithmatex">\[
+A, B=\frac{n}{n+u_{\alpha / 2}^{2}}\left(\hat{p}+\frac{u_{\alpha / 2}^{2}}{2 n} \pm u_{\alpha / 2} \sqrt{\frac{\hat{p}(1-\hat{p})}{n}+\frac{u_{\alpha / 2}^{2}}{4 n^{2}}}\right)
+\]</div>
+<p><span class="arithmatex">\(A\)</span> 取负号, <span class="arithmatex">\(B\)</span> 取正号, <span class="arithmatex">\(\hat{p}=Y_{n} / n\)</span>.</p>
+<p>因为 (4.11) 和 (4.12) 只是近似的, 故区间估计 <span class="arithmatex">\([A, B]\)</span> 的置信 系数,也只是近似地等于 <span class="arithmatex">\(1-\alpha\)</span>. 当 <span class="arithmatex">\(n\)</span> 较大,例如 <span class="arithmatex">\(n \geqslant 30\)</span> 时,相去不 远, 实际上, <span class="arithmatex">\(n\)</span> 太小时, 找 <span class="arithmatex">\(p\)</span> 的区间估计意义不大. 因为这种区间 都失之过长, 实际意义不大. 这可由下面的分析看出: 由于 <span class="arithmatex">\(0 \leqslant \hat{p} \leqslant\)</span> <span class="arithmatex">\(1, \hat{p}(1-\hat{p})\)</span> 的最大值可为 <span class="arithmatex">\(1 / 4\)</span>. 这时, 区间 <span class="arithmatex">\([A, B]\)</span> 之长, 在把 <span class="arithmatex">\(\hat{p}(1\)</span> <span class="arithmatex">\(-\hat{p}\)</span> )改为 <span class="arithmatex">\(1 / 4\)</span> 后, 为 <span class="arithmatex">\(u_{\alpha / 2} / \sqrt{n+u_{\alpha / 2}^{2}}\)</span>. 取 <span class="arithmatex">\(\alpha=0.05\)</span>, 有 <span class="arithmatex">\(u_{\alpha / 2}=1.96\)</span>. 若要求这区间之长不超过 0.3 (这是一个很低的要求), 必须 <span class="arithmatex">\(1.96 /\)</span> <span class="arithmatex">\(\sqrt{n+(1.96)^{2}} \leqslant 0.3\)</span>. 算出 <span class="arithmatex">\(n\)</span> 至少应为 39. 可以看出: 在试验次数 <span class="arithmatex">\(n\)</span> 低于 40 时,求 <span class="arithmatex">\(p\)</span> 的区间估计没有多大实用意义.</p>
+<p>例 4.6 设 <span class="arithmatex">\(X_{1}, \cdots, X_{n}\)</span> 为抽自有波哇松分布 <span class="arithmatex">\(P(\lambda)\)</span> 的总体的 样本, 求 <span class="arithmatex">\(\lambda\)</span> 的区间估计. 记 <span class="arithmatex">\(Y_{n}=X_{1}+\cdots+X_{n}\)</span>. 设 <span class="arithmatex">\(n\)</span> 相当大, 注意到波哇松分布的均 伹方差都是 <span class="arithmatex">\(\lambda\)</span>, 由第三章定理 4.2 , 知 <span class="arithmatex">\(\left(Y_{n}-n \lambda\right) / \sqrt{n \lambda}\)</span> 近似地有分 布 <span class="arithmatex">\(N(0,1)\)</span>. 仿前例的做法, 即得到 <span class="arithmatex">\(\lambda\)</span> 的区间估计 <span class="arithmatex">\([A, B], A, B\)</span> 为 次方程</p>
+<div class="arithmatex">\[
+\left(Y_{n}-n \lambda\right)^{2}=n \lambda u_{\alpha / 2}^{2}
+\]</div>
+<p>的两根, 即</p>
+<div class="arithmatex">\[
+A, B=\bar{X}+u_{a / 2}^{2} /(2 n) \pm u_{\alpha / 2} \sqrt{u_{\alpha / 2}^{2} /\left(4 n^{2}\right)+\bar{X} / n}
+\]</div>
+<p><span class="arithmatex">\(A\)</span> 取负号, <span class="arithmatex">\(B\)</span> 取正号, <span class="arithmatex">\(\bar{X}=Y_{n} / n\)</span>.</p>
+<p>例 4.7 设某总体有均值 <span class="arithmatex">\(\theta\)</span>, 方差 <span class="arithmatex">\(\sigma^{2} . \theta\)</span> 和 <span class="arithmatex">\(\sigma^{2}\)</span> 都末知, 从这总 体中抽出样本 <span class="arithmatex">\(X_{1}, \cdots, X_{n}\)</span>, 要作 <span class="arithmatex">\(\theta\)</span> 的区间估计.</p>
+<p>因为对总体分布没有作任何假定, 要作出满足条件 <span class="arithmatex">\(1^{\circ}-4^{\circ}\)</span> 的 枢轴变量是不可能的. 但是, 若 <span class="arithmatex">\(n\)</span> 相当大,则据中心极限定理 (第 三章定理 4.2), 有 <span class="arithmatex">\(\sqrt{n}(\bar{X}-\theta) / \sigma \sim N(0,1)\)</span>. 但此处 <span class="arithmatex">\(\sigma\)</span> 末知, 仍不 能以 <span class="arithmatex">\(\sqrt{n}(\bar{X}-\theta) / \sigma\)</span> 作为枢轴变量. 因为 <span class="arithmatex">\(n\)</span> 相当大, 样本均方差 <span class="arithmatex">\(S\)</span> 是 <span class="arithmatex">\(\sigma\)</span> 的一个相合估计, 故可近似地用 <span class="arithmatex">\(S\)</span> 代 <span class="arithmatex">\(\sigma\)</span>, 得</p>
+<div class="arithmatex">\[
+\sqrt{n}(\bar{X}-\theta) / S \sim N(0,1)
+\]</div>
+<p>由此就不难得出 <span class="arithmatex">\(\theta\)</span> 的区间估计</p>
+<div class="arithmatex">\[
+\left[\bar{X}-S \mu_{\alpha / 2} / \sqrt{n}, \bar{X}+S \mu_{\alpha / 2} / \sqrt{n}\right]
+\]</div>
+<p>它的置信系数, 当 <span class="arithmatex">\(n\)</span> 相当大时, 近似地为 <span class="arithmatex">\(1-\alpha\)</span>. 近似的程度如何不 仅取决于 <span class="arithmatex">\(n\)</span> 的大小,还要看总体的分布如何.</p>
+<p>例 4.8 考虑在例 4.2 中提出的贝伦斯一费歇尔问题: <span class="arithmatex">\(X_{1}\)</span>, <span class="arithmatex">\(\cdots, X_{n}\)</span> 是从正态总体 <span class="arithmatex">\(N\left(\mu, \sigma_{1}^{2}\right)\)</span> 中抽出的样本, <span class="arithmatex">\(Y_{1}, \cdots, Y_{m}\)</span> 是从正 态总体 <span class="arithmatex">\(N\left(\mu_{2}, \sigma_{2}^{2}\right)\)</span> 中抽出的样本, 要求 <span class="arithmatex">\(\mu_{1}-\mu_{2}\)</span> 的区间估计.</p>
+<p>在本例中有</p>
+<div class="arithmatex">\[
+\left[(\bar{X}-\bar{Y})-\left(\mu_{1}-\mu_{2}\right)\right] / \sqrt{\sigma_{1}^{2} / n+\sigma_{2}^{2} / m} \sim N(0,1)
+\]</div>
+<p>这里没有近似: 分布是严格成立的. 但是, 由于 <span class="arithmatex">\(\sigma_{1}, \sigma_{2}\)</span> 末知, (4.15) 并不构成枢轴变量. 如果 <span class="arithmatex">\(n, m\)</span> 都相当大,则 <span class="arithmatex">\(\sigma_{1}^{2}\)</span> 和 <span class="arithmatex">\(\sigma_{2}^{2}\)</span> 分别可用 <span class="arithmatex">\(X\)</span> 样本的样本方差 <span class="arithmatex">\(S_{1}^{2}\)</span> 和 <span class="arithmatex">\(Y\)</span> 样本的样本方差 <span class="arithmatex">\(S_{2}^{2}\)</span> 近似地代替之, 得</p>
+<div class="arithmatex">\[
+\left[(\bar{X}-\bar{Y})-\left(\mu_{1}-\mu_{2}\right)\right] / \sqrt{S_{1}^{2} / n+S_{2}^{2} / m} \sim N(0,1)
+\]</div>
+<p>与(4.15)不同, (4.16) 只是近似而非严格. (4.16) 可作为枢轴变 量, 而得出 <span class="arithmatex">\(\mu_{1}-\mu_{2}\)</span> 的区间估计. 当然, 其置信系数只是近似的.</p>
+<p>例 4.5-4.8 所导出的区间估计, 叫 “大样本区间估计”. 一般 如果一个统计方法是基于有关变量的当样本大小 <span class="arithmatex">\(n\)</span> 很大时的极 限分布, 则称这一统计方法为 “大样本方法”. 反之, 若依据的是有 关变量的确切分布,则称为 “小样本方法”. 如例 4.1-4.4 导出的 区间估计就是小样本区间估计.这不在于 <span class="arithmatex">\(n\)</span> 多大多小: 在例 4.14.4 中, 即使样本大小 <span class="arithmatex">\(n=10^{10}\)</span>, 仍是小样本方法. 对例 4.5 而言, 因使用的是极限分布, 即使 <span class="arithmatex">\(n=40\)</span>, 仍算是大样本方法, 不言而喻, 大样本方法只有在样本大小较大时才宜于使用.</p>
+<h3 id="12-4">1.2. 4 置信界<a class="headerlink" href="#12-4" title="Permanent link">⚓︎</a></h3>
+<p>在实际问题中, 有时我们只对参数 <span class="arithmatex">\(\theta\)</span> 的一端的界限感兴趣. 例如, <span class="arithmatex">\(\theta\)</span> 是在一种物质中某种杂质的百分率,则我们可能只关心其 上界, 即要求找到这样一个统计量 <span class="arithmatex">\(\bar{\theta}\)</span>, 使 <span class="arithmatex">\(\{\theta \leqslant \bar{\theta}\}\)</span> 的概率很大. <span class="arithmatex">\(\bar{\theta}\)</span> 就称 为 <span class="arithmatex">\(\theta\)</span> 的置信上界 (或上限). 又如, <span class="arithmatex">\(\theta\)</span> 是某种材料的强度,则我们可 能只关心其下界, 即要求找到这样一个统计量 <span class="arithmatex">\(\theta\)</span>, 使 <span class="arithmatex">\(\{\theta \geqslant \theta\}\)</span> 的概率</p>
+<p><img alt="" src="https://cdn.mathpix.com/cropped/2023_07_12_fb0679705a8a961fa128g-12.jpg?height=77&amp;width=1519&amp;top_left_y=2012&amp;top_left_x=243" />
+文简单, 就以一个参数 <span class="arithmatex">\(\theta\)</span> 的情况为例.</p>
+<p>定义 4.2 设 <span class="arithmatex">\(X_{1}, \cdots, X_{n}\)</span> 是从某一总体中抽出的样本, 总体 分布包含末知参数 <span class="arithmatex">\(\theta, \bar{\theta}=\bar{\theta}\left(X_{1}, \cdots, X_{n}\right)\)</span> 和 <span class="arithmatex">\(\underline{\theta}=\underline{\theta}\left(X_{1}, \cdots, X_{n}\right)\)</span> 都是 统计量 (它们与 <span class="arithmatex">\(\theta\)</span> 无关), 则</p>
+<ol>
+<li>若对 <span class="arithmatex">\(\theta\)</span> 的一切可取的值有</li>
+</ol>
+<div class="arithmatex">\[
+P_{\theta}\left(\bar{\theta}\left(X_{1}, \cdots, X_{n}\right) \geqslant \theta\right)=1-\alpha
+\]</div>
+<p>则称 <span class="arithmatex">\(\bar{\theta}\)</span> 为 <span class="arithmatex">\(\theta\)</span> 的一个置信系数为 <span class="arithmatex">\(1-\alpha\)</span> 的置信上界; 2. 若对 <span class="arithmatex">\(\theta\)</span> 的一切可取的值有</p>
+<div class="arithmatex">\[
+P_{\theta}\left(\theta\left(X_{1}, \cdots, X_{n}\right) \leqslant \theta\right)=1-\alpha
+\]</div>
+<p>则称 <span class="arithmatex">\(\theta\)</span> 为 <span class="arithmatex">\(\theta\)</span> 的一个置信系数为 <span class="arithmatex">\(1-\alpha\)</span> 的置信下界.</p>
+<p>把(4.17)与(4.18) 与区间估计的置信系数定义去比较, 看出: 犆信上、下界无非是一种特殊的置信区间, 其一端为 <span class="arithmatex">\(\infty\)</span> 或 <span class="arithmatex">\(-\infty\)</span>. 因 此, 前面用于求区间估计的方法, 都很容易平行地移至此处. 例如, 找 <span class="arithmatex">\(N\left(\mu, \sigma^{2}\right)\)</span> 的均值 <span class="arithmatex">\(\mu\)</span> 的置信下界, 假定 <span class="arithmatex">\(\sigma^{2}\)</span> 已知, 以 <span class="arithmatex">\(\sqrt{n}(\bar{X}-\mu) / \sigma\)</span> 为枢轴变量, 其分布为 <span class="arithmatex">\(N(0,1)\)</span>. 有</p>
+<div class="arithmatex">\[
+P\left(\sqrt{n}(\bar{X}-\mu) / \sigma \leqslant u_{\alpha}\right)=1-\alpha
+\]</div>
+<p>此式可改写为</p>
+<div class="arithmatex">\[
+P\left(\mu \geqslant \bar{X}-u_{\alpha} \sigma / \sqrt{n}\right)=1-\alpha
+\]</div>
+<p>把(4.19)与 (4.18) 比较, 即知 <span class="arithmatex">\(\bar{X}-u_{\alpha} \sigma / \sqrt{n}\)</span> 为 <span class="arithmatex">\(\mu\)</span> 的一个置信下界, 置信系数为 <span class="arithmatex">\(1-\alpha\)</span>. 将这个方法用于以前讨论过的诸例, 得出一些 䔜信上、下界的结果, 例如(记号均见有关各例):</p>
+<ol>
+<li>例 <span class="arithmatex">\(4.1 \mu\)</span> 的置信上、下界分别为(正号为上界)</li>
+</ol>
+<div class="arithmatex">\[
+\bar{X} \pm S t_{n-1}(\alpha) / \sqrt{n}
+\]</div>
+<ol>
+<li>例 <span class="arithmatex">\(4.2 \mu_{1}-\mu_{2}\)</span> 的置信上、下界分别为 (正号为上界)</li>
+</ol>
+<div class="arithmatex">\[
+(\bar{X}-\bar{Y}) \pm S t_{n+m-2}(\alpha) \sqrt{\frac{m+n}{m n}}
+\]</div>
+<ol>
+<li>例 <span class="arithmatex">\(4.3 \sigma^{2}\)</span> 的置信上界为 <span class="arithmatex">\((n-1) S^{2} / \chi_{n-1}^{2}(1-\alpha)\)</span>, 下界为 <span class="arithmatex">\((n-1) S^{2} / \chi_{n-1}^{2}(\alpha)\)</span>.</li>
+</ol>
+<p>以上置信系数都是 <span class="arithmatex">\(1-\alpha\)</span>, 其余各例都与此类似,我们注意到 一点: 在置信区间中的 <span class="arithmatex">\(\alpha / 2\)</span> 在这里都被 <span class="arithmatex">\(\alpha\)</span> 取代. 这是由于区间估 计是双侧的. 共为 <span class="arithmatex">\(\alpha\)</span> 的概率由两边均分, 各占 <span class="arithmatex">\(\alpha / 2\)</span>. 而置信界则是 单侧的.</p>
+<h3 id="13-5">1.3. 5 贝叶斯法<a class="headerlink" href="#13-5" title="Permanent link">⚓︎</a></h3>
+<p>用贝叶斯法处理统计问题的基本思想,已在 4.2 节 4.2.4 中 阐述过了. 用它来处理区间估计问题, 概念上和做法上都很简单: 沿用 4.2 节 4.2.4 中的记号. 在有了先验分布密度 <span class="arithmatex">\(h(\theta)\)</span> 和样本 <span class="arithmatex">\(X_{1}, \cdots, X_{n}\)</span> 后, 算出后验密度 <span class="arithmatex">\(h\left(\theta \mid X_{1}, \cdots, X_{n}\right)\)</span>. 再找两个数 <span class="arithmatex">\(\hat{\theta}_{1}, \hat{\theta}_{2}\)</span> 都与 <span class="arithmatex">\(X_{1}, \cdots, X_{n}\)</span> 有关,使</p>
+<div class="arithmatex">\[
+\int_{\hat{\theta}_{1}}^{\hat{\theta}_{2}} h\left(\theta \mid X_{1}, \cdots, X_{n}\right) \mathrm{d} \theta=1-\alpha
+\]</div>
+<p>区间 <span class="arithmatex">\(\left[\hat{\theta}_{1}, \hat{\theta}_{2}\right]\)</span> 的意思是: 在所得后验分布之下, <span class="arithmatex">\(\theta\)</span> 落在这区间内的 概率为 <span class="arithmatex">\(1-\alpha\)</span>. 因此, <span class="arithmatex">\(\left[\hat{\theta}_{1}, \hat{\theta}_{2}\right]\)</span> 可作为 <span class="arithmatex">\(\theta\)</span> 的一区间估计, 其后验信度 为 <span class="arithmatex">\(1-\alpha\)</span>. “后验” 是指 “有了样本以后”的意思. 因此,所谓“后验信 度为 <span class="arithmatex">\(1-\alpha\)</span> ”, 可以解释为: 在已有了样本以后, 我对区间 <span class="arithmatex">\(\left[\hat{\theta}_{1}, \hat{\theta}_{2}\right]\)</span> 能包含末知参数 <span class="arithmatex">\(\theta\)</span> 的相信程度为 <span class="arithmatex">\(1-\alpha\)</span>. 这与奈曼理论中 的置信系数的含义相似,但理论观念上有别. 因为这里整个架构根 本不同.</p>
+<p>如果要找贝叶斯上下界,则只须把 (4.20)分别改为</p>
+<div class="arithmatex">\[
+\int_{-\infty}^{\hat{\theta}} h\left(\theta \mid X_{1}, \cdots, X_{n}\right) \mathrm{d} \theta=1-\alpha(\text { 上界) }
+\]</div>
+<p>和</p>
+<div class="arithmatex">\[
+\int_{\hat{\theta}}^{\infty} h\left(\theta \mid X_{1}, \cdots, X_{n}\right) \mathrm{d} \theta=1-\alpha(\text { 下界) }
+\]</div>
+<p>对 (4.20) 而言还有一个问题: 满足条件 (4.20) 的 <span class="arithmatex">\(\hat{\theta}_{1}, \hat{\theta}_{2}\)</span> 很多, 如何 决定一对? 一般是以使 <span class="arithmatex">\(\hat{\theta}_{1}-\hat{\theta}_{2}\)</span> 最小为原则 <span class="arithmatex">\({ }^{*}\)</span> (也可以是使 <span class="arithmatex">\(\hat{\theta}_{2} / \hat{\theta}_{1}\)</span> 最小, 这要看参数的性质与实际问题中的要求如何而定). 下面将 通过例子解释这一点.</p>
+<p>例 4.9 考虑例 2.14. 在该例中所规定的先验分布之下, 找 <span class="arithmatex">\(\theta\)</span></p>
+<ul>
+<li>另一种可取的方法是找 <span class="arithmatex">\(\vec{\theta}_{1}, \hat{\theta}_{2}\)</span>, 使</li>
+</ul>
+<div class="arithmatex">\[
+\int_{-\infty}^{\hat{\theta}_{1}} h\left(\theta \mid X_{1}, \cdots, X_{n}\right) \mathrm{d} \theta=\alpha / 2, \quad \int_{\widehat{\theta}_{2}}^{\infty} h\left(\theta \mid X_{1}, \cdots, X_{n}\right) \mathrm{d} \theta=\alpha / 2
+\]</div>
+<p>的区间估计。</p>
+<p>在该例中已找出 <span class="arithmatex">\(\theta\)</span> 的后验分布为 <span class="arithmatex">\(N\left(t, \eta^{2}\right), t, \eta^{2}\)</span> 分别由 (2.17), (2.18) 决定, 这个密度函数在 <span class="arithmatex">\(t\)</span> 点处达到最大值, 然后在 两边对称地下降. 由此易见, 如要找 <span class="arithmatex">\(\hat{\theta}_{1}\)</span> 和 <span class="arithmatex">\(\hat{\theta}_{2}\)</span> 满足 (4.20) 式, 它只 有在 <span class="arithmatex">\(\hat{\theta}_{1}, \hat{\theta}_{2}=t \pm c\)</span> 时才能使 <span class="arithmatex">\(\hat{\theta}_{2}-\hat{\theta}_{1}\)</span> 最小. 由正态分布即知, <span class="arithmatex">\(c\)</span> 必须 取为 <span class="arithmatex">\(\eta \mu_{\alpha}\)</span>. 于是得出贝叶斯区间估计</p>
+<div class="arithmatex">\[
+\left[t-\eta \mu_{\alpha / 2}, t+\eta \mu_{\alpha / 2}\right]
+\]</div>
+<p>其后验信度为 <span class="arithmatex">\(1-\alpha\)</span>.</p>
+<p>例 4.10 考虑例 2.13 . 在此已求出当取 <span class="arithmatex">\(R(0,1)\)</span> 为先验分布 时, <span class="arithmatex">\(p\)</span> 的后验密度为</p>
+<div class="arithmatex">\[
+\begin{aligned}
+&amp; h\left(p \mid X_{1}, \cdots, X_{n}\right) \\
+= &amp; p^{X}(1-p)^{n-X} / \beta(X+1, n-X+1), 0 \leqslant p \leqslant 1(4.23)
+\end{aligned}
+\]</div>
+<p>要找 <span class="arithmatex">\(\hat{p}_{1}, \hat{p}_{2}\)</span>,使</p>
+<div class="arithmatex">\[
+\int_{\hat{p}_{1}}^{\hat{p}_{2}} p^{X}(1-p)^{n-X} \mathrm{~d} p / \beta(X+1, n-X+1)=1-\alpha
+\]</div>
+<p>并使 <span class="arithmatex">\(\hat{p}_{2}-\hat{p}_{1}\)</span> 最小, 问题就麻烦些. (4.23) 的图形大致如图 4.3. 它在点 <span class="arithmatex">\(p=X / n\)</span> 处 达到最大, 然后往两边下降. 故只有图中 <span class="arithmatex">\(c, d\)</span> 那种对子, 才能使 <span class="arithmatex">\(d-c\)</span> 最小. 方法 是: 先在 <span class="arithmatex">\(X / n\)</span> 左边取定一个值 <span class="arithmatex">\(c\)</span>. 由方程</p>
+<div class="arithmatex">\[
+c^{X}(1-c)^{n-X}=p^{X}(1-p)^{n-X}
+\]</div>
+<p>以 <span class="arithmatex">\(p\)</span> 为末知量, 解出 <span class="arithmatex">\(p=d\)</span>. 从图 4.3 看</p>
+<p><img alt="" src="https://cdn.mathpix.com/cropped/2023_07_12_fb0679705a8a961fa128g-15.jpg?height=377&amp;width=477&amp;top_left_y=1625&amp;top_left_x=1246" />
+出, <span class="arithmatex">\(d\)</span> 必大于 <span class="arithmatex">\(X / n\)</span>. 计算积分</p>
+<div class="arithmatex">\[
+\int_{c}^{d} p^{X}(1-c)^{n-X} \mathrm{~d} p / \beta(X+1, n-X+1)=A
+\]</div>
+<p>若 <span class="arithmatex">\(A&gt;1-\alpha\)</span>, 表示 <span class="arithmatex">\(c\)</span> 取得太小. 若 <span class="arithmatex">\(A&lt;1-\alpha\)</span>, 则表示 <span class="arithmatex">\(c\)</span> 取得太 大. 经过几次调整后即可找到足够接近的近似值.</p>
+<p>与奈曼的理论相比,我们看出, 这里求区间估计的过程容易多 了. 固然, 在寻找适合 (4.20) 的 <span class="arithmatex">\(\hat{\theta}_{1}\)</span> 和 <span class="arithmatex">\(\hat{\theta}_{2}\)</span> 时, 往往计算很繁, 但并无 原则困难, 用计算机也很容易实现. 但用奈曼的方法, 则涉及到麻 烦的分布问题. 如例 4.1-4.4 这几个例, 就基于有关的统计量服 从 <span class="arithmatex">\(t\)</span> 分布, 卡方和 <span class="arithmatex">\(F\)</span> 分布等. 这不是常有的情况, 而只是少见的几 个特例(幸好这几个特例在实用中用得很多). 往往由于分布问题 无法解决, 而只好求助于大样本理论. 实用上往往样本不很大, 使 我们对由此而产生的误差(即实际的置信系数与名义的置信系数 的距离) 不甚了然. 贝叶斯方法不存在这些问题. 当然, 贝叶斯方法 有其自身的问题, 即先验分布如何定, 这一点我们在前面已提过 了</p>
+
+
+
+
+
+
+
+  
+    
+  
+  
+    
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="最后更新">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">December 21, 2023</span>
+  </span>
+
+    
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="创建日期">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3h-2Z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">December 21, 2023</span>
+  </span>
+
+    
+    
+    
+  </aside>
+
+
+  
+
+
+
+  <form class="md-feedback" name="feedback" hidden>
+    <fieldset>
+      <legend class="md-feedback__title">
+        对当前页面有任何疑问吗？
+      </legend>
+      <div class="md-feedback__inner">
+        <div class="md-feedback__list">
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="This page was helpful" data-md-value="1">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 9v12H1V9h4m4 12a2 2 0 0 1-2-2V9c0-.55.22-1.05.59-1.41L14.17 1l1.06 1.06c.27.27.44.64.44 1.05l-.03.32L14.69 8H21a2 2 0 0 1 2 2v2c0 .26-.05.5-.14.73l-3.02 7.05C19.54 20.5 18.83 21 18 21H9m0-2h9.03L21 12v-2h-8.79l1.13-5.32L9 9.03V19Z"/></svg>
+            </button>
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="This page could be improved" data-md-value="0">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 15V3h4v12h-4M15 3a2 2 0 0 1 2 2v10c0 .55-.22 1.05-.59 1.41L9.83 23l-1.06-1.06c-.27-.27-.44-.64-.44-1.06l.03-.31.95-4.57H3a2 2 0 0 1-2-2v-2c0-.26.05-.5.14-.73l3.02-7.05C4.46 3.5 5.17 3 6 3h9m0 2H5.97L3 12v2h8.78l-1.13 5.32L15 14.97V5Z"/></svg>
+            </button>
+          
+        </div>
+        <div class="md-feedback__note">
+          
+            <div data-md-value="1" hidden>
+              
+              
+                
+              
+              感谢您的反馈！
+            </div>
+          
+            <div data-md-value="0" hidden>
+              
+              
+                
+              
+              感谢您的反馈！请点击这里<a href="https://github.com/EanYang7/Probability-and-Statistics/issues" target="_blank" rel="noopener">这里</a>提供问题反馈.
+            </div>
+          
+        </div>
+      </div>
+    </fieldset>
+  </form>
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/EanYang7/cs231n" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant", "navigation.top", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.path", "toc.follow", "content.action.edit", "content.action.view"], "search": "../../javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../../javascripts/bundle.d7c377c4.min.js"></script>
+      
+        <script src="../../../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

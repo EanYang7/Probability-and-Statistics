@@ -1,0 +1,2121 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="《概率论与数理统计》陈希孺，中国科学技术大学出版社">
+      
+      
+      
+        <link rel="canonical" href="https://eanyang7.github.io/Probability-and-Statistics/courses/6-Regression-Correlation-and-Analysis-of-Variance/4-Correlation-analysis/">
+      
+      
+        <link rel="prev" href="../3-Multiple-linear-regression/">
+      
+      
+        <link rel="next" href="../5-Analysis-of-variance/">
+      
+      
+      <link rel="icon" href="../../../cover.jpg">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.2">
+    
+    
+      
+        <title>6.4 相关分析 - 概率论与数理统计</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.50c56a3b.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-GEDRLMN4ML"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-GEDRLMN4ML",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-GEDRLMN4ML",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#64" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../.." title="概率论与数理统计" class="md-header__button md-logo" aria-label="概率论与数理统计" data-md-component="logo">
+      
+  <img src="../../../cover.jpg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            概率论与数理统计
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              6.4 相关分析
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换为暗黑模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换为暗黑模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5c-.84 0-1.65.15-2.39.42L12 2M3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29L3.34 7m.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14L3.36 17M20.65 7l-1.77 3.79a7.023 7.023 0 0 0-2.38-4.15l4.15.36m-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29L20.64 17M12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44L12 22Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换为浅色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换为浅色模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3 3.19.09m3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95 2.06.05m-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/EanYang7/Probability-and-Statistics" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    EanYang7/Probability-and-Statistics
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../.." class="md-tabs__link">
+          
+  
+  首页
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      
+  
+  
+    
+  
+  
+    
+    
+      
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../1-Probability-of-events/1-What-is-the-probability/" class="md-tabs__link">
+          
+  
+  课程
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../%E3%80%8A%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1%E3%80%8B%E9%99%88%E5%B8%8C%E5%AD%BA%EF%BC%8C%E4%B8%AD%E5%9B%BD%E7%A7%91%E5%AD%A6%E6%8A%80%E6%9C%AF%E5%A4%A7%E5%AD%A6%E5%87%BA%E7%89%88%E7%A4%BE.pdf" class="md-tabs__link">
+        
+  
+    
+  
+  PDF
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="概率论与数理统计" class="md-nav__button md-logo" aria-label="概率论与数理统计" data-md-component="logo">
+      
+  <img src="../../../cover.jpg" alt="logo">
+
+    </a>
+    概率论与数理统计
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/EanYang7/Probability-and-Statistics" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    EanYang7/Probability-and-Statistics
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    首页
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            首页
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    简介
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    课程
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            课程
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    章节
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            章节
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1_1" id="__nav_2_1_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    第1章 事件的概率
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1_1">
+            <span class="md-nav__icon md-icon"></span>
+            第1章 事件的概率
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1-Probability-of-events/1-What-is-the-probability/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1.1 概率是什么
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1-Probability-of-events/2-Classical-Probability-Calculation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1.2 古典概率计算
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1-Probability-of-events/3-Operation-Conditional-probability-and-independence-of-events/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1.3 事件的运算、条件概率与独立性
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1-Probability-of-events/exercises/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    习题
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1-Probability-of-events/answers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    答案
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1_2" id="__nav_2_1_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    第2章 随机变量及概率分布
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1_2">
+            <span class="md-nav__icon md-icon"></span>
+            第2章 随机变量及概率分布
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2-Random-Variables-and-Probability-Distribution/1-One-dimensional-random-variable/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2.1 一维随机变量
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2-Random-Variables-and-Probability-Distribution/2-Multidimensional-random-variables-random-vectors/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2.2 多维随机变量（随机向量）
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2-Random-Variables-and-Probability-Distribution/3-Independence-of-Conditional-probability-distribution-and-random-variable/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2.3 条件概率分布与随机变量的独立性
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2-Random-Variables-and-Probability-Distribution/4-Probability-Distribution-of-Functions-of-Random-Variables/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2.4 随机变量的函数的概率分布
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2-Random-Variables-and-Probability-Distribution/appendix/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    附录
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2-Random-Variables-and-Probability-Distribution/exercises/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    习题
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2-Random-Variables-and-Probability-Distribution/answers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    答案
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1_3" id="__nav_2_1_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    第3章 随机变量的数字特征
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1_3">
+            <span class="md-nav__icon md-icon"></span>
+            第3章 随机变量的数字特征
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3-Numerical-Characteristics-of-Random-Variables/1-Mathematica-Expectations-Mean-and-Median/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3.1 数学期望（均值）与中位数
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3-Numerical-Characteristics-of-Random-Variables/2-Variance-and-Moment/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3.2 方差与矩
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3-Numerical-Characteristics-of-Random-Variables/3-Covariance-and-correlation-coefficient/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3.3 协方差与相关系数
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3-Numerical-Characteristics-of-Random-Variables/4-Theorem-of-Large-Numbers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3.4 大数定理和中心极限定理
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3-Numerical-Characteristics-of-Random-Variables/exercises/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    习题
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3-Numerical-Characteristics-of-Random-Variables/answers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    答案
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1_4" id="__nav_2_1_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    第4章 参数估计
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1_4">
+            <span class="md-nav__icon md-icon"></span>
+            第4章 参数估计
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../4-Parameter-Estimates/1-Basic-concepts-of-Mathematical-statistics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4.1 数理统计学的基本概念
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../4-Parameter-Estimates/2-Moment-estimation-maximum-likelihood-estimation-and-Bayesian-estimation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4.2 矩估计、极大似然估计和贝叶斯估计
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../4-Parameter-Estimates/3-Excellence-criterion-of-Point-estimation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4.3 点估计的优良性准则
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../4-Parameter-Estimates/4-Interval-estimation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4.4 区间估计
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../4-Parameter-Estimates/exercises/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    习题
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../4-Parameter-Estimates/answers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    答案
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1_5" id="__nav_2_1_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    第5章 假设检验
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1_5">
+            <span class="md-nav__icon md-icon"></span>
+            第5章 假设检验
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../5-Hypothesis-Testing/1-Problem-formulation-and-basic-concepts/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5.1 问题提法和基本概念
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../5-Hypothesis-Testing/2-Important-parameter-inspection/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5.2 重要参数检验
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../5-Hypothesis-Testing/3-goodness-of-fit-test/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5.3 拟合优度检验
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../5-Hypothesis-Testing/appendix/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    附录
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../5-Hypothesis-Testing/exercises/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    习题
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../5-Hypothesis-Testing/answers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    答案
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1_6" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2_1_6" id="__nav_2_1_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    第6章 回归、相关与方差分析
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_1_6">
+            <span class="md-nav__icon md-icon"></span>
+            第6章 回归、相关与方差分析
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1-Basic-concepts-of-regression-analysis/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6.1 回归分析基本概念
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2-Univariate-linear-regression/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6.2 一元线性回归
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3-Multiple-linear-regression/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6.3 多元线性回归
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    6.4 相关分析
+  </span>
+  
+
+      </a>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5-Analysis-of-variance/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6.5 方差分析
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../appendix/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    附录
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../exercises/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    习题
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../answers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    答案
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../appendix/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    附表
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../%E3%80%8A%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1%E3%80%8B%E9%99%88%E5%B8%8C%E5%AD%BA%EF%BC%8C%E4%B8%AD%E5%9B%BD%E7%A7%91%E5%AD%A6%E6%8A%80%E6%9C%AF%E5%A4%A7%E5%AD%A6%E5%87%BA%E7%89%88%E7%A4%BE.pdf" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    PDF
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+  
+<nav class="md-tags" >
+  
+    
+    
+    
+      <a href="../../../tags/#" class="md-tag">校订中……</a>
+    
+  
+</nav>
+
+
+  
+    <a href="https://github.com/EanYang7/Probability-and-Statistics/tree/main/docs/courses/6-Regression-Correlation-and-Analysis-of-Variance/4-Correlation-analysis.md" title="编辑此页" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
+    </a>
+  
+  
+    
+      
+    
+    <a href="https://github.com/EanYang7/Probability-and-Statistics/tree/main/docs/courses/6-Regression-Correlation-and-Analysis-of-Variance/4-Correlation-analysis.md" title="查看本页的源代码" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0 8a5 5 0 0 1-5-5 5 5 0 0 1 5-5 5 5 0 0 1 5 5 5 5 0 0 1-5 5m0-12.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5Z"/></svg>
+    </a>
+  
+
+
+<h1 id="64">6.4 相关分析<a class="headerlink" href="#64" title="Permanent link">⚓︎</a></h1>
+<object data="https://eanyang7.github.io/Probability-and-Statistics/assets/6/6.4.pdf" type="application/pdf" width="700px" height="700px">
+    <embed src="https://eanyang7.github.io/Probability-and-Statistics/assets/6/6.4.pdf">
+        <p>This browser does not support PDFs. Please download the PDF to view it: <a href="https://eanyang7.github.io/Probability-and-Statistics/assets/6/6.4.pdf">下载 PDF</a>.</p>
+    </embed>
+</object>
+<p>在相关分析中, 所涉及的变量都是随机的, 且处于平等的地 位,故用 <span class="arithmatex">\(X_{1}, \cdots, X_{p}\)</span> 来记, 而不用 <span class="arithmatex">\(Y\)</span>.</p>
+<p>\title{
+6.4.1 相关系数的估计和检验
+}</p>
+<p>设 <span class="arithmatex">\(\left(X_{1}, X_{2}\right)\)</span> 服从二维正态分布 <span class="arithmatex">\(N\left(a, b, \sigma_{1}^{2}, \sigma_{2}^{2}, \rho\right)\)</span>, 其概率密 度函数见第二章 (2.7) 式. 在第三章指出: <span class="arithmatex">\(a, \sigma_{1}^{2}\)</span> 分别是 <span class="arithmatex">\(X_{1}\)</span> 的均值 方差, <span class="arithmatex">\(b, \sigma_{2}^{2}\)</span> 分别是 <span class="arithmatex">\(X_{2}\)</span> 的均值方差, 而 <span class="arithmatex">\(\rho\)</span> 是 <span class="arithmatex">\(X_{1}, X_{2}\)</span> 之间的相关系 数. 在 3.3 节中仔细论述了相关系数的意义, 尤其是指出了: 当总 体分布为正态时, 相关系数确实是变量之间的相关性的合理指标,</p>
+<ul>
+<li>324 • 而在非正态情况则只是线性相关程度的度量.</li>
+</ul>
+<p>相关系数 <span class="arithmatex">\(\rho\)</span> 的公式是</p>
+<div class="arithmatex">\[
+\rho=\operatorname{Cov}\left(X_{1}, X_{2}\right) /\left(\operatorname{Var}\left(X_{1}\right) \operatorname{Var}\left(X_{2}\right)\right)^{1 / 2}
+\]</div>
+<p>这个公式启发了 <span class="arithmatex">\(\rho\)</span> 的一个估计方法, 即矩估计法. 设 <span class="arithmatex">\(\left(X_{11}, X_{21}\right)\)</span>, <span class="arithmatex">\(\cdots,\left(X_{1 n}, X_{2 n}\right)\)</span> 为 <span class="arithmatex">\(\left(X_{1}, X_{2}\right)\)</span> 的 <span class="arithmatex">\(n\)</span> 个独立同分布的观察值, 按矩法, 分别以 <span class="arithmatex">\(\left(\bar{X}_{j}=\sum_{i=1}^{n} X_{j i} / n, j=1,2\right)\)</span></p>
+<div class="arithmatex">\[
+\begin{aligned}
+&amp; \sum_{i-1}^{n}\left(X_{1 i}-\bar{X}_{1}\right)^{2} /(n-1), \sum_{i=1}^{n}\left(X_{2 i}-\bar{X}_{2}\right)^{2} /(n-1) \text { 和 } \\
+&amp; \sum_{i=1}^{n}\left(X_{1 i}-\bar{X}_{1}\right)\left(X_{2 i}-\bar{X}_{2}\right) /(n-1)
+\end{aligned}
+\]</div>
+<p>去估计 <span class="arithmatex">\(\operatorname{Var}\left(X_{1}\right), \operatorname{Var}\left(X_{2}\right)\)</span> 和 <span class="arithmatex">\(\operatorname{Cov}\left(X_{1}, X_{2}\right)\)</span>. 由此, 按 (4.1), 得出 <span class="arithmatex">\(\rho\)</span> 的估计为</p>
+<div class="arithmatex">\[
+r=\frac{\sum_{i=1}^{n}\left(X_{1 i}-\bar{X}_{1}\right)\left(X_{2 i}-\bar{X}_{2}\right)}{\left[\sum_{i=1}^{n}\left(X_{1 i}-\bar{X}_{1}\right)^{2} \sum_{i=1}^{n}\left(X_{2 i}-\bar{X}_{2}\right)^{2}\right]^{1 / 2}}
+\]</div>
+<p><span class="arithmatex">\(r\)</span> 称为 “样本相关系数”.</p>
+<p>对 <span class="arithmatex">\(\rho\)</span> 的检验, 最有兴趣的是原假设</p>
+<div class="arithmatex">\[
+H_{0}: \rho=0
+\]</div>
+<p>对立假设为 <span class="arithmatex">\(\rho \neq 0 . H_{0}\)</span> 表示 <span class="arithmatex">\(X_{1}, X_{2}\)</span> 独立 (在第三章已指出这在非 正态情况下不成立). 一个显然的检验方法是: 计算 <span class="arithmatex">\(r\)</span>,</p>
+<div class="arithmatex">\[
+\text { 当 }|r| \leqslant C \text { 时接受 } H_{0} \text {, 不然就否定 } H_{0}
+\]</div>
+<p>常数 <span class="arithmatex">\(C\)</span> 与样本大小 <span class="arithmatex">\(n\)</span> 及检验水平 <span class="arithmatex">\(\alpha\)</span> 有关. 要决定 <span class="arithmatex">\(C\)</span>, 必须求出在 <span class="arithmatex">\(\rho=0\)</span> 时样本相关系数 <span class="arithmatex">\(r\)</span> 的分布. 这分布不很复杂, 但我们这里无 法介绍推导过程了, 只指出: 当 <span class="arithmatex">\(\rho=0\)</span> 时有 <span class="arithmatex">\({ }^{*}\)</span></p>
+<div class="arithmatex">\[
+\sqrt{n-2} r / \sqrt{1-r^{2}} \sim t_{n-2}
+\]</div>
+<p>由于 <span class="arithmatex">\(|r| \leqslant C\)</span> 等价于 <span class="arithmatex">\(\left|\sqrt{n-2} r / \sqrt{1-r^{2}}\right| \leqslant \sqrt{n-2} C / \sqrt{1-C^{2}}\)</span>,</p>
+<ul>
+<li>证明见习题 8 . 由 (4.5) 不难定出: 当给定检验水平 <span class="arithmatex">\(\alpha\)</span> 时, (4.4) 中的 <span class="arithmatex">\(C\)</span> 应取为方 程 <span class="arithmatex">\(\sqrt{n-2} C / \sqrt{1-C^{2}}=t_{n-2}(\alpha / 2)\)</span> 之解, 即</li>
+</ul>
+<div class="arithmatex">\[
+C=t_{n-2}(\alpha / 2) / \sqrt{n-2+t_{n-2}^{2}(\alpha / 2)}
+\]</div>
+<p>对 <span class="arithmatex">\(n=20,30, \cdots, 100\)</span>, 由 (4.6) 算出的 <span class="arithmatex">\(C\)</span>, 为 <span class="arithmatex">\((\alpha=0.05)\)</span></p>
+<div class="arithmatex">\[\begin{tabular}{c|ccccccccc}
+\hline$n$ &amp; 20 &amp; 30 &amp; 40 &amp; 50 &amp; 60 &amp; 70 &amp; 80 &amp; 90 &amp; 100 \\
+\hline$C$ &amp; $0 .+41$ &amp; 0.360 &amp; 0.328 &amp; 0.290 &amp; $0.25+$ &amp; 0.235 &amp; 0.220 &amp; 0.207 &amp; 0.197 \\
+\hline
+\end{tabular}\]</div>
+<p>当样本大小 <span class="arithmatex">\(n\)</span> 为 20 时, 即使样本相关系数 <span class="arithmatex">\(r\)</span> 达到 \pm 0.4 , 尚不足 以推断 <span class="arithmatex">\(\rho\)</span> 异于 0 . 随着 <span class="arithmatex">\(n\)</span> 增加, 这个界限逐步下降, 但即使 <span class="arithmatex">\(n\)</span> 达到 100 , 这个界限也还大约在 0.2 . 这说明: 要发现两变量之间较微弱 的相关, 样本大小 <span class="arithmatex">\(n\)</span> 必须很大才行. 同时也说明了: 对较小的 <span class="arithmatex">\(n, r\)</span> 的精度很差, 意义不大。</p>
+<p>当 <span class="arithmatex">\(\rho \neq 0\)</span> 时样本相关系数 <span class="arithmatex">\(r\)</span> 的分布问题, 在本世纪初曾是 <span class="arithmatex">\(\mathrm{K}\)</span>. 皮尔逊和 R. A. 费歇尔等统计学大师着力研究的对象, 最后被费 歇尔在 1915 年解决了, 其形式极为复杂, 在此不能细述了.</p>
+<p>\section{4 .2 偏相关}</p>
+<p>在统计学上, 相关系数作为随机变量之间相关程度的刻画, 用 得很多, 但在其解释上则应注意几点: 一是统计相关不能等同于因 果关系, 这一点我们在第三章中已指出过了. 例如, 分别以 <span class="arithmatex">\(X_{1}, X_{2}\)</span> 记一个人的饮食和衣着消费, 则 <span class="arithmatex">\(X_{1}, X_{2}\)</span> 有较强的相关. 但很难说 这: 者有何因果关系: 说好吃的人多半好穿, 或者好穿的人多半好 吃, 末见得可信. 但既然如此, 为什么在观察结果上又会显示出较 强的相关呢? 这就涉及到另一个.需要注意之点: 所考虑的变量 (如 此处的 <span class="arithmatex">\(X_{1}, X_{2}\)</span> ) 并非孤立的, 它们除彼此可能有的影响外, 还受到 - - 大批其他变理 (不妨暂称为 <span class="arithmatex">\(X_{3}, \cdots, X_{p}\)</span> 等) 的影响. 由于这个原 因, 相关系数有时被称为 “完全相关系数”. 意思是说, 在其中总结 了由一切影响带来的相关性. 这个说法解释了上百提出的那个问 题: 为何看来彼此并无密切因果关系的变量, 在观察结果上会显示 出较强的相关. 这原因就在于被其他因素带动起来了. 拿上例来 说, 如以 <span class="arithmatex">\(X_{3}\)</span> 记人的收人, 则一般说来, 收人大的人各方面消费都 倾向于高, 它带动了 <span class="arithmatex">\(X_{1}\)</span> (吃)和 <span class="arithmatex">\(X_{2}\)</span> (穿)增长, 以致使二者显示出较 强的正相关. 可以设想, 如果能用某种方式把 <span class="arithmatex">\(X_{3}\)</span> 的影响消去, 则 <span class="arithmatex">\(X_{1}, X_{2}\)</span> 可能显示很不一样的相关性质. 例如它可以转为负相关. 因为在一定收人的人中, 在吃、穿中的一个方面消费大的人, 一般 会导致另一方面消费的减少.</p>
+<p>一般, 设有 <span class="arithmatex">\(p\)</span> 个随机变量 <span class="arithmatex">\(X_{1}, X_{2}, X_{3}, \cdots, X_{p}\)</span>. 把 <span class="arithmatex">\(X_{3}, X_{4}, \cdots\)</span>, <span class="arithmatex">\(X_{p}\)</span> 的影响从 <span class="arithmatex">\(X_{1}, X_{2}\)</span> 中消去, 剩余的部分分别记为 <span class="arithmatex">\(X_{1}{ }^{\prime}\)</span> 和 <span class="arithmatex">\(X_{2}{ }^{\prime}\)</span>. 则 <span class="arithmatex">\(X_{1}^{\prime}, X_{2}{ }^{\prime}\)</span> 的相关系数称为 <span class="arithmatex">\(X_{1}, X_{2}\)</span> 对 <span class="arithmatex">\(\left(X_{3} \cdots, X_{p}\right)\)</span> 的偏相关系数, 并 记为 <span class="arithmatex">\(\rho_{12} \cdot(3+\cdots p)\)</span>. 在以上论述中, “消去”一词的含义并末严格界定, 但一般是在最小二乘法的意义下.例如, 从 <span class="arithmatex">\(X_{1}\)</span> 中消去 <span class="arithmatex">\(X_{3}, \cdots, X_{p}\)</span> 的影响, 指的是找一个线性式</p>
+<div class="arithmatex">\[
+L_{1}\left(X_{3}, \cdots, X_{p}\right)=c_{0}+c_{3} X_{3}+\cdots+c_{p} X_{p}
+\]</div>
+<p>使 <span class="arithmatex">\(E\left[X_{1}-L_{1}\left(X_{3}, \cdots, X_{p}\right)\right]^{2}\)</span> 达到最小,剩余就是</p>
+<div class="arithmatex">\[
+X_{1}^{\prime}=X_{1}-L_{1}\left(X_{3}, \cdots, X_{p}\right)
+\]</div>
+<p>同理找线性式 <span class="arithmatex">\(L_{2}\left(X_{3}, \cdots, X_{p}\right)=d_{0}+d_{3} X_{3}+\cdots+d_{p} X_{p}\)</span>, 使 <span class="arithmatex">\(\mathrm{E}\left[X_{2}-\right.\)</span> <span class="arithmatex">\(\left.L_{2}\left(X_{3}, \cdots, X_{p}\right)\right]^{2}\)</span> 最小,剩余是</p>
+<div class="arithmatex">\[
+X_{2}^{\prime}=X_{2}-L_{2}\left(X_{3}, \cdots, X_{p}\right)
+\]</div>
+<p><span class="arithmatex">\(X_{1}, X_{2}\)</span> 对 <span class="arithmatex">\(\left(X_{3}, \cdots, X_{p}\right)\)</span> 的偏相关系数 <span class="arithmatex">\(\rho_{12} \cdot(3+\cdots p)\)</span> 就是 <span class="arithmatex">\(X_{1}^{\prime}, X_{2}^{\prime}\)</span> 的相 关系数. 要算出其表达式, 就需要算出上文的线性式 <span class="arithmatex">\(L_{1}\)</span> 和 <span class="arithmatex">\(L_{2}\)</span>. 下 面我们对 <span class="arithmatex">\(p=3\)</span> 这个简单情况来计算一下. 分别以 <span class="arithmatex">\(a_{1}, a_{2}, a_{3} ; \sigma_{1}^{2}\)</span>, <span class="arithmatex">\(\sigma_{2}^{2}, \sigma_{3}^{2}\)</span> 记 <span class="arithmatex">\(X_{1}, X_{2}\)</span> 和 <span class="arithmatex">\(X_{3}\)</span> 的均值和方差, 以 <span class="arithmatex">\(\rho_{12}, \rho_{13}, \rho_{23}\)</span> 分别记 <span class="arithmatex">\(X_{1}\)</span>, <span class="arithmatex">\(X_{2}\)</span> 之间, <span class="arithmatex">\(X_{1}, X_{3}\)</span> 之间, 和 <span class="arithmatex">\(X_{2}, X_{3}\)</span> 之间的相关系数.</p>
+<p>关于找一个线性式 <span class="arithmatex">\(L_{1}\left(X_{3}\right)\)</span> 使 <span class="arithmatex">\(E\left(X_{1}-L_{1}\left(X_{3}\right)\right)^{2}\)</span> 达到最小的 问题, 已在 3.3 节中讨论过了, 按该章的 (3.5) 式, 用此处的记号, 有</p>
+<div class="arithmatex">\[
+L_{1}\left(X_{3}\right)=a_{1}+\sigma_{1} \sigma_{3}^{-1} \rho_{13}\left(X_{3}-a_{3}\right)
+\]</div>
+<p>同理有</p>
+<div class="arithmatex">\[
+L_{2}\left(X_{3}\right)=a_{2}+\sigma_{2} \sigma_{3}^{-1} \rho_{23}\left(X_{3}-a_{3}\right)
+\]</div>
+<p>故有</p>
+<div class="arithmatex">\[
+\begin{aligned}
+&amp; X_{1}^{\prime}=X_{1}-a_{1}-\sigma_{1} \sigma_{3}^{-1} \rho_{13}\left(X_{3}-a_{3}\right) \\
+&amp; X_{2}^{\prime}=X_{2}-a_{2}-\sigma_{2} \sigma_{3}^{-1} \rho_{23}\left(X_{3}-a_{3}\right)
+\end{aligned}
+\]</div>
+<p>显然, <span class="arithmatex">\(E\left(X_{1}^{\prime}\right)=E\left(X_{2}^{\prime}\right)=0\)</span>, 而按第三章 (3.6) 式, 用此处的记号, 有</p>
+<div class="arithmatex">\[
+\operatorname{Var}\left(X_{1}^{\prime}\right)=\sigma_{1}^{2}\left(1-\rho_{13}^{2}\right), \operatorname{Var}\left(X_{2}^{\prime}\right)=\sigma_{2}^{2}\left(1-\rho_{23}^{2}\right)
+\]</div>
+<p>而</p>
+<div class="arithmatex">\[
+\begin{aligned}
+\operatorname{Cov} &amp; \left(X_{1}^{\prime}, X_{2}^{\prime}\right)=E\left(X_{1}^{\prime}, X_{2}^{\prime}\right)=E\left[\left(X_{1}-a_{1}\right)\left(X_{2}-a_{2}\right)\right] \\
+&amp; -\sigma_{1} \sigma_{3}^{-1} \rho_{13} E\left[\left(X_{3}-a_{3}\right)\left(X_{2}-a_{2}\right)\right] \\
+&amp; -\sigma_{2} \sigma_{3}^{-1} \rho_{23} E\left[\left(X_{1}-a_{1}\right)\left(X_{3}-a_{3}\right)\right] \\
+&amp; +\sigma_{1} \sigma_{3}^{-1} \rho_{13} \sigma_{2} \sigma_{3}^{-1} \rho_{23} E\left[\left(X_{3}-a_{3}\right)\right]^{2} \\
+= &amp; \sigma_{1} \sigma_{2} \rho_{12}-\sigma_{1} \sigma_{3}^{-1} \rho_{13} \sigma_{2} \sigma_{3} \rho_{23} \\
+&amp; -\sigma_{2} \sigma_{3}^{-1} \rho_{23} \sigma_{1} \sigma_{3} \rho_{13}+\sigma_{1} \sigma_{2} \sigma_{3}^{-2} \rho_{13} \rho_{23} \sigma_{3}^{2} \\
+= &amp; \sigma_{1} \sigma_{2} \rho_{12}-\sigma_{1} \sigma_{2} \rho_{13} \rho_{23}=\sigma_{1} \sigma_{2}\left(\rho_{12}-\rho_{13} \rho_{23}\right)
+\end{aligned}
+\]</div>
+<p>由 <span class="arithmatex">\((4.7),(4.8)\)</span>, 得</p>
+<div class="arithmatex">\[
+\begin{aligned}
+\rho_{12 \cdot(3)} &amp; =\operatorname{Corr}\left(X_{1}^{\prime}, X_{2}^{\prime}\right) \\
+&amp; =\operatorname{Cov}\left(X_{1}^{\prime}, X_{2}^{\prime}\right) /\left(\operatorname{Var}\left(X_{1}^{\prime}\right) \operatorname{Var}\left(X_{2}^{\prime}\right)\right)^{1 / 2} \\
+&amp; =\left(\rho_{12}-\rho_{13} \rho_{23}\right) /\left[\left(1-\rho_{13}^{2}\right)\left(1-\rho_{23}^{2}\right)\right]^{1 / 2}
+\end{aligned}
+\]</div>
+<p>细察表达式 (4.9), 有如下的构造: 把 <span class="arithmatex">\(X_{1}, X_{2}, X_{3}\)</span> 之间的相关系 数, 连同 <span class="arithmatex">\(X_{i}\)</span> 与 <span class="arithmatex">\(X_{i}\)</span> 之间的相关系数 <span class="arithmatex">\(\rho_{i i}=1\)</span> 也在内, 排列成一个三阶 方阵 (称为 <span class="arithmatex">\(X_{1}, X_{2}, X_{3}\)</span> 的 “相关阵”)</p>
+<div class="arithmatex">\[
+P=\left(\begin{array}{lll}
+\rho_{11} &amp; \rho_{12} &amp; \rho_{13} \\
+\rho_{21} &amp; \rho_{22} &amp; \rho_{23} \\
+\rho_{31} &amp; \rho_{32} &amp; \rho_{33}
+\end{array}\right)=\left(\begin{array}{ccc}
+1 &amp; \rho_{12} &amp; \rho_{13} \\
+\rho_{12} &amp; 1 &amp; \rho_{23} \\
+\rho_{13} &amp; \rho_{23} &amp; 1
+\end{array}\right)
+\]</div>
+<p>此处用了 <span class="arithmatex">\(\rho_{i i}=1, \rho_{i j}=\rho_{j i}\)</span>. 则其 <span class="arithmatex">\((1,1)\)</span> 元的子式, 即划掉 <span class="arithmatex">\(P\)</span> 的第一 行第一列所剩下的行列式, 等于 <span class="arithmatex">\(P_{11}=1-\rho_{2}^{2}\)</span>. 同样, <span class="arithmatex">\((2,2)\)</span> 元的子 式为 <span class="arithmatex">\(P_{22}=1-\rho_{13}^{2},(1,2)\)</span> 元的子式为 <span class="arithmatex">\(P_{12}=\rho_{12}-\rho_{13} \rho_{23}\)</span>. 因此</p>
+<div class="arithmatex">\[
+\rho_{12 \cdot(3)}=P_{12} / \sqrt{P_{11} P_{22}}
+\]</div>
+<p>这个表达式,可以证明,能推广到 <span class="arithmatex">\(p\)</span> 个自变量 <span class="arithmatex">\(X_{1}, X_{2}, X_{3}, X_{p}\)</span> 的情 况. 仍以 <span class="arithmatex">\(\rho_{i j}\)</span> 记 <span class="arithmatex">\(X_{i}, X_{j}\)</span> 之间的相关系数 <span class="arithmatex">\(\left(\rho_{i i}=1, \rho_{i j}=\rho_{j i}\right), P\)</span> 记其相 关阵:</p>
+<div class="arithmatex">\[
+P=\left(\begin{array}{cccc}
+\rho_{11} &amp; \rho_{12} &amp; \cdots &amp; \rho_{1 p} \\
+\rho_{21} &amp; \rho_{22} &amp; \cdots &amp; \rho_{2 p} \\
+\vdots &amp; \vdots &amp; &amp; \vdots \\
+\rho_{p 1} &amp; \rho_{p 2} &amp; \cdots &amp; \rho_{p p}
+\end{array}\right)
+\]</div>
+<p>而以 <span class="arithmatex">\(P_{u v}\)</span> 记 <span class="arithmatex">\(P\)</span> 的 <span class="arithmatex">\((u, v)\)</span> 元的子式, 即从 <span class="arithmatex">\(P\)</span> 中划去第 <span class="arithmatex">\(u\)</span> 行第 <span class="arithmatex">\(v\)</span> 列所 成的行列式,则</p>
+<div class="arithmatex">\[
+\rho_{12 \cdot(34 \cdots p)}=P_{12} / \sqrt{P_{11} P_{22}}
+\]</div>
+<p>从表达式 (4.9) 看出一个现象. 设 <span class="arithmatex">\(\rho_{12}&gt;0\)</span>, 但不太接近于 1. 即 <span class="arithmatex">\(X_{1}\)</span>, <span class="arithmatex">\(X_{2}\)</span> 为正相关, 但相关程度不是非常密切. 又 <span class="arithmatex">\(\rho_{13}, \rho_{23}\)</span> 都很接近 1 , 则 (4.9)式之分子将小于 0 , 即 <span class="arithmatex">\(\rho_{12 \cdot(3)}&lt;0\)</span>. 就是说, 尽管 <span class="arithmatex">\(X_{1}, X_{2}\)</span> 的通 常相关系数为正, 其偏相关系数可以为负. 这拿前面举的那个 <span class="arithmatex">\(X_{1}\)</span> <span class="arithmatex">\(=\)</span> 吃的支出, <span class="arithmatex">\(X_{2}=\)</span> 穿的支出, <span class="arithmatex">\(X_{3}=\)</span> 收人的例子可作一个印证. <span class="arithmatex">\(X_{1}\)</span>, <span class="arithmatex">\(X_{2}\)</span> 的 (完全) 相关 <span class="arithmatex">\(\rho_{12}\)</span> 大于 0 , 但 <span class="arithmatex">\(\rho_{13}, \rho_{23}\)</span> 看来都为正且很大, 故 <span class="arithmatex">\(\rho_{12} \cdot(3)\)</span> 当小于 0 : 从吃穿支出中消去收人的影响, 等于在固定收人 的情况下考虑二者的关系, 其相关为负就不难理解了. 当然, 反过 来也可能:即 <span class="arithmatex">\(\rho_{12}&lt;0\)</span> 但 <span class="arithmatex">\(\rho_{12} \cdot(3)&gt;0\)</span>.</p>
+<p>因此,在涉及多个变量相互影响的问题中,不仅考虑完全相关 系数, 而且考虑种种有意义的偏相关系数(在全部 <span class="arithmatex">\(p\)</span> 个自变量中, 可任选出 <span class="arithmatex">\(k \geqslant 3\)</span> 个: <span class="arithmatex">\(X_{i_{1}}, \cdots, X_{i_{k}}\)</span>, 而考虑 <span class="arithmatex">\(X_{i_{1}}, X_{i_{2}}\)</span> 对 <span class="arithmatex">\(\left(X_{i_{3}}, \cdots, X_{i_{k}}\right)\)</span> 的 偏相关系数. 其计算仍按 (4.11), 只是在 <span class="arithmatex">\(P\)</span> 中要把不是 <span class="arithmatex">\(i_{1}, \cdots, i_{k}\)</span> 那些行列都划去), 这样对整个相关的图景就可获得深人一层的了 解.</p>
+<p>读者也不要误以为偏相关系数高于完全相关系数, 这二者各 说明“相关”这个概念的一个侧面, 其含义不同. 在什么情况下哪一 种相关更为贴切,要看问题的性质.</p>
+<p>如果对 <span class="arithmatex">\(\left(X_{1}, \cdots, X_{p}\right)\)</span> 进行了 <span class="arithmatex">\(n\)</span> 次观察, 得样本</p>
+<div class="arithmatex">\[
+\left(X_{1 i}, \cdots, X_{p i}\right), i=1, \cdots, n
+\]</div>
+<p>则可以用前面的方法 (见(4.2) 式) 估计 <span class="arithmatex">\(X_{u}\)</span> 与 <span class="arithmatex">\(X_{v}\)</span> 的相关系数, 即 计算样本相关系数 <span class="arithmatex">\(r_{u(i-1}\)</span> :</p>
+<div class="arithmatex">\[
+\begin{aligned}
+r_{u i}= &amp; \sum_{i=1}^{n}\left(X_{u i}-\bar{X}_{u}\right)\left(X_{v i}-\bar{X}_{u}\right) /\left[\sum_{i=1}^{n}\left(X_{u i}-\bar{X}_{u}\right)^{2}\right. \\
+&amp; \left.\cdot \sum_{i=1}^{n}\left(X_{i i}-\bar{X}_{v}\right)^{2}\right] 1 / 2
+\end{aligned}
+\]</div>
+<p>其中 <span class="arithmatex">\(\bar{X}_{k}=\left(X_{k 1}+\cdots+X_{k n}\right) / n, k=1, \cdots, p\)</span>. 有 <span class="arithmatex">\(r_{u t u}=1, r_{u u^{\prime}}=r_{v u}\)</span>. 以 <span class="arithmatex">\(r_{u v}\)</span>, 代替 <span class="arithmatex">\(P\)</span> 中的 <span class="arithmatex">\(\rho_{u v}\)</span> 得样本相关阵</p>
+<div class="arithmatex">\[
+R=\left[\begin{array}{cccc}
+r_{11} &amp; r_{12} &amp; \cdots &amp; r_{1 p} \\
+r_{21} &amp; r_{22} &amp; \cdots &amp; r_{2 p} \\
+\vdots &amp; \vdots &amp; &amp; \vdots \\
+r_{p 1} &amp; r_{p 2} &amp; \cdots &amp; r_{p p}
+\end{array}\right)
+\]</div>
+<p>然后用</p>
+<div class="arithmatex">\[
+r_{12 \cdot(34 \cdots p)}=R_{12} / \sqrt{R_{11} R_{22}}
+\]</div>
+<p>去估计 <span class="arithmatex">\(r_{12} \cdot(34 \cdots p)\)</span>. 它称为样本偏相关系数.</p>
+<p>如果要检验有关 <span class="arithmatex">\(\rho_{12} \cdot(34 \cdots p)\)</span> 的假设, 则必须假定变量服从正态 分布. 在这种假定下, 可以证明:原假设</p>
+<div class="arithmatex">\[
+H_{0}: \rho_{12 \cdot(34 \cdots p)}=0
+\]</div>
+<p>的一个水平 <span class="arithmatex">\(\alpha\)</span> 的检验为</p>
+<div class="arithmatex">\[
+\left\{\begin{array}{l}
+\left|r_{12 \cdot(34 \cdots p)}\right| \leqslant t_{n-p}(\alpha / 2) /\left[n-p+t_{n-p}^{2}(\alpha / 2)\right]^{1 / 2}, \text { 接受 } H_{0} \\
+\mid r_{12 \cdot(34 \cdots p)}:&gt;t_{n-p}(\alpha / 2) /\left[n-p+t_{n-p}^{2}(\alpha / 2)\right]^{1 / 2} \text {, 否定 } H_{0}
+\end{array}\right.
+\]</div>
+<p>此检验与前述相关系数为 0 的检验之差别仅在于, 把(4.6) 式中的 <span class="arithmatex">\(n-2\)</span> 换为 <span class="arithmatex">\(n-p\)</span>.</p>
+<p>例 4.1 随机抽取 1000 人调查其 (每年) 吃的支出 <span class="arithmatex">\(\left(X_{1}\right)\)</span>, 衣 着支出 <span class="arithmatex">\(\left(X_{2}\right)\)</span> 和收人 <span class="arithmatex">\(\left(X_{3}\right)\)</span>, 算出的样本相关系数分别为 <span class="arithmatex">\(r_{12}=0.57\)</span>, <span class="arithmatex">\(r_{13}=0.82, r_{23}=0.80\)</span>. 对 <span class="arithmatex">\(n=1000, \alpha=0.05, t_{n-2}(\alpha / 2)\)</span> 和 <span class="arithmatex">\(t_{n-3}\)</span> <span class="arithmatex">\((\alpha / 2)\)</span> 都可取为 1.96. 于是易算得 <span class="arithmatex">\(\left|r_{12}\right|&gt;t_{n-2}(\alpha / 2) /\)</span> <span class="arithmatex">\(\sqrt{n-2+t_{n-2}^{2}(\alpha / 2)}\)</span>, 因而 <span class="arithmatex">\(X_{1}, X_{2}\)</span> 的(完全) 相关在 <span class="arithmatex">\(\alpha=0.05\)</span> 的 水平上为显著的且为正相关. 按公式 (4.9), 算出</p>
+<div class="arithmatex">\[
+r_{12 \cdot(3)}=\left(r_{12}-r_{13} r_{23}\right) / \sqrt{\left(1-r_{13}^{2}\right)\left(1-\overline{r_{23}^{2}}\right)}=-0.73
+\]</div>
+<p>它在水平 <span class="arithmatex">\(\alpha=0.05\)</span> 时为高度的负相关.</p>
+<p>\section{4 .3 复相关}</p>
+<p>设有若干个随机变量 <span class="arithmatex">\(X_{1}, \cdots, X_{p}\)</span>. 可能有这种情况: <span class="arithmatex">\(X_{1}\)</span> 对每 个 <span class="arithmatex">\(X_{j}(j \geqslant 2)\)</span> 的相关性不一定很鼠著, 但全体 <span class="arithmatex">\(X_{2}, \cdots, X_{p}\)</span> 合起来, 则与 <span class="arithmatex">\(X_{1}\)</span> 有较显著的相关. 例如, 设 <span class="arithmatex">\(X_{1}\)</span> 为某种水田农作物的产量, <span class="arithmatex">\(X_{2}, \cdots, X_{p}\)</span> 为该作物生长期那几个月的各月降雨量 (例如 <span class="arithmatex">\(3 、 4 、 5 、 6\)</span> 月 ), 亩产与指定一月的降雨量肯定有关, 但不一定十分大, 而全体 这几个月的降雨情况, 则肯定与亩产有更大的相关. 这种以 <span class="arithmatex">\(X_{1}\)</span> 为 一方, <span class="arithmatex">\(X_{2}, \cdots, X_{p}\)</span> 全体为一方之间的相关, 称为 <span class="arithmatex">\(X_{1}\)</span> 与 <span class="arithmatex">\(\left(X_{2}, \cdots, X_{p}\right)\)</span> 的“复相关”.</p>
+<p>这种复相关的定义,与偏相关有其相似之处,就是也要找 <span class="arithmatex">\(X_{2}\)</span>, <span class="arithmatex">\(\cdots, X_{p}\)</span> 的一个线性式 <span class="arithmatex">\(L\left(X_{2}, \cdots, X_{p}\right)=c_{0}+c_{2} X_{2}+\cdots+c_{p} X_{p}\)</span>, 使 <span class="arithmatex">\(E\left[X_{1}-L\left(X_{2}, \cdots, X_{p}\right)\right]^{2}\)</span> 达到最小. 然后, <span class="arithmatex">\(X_{1}\)</span> 与 <span class="arithmatex">\(L\left(X_{2}, \cdots, X_{p}\right)\)</span> 的 通常相关系数, 就定义为 <span class="arithmatex">\(X_{1}\)</span> 和 <span class="arithmatex">\(\left(X_{2}, \cdots, X_{p}\right)\)</span> 之间的 “复相关系 数”, 并记为 <span class="arithmatex">\(\rho_{1(23 \cdots p)}\)</span>.</p>
+<p>求 <span class="arithmatex">\(L\left(X_{2}, \cdots, X_{p}\right)\)</span> 的方法, 与 3.3 节所用方法相似 (那里解决 了 <span class="arithmatex">\(p=2\)</span> 的情况). 仔细推导过程不在此写出了, 我们只给出最后 的结果为</p>
+<div class="arithmatex">\[
+\rho_{1(23 \cdots p)}=\sqrt{1-|P| / P_{11}}
+\]</div>
+<p>这里 <span class="arithmatex">\(|P|\)</span> 为 (4.10) 所定义的方阵 <span class="arithmatex">\(P\)</span> 的行列式, <span class="arithmatex">\(P_{11}\)</span> 如前, 是方阵 <span class="arithmatex">\(P\)</span> 的 <span class="arithmatex">\((1,1)\)</span> 元的子式.</p>
+<p>如果对 <span class="arithmatex">\(\left(X_{1}, X_{2}, \cdots, X_{p}\right)\)</span> 进行了 <span class="arithmatex">\(n\)</span> 次观察, 得样本 <span class="arithmatex">\(\left(X_{1 i}, X_{2 i}\right.\)</span>, <span class="arithmatex">\(\left.X_{p i}\right), i=1, \cdots, n\)</span>, 则由之计算出样本相关阵 R(见 (4.12) 式), 以 <span class="arithmatex">\(R\)</span> 取代 (4.16)中之 <span class="arithmatex">\(P\)</span>, 得样本复相关系数</p>
+<div class="arithmatex">\[
+r_{1(23 \cdots p)}=\sqrt{1-|R| / R_{11}}
+\]</div>
+<p>它可作为 <span class="arithmatex">\(\rho_{1(23 \cdots p)}\)</span> 的估计.</p>
+<p>关于复相关系数的检验, 实用上有兴趣的是</p>
+<div class="arithmatex">\[
+H_{0}: \rho_{1(23 \cdots p)}=0
+\]</div>
+<p>直观上看,一个显然的检验方法是</p>
+<div class="arithmatex">\[
+\text { 当 } r_{1(23 \cdots p)} \leqslant C \text { 时接受 } H_{0} \text {, 不然就否定 } H_{0}
+\]</div>
+<p>要依据检验水平 <span class="arithmatex">\(\alpha\)</span> 去决定 (4.19) 中的常数 <span class="arithmatex">\(C\)</span>, 就必须求出当 <span class="arithmatex">\(H_{0}\)</span> 成立时, <span class="arithmatex">\(r_{1(23 \cdots p)}\)</span> 的分布. 可以证明: 当正态假定成立且 <span class="arithmatex">\(H_{0}\)</span> 为真 时, <span class="arithmatex">\(r_{1(23 \cdots p)}^{2}\)</span> 的分布为所谓 “ <span class="arithmatex">\(\beta\)</span> 分布”, 其密度函数 <span class="arithmatex">\(f(x)\)</span> 为</p>
+<p><img alt="" src="https://cdn.mathpix.com/cropped/2023_07_12_a9e88f311d5e60e11bfbg-09.jpg?height=293&amp;width=1390&amp;top_left_y=1110&amp;top_left_x=276" /></p>
+<p>其中 <span class="arithmatex">\(\beta\left(\frac{p-1}{2}, \frac{n-p}{2}\right)\)</span> 曾在第二章的附录中定义过. 用这个分布去 决定 (4.19) 中的 <span class="arithmatex">\(C\)</span>, 可以通过 <span class="arithmatex">\(F\)</span> 分布表. 因为, 在 (4.20) 的基础上 可以证明: 在 <span class="arithmatex">\(H_{0}\)</span> 成立时有</p>
+<div class="arithmatex">\[
+\frac{n=p}{p-1} \frac{r_{1(23 \cdots p)}^{2}}{1-r_{1(23 \cdots p)}^{2}} \sim F_{(p-1) / 2,(n-p) / 2}
+\]</div>
+<p><span class="arithmatex">\(F_{a, b}\)</span> 为自由度 <span class="arithmatex">\(a, b\)</span> 的 <span class="arithmatex">\(F\)</span> 分布 (见第 2 章例 4.11). 由 (4.21), 定出 在给定水平 <span class="arithmatex">\(\alpha\)</span> 时, (4.19) 式中的 <span class="arithmatex">\(C\)</span> 为</p>
+<p><span class="arithmatex">\(C=\)</span></p>
+<div class="arithmatex">\[
+\left[\left(\frac{p-1}{n-p} F_{(p-1) / 2,(n-p) / 2}(\alpha)\right) /\left(1+\frac{p-1}{n-p} F_{(p-1) / 2,(n-p) / 2}(\alpha)\right)\right]^{1 / 2}
+\]</div>
+<p>在以上的叙述中, <span class="arithmatex">\(X_{1}, \cdots, X_{p}\)</span> 也可以只是考察的全部变量中 的一部分. 例如, <span class="arithmatex">\(X_{1}\)</span> 代表亩产量, <span class="arithmatex">\(X_{2}, \cdots, X_{p}\)</span> 代表所考察的全部气 象因子, 如有关各月的降水量, 月平均气温等, 而 <span class="arithmatex">\(X_{p+1}, \cdots, X_{q}\)</span> 等 则代表与田间管理有关的因子, 另外还可以有别的因子. 我们可以 考虑 <span class="arithmatex">\(X_{1}\)</span> 与 <span class="arithmatex">\(\left(X_{2}, \cdots, X_{p}\right)\)</span> 的复相关, 以看看亩产量与气象因子相关 的程度如何, 可以考虑 <span class="arithmatex">\(X_{1}\)</span> 与 <span class="arithmatex">\(\left(X_{p+1}, \cdots, X_{q}\right)\)</span> 的复相关, 以看看亩 产量与管理因子相关的程度如何, 等等. 上面所说的估计和检验方 法当然仍然适用.</p>
+
+
+
+
+
+
+
+  
+    
+  
+  
+    
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="最后更新">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">December 21, 2023</span>
+  </span>
+
+    
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="创建日期">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3h-2Z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">December 21, 2023</span>
+  </span>
+
+    
+    
+    
+  </aside>
+
+
+  
+
+
+
+  <form class="md-feedback" name="feedback" hidden>
+    <fieldset>
+      <legend class="md-feedback__title">
+        对当前页面有任何疑问吗？
+      </legend>
+      <div class="md-feedback__inner">
+        <div class="md-feedback__list">
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="This page was helpful" data-md-value="1">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 9v12H1V9h4m4 12a2 2 0 0 1-2-2V9c0-.55.22-1.05.59-1.41L14.17 1l1.06 1.06c.27.27.44.64.44 1.05l-.03.32L14.69 8H21a2 2 0 0 1 2 2v2c0 .26-.05.5-.14.73l-3.02 7.05C19.54 20.5 18.83 21 18 21H9m0-2h9.03L21 12v-2h-8.79l1.13-5.32L9 9.03V19Z"/></svg>
+            </button>
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="This page could be improved" data-md-value="0">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 15V3h4v12h-4M15 3a2 2 0 0 1 2 2v10c0 .55-.22 1.05-.59 1.41L9.83 23l-1.06-1.06c-.27-.27-.44-.64-.44-1.06l.03-.31.95-4.57H3a2 2 0 0 1-2-2v-2c0-.26.05-.5.14-.73l3.02-7.05C4.46 3.5 5.17 3 6 3h9m0 2H5.97L3 12v2h8.78l-1.13 5.32L15 14.97V5Z"/></svg>
+            </button>
+          
+        </div>
+        <div class="md-feedback__note">
+          
+            <div data-md-value="1" hidden>
+              
+              
+                
+              
+              感谢您的反馈！
+            </div>
+          
+            <div data-md-value="0" hidden>
+              
+              
+                
+              
+              感谢您的反馈！请点击这里<a href="https://github.com/EanYang7/Probability-and-Statistics/issues" target="_blank" rel="noopener">这里</a>提供问题反馈.
+            </div>
+          
+        </div>
+      </div>
+    </fieldset>
+  </form>
+
+
+<h2 id="__comments">评论</h2>
+<p>登录github的账号后，可以直接在下方评论框中输入。</p>
+<p>
+  如果想进行更详细的讨论(如排版、上传图片等)，选择一个反应后并点击上方的文字，进入论坛页面。
+</p>
+<!-- Insert generated snippet here -->
+<script
+  src="https://giscus.app/client.js"
+  data-repo="EanYang7/Probability-and-Statistics"
+  data-repo-id="R_kgDOJszf0w"
+  data-category="Q&A"
+  data-category-id="DIC_kwDOJszf084CXnYR"
+  data-mapping="title"
+  data-strict="0"
+  data-reactions-enabled="1"
+  data-emit-metadata="0"
+  data-input-position="top"
+  data-theme="preferred_color_scheme"
+  data-lang="zh-CN"
+  crossorigin="anonymous"
+  async
+></script>
+<!-- Synchronize Giscus theme with palette -->
+<script>
+  var giscus = document.querySelector("script[src*=giscus]");
+
+  /* Set palette on initial load */
+  var palette = __md_get("__palette");
+  if (palette && typeof palette.color === "object") {
+    var theme = palette.color.scheme === "slate" ? "dark" : "light";
+    giscus.setAttribute("data-theme", theme);
+  }
+
+  /* Register event handlers after documented loaded */
+  document.addEventListener("DOMContentLoaded", function () {
+    var ref = document.querySelector("[data-md-component=palette]");
+    ref.addEventListener("change", function () {
+      var palette = __md_get("__palette");
+      if (palette && typeof palette.color === "object") {
+        var theme = palette.color.scheme === "slate" ? "dark" : "light";
+
+        /* Instruct Giscus to change theme */
+        var frame = document.querySelector(".giscus-frame");
+        frame.contentWindow.postMessage(
+          { giscus: { setConfig: { theme } } },
+          "https://giscus.appa"
+        );
+      }
+    });
+  });
+</script>
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/EanYang7/cs231n" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant", "navigation.top", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.path", "toc.follow", "content.action.edit", "content.action.view"], "search": "../../../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.d7c377c4.min.js"></script>
+      
+        <script src="../../../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

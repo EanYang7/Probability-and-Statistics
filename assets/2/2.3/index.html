@@ -1,0 +1,2133 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="《概率论与数理统计》陈希孺，中国科学技术大学出版社">
+      
+      
+      
+        <link rel="canonical" href="https://eanyang7.github.io/Probability-and-Statistics/assets/2/2.3/">
+      
+      
+      
+      
+      <link rel="icon" href="../../../cover.jpg">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.2">
+    
+    
+      
+        <title>2.3 条件概率分布与随机变量的独立性 - 概率论与数理统计</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/main.50c56a3b.min.css">
+      
+        
+        <link rel="stylesheet" href="../../stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-GEDRLMN4ML"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-GEDRLMN4ML",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-GEDRLMN4ML",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#23" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../.." title="概率论与数理统计" class="md-header__button md-logo" aria-label="概率论与数理统计" data-md-component="logo">
+      
+  <img src="../../../cover.jpg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            概率论与数理统计
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              2.3 条件概率分布与随机变量的独立性
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换为暗黑模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换为暗黑模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5c-.84 0-1.65.15-2.39.42L12 2M3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29L3.34 7m.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14L3.36 17M20.65 7l-1.77 3.79a7.023 7.023 0 0 0-2.38-4.15l4.15.36m-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29L20.64 17M12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44L12 22Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换为浅色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换为浅色模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3 3.19.09m3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95 2.06.05m-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/EanYang7/Probability-and-Statistics" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    EanYang7/Probability-and-Statistics
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../.." class="md-tabs__link">
+          
+  
+  首页
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      
+  
+  
+  
+    
+    
+      
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../courses/1-Probability-of-events/1-What-is-the-probability/" class="md-tabs__link">
+          
+  
+  课程
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../%E3%80%8A%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1%E3%80%8B%E9%99%88%E5%B8%8C%E5%AD%BA%EF%BC%8C%E4%B8%AD%E5%9B%BD%E7%A7%91%E5%AD%A6%E6%8A%80%E6%9C%AF%E5%A4%A7%E5%AD%A6%E5%87%BA%E7%89%88%E7%A4%BE.pdf" class="md-tabs__link">
+        
+  
+    
+  
+  PDF
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="概率论与数理统计" class="md-nav__button md-logo" aria-label="概率论与数理统计" data-md-component="logo">
+      
+  <img src="../../../cover.jpg" alt="logo">
+
+    </a>
+    概率论与数理统计
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/EanYang7/Probability-and-Statistics" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    EanYang7/Probability-and-Statistics
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    首页
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            首页
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    简介
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    课程
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            课程
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    章节
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            章节
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1_1" id="__nav_2_1_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    第1章 事件的概率
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1_1">
+            <span class="md-nav__icon md-icon"></span>
+            第1章 事件的概率
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../courses/1-Probability-of-events/1-What-is-the-probability/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1.1 概率是什么
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../courses/1-Probability-of-events/2-Classical-Probability-Calculation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1.2 古典概率计算
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../courses/1-Probability-of-events/3-Operation-Conditional-probability-and-independence-of-events/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1.3 事件的运算、条件概率与独立性
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../courses/1-Probability-of-events/exercises/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    习题
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../courses/1-Probability-of-events/answers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    答案
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1_2" id="__nav_2_1_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    第2章 随机变量及概率分布
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1_2">
+            <span class="md-nav__icon md-icon"></span>
+            第2章 随机变量及概率分布
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../courses/2-Random-Variables-and-Probability-Distribution/1-One-dimensional-random-variable/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2.1 一维随机变量
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../courses/2-Random-Variables-and-Probability-Distribution/2-Multidimensional-random-variables-random-vectors/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2.2 多维随机变量（随机向量）
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../courses/2-Random-Variables-and-Probability-Distribution/3-Independence-of-Conditional-probability-distribution-and-random-variable/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2.3 条件概率分布与随机变量的独立性
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../courses/2-Random-Variables-and-Probability-Distribution/4-Probability-Distribution-of-Functions-of-Random-Variables/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2.4 随机变量的函数的概率分布
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../courses/2-Random-Variables-and-Probability-Distribution/appendix/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    附录
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../courses/2-Random-Variables-and-Probability-Distribution/exercises/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    习题
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../courses/2-Random-Variables-and-Probability-Distribution/answers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    答案
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1_3" id="__nav_2_1_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    第3章 随机变量的数字特征
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1_3">
+            <span class="md-nav__icon md-icon"></span>
+            第3章 随机变量的数字特征
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../courses/3-Numerical-Characteristics-of-Random-Variables/1-Mathematica-Expectations-Mean-and-Median/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3.1 数学期望（均值）与中位数
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../courses/3-Numerical-Characteristics-of-Random-Variables/2-Variance-and-Moment/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3.2 方差与矩
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../courses/3-Numerical-Characteristics-of-Random-Variables/3-Covariance-and-correlation-coefficient/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3.3 协方差与相关系数
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../courses/3-Numerical-Characteristics-of-Random-Variables/4-Theorem-of-Large-Numbers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3.4 大数定理和中心极限定理
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../courses/3-Numerical-Characteristics-of-Random-Variables/exercises/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    习题
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../courses/3-Numerical-Characteristics-of-Random-Variables/answers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    答案
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1_4" id="__nav_2_1_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    第4章 参数估计
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1_4">
+            <span class="md-nav__icon md-icon"></span>
+            第4章 参数估计
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../courses/4-Parameter-Estimates/1-Basic-concepts-of-Mathematical-statistics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4.1 数理统计学的基本概念
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../courses/4-Parameter-Estimates/2-Moment-estimation-maximum-likelihood-estimation-and-Bayesian-estimation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4.2 矩估计、极大似然估计和贝叶斯估计
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../courses/4-Parameter-Estimates/3-Excellence-criterion-of-Point-estimation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4.3 点估计的优良性准则
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../courses/4-Parameter-Estimates/4-Interval-estimation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4.4 区间估计
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../courses/4-Parameter-Estimates/exercises/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    习题
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../courses/4-Parameter-Estimates/answers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    答案
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1_5" id="__nav_2_1_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    第5章 假设检验
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1_5">
+            <span class="md-nav__icon md-icon"></span>
+            第5章 假设检验
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../courses/5-Hypothesis-Testing/1-Problem-formulation-and-basic-concepts/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5.1 问题提法和基本概念
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../courses/5-Hypothesis-Testing/2-Important-parameter-inspection/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5.2 重要参数检验
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../courses/5-Hypothesis-Testing/3-goodness-of-fit-test/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5.3 拟合优度检验
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../courses/5-Hypothesis-Testing/appendix/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    附录
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../courses/5-Hypothesis-Testing/exercises/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    习题
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../courses/5-Hypothesis-Testing/answers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    答案
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1_6" id="__nav_2_1_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    第6章 回归、相关与方差分析
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1_6">
+            <span class="md-nav__icon md-icon"></span>
+            第6章 回归、相关与方差分析
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../courses/6-Regression-Correlation-and-Analysis-of-Variance/1-Basic-concepts-of-regression-analysis/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6.1 回归分析基本概念
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../courses/6-Regression-Correlation-and-Analysis-of-Variance/2-Univariate-linear-regression/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6.2 一元线性回归
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../courses/6-Regression-Correlation-and-Analysis-of-Variance/3-Multiple-linear-regression/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6.3 多元线性回归
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../courses/6-Regression-Correlation-and-Analysis-of-Variance/4-Correlation-analysis/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6.4 相关分析
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../courses/6-Regression-Correlation-and-Analysis-of-Variance/5-Analysis-of-variance/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6.5 方差分析
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../courses/6-Regression-Correlation-and-Analysis-of-Variance/appendix/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    附录
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../courses/6-Regression-Correlation-and-Analysis-of-Variance/exercises/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    习题
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../courses/6-Regression-Correlation-and-Analysis-of-Variance/answers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    答案
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../courses/appendix/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    附表
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../%E3%80%8A%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1%E3%80%8B%E9%99%88%E5%B8%8C%E5%AD%BA%EF%BC%8C%E4%B8%AD%E5%9B%BD%E7%A7%91%E5%AD%A6%E6%8A%80%E6%9C%AF%E5%A4%A7%E5%AD%A6%E5%87%BA%E7%89%88%E7%A4%BE.pdf" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    PDF
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#01-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      0.1. 1 条件概率分布的概念
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      0.2. 2 离散型随机变至的条件概率分布
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      0.3. 3 连续型随机变是的条件分布
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#04-4" class="md-nav__link">
+    <span class="md-ellipsis">
+      0.4. 4 随机变量的独立性
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+    <a href="https://github.com/EanYang7/Probability-and-Statistics/tree/main/docs/assets/2/2.3.md" title="编辑此页" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
+    </a>
+  
+  
+    
+      
+    
+    <a href="https://github.com/EanYang7/Probability-and-Statistics/tree/main/docs/assets/2/2.3.md" title="查看本页的源代码" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0 8a5 5 0 0 1-5-5 5 5 0 0 1 5-5 5 5 0 0 1 5 5 5 5 0 0 1-5 5m0-12.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5Z"/></svg>
+    </a>
+  
+
+
+<h1 id="23">2.3 条件概率分布与随机变量的独立性<a class="headerlink" href="#23" title="Permanent link">⚓︎</a></h1>
+<h3 id="01-1">0.1. 1 条件概率分布的概念<a class="headerlink" href="#01-1" title="Permanent link">⚓︎</a></h3>
+<p>一个随机变量或向量 <span class="arithmatex">\(X\)</span> 的条件概率分布, 就是在某种给定的</p>
+<ul>
+<li>70 • 条件之下, <span class="arithmatex">\(X\)</span> 的概率分布.一如以前我们在讨论条件概率时所指 出的,任何事件的概率都是 “有条件的”, 即与这事件联系着的试验 的条件, 如骰子是均匀的立方体且抛郑的高度是足够大之类. 以 此,任何随机变量或向量的分布, 也无不是在一定条件下. 但此处 所谈的条件分布, 是在试验中所规定的“基本” 条件之外再附加的 条件. 它一般采取如下的形式: 设有两个随机变量或向量 <span class="arithmatex">\(X, Y\)</span>,在 给定了 <span class="arithmatex">\(Y\)</span> 取某个或某些值的条件下,去求 <span class="arithmatex">\(X\)</span> 的条件分布.</li>
+</ul>
+<p>例如, 考虑一大群人, 从其中随机抽取一个, 分别以 <span class="arithmatex">\(X_{1}\)</span> 和 <span class="arithmatex">\(X_{2}\)</span> 记其体重和身高, 则 <span class="arithmatex">\(X_{1}, X_{2}\)</span> 都是随机变量, 它们都有一定的概率 分布. 现在如限制 <span class="arithmatex">\(1.7 \leqslant X_{2} \leqslant 1.8\)</span> (米), 在这个条件下去求 <span class="arithmatex">\(X_{1}\)</span> 的 条件分布, 这就意味着要从这一大群人中把其身高在 1.7 米和 1.8 米的那些人都挑出来, 然后在挑出的人群中求其体重的分布. 容易想像, 这个分布与不设这个条件的分布 (无条件分布) 会很不 一样.例如,在条件分布中体重取大值的概率会显著增加.</p>
+<p>从这个例子也看出条件分布这个概念的重要性. 在本例中, 弄 清了 <span class="arithmatex">\(X_{1}\)</span> 的条件分布随 <span class="arithmatex">\(X_{2}\)</span> 之值而变化的情况, 就能了解身高对体 重的影响在数量上的表述. 由于在许多问题中有关的变量往往是 彼此有影响的, 这使条件分布成为研究变量之间的相依关系的一 个有力工具. 这一点以后在第六章中还要作更深入的发挥.</p>
+<h3 id="02-2">0.2. 2 离散型随机变至的条件概率分布<a class="headerlink" href="#02-2" title="Permanent link">⚓︎</a></h3>
+<p>这个情况比较简单,实际上无非是第一章讲过的条件概率概 念在另一种形式下的重复. 设 <span class="arithmatex">\(\left(X_{1}, X_{2}\right)\)</span> 为一个二维离散型随机向 量, <span class="arithmatex">\(X_{1}\)</span> 的全部可能值为 <span class="arithmatex">\(a_{1}, a_{2}, \cdots ; X_{2}\)</span> 的全部可能值为 <span class="arithmatex">\(b_{1}, b_{2}, \cdots\)</span>, 而 <span class="arithmatex">\(\left(X_{1}, X_{2}\right)\)</span> 的联合概率分市为</p>
+<div class="arithmatex">\[
+p_{i j}=P\left(X_{1}=a_{i}, X_{2}=b_{j}\right), i, j=1,2, \cdots
+\]</div>
+<p>现考虑 <span class="arithmatex">\(X_{1}\)</span> 在给定 <span class="arithmatex">\(X_{2}=b_{j}\)</span> 的条件下的条件分布,那无非是要找条 件概率 <span class="arithmatex">\(P\left(X_{1}=a \mid X_{2}=b_{j}\right)\)</span> ，依条件概率的定义,有</p>
+<div class="arithmatex">\[
+\begin{aligned}
+P\left(X_{1}\right. &amp; \left.=a_{i} \mid X_{2}=b_{j}\right)=P\left(X_{1}=a_{i}, X_{2}=b_{j}\right) / P\left(X_{2}=b_{j}\right) \\
+&amp; =p_{i j} / P\left(X_{2}=b_{j}\right)
+\end{aligned}
+\]</div>
+<p>再据公式 (2.8)( <span class="arithmatex">\(n=2\)</span> 的情况), 有 <span class="arithmatex">\(P\left(X_{2}=b_{j}\right)=\sum_{k} p_{k j}\)</span>. 于是 类似地有</p>
+<div class="arithmatex">\[
+P\left(X_{1}=a_{i} \mid X_{2}=b_{j}\right)=p_{i j} / \sum_{k} p_{k j}, i=1,2, \cdots
+\]</div>
+<div class="arithmatex">\[
+P\left(X_{2}=b_{j} \mid X_{1}=a_{i}\right)=p_{i j} / \sum_{k} p_{i k}, j=1,2, \cdots
+\]</div>
+<p>例 3.1 再考虑例 2.6. 据公式 (3.1) 和 (3.2), 不难算出在给 定 <span class="arithmatex">\(X_{2}\)</span> 时 <span class="arithmatex">\(X_{1}\)</span> 的条件分布, 与给定 <span class="arithmatex">\(X_{1}\)</span> 时 <span class="arithmatex">\(X_{2}\)</span> 的条件分布. 例如, 在 给定 <span class="arithmatex">\(X_{2}=0\)</span> 时有</p>
+<div class="arithmatex">\[
+\begin{aligned}
+&amp; P\left(X_{1}=1 \mid X_{2}=0\right)=0.05 / 0.33=5 / 33 \\
+&amp; P\left(X_{1}=3 \mid X_{2}=0\right)=0.28 / 0.33=28 / 33
+\end{aligned}
+\]</div>
+<p>例 3.2 设 <span class="arithmatex">\(\left(X_{1}, X_{2}, \cdots, X_{n}\right)\)</span> 服从多项分布 <span class="arithmatex">\(M\left(N ; p_{1}, \cdots\right.\)</span>, <span class="arithmatex">\(\left.p_{n}\right)\)</span>. 试求在给定 <span class="arithmatex">\(X_{2}=k_{2}\)</span> 的条件下, <span class="arithmatex">\(X_{1}\)</span> 的条件分布.</p>
+<p>先计算概率 <span class="arithmatex">\(P\left(X_{1}=k_{2}, X_{2}=k_{2}\right)\)</span>. 这里假定 <span class="arithmatex">\(k_{1}, k_{2}\)</span> 都是非负 整数, 且 <span class="arithmatex">\(k_{1} \leqslant N-k_{2}\)</span>. 按 <span class="arithmatex">\((2.3)\)</span> 式, 有</p>
+<div class="arithmatex">\[
+P\left(X_{1}=k_{1}, X_{2}=k_{2}\right)=\sum_{k_{3}, \cdots, k_{n}}^{\prime} \frac{N !}{k_{1} 1 k_{2} ! k_{3} ! \cdots k_{n}} p_{1}^{k_{1}} p_{2}^{k_{2}} p_{3}^{k_{3} \cdots p_{n^{n}}^{k^{n}}}
+\]</div>
+<p>这里 <span class="arithmatex">\(\sum_{k_{3}, \cdots, k_{n}}^{\prime}\)</span> 表示求和的范围为 <span class="arithmatex">\(k_{3}, \cdots, k_{n}\)</span> 都是非负整数, 且 <span class="arithmatex">\(k_{3}+\cdots\)</span></p>
+<div class="arithmatex">\[
+\begin{aligned}
++k_{n}=N-\left(k_{1}+k_{2}\right) \text {. 令 } p_{i}^{\prime}= &amp; p_{i} /\left(1-p_{1}-p_{2}\right), i \geqslant 3, \text { 有 } \\
+P\left(X_{1}=k_{1}, X_{2}=k_{2}\right)= &amp; \frac{N !}{k_{1} ! k_{2} !\left(N-k_{1}-k_{2}\right) !} \\
+&amp; \cdot p_{1}^{k_{1}} p_{2^{2}}^{k_{1}}\left(1-p_{1}-p_{2}\right)^{N-k_{1}-k_{2}} C
+\end{aligned}
+\]</div>
+<p>其中</p>
+<div class="arithmatex">\[
+C=\sum_{k_{3}, \cdots, k_{n}} \frac{\left(N-k_{1}-k_{2}\right) !}{k_{3} ! \cdots k_{n} !} p_{3}^{\prime k_{3} \cdots} p_{n}^{\prime k_{n}}
+\]</div>
+<p>由于 <span class="arithmatex">\(p_{3}^{\prime}+\cdots+p_{n}^{\prime}=1\)</span>, 考虑到上式求和的范围及多项展开式 (2.4), 即知 <span class="arithmatex">\(C=1\)</span>, 因此</p>
+<div class="arithmatex">\[
+\begin{aligned}
+&amp; P\left(X_{1}=k_{1}, X_{2}=k_{2}\right) \\
+&amp; \quad=\frac{N !}{k_{1} ! k_{2} !\left(N-k_{1}-k_{2}\right) !} \cdot p_{1}^{k_{1}} p_{2}^{k_{2}}\left(1-p_{1}-p_{2}\right)^{N-k_{1}-k_{2}}
+\end{aligned}
+\]</div>
+<p>再根据例 <span class="arithmatex">\(2.7, X_{2}\)</span> 的分布就是二项分布 <span class="arithmatex">\(B\left(N, p_{2}\right)\)</span>. 因此</p>
+<div class="arithmatex">\[
+\begin{aligned}
+&amp; P\left(X_{1}=k_{1} \mid X_{2}=k_{2}\right) \\
+= &amp; P\left(X_{1}=k_{1}, X_{2}=k_{2}\right) / P\left(X_{2}=k_{2}\right) \\
+= &amp; \frac{N !}{k_{1} ! k_{2} !\left(N-k_{1}-k_{2}\right) !} p_{1}^{k_{1}} p_{2}^{k_{2}}\left(1-p_{1}-p_{2}\right)^{N-k_{1}-k_{2}} \\
+&amp; \cdot / \frac{N !}{k_{2} !\left(N-K_{2}\right) !} p_{2}^{k^{2}}\left(1-p_{2}\right)^{N-k_{2}} \\
+= &amp; \frac{\left(N-k_{2}\right) !}{k_{1} !\left(N-k_{1}-k_{2}\right)}\left(\frac{p_{1}}{1-p_{2}}\right)^{k_{1}}\left(1-\frac{p_{1}}{1-p_{2}}\right)^{N-k_{1}-k_{2}} \\
+= &amp; b\left(k_{1} ; N-k_{2}, p_{1} /\left(1-p_{2}\right)\right), k=0,1, \cdots, N-k_{2}
+\end{aligned}
+\]</div>
+<p>由此可知: 在给定 <span class="arithmatex">\(X_{2}=k_{2}\)</span> 的条件下, <span class="arithmatex">\(X_{1}\)</span> 的条件分布就是分布 <span class="arithmatex">\(B\left(N-k_{2}, p_{1} /\left(1-p_{2}\right)\right)\)</span>.</p>
+<h3 id="03-3">0.3. 3 连续型随机变是的条件分布<a class="headerlink" href="#03-3" title="Permanent link">⚓︎</a></h3>
+<p>设二维随机向量 <span class="arithmatex">\(X=\left(X_{1}, X_{2}\right)\)</span> 有概率密度函数 <span class="arithmatex">\(f\left(x_{1}, x_{2}\right)\)</span>. 我们先来考虑在限定 <span class="arithmatex">\(a \leqslant x_{2} \leqslant b\)</span> 的条件下, <span class="arithmatex">\(X_{1}\)</span> 的条件分布. 有</p>
+<div class="arithmatex">\[
+\begin{aligned}
+&amp; P\left(X_{1} \leqslant x_{1} \mid a \leqslant X_{2} \leqslant b\right) \\
+= &amp; P\left(X_{1} \leqslant x_{1}, a \leqslant X_{2} \leqslant b\right) / P\left(a \leqslant X_{2} \leqslant b\right)
+\end{aligned}
+\]</div>
+<p><span class="arithmatex">\(X_{2}\)</span> 的边缘分布的密度函数 <span class="arithmatex">\(f_{2}\)</span> 由 <span class="arithmatex">\((2.10)\)</span> 给出. 有</p>
+<div class="arithmatex">\[
+\begin{gathered}
+P\left(X_{1} \leqslant x_{1}, a \leqslant X_{2} \leqslant b\right) \\
+=\int_{-\infty}^{x_{1}} \mathrm{~d} t_{1} \int_{a}^{b} f\left(t_{1}, t_{2}\right) \mathrm{d} t_{2} \\
+P\left(a \leqslant X_{2} \leqslant b\right)=\int_{a}^{b} f_{2}\left(t_{2}\right) \mathrm{d} t_{2}
+\end{gathered}
+\]</div>
+<p>由此得到</p>
+<div class="arithmatex">\[
+\begin{aligned}
+&amp; P\left(X_{1} \leqslant x_{1} \mid a \leqslant X_{2} \leqslant b\right) \\
+&amp;=\int_{-\infty}^{x_{1}} \mathrm{~d} t_{1} \int_{a}^{b} f\left(t_{1}, t_{2}\right) \mathrm{d} t_{2} / \int_{a}^{b} f_{2}\left(t_{2}\right) \mathrm{d} t_{2}
+\end{aligned}
+\]</div>
+<p>这是 <span class="arithmatex">\(X_{1}\)</span> 的条件分布函数. 对 <span class="arithmatex">\(x_{1}\)</span> 求导数,得到条件密度函数为</p>
+<div class="arithmatex">\[
+f_{1}\left(x_{1} \mid a \leqslant X_{2} \leqslant b\right)=\int_{a}^{b} f\left(x_{1}, t_{2}\right) \mathrm{d} t_{2} / \int_{a}^{b} f_{2}\left(t_{2}\right) \mathrm{d} t_{2}
+\]</div>
+<p>更有兴趣的是 <span class="arithmatex">\(a=b\)</span> 的情况, 即在 <span class="arithmatex">\(X_{2}\)</span> 给定等于一个值之下, <span class="arithmatex">\(X_{1}\)</span> 的条件密度函数. 这不能通过直接在 (3.3) 中令 <span class="arithmatex">\(a=b\)</span> 得出, 但 可用极限步骤:</p>
+<div class="arithmatex">\[
+\begin{aligned}
+f_{1}\left(x_{1} \mid x_{2}\right) &amp; =f_{1}\left(x_{1} \mid X_{2}=x_{2}\right) \\
+&amp; =\lim _{h \rightarrow 0} f_{1}\left(x_{1} \mid x_{2} \leqslant X_{2} \leqslant x_{2}+h\right) \\
+&amp; =\lim _{h \rightarrow 0} \frac{1}{h} \int_{t_{2}}^{x_{2}+h} f\left(x_{1}, t_{2}\right) \mathrm{dt}_{2} / \lim _{h \rightarrow 0} \frac{1}{h} \int_{x_{2}}^{x_{2}+h} f_{2}\left(t_{2}\right) \mathrm{d} t_{2} \\
+&amp; =f\left(x_{1}, x_{2}\right) / f_{2}\left(x_{2}\right)
+\end{aligned}
+\]</div>
+<p>这就是在给定 <span class="arithmatex">\(X_{2}=x_{2}\)</span> 的条件下, <span class="arithmatex">\(X_{1}\)</span> 的条件密度函数. 此式当然 只有在 <span class="arithmatex">\(f_{2}\left(x_{2}\right)&gt;0\)</span> 时才有意义. 在上述取极限的过程中, 还得假 定函数 <span class="arithmatex">\(f_{2}\)</span> 在 <span class="arithmatex">\(x_{2}\)</span> 点连续, 及 <span class="arithmatex">\(f\left(x_{1}, t_{2}\right)\)</span> 作为 <span class="arithmatex">\(t_{2}\)</span> 的函数, 在 <span class="arithmatex">\(t_{2}=x_{2}\)</span> 处 连续. 然而, 用高等概率论的知识, 可以在没有这种连续的假定下 证明 (3.4).</p>
+<p>(3.4) 式可改写为</p>
+<div class="arithmatex">\[
+f\left(x_{1}, x_{2}\right)=f_{2}\left(x_{2}\right) f_{1}\left(x_{1} \mid x_{2}\right)
+\]</div>
+<p>就是说: 两个随机变量 <span class="arithmatex">\(X_{1}\)</span> 和 <span class="arithmatex">\(X_{2}\)</span> 联合概率密度, 等于其中之一的 概率密度乘以在给定这一个之下另一个的条件概率密度. 这个公 式相应于条件概率的公式 <span class="arithmatex">\(P(A B)=P(B) P(A \mid B)\)</span>. 除 (3.5) 外, 当然也有</p>
+<div class="arithmatex">\[
+f\left(x_{1}, x_{2}\right)=f_{1}\left(x_{1}\right) f_{2}\left(x_{2} \mid x_{1}\right)
+\]</div>
+<p>其中 <span class="arithmatex">\(f_{1}\)</span> 为 <span class="arithmatex">\(x_{1}\)</span> 的边缘密度, 而</p>
+<div class="arithmatex">\[
+f_{2}\left(x_{2} \mid x_{1}\right)=f\left(x_{1}, x_{2}\right) / f_{1}\left(x_{1}\right)
+\]</div>
+<p>则是在给定 <span class="arithmatex">\(X_{1}=x_{1}\)</span> 的条件下, <span class="arithmatex">\(X_{2}\)</span> 的条件密度. 这些公式反映的 实质可推广到任意多个变量的场合: 设有 <span class="arithmatex">\(n\)</span> 维随机向量 <span class="arithmatex">\(\left(X_{1}, \cdots\right.\)</span>, <span class="arithmatex">\(\left.X_{n}\right)\)</span>, 其概率密度函数为 <span class="arithmatex">\(f\left(x_{1}, \cdots, x_{n}\right)\)</span>. 则</p>
+<div class="arithmatex">\[
+f\left(x_{1}, \cdots, x_{n}\right)=g\left(x_{1}, \cdots, x_{k}\right) h\left(x_{k+1}, \cdots, x_{n} \mid x_{1}, \cdots, x_{k}\right)
+\]</div>
+<p>其中 <span class="arithmatex">\(\mathrm{g}\)</span> 是 <span class="arithmatex">\(\left(X_{1}, \cdots, X_{k}\right)\)</span> 的概率密度,而 <span class="arithmatex">\(h\)</span> 则是在给定 <span class="arithmatex">\(X_{1}=x_{1}, \cdots\)</span>, <span class="arithmatex">\(X_{k}=x_{k}\)</span> 的条件下, <span class="arithmatex">\(X_{k+1}, \cdots, X_{n}\)</span> 的条件概率密度. (3.8) 可视为 (3.6) 的直接推广, 又可视为 <span class="arithmatex">\(h\left(x_{k+1}, \cdots, x_{n} \mid x_{1}, \cdots, x_{k}\right)\)</span> 的定义.</p>
+<p>例 3.3 设 <span class="arithmatex">\(\left(X_{1}, X_{2}\right)\)</span> 服从二维正态分布 <span class="arithmatex">\(N\left(a, b, \sigma_{1}^{2}, \sigma_{2}^{2}, \rho\right)\)</span>. 求在给定 <span class="arithmatex">\(X_{1}=x_{1}\)</span> 的条件下, <span class="arithmatex">\(X_{2}\)</span> 的条件密度函数 <span class="arithmatex">\(f_{2}\left(x_{2} \mid x_{1}\right)\)</span>.</p>
+<p>利用公式 (3.7), (2.7) 和 (2.12), 经过简单的计算, 得出</p>
+<div class="arithmatex">\[
+\begin{aligned}
+f_{2}\left(x_{2} \mid x_{1}\right)= &amp; \frac{1}{\sqrt{2 \pi} \sigma_{2} \sqrt{1-\rho^{2}}} \\
+&amp; \cdot \exp \left[-\frac{\left(x_{2}-\left(b+\rho \sigma_{2} \sigma_{1}^{-1}\left(x_{1}-a\right)\right)\right)^{2}}{2\left(1-\rho^{2}\right) \sigma_{2}^{2}}\right]
+\end{aligned}
+\]</div>
+<p>这正是正态分布 <span class="arithmatex">\(N\left(b+\rho \sigma_{2} \sigma_{1}^{-1}\left(x_{1}-a\right), \sigma_{2}^{2}\left(1-\rho^{2}\right)\right)\)</span> 的概率密度 函数 (注意在 (3.9) 式中, <span class="arithmatex">\(x_{1}\)</span> 当常数看). 因此,正态变量的条件分 布仍为正态, 这是正态分布的一个重要性质.</p>
+<p>如我们在图 <span class="arithmatex">\(2.2 b\)</span> 中所显示的, 正态分布 <span class="arithmatex">\(N\left(\mu, \sigma^{2}\right)\)</span> 关于 <span class="arithmatex">\(\mu\)</span> 点一 对称, <span class="arithmatex">\(\mu\)</span> 就是分布的中心位置,对正态分布 (3.9), 这个中心位置在</p>
+<div class="arithmatex">\[
+m\left(x_{1}\right)=b+\rho \sigma_{2} \sigma_{1}^{-1}\left(x_{1}-a\right)
+\]</div>
+<p>处,由这里可以看出 <span class="arithmatex">\(\rho\)</span> 刻画了 <span class="arithmatex">\(X_{1}, X_{2}\)</span> 之间的相依关系. 其解释如 下: 若 <span class="arithmatex">\(\rho&gt;0\)</span>, 则随着 <span class="arithmatex">\(x_{1}\)</span> 的增加, <span class="arithmatex">\(X_{2}\)</span> (在 <span class="arithmatex">\(X_{1}=x_{1}\)</span> 之下) 的条件分布 的中心点 <span class="arithmatex">\(m\left(x_{1}\right)\)</span> 随 <span class="arithmatex">\(x_{1}\)</span> 的增加而增加. 可以看出: 这意味着当 <span class="arithmatex">\(x_{1}\)</span> 增加时, <span class="arithmatex">\(X_{2}\)</span> 取大值的可能性增加, 即 <span class="arithmatex">\(X_{2}\)</span> 有随着 <span class="arithmatex">\(X_{1}\)</span> 的增长而增长 的倾向 (如体重与身高的关系那样). 反之, 若 <span class="arithmatex">\(\rho&lt;0\)</span>, 则 <span class="arithmatex">\(X_{2}\)</span> 有随着 <span class="arithmatex">\(X_{1}\)</span> 增长而下降的倾向. 由于这个原因, 通常把 <span class="arithmatex">\(\rho&gt;0\)</span> 的情况称为 “正相关”, 而 <span class="arithmatex">\(\rho&lt;0\)</span> 的情况称为 “负相关”. 这一点在下一章中还要 谈到。</p>
+<p>把 (3.5) 两边对 <span class="arithmatex">\(x_{2}\)</span> 积分, 得</p>
+<div class="arithmatex">\[
+f_{1}\left(x_{1}\right)=\int_{-\infty}^{\infty} f\left(x_{1}, x_{2}\right) \mathrm{d} x_{2}=\int_{-\infty}^{\infty} f_{1}\left(x_{1} \mid x_{2}\right) f_{2}\left(x_{2}\right) \mathrm{d} x_{2}
+\]</div>
+<p>这个公式可解释为: <span class="arithmatex">\(X_{1}\)</span> 的无条件密度 <span class="arithmatex">\(f_{1}\left(x_{1}\right)\)</span>, 是其条件密度 <span class="arithmatex">\(f_{1}\)</span> <span class="arithmatex">\(\left(x_{1} \mid x_{2}\right)\)</span> 对“条件” <span class="arithmatex">\(x_{2}\)</span> 的平均. 更确切地说, 是按其概率大小为权的 加权平均,因为, <span class="arithmatex">\(f_{2}\left(x_{2}\right) \mathrm{d} x_{2}\)</span> 正是 <span class="arithmatex">\(X_{2}\)</span> 在 <span class="arithmatex">\(x_{2}\)</span> 附近 <span class="arithmatex">\(\mathrm{d} x_{2}\)</span> 这么长的区 间内的概率. 从直观上看这应当是很自然的. 比如说, <span class="arithmatex">\(\left(X_{1}, X_{2}\right)\)</span> 代 表一大群人中随机抽出的一个人的体重和身长, <span class="arithmatex">\(X_{1}\)</span> (体重)有其 (无条件)分布, 这可以看作为各种不同的身高综合之后所呈现的 分布, 而不同于固定身长 <span class="arithmatex">\(X_{2}=x_{2}\)</span> 时的条件分布. 但把各种身长时 体重的条件分布进行平均, 也就实现了上述综合, 即得到无条件分 布. 公式(3.11) 正好从数学上反映了这种综合 (或平均) 的过程.</p>
+<p>还要注意: 公式 (3.11) 也可以看作是全概率公式 (第一章) (3.17) 在概率密度这种情况下的表现形式. 在这里, <span class="arithmatex">\(f_{1}\left(x_{1}\right)\)</span> 相当 于全概率公式中的 <span class="arithmatex">\(P(A), f_{1}\left(x_{1} \mid x_{2}\right)\)</span> 相当于条件概率 <span class="arithmatex">\(P\left(A \mid B_{i}\right)\)</span>, 而 (3.11) 中的积分, 正好相当于 (3.17) 式中的以 <span class="arithmatex">\(P\left(B_{i}\right)\)</span> 为权的加 权和。</p>
+<p>由此可见, 在学习概率论时, 不能光是形式地看待一些分析公 式, 更重要的是要分析其概率意义及直观意义, 这样才能加深理 解. 上述对公式 (3.11) 的分析是一个例子. 再如, 在例 3.3 中我们 用形式推导很容易得出了条件密度 (3.9) 式. 只看这形式推导, 你 可能地觉得这里没有什么特别值得注意的地方. 但经过分析 (3.10) 式中 <span class="arithmatex">\(\rho\)</span> 的作用, 再辅之以体重身高这个实例, 我们就领悟 到了 <span class="arithmatex">\(\rho\)</span> 作为刻画二者的相依性的作用, 理解就深一层了, 在下一 章中我们还要进一步讨论 (3.9) 所反映出的其他概率含义.</p>
+<h3 id="04-4">0.4. 4 随机变量的独立性<a class="headerlink" href="#04-4" title="Permanent link">⚓︎</a></h3>
+<p>先考虑两个变量 <span class="arithmatex">\(X_{1}, X_{2}\)</span> 的情况,并设 <span class="arithmatex">\(\left(X_{1}, X_{2}\right)\)</span> 为连续型. 如 前, 分别以 <span class="arithmatex">\(f\left(x_{1}, x_{2}\right), f_{1}\left(x_{1}\right), f_{2}\left(x_{2}\right), f_{1}\left(x_{1} \mid x_{2}\right), f_{2}\left(x_{2} \mid x_{1}\right)\)</span> 记 联合、边缘与条件概率密度.</p>
+<p>一般, <span class="arithmatex">\(f_{1}\left(x_{1} \mid x_{2}\right)\)</span> 是随 <span class="arithmatex">\(x_{2}\)</span> 的变化而变化的,这反映了 <span class="arithmatex">\(X_{1}\)</span> 与 <span class="arithmatex">\(X_{2}\)</span> 在概率上有相依关系的事实, 即 <span class="arithmatex">\(X_{1}\)</span> 的 (条件) 分布如何, 取决 于另一变量之值.</p>
+<p>如果 <span class="arithmatex">\(f_{1}\left(x_{1} \mid x_{2}\right)\)</span> 不依赖于 <span class="arithmatex">\(x_{2}\)</span>, 因而只是 <span class="arithmatex">\(x_{1}\)</span> 的函数,暂记为 <span class="arithmatex">\(g\left(x_{1}\right)\)</span>,则表示 <span class="arithmatex">\(X_{1}\)</span> 的分布情况与 <span class="arithmatex">\(X_{2}\)</span> 取什么值完全无关, 这时就 称 <span class="arithmatex">\(X_{1}, X_{2}\)</span> 这两个随机变量 (在概率论意义上) 独立. 这概念与事件 独立的概念完全相似.</p>
+<div class="arithmatex">\[
+\text { 把 } \begin{aligned}
+&amp; f_{1}\left(x_{1} \mid x_{2}\right)=g\left(x_{1}\right) \text { 代人 }(3.11), \text { 得 } \\
+&amp; f_{1}\left(x_{1}\right)=\int_{-\infty}^{\infty} g\left(x_{1}\right) f_{2}\left(x_{2}\right) \mathrm{d} x_{2} \\
+&amp;=g\left(x_{1}\right) \int_{-\infty}^{\infty} f_{2}\left(x_{2}\right) \mathrm{d} x_{2} \\
+&amp;=g\left(x_{1}\right)
+\end{aligned}
+\]</div>
+<p>因此, <span class="arithmatex">\(X_{1}\)</span> 的无条件密度 <span class="arithmatex">\(f_{1}\left(x_{1}\right)\)</span>, 就等于其条件密度 <span class="arithmatex">\(f_{1}\left(x_{1} \mid x_{2}\right)\)</span>, 这也可取为独立性的定义.</p>
+<p>再次,把 <span class="arithmatex">\(f_{1}\left(x_{1}\right)=f_{1}\left(x_{1} \mid x_{2}\right)\)</span> 代人 <span class="arithmatex">\((3.5)\)</span>, 得</p>
+<div class="arithmatex">\[
+f\left(x_{1}, x_{2}\right)=f_{1}\left(x_{1}\right) f_{2}\left(x_{2}\right)
+\]</div>
+<p>即 <span class="arithmatex">\(\left(X_{1}, X_{2}\right)\)</span> 的联合密度, 等于其各分量的密度之积. 这也可取作为 <span class="arithmatex">\(X_{1}, X_{2}\)</span> 独立的定义 (此式相应于第一章 (3.7) 式), 比之上述定义, 它有其优越性: 一是其形式关于两个变量对称,二是它总有意义, 而在用条件密度去定义时, 可能碰到条件密度在个别点无法定义 （分母为 0 ) 的情况.</p>
+<p>这个形式的另一个好处是它可以直接推广到任意多个变量的 情形. 我们就把它取为一般情况下的正式定义:</p>
+<p>定义 3.1 设 <span class="arithmatex">\(n\)</span> 维随机向量 <span class="arithmatex">\(\left(X_{1}, \cdots, X_{n}\right)\)</span> 的联合密度函数为 <span class="arithmatex">\(f\left(x_{1}, \cdots, x_{n}\right)\)</span>, 而 <span class="arithmatex">\(X_{i}\)</span> 的 (边缘) 密度函数为 <span class="arithmatex">\(f_{i}\left(x_{i}\right), i=1, \cdots, n\)</span>. 如 果</p>
+<div class="arithmatex">\[
+f\left(x_{1}, \cdots, x_{n}\right)=f_{1}\left(x_{1}\right) \cdots f_{n}\left(x_{n}\right)
+\]</div>
+<p>就称随机变量 <span class="arithmatex">\(X_{1}, \cdots, X_{n}\)</span> 相互独立或简称独立.</p>
+<p>变量独立性的概念还可以从另外的角度去考察. 按前面的分 析, 它含有这种意思: 如果 <span class="arithmatex">\(X_{1}, \cdots, X_{n}\)</span> 独立,则各变量取值的概率 如何, 毫不受其他变量之影响, 因此,若考察 <span class="arithmatex">\(n\)</span> 个事件</p>
+<div class="arithmatex">\[
+A_{1}=\left\{a_{1} \leqslant X_{1} \leqslant b_{1}\right\}, \cdots, A_{n}=\left\{a_{n} \leqslant X_{n} \leqslant b_{n}\right\}
+\]</div>
+<p>则因各事件只涉及一个变量, 它们应当是相互独立的事件,我们可 以把这个要求取为变量 <span class="arithmatex">\(X_{1}, \cdots, X_{n}\)</span> 独立的定义.下面的定理证明, 这与定义 3.1 是等价的, 即同一件事的两种不同的说法.</p>
+<p>定理 3.1 如果连续变量 <span class="arithmatex">\(X_{1}, \cdots, X_{n}\)</span> 独立时, 则对任何 <span class="arithmatex">\(a_{i}&lt;\)</span> <span class="arithmatex">\(b_{i}, i=1, \cdots, n\)</span>, 由 (3.14) 定义的 <span class="arithmatex">\(n\)</span> 个事件 <span class="arithmatex">\(A_{1}, \cdots, A_{n}\)</span> 也独立.</p>
+<p>反之, 若对任何 <span class="arithmatex">\(a_{i}&lt;b_{i}, i=1, \cdots, n\)</span>, 事件 <span class="arithmatex">\(A_{1}, \cdots, A_{n}\)</span> 独立, 则 变量 <span class="arithmatex">\(X_{1}, \cdots, X_{n}\)</span> 也独立.</p>
+<p>证 先设 <span class="arithmatex">\(X_{1}, \cdots, X_{n}\)</span> 独立, 因而 (3.13) 成立. 为证事件 <span class="arithmatex">\(A_{1}\)</span>, <span class="arithmatex">\(\cdots, A_{n}\)</span> 独立, 按第一章定义 3.3 , 必须对任何 <span class="arithmatex">\(i_{1}, \cdots, i_{m}\left(1 \leqslant i_{1}&lt;\right.\)</span> <span class="arithmatex">\(\left.i_{2}&lt;\cdots&lt;i_{m} \leqslant n\right)\)</span> 去证明</p>
+<div class="arithmatex">\[
+P\left(A_{i_{1}} A_{i_{2}} \cdots A_{i_{m}}\right)=P\left(A_{i_{1}}\right) P\left(A_{i_{2}}\right) \cdots P\left(A_{i_{m}}\right)
+\]</div>
+<p>为书写简单计, 我们对 <span class="arithmatex">\(i_{1}=1, i_{2}=2, \cdots, i_{m}=m\)</span> 来证此式, 这不影 响普遍性.按联合分布密度的定义 (2.5)式,有</p>
+<div class="arithmatex">\[
+\begin{aligned}
+P( &amp; \left.A_{1} A_{2} \cdots A_{m}\right) \\
+= &amp; P\left(a_{1} \leqslant X_{1} \leqslant b_{1}, \cdots, a_{m} \leqslant X_{m} \leqslant b_{m}\right) \\
+= &amp; P\left(a_{1} \leqslant X_{1} \leqslant b_{1}, \cdots, a_{m} \leqslant X_{m} \leqslant b_{m},\right. \\
+&amp; \left.-\infty&lt;X_{m+1}&lt;\infty, \cdots,-\infty&lt;X_{n}&lt;\infty\right) \\
+= &amp; \int_{-\infty}^{\infty} \cdots \int_{-\infty}^{\infty} \int_{a_{m}}^{b_{m}} \cdots \int_{a_{1}}^{b_{1}} f\left(x_{1}, \cdots, x_{n}\right) \mathrm{d} x_{1} \cdots \mathrm{d} x_{n} \\
+= &amp; \int_{-\infty}^{\infty} \cdots \int_{-\infty}^{\infty} \int_{a_{m}}^{b_{m}} \cdots \int_{a_{1}}^{b_{1}} f_{1}\left(x_{1}\right) \cdots f_{n}\left(x_{n}\right) \mathrm{d} x_{1} \cdots \mathrm{d} x_{n} \\
+= &amp; \int_{-\infty}^{\infty} f_{n}\left(x_{n}\right) \mathrm{d} x_{n} \cdots \int_{-\infty}^{\infty} f_{m+1}(x) \mathrm{d} x_{m+1} \int_{a_{1}}^{b_{1}} f_{1}\left(x_{1}\right) \mathrm{d} x_{1} \cdots \\
+&amp; \times \int_{a_{m}}^{b_{m}} f_{m}\left(x_{m}\right) \mathrm{d} x_{m} \\
+= &amp; \int_{a_{1}}^{b_{1}} f_{1}\left(x_{1}\right) \mathrm{d} x_{1} \cdots \int_{a_{m}}^{b_{m}} f_{m}\left(x_{m}\right) \mathrm{d} x_{m} \\
+= &amp; P\left(a_{1} \leqslant X_{1} \leqslant b_{1}\right) \cdots P\left(a_{m} \leqslant X_{m} \leqslant b_{m}\right)
+\end{aligned}
+\]</div>
+<p>这证明了所要的结果.</p>
+<p>另一方面,若对任何 <span class="arithmatex">\(a_{i}&lt;b_{i}, i=1, \cdots, n\)</span>, (3.14) 中的 <span class="arithmatex">\(n\)</span> 个事 件独立, 则取 <span class="arithmatex">\(A_{i}=\left\{-\infty&lt;X_{i} \leqslant x_{i}\right\}, i=1, \cdots, n\)</span>, 由</p>
+<div class="arithmatex">\[
+P\left(A_{1} A_{2} \cdots A_{n}\right)=P\left(A_{1}\right) P\left(A_{2}\right) \cdots P\left(A_{n}\right)
+\]</div>
+<p>即得</p>
+<div class="arithmatex">\[
+\begin{aligned}
+\int_{-\infty}^{x n} &amp; \cdots \int_{-\infty}^{x_{2}} \int_{-\infty}^{x_{1}} f\left(t_{1}, t_{2}, \cdots t_{n}\right) \mathrm{d} t_{1} \cdots \mathrm{d} t_{n} \\
+&amp; =\int_{-\infty}^{x n} f_{n}\left(t_{n}\right) \mathrm{d} x_{n} \cdots \int_{-\infty}^{x_{2}} f_{2}\left(t_{2}\right) \mathrm{d} t_{2} \int_{-\infty}^{x_{1}} f_{1}\left(t_{1}\right) \mathrm{d} t_{1}
+\end{aligned}
+\]</div>
+<p>上式两边依次对 <span class="arithmatex">\(x_{1}, x_{2}, \cdots, x_{n}\)</span> 取偏导数(即作 <span class="arithmatex">\(\partial^{n} / \partial x_{1} \partial x_{2} \cdots \partial x_{n}\)</span> ), 即得 (3.13) 式, 因而证明了 <span class="arithmatex">\(X_{1}, \cdots, X_{n}\)</span> 独立.</p>
+<p>下面再提出两个有关独立性的有用的结果.</p>
+<p>定理 3.2 若连续型随机向量 <span class="arithmatex">\(\left(X_{1}, \cdots, X_{n}\right)\)</span> 的概率密度函数 <span class="arithmatex">\(f\left(x_{1}, \cdots, x_{n}\right)\)</span> 可表为 <span class="arithmatex">\(n\)</span> 个函数 <span class="arithmatex">\(g_{1}, \cdots, g_{n}\)</span> 之积, 其中 <span class="arithmatex">\(g_{i}\)</span> 只依赖于 <span class="arithmatex">\(x_{i}\)</span>, 即</p>
+<div class="arithmatex">\[
+f\left(x_{1}, \cdots, x_{n}\right)=g_{1}\left(x_{1}\right) \cdots g_{n}\left(x_{n}\right)
+\]</div>
+<p>则 <span class="arithmatex">\(X_{1}, \cdots, X_{n}\)</span> 相互独立, 且 <span class="arithmatex">\(X_{i}\)</span> 的边缘密度函数 <span class="arithmatex">\(f_{i}\left(x_{i}\right)\)</span> 与 <span class="arithmatex">\(g_{i}\left(x_{i}\right)\)</span> 只 相差一个常数因子.</p>
+<p>证 按 (2.11) 式, 知 <span class="arithmatex">\(X_{1}\)</span> 的密度函数为</p>
+<div class="arithmatex">\[
+\begin{aligned}
+f_{1}\left(x_{1}\right) &amp; =\int_{-\infty}^{\infty} \cdots \int_{-\infty}^{\infty} f\left(x_{1}, x_{2}, \cdots, x_{n}\right) \mathrm{d} x_{2} \cdots \mathrm{d} x_{n} \\
+&amp; =g_{1}\left(x_{1}\right) \int_{-\infty}^{\infty} g_{2}\left(x_{2}\right) \mathrm{d} x_{2} \cdots \int_{-\infty}^{\infty} g_{n}\left(x_{n}\right) \mathrm{d} x_{n}=C_{1 g 1}\left(x_{1}\right)
+\end{aligned}
+\]</div>
+<p>其中 <span class="arithmatex">\(C_{1}\)</span> 为常数. 同法证明 <span class="arithmatex">\(X_{i}\)</span> 的密度函数 <span class="arithmatex">\(C_{i} g_{i}\left(x_{i}\right)\)</span>.</p>
+<p>因此 <span class="arithmatex">\(g_{i}\left(x_{i}\right)=C_{i}^{-1} f_{i}\left(x_{i}\right)\)</span>, 其中 <span class="arithmatex">\(f_{i}\)</span> 是 <span class="arithmatex">\(x_{i}\)</span> 的密度函数. 以此代 人(3.15), 知 <span class="arithmatex">\(f\left(x_{1}, \cdots, x_{n}\right)=C_{1}^{-1} C_{2}^{-1} \cdots C_{n}^{-1} f_{1}\left(x_{1}\right) \cdots f_{n}\left(x_{n}\right)\)</span>. 由 此式两边对 <span class="arithmatex">\(x_{1}, \cdots, x_{n}\)</span> 的积分都为 1 , 知 <span class="arithmatex">\(C_{1}^{-1} C_{2}^{-1} \cdots C_{n}^{-1}=1\)</span>, 因而 <span class="arithmatex">\(f\left(x_{1}, \cdots, x_{n}\right)=f_{1}\left(x_{1}\right) \cdots f_{n}\left(x_{n}\right)\)</span>. 按定义 (3.1), 知 <span class="arithmatex">\(X_{1}, \cdots, X_{n}\)</span> 独 立.</p>
+<p>定理 3.3 若 <span class="arithmatex">\(X_{1}, \cdots, X_{n}\)</span> 相互独立, 而</p>
+<div class="arithmatex">\[
+Y_{1}=g_{1}\left(X_{1}, \cdots, X_{m}\right), Y_{2}=g_{2}\left(X_{m+1}, \cdots, X_{n}\right)
+\]</div>
+<p>则 <span class="arithmatex">\(Y_{1}\)</span> 和 <span class="arithmatex">\(Y_{2}\)</span> 独立.</p>
+<p>这个定理直观上的意义很明白: 因为 <span class="arithmatex">\(X_{1}, \cdots, X_{n}\)</span> 相互独立, 把 它分成两部分 <span class="arithmatex">\(X_{1}, \cdots, X_{m}\)</span> 及 <span class="arithmatex">\(X_{m+1}, \cdots, X_{n}\)</span>, 二者没有关系. 因为 <span class="arithmatex">\(Y_{1}, Y_{2}\)</span> 分别只与前者和后者有关, 它们之间也不应有相依关系. 证明细节也不难写出, 在此从略了.</p>
+<p>以上讨论的是关于连续型变量的独立性, 至于离散型则更为 简单.</p>
+<p>定义 3.2 设 <span class="arithmatex">\(X_{1}, \cdots, X_{n}\)</span> 都是离散型随机变量. 若对任何常 数 <span class="arithmatex">\(a_{1}, \cdots, a_{n}\)</span>, 都有</p>
+<div class="arithmatex">\[
+P\left(X_{1}=a_{1}, \cdots, X_{n}=a_{n}\right)=P\left(X_{1}=a_{1}\right) \cdots P\left(X_{n}=a_{n}\right)
+\]</div>
+<p>则称 <span class="arithmatex">\(X_{1}, \cdots, X_{n}\)</span> 相互独立.</p>
+<p>所有关于独立性的定理,如定理 3.1-3.3, 全都适用于离散 型. 唯一的变动是: 凡是在这些定理中提到“密度函数” 的地方, 现 在要改为“概率函数”.</p>
+<p>例 3.4 设 <span class="arithmatex">\(\left(X_{1}, X_{2}\right)\)</span> 服从二维正态分布 <span class="arithmatex">\(N\left(a, b, \sigma_{1}^{2}, \sigma_{2}^{2}, \rho\right)\)</span>. 由其联合密度函数 <span class="arithmatex">\(f\left(x_{1}, x_{2}\right)\)</span> 的形式 (2.7) 看出 : 当且仅当 <span class="arithmatex">\(\rho=0\)</span> 时, <span class="arithmatex">\(f\left(x_{1}, x_{2}\right)\)</span> 才可以表为两个边缘密度 <span class="arithmatex">\(f_{1}\left(x_{1}\right)\)</span> 和 <span class="arithmatex">\(f_{2}\left(x_{2}\right)\)</span> 之积. 因 此,当且仅当 <span class="arithmatex">\(\rho=0\)</span> 时, <span class="arithmatex">\(X_{1}\)</span> 和 <span class="arithmatex">\(X_{2}\)</span> 独立. 这进一步反映了我们以前 提及的一点事实: <span class="arithmatex">\(\rho\)</span> 这个参数与 <span class="arithmatex">\(X_{1}, X_{2}\)</span> 的相依性有关.</p>
+<p>例 3.5 考虑例 2.4 的随机向量 <span class="arithmatex">\(\left(X_{1}, X_{2}\right)\)</span>. 据例 2.9 的结果, 不难知道: <span class="arithmatex">\(X_{1}, X_{2}\)</span> 不为独立.</p>
+<p>与事件的独立性一样, 在实际问题中, 变量的独立性往往不是 从其数学定义去验证出来的. 相反, 常是从变量产生的实际背景判 断它们独立 (或者其相依性很微弱因而可近似地认为是独立), 然 后再使用独立性定义中所赋予的性质和独立性的有关定理. 例如, 一城市中两个相距较远的路段在一定时间内各自发生的交通事故 数,一个人的姓氏笔划与其智商. 在实际中, <span class="arithmatex">\(n\)</span> 个变量 <span class="arithmatex">\(X_{1}, \cdots, X_{n}\)</span> 的独立性通常是这样产生的: 有 <span class="arithmatex">\(n\)</span> 个彼此无关联的试验 <span class="arithmatex">\(E_{1}, \cdots\)</span>, <span class="arithmatex">\(E_{n}\)</span>, 而 <span class="arithmatex">\(X_{i}\)</span> 只依赖于试验 <span class="arithmatex">\(E_{i}\)</span> 的结果. 形式上我们可以构作一个复 合试验 <span class="arithmatex">\(E=\left(E_{1}, \cdots, E_{n}\right)\)</span>, 以把这 <span class="arithmatex">\(n\)</span> 个变量都包容在这个试验 <span class="arithmatex">\(E\)</span> 之下. 这种观点在讲事件独立性时已提到过了.</p>
+<p>然而, 在主要是理论的情况下, 需要直接借助于定义来验证变 量的独立性.举一个例子.</p>
+<p>例 3.6 设 <span class="arithmatex">\(X_{1}, X_{2}\)</span> 独立, 都服 从标准正态分布 <span class="arithmatex">\(N(0,1)\)</span>. 把点 <span class="arithmatex">\(\left(X_{1}, X_{2}\right)\)</span> 的极坐标记为 <span class="arithmatex">\((R, \Theta)\)</span>, <span class="arithmatex">\(0 \leqslant R&lt;\infty, 0 \leqslant \Theta&lt;2 \pi\)</span>. 求证: <span class="arithmatex">\(R\)</span> 和 <span class="arithmatex">\(\Theta\)</span> 独立 (图 2.9).</p>
+<p>取定 <span class="arithmatex">\(r_{0}&gt;0,0&lt;\theta_{0}&lt;2 \pi\)</span>. 考虑 事件 <span class="arithmatex">\(B=\left\{0 \leqslant R \leqslant r_{0}, 0 \leqslant \Theta \leqslant \theta_{0}\right\}\)</span>. 由于 <span class="arithmatex">\(X_{1}, X_{2}\)</span> 独立且各自的密度函</p>
+<p><img alt="" src="https://cdn.mathpix.com/cropped/2023_07_12_1d295b2b64716eeb763cg-12.jpg?height=588&amp;width=620&amp;top_left_y=363&amp;top_left_x=1072" />
+数分别为 <span class="arithmatex">\(\sqrt{2 \pi}^{-1} \cdot \mathrm{e}^{-x_{1}^{2} / 2}\)</span> 和 <span class="arithmatex">\(\sqrt{2 \pi}^{-1}\)</span>. <span class="arithmatex">\(\mathrm{e}^{-x_{2}^{2} / 2}\)</span>, 由独立性定义 3.1 知 图 2.9 <span class="arithmatex">\(\left(X_{1}, X_{2}\right)\)</span> 的联合密度为 <span class="arithmatex">\((2 \pi)^{-1} \exp \left(-\frac{1}{2}\left(x_{1}^{2}+x_{2}^{2}\right)\right)\)</span>. 因此, 按密 度函数的定义 (2.5)式, 有</p>
+<div class="arithmatex">\[
+P(B)=\iint_{A}(2 \pi)^{-1} \exp \left[-\frac{1}{2}\left(x_{1}^{2}+x_{2}^{2}\right)\right] \mathrm{d} x_{1} \mathrm{~d} x_{2}
+\]</div>
+<p>化为极坐标, 得</p>
+<div class="arithmatex">\[
+P\left(0 \leqslant R \leqslant r_{0}, 0 \leqslant \Theta \leqslant \theta_{0}\right)=(2 \pi)^{-1} \int_{0}^{\theta_{0}} \int_{0}^{r_{0}} \mathrm{e}^{-r^{2} / 2} r \mathrm{~d} r \mathrm{~d} \theta
+\]</div>
+<p>由这个等式直接看出: <span class="arithmatex">\((R, \Theta)\)</span> 的概率密度函数就是 <span class="arithmatex">\((2 \pi)^{-1} \mathrm{e}^{-r^{2} / 2} r\)</span> （当 <span class="arithmatex">\(0 \leqslant r&lt;\infty, 0 \leqslant \theta&lt;2 \pi\)</span>, 其他处为 0 ). 它是下述两个函数的乘 积:</p>
+<div class="arithmatex">\[
+\begin{aligned}
+&amp; f_{1}(r)= \begin{cases}\mathrm{e}^{-r^{2} / 2} r, &amp; \text { 当 } r \geqslant 0 \\
+0, &amp; \text { 当 } r&lt;0\end{cases} \\
+&amp; f_{2}(\theta)= \begin{cases}1 / 2 \pi, &amp; 0 \leqslant \theta&lt;2 \pi \\
+0, &amp; \text { 当他 } \theta\end{cases}
+\end{aligned}
+\]</div>
+<p>按定理 3.2 , 即得知 <span class="arithmatex">\(R\)</span> 与 <span class="arithmatex">\(\Theta\)</span> 独立, 且 <span class="arithmatex">\(R\)</span> 与 <span class="arithmatex">\(\Theta\)</span> 的密度函数分别是 <span class="arithmatex">\(f_{1}(r)\)</span> 和 <span class="arithmatex">\(f_{2}(\theta)\)</span>.</p>
+<p>离散型变量独立性的一个重要例子涉及事件独立性与随机变 量独立性之间的关系。</p>
+<p>例 3.7 设有 <span class="arithmatex">\(n\)</span> 个事件 <span class="arithmatex">\(A_{1}, A_{2}, \cdots, A_{n}\)</span>. 针对每个事件 <span class="arithmatex">\(A_{i}\)</span>, 可 定义一随机变量 <span class="arithmatex">\(X_{i}\)</span> 如下:</p>
+<div class="arithmatex">\[
+X_{i}=1 \text {, 当事件 } A \text { 发生; } X_{i}=0 \text {, 当 } A \text { 不发生 }
+\]</div>
+<p>常把 <span class="arithmatex">\(X_{i}\)</span> 称为事件 <span class="arithmatex">\(A\)</span> 的指示变量或指示函数、示性函数 (indicator), 意思是其值“指示”了 <span class="arithmatex">\(A\)</span> 是否发生. 这个写法表明: 事件可视 作随机变量的一种特例.</p>
+<p>不难证明: 若事件 <span class="arithmatex">\(A_{1}, \cdots, A_{n}\)</span> 独立, 则其指示变量 <span class="arithmatex">\(X_{1}, \cdots, X_{n}\)</span> 独立. 反之亦成立. 证明是基于第一章的系 3.3 , 我们把细节留给 读者自己去完成.</p>
+<p>利用指示变量的概念,可以对第一章系 3.2 后面那段话作出 统一而简洁的论证. 若事件 <span class="arithmatex">\(A_{1}, \cdots, A_{n}\)</span> 独立, 而事件 <span class="arithmatex">\(B_{1}\)</span> 取决于 <span class="arithmatex">\(A_{1}, \cdots, A_{m}\)</span> (这意思是说:一旦知道了事件 <span class="arithmatex">\(A_{1}, \cdots, A_{m}\)</span> 中每一个发 生与否, 就能定下 <span class="arithmatex">\(B_{1}\)</span> 发生与否), 事件 <span class="arithmatex">\(B_{2}\)</span> 取决于 <span class="arithmatex">\(A_{m+1}, \cdots, A_{n}\)</span>, 则 <span class="arithmatex">\(B_{1}\)</span> 与 <span class="arithmatex">\(B_{2}\)</span> 独立. 转到指示变量 : 分别以 <span class="arithmatex">\(X_{1}, \cdots, X_{n}\)</span> 记 <span class="arithmatex">\(A_{1}, \cdots, A_{n}\)</span> 的指示变量, 以 <span class="arithmatex">\(Y_{1}\)</span> 和 <span class="arithmatex">\(Y_{2}\)</span> 分别记 <span class="arithmatex">\(B_{1}\)</span> 和 <span class="arithmatex">\(B_{2}\)</span> 的指示变量. 按假定, 后者分别是 <span class="arithmatex">\(X_{1}, \cdots, X_{m}\)</span> 与 <span class="arithmatex">\(X_{m+1}, \cdots, X_{n}\)</span> 的函数：</p>
+<div class="arithmatex">\[
+Y_{1}=g_{1}\left(X_{1}, \cdots, X_{m}\right), Y_{2}=g_{2}\left(X_{m+1}, \cdots, X_{n}\right)
+\]</div>
+<p>由 <span class="arithmatex">\(A_{1}, \cdots, A_{n}\)</span> 独立知随机变量 <span class="arithmatex">\(X_{1}, \cdots, X_{n}\)</span> 独立. 再据定理 3.3, 即 知 <span class="arithmatex">\(Y_{1}\)</span> 与 <span class="arithmatex">\(Y_{2}\)</span> 独立, 因而事件 <span class="arithmatex">\(B_{1}\)</span> 和 <span class="arithmatex">\(B_{2}\)</span> 独立.</p>
+<p>例 3.8 设 <span class="arithmatex">\(\left(X_{1}, \cdots, X_{n}\right)\)</span> 服从多项分布 <span class="arithmatex">\(M\left(N ; p_{1}, \cdots, p_{n}\right)\)</span>, <span class="arithmatex">\(p_{i}&gt;0, i=1, \cdots, n\)</span>. 对任何 <span class="arithmatex">\(u \neq v, X_{u}\)</span> 和 <span class="arithmatex">\(X_{u}\)</span> 不独立.</p>
+<p>这个结论从直观上看至为明显: 按多项分布的定义有 <span class="arithmatex">\(X_{1}+\cdots\)</span> <span class="arithmatex">\(+X_{n}=N\)</span>. 若 <span class="arithmatex">\(n&gt;2\)</span>, 则虽然 <span class="arithmatex">\(X_{u}\)</span> 并不足以唯一决定 <span class="arithmatex">\(X_{v}\)</span>, 但二者有 关. 例如, 当 <span class="arithmatex">\(X_{u}\)</span> 取很大的值时, <span class="arithmatex">\(X_{u}\)</span> 取大值的可能性就降低. 这说 明: <span class="arithmatex">\(X_{v}\)</span> 在给定 <span class="arithmatex">\(X_{u}\)</span> 之下的条件分布, 取决于 <span class="arithmatex">\(X_{u}\)</span> 的给定值, 因而不 符合独立性的要求. 形式的证明也不难作出,留给读者去完成.</p>
+
+
+
+
+
+
+
+  
+    
+  
+  
+    
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="最后更新">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">December 21, 2023</span>
+  </span>
+
+    
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="创建日期">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3h-2Z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">December 21, 2023</span>
+  </span>
+
+    
+    
+    
+  </aside>
+
+
+  
+
+
+
+  <form class="md-feedback" name="feedback" hidden>
+    <fieldset>
+      <legend class="md-feedback__title">
+        对当前页面有任何疑问吗？
+      </legend>
+      <div class="md-feedback__inner">
+        <div class="md-feedback__list">
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="This page was helpful" data-md-value="1">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 9v12H1V9h4m4 12a2 2 0 0 1-2-2V9c0-.55.22-1.05.59-1.41L14.17 1l1.06 1.06c.27.27.44.64.44 1.05l-.03.32L14.69 8H21a2 2 0 0 1 2 2v2c0 .26-.05.5-.14.73l-3.02 7.05C19.54 20.5 18.83 21 18 21H9m0-2h9.03L21 12v-2h-8.79l1.13-5.32L9 9.03V19Z"/></svg>
+            </button>
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="This page could be improved" data-md-value="0">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 15V3h4v12h-4M15 3a2 2 0 0 1 2 2v10c0 .55-.22 1.05-.59 1.41L9.83 23l-1.06-1.06c-.27-.27-.44-.64-.44-1.06l.03-.31.95-4.57H3a2 2 0 0 1-2-2v-2c0-.26.05-.5.14-.73l3.02-7.05C4.46 3.5 5.17 3 6 3h9m0 2H5.97L3 12v2h8.78l-1.13 5.32L15 14.97V5Z"/></svg>
+            </button>
+          
+        </div>
+        <div class="md-feedback__note">
+          
+            <div data-md-value="1" hidden>
+              
+              
+                
+              
+              感谢您的反馈！
+            </div>
+          
+            <div data-md-value="0" hidden>
+              
+              
+                
+              
+              感谢您的反馈！请点击这里<a href="https://github.com/EanYang7/Probability-and-Statistics/issues" target="_blank" rel="noopener">这里</a>提供问题反馈.
+            </div>
+          
+        </div>
+      </div>
+    </fieldset>
+  </form>
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/EanYang7/cs231n" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant", "navigation.top", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.path", "toc.follow", "content.action.edit", "content.action.view"], "search": "../../javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../../javascripts/bundle.d7c377c4.min.js"></script>
+      
+        <script src="../../../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

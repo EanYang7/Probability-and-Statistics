@@ -1,0 +1,2670 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="《概率论与数理统计》陈希孺，中国科学技术大学出版社">
+      
+      
+      
+        <link rel="canonical" href="https://eanyang7.github.io/Probability-and-Statistics/assets/5/5.2/">
+      
+      
+      
+      
+      <link rel="icon" href="../../../cover.jpg">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.2">
+    
+    
+      
+        <title>5.2 重要参数检验 - 概率论与数理统计</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/main.50c56a3b.min.css">
+      
+        
+        <link rel="stylesheet" href="../../stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-GEDRLMN4ML"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-GEDRLMN4ML",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-GEDRLMN4ML",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#52" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../.." title="概率论与数理统计" class="md-header__button md-logo" aria-label="概率论与数理统计" data-md-component="logo">
+      
+  <img src="../../../cover.jpg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            概率论与数理统计
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              5.2 重要参数检验
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换为暗黑模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换为暗黑模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5c-.84 0-1.65.15-2.39.42L12 2M3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29L3.34 7m.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14L3.36 17M20.65 7l-1.77 3.79a7.023 7.023 0 0 0-2.38-4.15l4.15.36m-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29L20.64 17M12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44L12 22Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换为浅色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换为浅色模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3 3.19.09m3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95 2.06.05m-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/EanYang7/Probability-and-Statistics" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    EanYang7/Probability-and-Statistics
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../.." class="md-tabs__link">
+          
+  
+  首页
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      
+  
+  
+  
+    
+    
+      
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../courses/1-Probability-of-events/1-What-is-the-probability/" class="md-tabs__link">
+          
+  
+  课程
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../%E3%80%8A%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1%E3%80%8B%E9%99%88%E5%B8%8C%E5%AD%BA%EF%BC%8C%E4%B8%AD%E5%9B%BD%E7%A7%91%E5%AD%A6%E6%8A%80%E6%9C%AF%E5%A4%A7%E5%AD%A6%E5%87%BA%E7%89%88%E7%A4%BE.pdf" class="md-tabs__link">
+        
+  
+    
+  
+  PDF
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="概率论与数理统计" class="md-nav__button md-logo" aria-label="概率论与数理统计" data-md-component="logo">
+      
+  <img src="../../../cover.jpg" alt="logo">
+
+    </a>
+    概率论与数理统计
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/EanYang7/Probability-and-Statistics" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    EanYang7/Probability-and-Statistics
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    首页
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            首页
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    简介
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    课程
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            课程
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    章节
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            章节
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1_1" id="__nav_2_1_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    第1章 事件的概率
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1_1">
+            <span class="md-nav__icon md-icon"></span>
+            第1章 事件的概率
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../courses/1-Probability-of-events/1-What-is-the-probability/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1.1 概率是什么
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../courses/1-Probability-of-events/2-Classical-Probability-Calculation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1.2 古典概率计算
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../courses/1-Probability-of-events/3-Operation-Conditional-probability-and-independence-of-events/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1.3 事件的运算、条件概率与独立性
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../courses/1-Probability-of-events/exercises/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    习题
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../courses/1-Probability-of-events/answers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    答案
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1_2" id="__nav_2_1_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    第2章 随机变量及概率分布
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1_2">
+            <span class="md-nav__icon md-icon"></span>
+            第2章 随机变量及概率分布
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../courses/2-Random-Variables-and-Probability-Distribution/1-One-dimensional-random-variable/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2.1 一维随机变量
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../courses/2-Random-Variables-and-Probability-Distribution/2-Multidimensional-random-variables-random-vectors/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2.2 多维随机变量（随机向量）
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../courses/2-Random-Variables-and-Probability-Distribution/3-Independence-of-Conditional-probability-distribution-and-random-variable/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2.3 条件概率分布与随机变量的独立性
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../courses/2-Random-Variables-and-Probability-Distribution/4-Probability-Distribution-of-Functions-of-Random-Variables/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2.4 随机变量的函数的概率分布
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../courses/2-Random-Variables-and-Probability-Distribution/appendix/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    附录
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../courses/2-Random-Variables-and-Probability-Distribution/exercises/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    习题
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../courses/2-Random-Variables-and-Probability-Distribution/answers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    答案
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1_3" id="__nav_2_1_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    第3章 随机变量的数字特征
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1_3">
+            <span class="md-nav__icon md-icon"></span>
+            第3章 随机变量的数字特征
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../courses/3-Numerical-Characteristics-of-Random-Variables/1-Mathematica-Expectations-Mean-and-Median/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3.1 数学期望（均值）与中位数
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../courses/3-Numerical-Characteristics-of-Random-Variables/2-Variance-and-Moment/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3.2 方差与矩
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../courses/3-Numerical-Characteristics-of-Random-Variables/3-Covariance-and-correlation-coefficient/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3.3 协方差与相关系数
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../courses/3-Numerical-Characteristics-of-Random-Variables/4-Theorem-of-Large-Numbers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3.4 大数定理和中心极限定理
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../courses/3-Numerical-Characteristics-of-Random-Variables/exercises/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    习题
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../courses/3-Numerical-Characteristics-of-Random-Variables/answers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    答案
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1_4" id="__nav_2_1_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    第4章 参数估计
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1_4">
+            <span class="md-nav__icon md-icon"></span>
+            第4章 参数估计
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../courses/4-Parameter-Estimates/1-Basic-concepts-of-Mathematical-statistics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4.1 数理统计学的基本概念
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../courses/4-Parameter-Estimates/2-Moment-estimation-maximum-likelihood-estimation-and-Bayesian-estimation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4.2 矩估计、极大似然估计和贝叶斯估计
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../courses/4-Parameter-Estimates/3-Excellence-criterion-of-Point-estimation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4.3 点估计的优良性准则
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../courses/4-Parameter-Estimates/4-Interval-estimation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4.4 区间估计
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../courses/4-Parameter-Estimates/exercises/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    习题
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../courses/4-Parameter-Estimates/answers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    答案
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1_5" id="__nav_2_1_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    第5章 假设检验
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1_5">
+            <span class="md-nav__icon md-icon"></span>
+            第5章 假设检验
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../courses/5-Hypothesis-Testing/1-Problem-formulation-and-basic-concepts/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5.1 问题提法和基本概念
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../courses/5-Hypothesis-Testing/2-Important-parameter-inspection/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5.2 重要参数检验
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../courses/5-Hypothesis-Testing/3-goodness-of-fit-test/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5.3 拟合优度检验
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../courses/5-Hypothesis-Testing/appendix/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    附录
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../courses/5-Hypothesis-Testing/exercises/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    习题
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../courses/5-Hypothesis-Testing/answers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    答案
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1_6" id="__nav_2_1_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    第6章 回归、相关与方差分析
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1_6">
+            <span class="md-nav__icon md-icon"></span>
+            第6章 回归、相关与方差分析
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../courses/6-Regression-Correlation-and-Analysis-of-Variance/1-Basic-concepts-of-regression-analysis/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6.1 回归分析基本概念
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../courses/6-Regression-Correlation-and-Analysis-of-Variance/2-Univariate-linear-regression/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6.2 一元线性回归
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../courses/6-Regression-Correlation-and-Analysis-of-Variance/3-Multiple-linear-regression/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6.3 多元线性回归
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../courses/6-Regression-Correlation-and-Analysis-of-Variance/4-Correlation-analysis/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6.4 相关分析
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../courses/6-Regression-Correlation-and-Analysis-of-Variance/5-Analysis-of-variance/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6.5 方差分析
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../courses/6-Regression-Correlation-and-Analysis-of-Variance/appendix/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    附录
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../courses/6-Regression-Correlation-and-Analysis-of-Variance/exercises/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    习题
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../courses/6-Regression-Correlation-and-Analysis-of-Variance/answers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    答案
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../courses/appendix/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    附表
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../%E3%80%8A%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1%E3%80%8B%E9%99%88%E5%B8%8C%E5%AD%BA%EF%BC%8C%E4%B8%AD%E5%9B%BD%E7%A7%91%E5%AD%A6%E6%8A%80%E6%9C%AF%E5%A4%A7%E5%AD%A6%E5%87%BA%E7%89%88%E7%A4%BE.pdf" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    PDF
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#01-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      0.1. 1 正态总体均值的检验
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      0.2. 2 两个正态总体均值差的检验
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      0.3. 3 正态分布方差的检验
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-2-4" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 2 .4 指数分布参数的检验
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 截尾寿命检验
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. 2. 定时截尾法
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. 2. 定时截尾法">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-5-p" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.1. 5 二项分布参数 \(p\) 的检验
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-6-lambda" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.2. 6 波哇松分布参数 \(\lambda\) 的检验
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-7" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.3. 7 大样本检验
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34-8" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.4. 8 贝叶斯方法
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+    <a href="https://github.com/EanYang7/Probability-and-Statistics/tree/main/docs/assets/5/5.2.md" title="编辑此页" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
+    </a>
+  
+  
+    
+      
+    
+    <a href="https://github.com/EanYang7/Probability-and-Statistics/tree/main/docs/assets/5/5.2.md" title="查看本页的源代码" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0 8a5 5 0 0 1-5-5 5 5 0 0 1 5-5 5 5 0 0 1 5 5 5 5 0 0 1-5 5m0-12.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5Z"/></svg>
+    </a>
+  
+
+
+<h1 id="52">5.2 重要参数检验<a class="headerlink" href="#52" title="Permanent link">⚓︎</a></h1>
+<p>本节中我们将讨论几个常用的检验.构造检验, 也有些带一般 性的方法. 但这些方法应用上比较成功的情况, 很大一部分也就是 本节要讲到的几个常用例子. 所以, 我们不采取从介绍这种一般方 法出发再回到具体例子的讲法, 而在每一个具体问题中, 从直观想 法出发去构造看来是合理的检验.</p>
+<p>这种直观方法是基于参数的点估计. 原则上很简单: 考虑一个 单参数的情形. 设被检验的原假设是 <span class="arithmatex">\(H_{0}: \theta=\theta_{0}\)</span>, 或 <span class="arithmatex">\(\theta \leqslant \theta_{0}\)</span>, 或 <span class="arithmatex">\(\theta \geqslant\)</span> <span class="arithmatex">\(\theta_{0}\)</span>. 有了样本以后, 先找 <span class="arithmatex">\(\theta_{0}\)</span> 的一适当的点估计 <span class="arithmatex">\(T\)</span>. 如果 <span class="arithmatex">\(\theta=\theta_{0}\)</span> 成立. 则 <span class="arithmatex">\(T\)</span> 与 <span class="arithmatex">\(\theta_{0}\)</span> 相去不应太远, 故直观上看, 应当在 <span class="arithmatex">\(\left|T-\theta_{0}\right|&gt;\)</span> 某常数 <span class="arithmatex">\(C\)</span> 时, 否定 <span class="arithmatex">\(H_{0}\)</span>, 而在 <span class="arithmatex">\(\left|T-\theta_{0}\right| \leqslant C\)</span> 时接受 <span class="arithmatex">\(H_{0}\)</span> (也可以两边不对称,故一般也可 以: 在 <span class="arithmatex">\(C_{1} \leqslant T \leqslant C_{2}\)</span> 时接受 <span class="arithmatex">\(H_{0}\)</span>, 不然就否定 <span class="arithmatex">\(H_{0}\)</span> ). 如果要检验的原假 设是 <span class="arithmatex">\(\theta \leqslant \theta_{0}\)</span>, 则应当在 <span class="arithmatex">\(T&gt;C\)</span> 时否定 <span class="arithmatex">\(H_{0}\)</span>, 这看起来很简单. 但问题 在于, 我们对检验有一定的水平要求, 上述简单处理有时无法满足 这一要求,而需要在上述基础上作一些修改. 这就没有定规了. 从 以下实例的讨论中,读者会能悟出这里面的问题所在.</p>
+<p>本节的另一个任务是通过这些例子的解说, 加深对上节所述 一般概念的理解,并阐明若干在前节没有深人发挥的论点.</p>
+<h3 id="01-1">0.1. 1 正态总体均值的检验<a class="headerlink" href="#01-1" title="Permanent link">⚓︎</a></h3>
+<p>设 <span class="arithmatex">\(X_{1}, \cdots, X_{n}\)</span> 是自正态总体 <span class="arithmatex">\(N\left(\theta, \sigma^{2}\right)\)</span> 中抽出的样本, 我们来 讨论有关均值 <span class="arithmatex">\(\theta\)</span> 的假设检验问题. 在应用上常见到的形式有 <span class="arithmatex">\(\left(\theta_{0}\right.\)</span> 是一给定的数):</p>
+<p><span class="arithmatex">\(1^{\circ} H_{0}: \theta \geqslant \theta_{0}, H_{1}: \theta&lt;\theta_{0}\)</span></p>
+<p><span class="arithmatex">\(2^{\circ} \quad H_{0}^{\prime}: \theta \leqslant \theta_{0}, H_{1}^{\prime}: \theta&gt;\theta_{0}\)</span></p>
+<p><span class="arithmatex">\(3^{\circ} \quad H_{0}^{\prime \prime}: \theta=\theta_{0}, H_{1}^{\prime \prime}: \theta \neq \theta_{0}\)</span></p>
+<p><span class="arithmatex">\(H_{0}, H_{0}^{\prime}\)</span> 和 <span class="arithmatex">\(H_{0}^{\prime \prime}\)</span> 为原假设, <span class="arithmatex">\(H_{1}, H_{1}^{\prime}, H_{1}^{\prime \prime}\)</span> 为对立假设. 以后都按这次 序: 原假设在前.</p>
+<p>分两种情况讨论</p>
+<ol>
+<li>方差 <span class="arithmatex">\(\sigma^{2}\)</span> 已知时</li>
+</ol>
+<p>先考虑检验问题 <span class="arithmatex">\(1^{\circ}\)</span>. 以 <span class="arithmatex">\(\bar{X}\)</span> 记样本均值, <span class="arithmatex">\(\bar{X}\)</span> 是 <span class="arithmatex">\(\theta\)</span> 的估计. 故 <span class="arithmatex">\(\bar{X}\)</span> 愈大, 直观上看与原假设 <span class="arithmatex">\(H_{0}\)</span> 愈符合. 反之, <span class="arithmatex">\(\bar{X}\)</span> 愈小, 则与对立假设 <span class="arithmatex">\(H_{1}\)</span> 愈符合. 由此得出一个直观上合理的检验 <span class="arithmatex">\(\Phi\)</span> 是</p>
+<p><span class="arithmatex">\(\Phi\)</span> : 当 <span class="arithmatex">\(\bar{X} \geqslant C\)</span> 时接受原假设 <span class="arithmatex">\(H_{0}, \bar{X}&lt;C\)</span> 时否定 <span class="arithmatex">\(H_{0}\)</span> (2.1) 要定出常数 <span class="arithmatex">\(C\)</span>, 使检验有给定水平 <span class="arithmatex">\(\alpha\)</span>, 为此要考虑 <span class="arithmatex">\(\Phi\)</span> 的功效函数 <span class="arithmatex">\(\beta_{\Phi}(\theta)\)</span>. 按定义 <span class="arithmatex">\((1.1)\)</span>, 有</p>
+<div class="arithmatex">\[
+\begin{aligned}
+\beta_{\Phi}(\theta) &amp; =P_{\theta}(\bar{X}&lt;C) \\
+&amp; =P_{\theta}(\sqrt{n}(\bar{X}-\theta) / \sigma&lt;\sqrt{n}(C-\theta) / \sigma)
+\end{aligned}
+\]</div>
+<p>当总体有正态分布 <span class="arithmatex">\(N\left(\theta, \sigma^{2}\right)\)</span> 时, <span class="arithmatex">\(\sqrt{n}(\bar{X}-\theta) / \sigma\)</span> 服从标准正态分布 <span class="arithmatex">\(N(0,1)\)</span>. 以 <span class="arithmatex">\(\Phi\)</span> 记其分布函数, 有</p>
+<div class="arithmatex">\[
+\beta_{\Phi}(\theta)=\Phi(\sqrt{n}(C-\theta / \sigma)
+\]</div>
+<p>当 <span class="arithmatex">\(\theta\)</span> 增加时, <span class="arithmatex">\(\sqrt{n}(C-\theta) / \sigma\)</span> 下降, 故 <span class="arithmatex">\(\beta_{\Phi}(\theta)\)</span> 也下降, 这样一来, 要 使 <span class="arithmatex">\(\beta_{\Phi}(\theta) \leqslant\left(\alpha\right.\)</span> 当 <span class="arithmatex">\(\theta \geqslant \theta_{0}\)</span> 时) 只要 <span class="arithmatex">\(\beta_{\Phi}\left(\theta_{0}\right)=\alpha\)</span> 即可. 按记号 <span class="arithmatex">\(u_{\alpha}\)</span> 的定 义(见第四章 (4.3) 式), 应取 <span class="arithmatex">\(C\)</span> 满足 <span class="arithmatex">\(\sqrt{n}\left(C-\theta_{0}\right) / \sigma=u_{1-\alpha}=-u_{a}\)</span>, 由此得</p>
+<div class="arithmatex">\[
+C=\theta_{0}-\sigma u_{\alpha} / \sqrt{n}
+\]</div>
+<p>(2.1) 和 (2.3) 结合决定了检验 <span class="arithmatex">\(\Phi\)</span>. 以 <span class="arithmatex">\(C\)</span> 代人 (2.2), 得到 <span class="arithmatex">\(\Phi\)</span> 的功 效函数为</p>
+<div class="arithmatex">\[
+\beta_{\Phi}(\theta)=\Phi\left(\sqrt{n}\left(\theta_{0}-\dot{\theta}\right) / \sigma-u_{\alpha}\right)
+\]</div>
+<p>当 <span class="arithmatex">\(\theta&lt;\theta_{0}\)</span> 即属于对立假设 <span class="arithmatex">\(H_{1}\)</span> 时, <span class="arithmatex">\(\beta_{\Phi}(\theta)\)</span> 愈大愈好.怎样才能 使 <span class="arithmatex">\(\beta_{\Phi}(\theta)\)</span> 大呢? 从公式 (2.4) 分析, 并军记分布函数是非降的,易 得出以下几条结论:</p>
+<p>(a) <span class="arithmatex">\(\theta\)</span> 愈小, <span class="arithmatex">\(\beta_{\Phi}(\theta)\)</span> 愈大. 直观的解释是: <span class="arithmatex">\(\theta\)</span> 愈小, 则离原假设 <span class="arithmatex">\(H_{0}\)</span> 愈远, 愈易和原假设分辨开, 即犯错误 (第二类) 的概率应愈 小, 因而 <span class="arithmatex">\(\beta_{\Phi}(\theta)\)</span> 应愈大. 当 <span class="arithmatex">\(\theta&lt;\theta_{0}\)</span> 但 <span class="arithmatex">\(\theta\)</span> 接近 <span class="arithmatex">\(\theta_{0}\)</span> 时, <span class="arithmatex">\(\beta_{\Phi}(\theta) \approx \alpha\)</span>. 由于 <span class="arithmatex">\(\alpha\)</span> 一般是很小的数, 这时犯第二类错误的概率 <span class="arithmatex">\(1-\beta_{\Phi}(\theta) \approx 1-\alpha\)</span> 很接近 1 .</p>
+<p>(b)对固定的 <span class="arithmatex">\(\theta&lt;\theta_{0}, \sigma\)</span> 愈大, <span class="arithmatex">\(\beta_{\Phi}(\theta)\)</span> 愈小. 直观的解释是: <span class="arithmatex">\(\sigma\)</span> 愈 大,表示误差的方差愈大. <span class="arithmatex">\(\theta\)</span> 与 <span class="arithmatex">\(\theta_{0}\)</span> 的差别被“淹没”在误差中,不易 被检出，因而犯错误的概率就大了.正如一杆科误差愈大,愈不易 分别出两件其重量略有不同的物件孰轻孰重.反之, <span class="arithmatex">\(\sigma\)</span> 愈小, <span class="arithmatex">\(\beta_{\Phi}(\theta)\)</span> 愈大,表示 <span class="arithmatex">\(\theta\)</span> 与 <span class="arithmatex">\(\theta_{0}\)</span> 的差别愈易检出.</p>
+<p>(c) <span class="arithmatex">\(\alpha\)</span> 愈大, 则 <span class="arithmatex">\(u_{\alpha}\)</span> 愈小, 而 <span class="arithmatex">\(\beta_{\Phi}(\theta)\)</span> 就愈大. 直观上的解释是: <span class="arithmatex">\(\alpha\)</span> 愈大, 表示能容许的第一类错误概率增大, 这时, 作为补偿, 第二类 错误的概率应有所降低, 即 <span class="arithmatex">\(\beta_{\Phi}(\theta)\)</span> 应增加. 这里明白看出两种错误 概率的矛盾关系.</p>
+<p>如果我们提出要求: “犯第二种错误的概率要小于指定的 <span class="arithmatex">\(\beta&gt;\)</span> 0 ”, 该怎么办? 这等于要求</p>
+<div class="arithmatex">\[
+\beta_{\Phi}(\theta) \geqslant 1-\beta, \theta&lt;\theta_{0}
+\]</div>
+<p>但是, 当 <span class="arithmatex">\(\theta&lt;\theta_{0}\)</span> 但 <span class="arithmatex">\(\theta\)</span> 接近 <span class="arithmatex">\(\theta_{0}\)</span> 时, <span class="arithmatex">\(\beta_{\Phi}(\theta) \approx \alpha\)</span>, 而因为 <span class="arithmatex">\(\alpha, \beta\)</span> 都很小, 一 般有 <span class="arithmatex">\(\alpha&lt;1-\beta\)</span>. 这就看出: 要求 (2.5) 无法达到. 我们只能放松一 点,要求对某个指定的 <span class="arithmatex">\(\theta_{1}&lt;\theta_{0}\)</span>, 有</p>
+<div class="arithmatex">\[
+\beta_{\Phi}(\theta) \geqslant 1-\beta \text {, 当 } \theta \leqslant \theta_{1}
+\]</div>
+<p><img alt="" src="https://cdn.mathpix.com/cropped/2023_07_12_609603e01e9aadde063ag-04.jpg?height=346&amp;width=531&amp;top_left_y=638&amp;top_left_x=291" /></p>
+<p>图 5.2</p>
+<p>因为 <span class="arithmatex">\(\beta_{\Phi}(\theta)\)</span> 随 <span class="arithmatex">\(\theta\)</span> 增加而下降 (图 5.2). (2.6) 等价于要求</p>
+<div class="arithmatex">\[
+\beta_{\Phi}\left(\theta_{1}\right) \geqslant 1-\beta
+\]</div>
+<p>按 <span class="arithmatex">\((2.4)\)</span>, 此即</p>
+<div class="arithmatex">\[
+\Phi\left(\sqrt{n}\left(\theta_{0}-\theta_{1}\right) / \sigma-u_{\alpha}\right) \geqslant 1-\beta
+\]</div>
+<p>或者说 <span class="arithmatex">\(\sqrt{n}\left(\theta_{0}-\theta_{1}\right) / \sigma-u_{\alpha} \geqslant u_{\beta}\)</span>, 即</p>
+<div class="arithmatex">\[
+n \geqslant \sigma^{2}\left(u_{\alpha}+u_{\beta}\right)^{2} /\left(\theta_{0}-\theta_{1}\right)^{2}
+\]</div>
+<p>就是说, 样本大小至少应达到(2.8) 右边那么大. 例如, 若 <span class="arithmatex">\(\sigma^{2}=1\)</span>, <span class="arithmatex">\(a=\beta=0.05, \theta_{0}-\theta_{1}=0.5\)</span>, 则</p>
+<div class="arithmatex">\[
+n \geqslant(1.96+1.96)^{2} /(0.5)^{2}=61.4656, n \geqslant 62
+\]</div>
+<p>即样本大小至少为 62. (2.6) 式中 <span class="arithmatex">\(\theta_{1}\)</span> 的选择, 当然要看实际需要 面定. 它表示, 只有对 <span class="arithmatex">\(\theta_{1}\)</span> 及比 <span class="arithmatex">\(\theta_{1}\)</span> 更小的值来说, 否定“ “ <span class="arithmatex">\(\theta \geqslant \theta_{0}\)</span> ” 才是 要紧的, (2.8)式中 <span class="arithmatex">\(n\)</span> 与 <span class="arithmatex">\(\sigma^{2}\)</span> 成正比, 即当方差 <span class="arithmatex">\(\sigma^{2}\)</span> 愈大时, 为达到一 定的分辨率 (在此可以用 <span class="arithmatex">\(\left|\theta_{0}-\theta_{1}\right|\)</span> 来刻画), 所需要的样本数也愈 多.</p>
+<p>对检验问题 <span class="arithmatex">\(2^{\circ}\)</span>, 仿照上述讨论, 容易得出基于检验统计量 <span class="arithmatex">\(\bar{X}\)</span> 的检验是</p>
+<div class="arithmatex">\[
+\begin{gathered}
+\Phi^{\prime} \text { : 当 } \bar{X} \leqslant \theta_{0}+\sigma u_{a} / \sqrt{n} \text { 时接受 } H_{0}^{\prime}: \theta \leqslant \theta_{0}, \\
+\text { 不然就否定 } H_{0}^{\prime}
+\end{gathered}
+\]</div>
+<p>此检验的水平为 <span class="arithmatex">\(\alpha\)</span>, 功效函数为</p>
+<div class="arithmatex">\[
+\beta^{\prime}{ }_{\Phi}(\theta)=1-\Phi\left(\sqrt{n}\left(\theta_{0}-\theta\right) / \sigma+u_{\alpha}\right)
+\]</div>
+<p>若选定 <span class="arithmatex">\(\theta_{1}&gt;\theta_{0}\)</span>, 而要求 <span class="arithmatex">\(\beta_{\Phi}^{\prime}(\theta) \geqslant 1-\beta\)</span> 当 <span class="arithmatex">\(\theta \geqslant \theta_{1}\)</span>, 则得最小所需样 本大小 <span class="arithmatex">\(n\)</span> 仍由 (2.8) 式决定.</p>
+<p>如果样本 <span class="arithmatex">\(\left(X_{1}, \cdots, X_{n}\right)\)</span> 使得</p>
+<div class="arithmatex">\[
+\theta_{0}-\sigma u_{\alpha} / \sqrt{n} \leqslant \bar{X} \leqslant \theta_{0}+\sigma u_{\alpha} / \sqrt{n}
+\]</div>
+<p>则按检验问题 <span class="arithmatex">\(1^{\circ}\)</span> 的提法, 应接受 <span class="arithmatex">\(H_{0}: \theta \geqslant \theta_{0}\)</span>, 而按 <span class="arithmatex">\(2^{\circ}\)</span> 的提法, 则应 接受 <span class="arithmatex">\(H_{0}^{\prime}: \theta \leqslant \theta_{0}\)</span>. 从常理看这有矛盾. 其实, 这反映了统计推断的 一种特点, 它不是按那种“非此即彼”的逻辑. 这类现象我们以前就 碰到过了: 作一个参数 <span class="arithmatex">\(\theta\)</span> 的点估计, 据同一组样本你可以作出若 干不同的估计,讲起来都有其合理性; 作区间估计时, 不仅用不同 的枢轴变量可导出不同的估计, 即使用同一枢轴变量, 界限可以有 不同选择, 置信系数可以有高低, 都可导致不同的区间, 这些我们 都不认为有矛盾. 此处亦然, 关键在于原假设的选定并非任意, 而 要看问题中提法上的“倾向性”. 此语可通过下面的实例来解释.</p>
+<p>假定某工厂生产的一种产品, 其质量指标服从正态分布 <span class="arithmatex">\(N\left(\theta, \sigma^{2}\right)\)</span>, 且假定 <span class="arithmatex">\(\sigma^{2}\)</span> 已知. <span class="arithmatex">\(\theta\)</span> 为平均质量指标. 设 <span class="arithmatex">\(\theta\)</span> 愈大, 质量愈 好, 而 <span class="arithmatex">\(\theta_{0}\)</span> 为达到优级的界限. 某商店经常从该厂进货, 商店提出的 条件是按批验收，只有通过原假设 <span class="arithmatex">\(\theta \geqslant \theta_{0}\)</span> 的检验的批才被接受.于 是有两种情况:</p>
+<p>（1）从过去较长一段时期的记录，商店相信该厂产品质量总 的说是好的, 当然这不排斥偶尔也出现较差的批. 于是它同意把 <span class="arithmatex">\(\theta \geqslant \theta_{0}\)</span> 作为原假设并选定一个较低的检验水平 <span class="arithmatex">\(\alpha\)</span>, 例如 <span class="arithmatex">\(\alpha=0.05\)</span> 甚 至 <span class="arithmatex">\(\alpha=0.01\)</span>. 这样做对工厂有利, 因为这保证了: 优质的批 (即 <span class="arithmatex">\(\theta \geqslant\)</span> <span class="arithmatex">\(\theta_{0}\)</span> 的批) 只以很低的概率 <span class="arithmatex">\(\alpha\)</span> 被拒收, 而非优质的批仍能以不很小 的概率被接收.从商古的角度考志, 他们地认为这样做并非不利: 一则因为该厂产品质量一贯表现好, 故检验可放宽些, 要有很强的 证据 (即 <span class="arithmatex">\(\bar{X}&lt;\theta_{0}-\sigma u_{\alpha} / \sqrt{n}\)</span> ) 才否定 <span class="arithmatex">\(\theta \geqslant \theta_{0}\)</span>. 一则因为, 既然大多数 批质量是优等的, 取较小的 <span class="arithmatex">\(\alpha\)</span>, 保证了这样的批能以很大的机会通 过检验, 这对商占有利. 又因为质量差的批本来就不多, 即使这样 的批有较大比例混过检验, 影响也不大.</p>
+<p>（2）反之, 若以往一段时期的记录表明, 工厂产品质量并不很 好, 这样, 商店就可能坚持以 <span class="arithmatex">\(\theta \leqslant \theta_{0}\)</span> 作为原假设, 并选定一较低的 水平 <span class="arithmatex">\(\alpha\)</span>. 这样做, 表明商店要求要有较强的证据 (即 <span class="arithmatex">\(\bar{X}&gt;\theta_{0}+\)</span> <span class="arithmatex">\(\left.\sigma u_{\alpha} / \sqrt{n}\right)\)</span> 才能相信这批产品质量为优. 等于说一个人一向表现不 好, 则必须有较显著的好的表现, 才能相信他确有进步. 这样做就 达到了至少把 <span class="arithmatex">\(100(1-\alpha) \%\)</span> 的非优批拒之门外的目的.</p>
+<p>由此可见 (从以商店为主动的一方看), 同一个问题 (即 <span class="arithmatex">\(\theta \geqslant \theta_{0}\)</span> 或否?), 由于对背景的了解不同而采取了不同的态度,具体是通过 选择何者作为原假设来体现, 到这里, 也就不难理解当样本满足 (2.11) 时,两个原假设 <span class="arithmatex">\(H_{0}\)</span> 和 <span class="arithmatex">\(H_{0}^{\prime}\)</span> 都能接受的表面矛盾: 你产品质 量一贯很好时, 我认为这样本尚末构成这批产品非优的有力证据; 你产品质量一贯不好时, 我认为这同一样本尚末构成这批产品为 优的有力证据. 出发点不同,并无矛盾可言.</p>
+<p>最后, 对于检验问题 <span class="arithmatex">\(3^{\circ}, H_{0}^{\prime \prime}: \theta=\theta_{0}\)</span> 而 <span class="arithmatex">\(H_{1}^{\prime \prime}: \theta \neq \theta_{0}\)</span>, 直观上看合 理的检验规则是: 当 <span class="arithmatex">\(\theta\)</span> 的估计值 <span class="arithmatex">\(\bar{X}\)</span> 离 <span class="arithmatex">\(\theta_{0}\)</span> 较远时,否定 <span class="arithmatex">\(H_{1}^{\prime \prime}\)</span>, 不然就 接受 <span class="arithmatex">\(H_{0}^{\prime \prime}\)</span>, 即</p>
+<div class="arithmatex">\[
+\Phi^{\prime \prime} \text { : 当 }\left|\bar{X}-\theta_{0}\right| \leqslant C \text { 时接受 } H_{0}^{\prime \prime} \text {, 不然就否定 } H_{0}^{\prime \prime}
+\]</div>
+<p>选择 <span class="arithmatex">\(C\)</span>, 使检验 <span class="arithmatex">\(\Phi^{\prime \prime}\)</span> 有指定的水平 <span class="arithmatex">\(\alpha\)</span>. 这等于要求</p>
+<div class="arithmatex">\[
+\begin{aligned}
+1-\alpha &amp; \left.=P_{\theta_{0}}\left(\mid \bar{X}-\theta_{0}\right) \mid \leqslant C\right) \\
+&amp; =P_{\theta_{0}}\left(\left|\sqrt{n}\left(\bar{X}-\theta_{0}\right) / \sigma\right| \leqslant \sqrt{n} C / \sigma\right) \\
+&amp; =\Phi(\sqrt{n} C / \sigma)-\Phi(-\sqrt{n} C / \sigma) \\
+&amp; =2 \Phi(\sqrt{n} C / \sigma)-1
+\end{aligned}
+\]</div>
+<p>即 <span class="arithmatex">\(\Phi(\sqrt{n} C / \sigma)=1-\alpha / 2\)</span>, 这导出 <span class="arithmatex">\(\sqrt{n} C / \sigma=u_{\alpha / 2}\)</span> 或</p>
+<div class="arithmatex">\[
+C=\sigma u_{\alpha \Omega} / \sqrt{n}
+\]</div>
+<p>(2.12) 与(2.13) 结合,决定了 <span class="arithmatex">\(\Phi^{\prime \prime}\)</span>.</p>
+<p>可以证明 (见附录 <span class="arithmatex">\(A\)</span> ) : 检验 <span class="arithmatex">\(\Phi\)</span> 和 <span class="arithmatex">\(\Phi^{\prime}\)</span> 分别是检验问题 <span class="arithmatex">\(1^{\circ}, 2^{\circ}\)</span> 的 水平 <span class="arithmatex">\(\alpha\)</span> 的一致最优检验. 而 <span class="arithmatex">\(\Phi^{\prime \prime}\)</span> 则不然, 它不是检验问题 <span class="arithmatex">\(3^{\circ}\)</span> 的水平 <span class="arithmatex">\(\alpha\)</span> 一致最优检验. 更有甚者, 可以证明: 检验问题 <span class="arithmatex">\(3^{\circ}\)</span> 的一致最优检 验根本不存在. 直观上这一点不难解释: 问题 <span class="arithmatex">\(1^{\circ}, 2^{\circ}\)</span> 是所谓“单侧” 的，即对立假设和原假设各据一侧，这时，检验法则只须照顾一头. 而检验问题 <span class="arithmatex">\(3^{\circ}\)</span> 是所谓“双侧” 的，即对立假设分据原假设的两边， 它迫使检验法则采取一种折衣的形态, 这就损害了其最优性.</p>
+<p>以上我们详尽地讨论了检验们题 <span class="arithmatex">\(1^{\circ}-3^{\circ}\)</span> 当 <span class="arithmatex">\(j\)</span> 差已知的情况, 在实用上方差一般末知. 我们之所以对这一情况作仔细讨论, 足因 为这个场合足够简单, 使我们有叮能借此对一些重要概念作活清 楚的解释, 以便举一反三. 现在转到第: 个情况的讨论.</p>
+<ol>
+<li>方差 <span class="arithmatex">\(\sigma^{2}\)</span> 末知时</li>
+</ol>
+<p>仍以问题 <span class="arithmatex">\(1^{\circ}\)</span> 为例. 这时, 从原则 上: 看, 制定检验 <span class="arithmatex">\(\Phi\)</span> (见 (2.1) 式)的想法仍适用, 但困难在于: 由 (2.3) 所决定的常数 C 依赖于 末知参数 <span class="arithmatex">\(\sigma\)</span>, 无法确定. 这就需要在上述想法的基础上作一定的修 改,如本节开始处所曾提到的.</p>
+<p>把由 (2.1) 和 (2.3)决定的检验 <span class="arithmatex">\(\Phi\)</span> 改写成等价形式:</p>
+<p><span class="arithmatex">\(\Phi\)</span> : 当 <span class="arithmatex">\(\sqrt{n}\left(\bar{X}-\theta_{0}\right) / \sigma \geqslant-u_{\alpha}\)</span> 时接受 <span class="arithmatex">\(H_{(0}\)</span>, 不然就否定 <span class="arithmatex">\(H_{0}\)</span></p>
+<p>这里 <span class="arithmatex">\(\sigma\)</span> 末知, 我们可考虑用其估计值 <span class="arithmatex">\(S\)</span> 代替, 其中 <span class="arithmatex">\(S^{2}=\sum_{i=1}^{n}\left(X_{i}-\right.\)</span> <span class="arithmatex">\(\bar{X})^{2} /(n-1)\)</span> 为样本方差. 但在用 <span class="arithmatex">\(S\)</span> 代替 <span class="arithmatex">\(\sigma\)</span> 后, 分布也起了变化: 由正态分布变为自由度 <span class="arithmatex">\(n-1\)</span> 的 <span class="arithmatex">\(t\)</span> 分布 (当 <span class="arithmatex">\(\theta=\theta_{0}\)</span> 时, 见第一章 (4.34) 式), 因而常数 <span class="arithmatex">\(u_{a}\)</span> 也要相应改为 <span class="arithmatex">\(t_{n-1}(\alpha)\)</span>. 经过这一修改, 得到检验:</p>
+<p><span class="arithmatex">\(\Phi\)</span> : 当 <span class="arithmatex">\(\sqrt{n}\left(\bar{X}-\theta_{0}\right) / S \geqslant-t_{n-1}(\alpha)\)</span> 时接受 <span class="arithmatex">\(H_{0}\)</span>, 不然就否定 <span class="arithmatex">\(H_{0}\)</span></p>
+<p>其水平为 <span class="arithmatex">\(\alpha\)</span>. 要证明这一点, 就得考虑检验 <span class="arithmatex">\(\psi\)</span> 的功效函数</p>
+<div class="arithmatex">\[
+\beta_{\psi}(\theta, \sigma)=P_{\theta, \sigma}\left(\sqrt{n}\left(\bar{X}-\theta_{0}\right) / S&lt;-t_{n-1}(\alpha)\right)
+\]</div>
+<p>可以证明: 这个函数只依赖于 <span class="arithmatex">\(\delta=\left(\theta-\theta_{0}\right) / \sigma\)</span>, 它是 <span class="arithmatex">\(\delta\)</span> 的下降函 数, 且当 <span class="arithmatex">\(\delta=0\)</span> 即 <span class="arithmatex">\(\theta=\theta_{0}\)</span> 时其值为 <span class="arithmatex">\(\alpha\)</span>. 这最后 - 条容易证明: 因为当 <span class="arithmatex">\(\theta=\theta_{0}\)</span> 时, 统计量 <span class="arithmatex">\(\sqrt{n}\left(\bar{X}-\theta_{0}\right) S \sim t_{n-1}\)</span> (第…章 (4.34) 式), 再根据 <span class="arithmatex">\(t_{n-1}\)</span> 的密度函数关于 0 对称及记号 <span class="arithmatex">\(t_{n-1}(\alpha)\)</span> 的意义, 即有</p>
+<div class="arithmatex">\[
+\beta_{\psi}\left(\theta_{0}, \sigma\right)=P_{\theta_{0}, \sigma}\left(\sqrt{n}\left(\bar{X}-\theta_{0}\right) / S&gt;t_{n \cdot 1}(\alpha)\right)=\alpha
+\]</div>
+<p>利用 <span class="arithmatex">\(\beta_{\psi}(\theta, \sigma)\)</span> 是 <span class="arithmatex">\(\delta=\left(\theta-\theta_{0}\right) / \sigma\)</span> 的下降函数知, 当 <span class="arithmatex">\(\theta&gt;\theta_{0}\)</span> 时即当 <span class="arithmatex">\(\delta&gt;0\)</span> 时, <span class="arithmatex">\(\beta_{\psi}(\theta, \sigma) \leqslant \beta_{\psi}\left(\theta_{0}, \sigma\right)=\alpha\)</span>, 这证明了检验 <span class="arithmatex">\(\psi\)</span> 有水平 <span class="arithmatex">\(\alpha\)</span>. 关于 <span class="arithmatex">\(\beta_{4}(\theta, \sigma)\)</span> 只依赖于 <span class="arithmatex">\(\delta\)</span> 且是 <span class="arithmatex">\(\delta\)</span> 的下降函数的证明, 见附录 <span class="arithmatex">\(B\)</span>.</p>
+<p>类似的论据给出检验问题 <span class="arithmatex">\(2^{\circ}\)</span> 和 <span class="arithmatex">\(3^{\circ}\)</span> 的水平 <span class="arithmatex">\(\alpha\)</span> 检验, 分别记为 <span class="arithmatex">\(\psi^{\prime}\)</span> 和 <span class="arithmatex">\(\psi^{\prime \prime}\)</span> :</p>
+<div class="arithmatex">\[
+\begin{array}{r}
+\psi^{\prime} \text { : 当 } \sqrt{n}\left(\bar{X}-\theta_{0}\right) / S \leqslant t_{n-1}(\alpha) \text { 时接受 } H_{0}^{\prime} \text {, 不然就否定 } H_{0}^{\prime} \\
+\psi^{\prime \prime} \text { : 当 }\left|\sqrt{n}\left(\bar{X}-\theta_{0}\right) / S\right| \leqslant t_{n-1}(\alpha / 2) \text { 时接受 } H_{0}^{\prime \prime}, \\
+\text { 不然就否定 } H_{0}^{\prime \prime}(2.17)
+\end{array}
+\]</div>
+<p>这三个检验统称为 <span class="arithmatex">\(t\)</span> 检验”, 是应用上最重要的检验之一, 由于 <span class="arithmatex">\(\sigma\)</span> 末知, 这些检验的性质也就较为复杂. 例如, 不论你怎么指定一个 <span class="arithmatex">\(\theta_{1}&lt;\theta_{0}\)</span>, 无法找到一个样本大小 <span class="arithmatex">\(n\)</span>, 使当 <span class="arithmatex">\(\theta \leqslant \theta_{1}\)</span> 时, 检验 <span class="arithmatex">\(\psi\)</span> 接受 <span class="arithmatex">\(H_{0}: \theta \geqslant \theta_{0}\)</span> 的概率, 不超过充分小的 <span class="arithmatex">\(\beta&gt;0\)</span> (见附录 <span class="arithmatex">\(B\)</span> ), 而在 <span class="arithmatex">\(\sigma\)</span> 已知 时这是可以做到的, 又如在 <span class="arithmatex">\(\sigma\)</span> 已知时, 单侧检验 <span class="arithmatex">\(\Phi\)</span> 和 <span class="arithmatex">\(\Phi^{\prime}\)</span> 都是一致 最优的,但 <span class="arithmatex">\(\sigma\)</span> 末知时,除非检验水平 <span class="arithmatex">\(\alpha \geqslant 1 / 2, t\)</span> 检验 <span class="arithmatex">\(\psi\)</span> 和 <span class="arithmatex">\(\psi^{\prime}\)</span> 都不是 - 致最优.</p>
+<p>例 2.1 两厂生产同一产品, 其质量指标假定都服从正态分 布, 标准规格为均值等于 120 . 现从甲厂抽出 5 件产品, 测得其指 标值为</p>
+<div class="arithmatex">\[
+119,120,119.2,119.7,119.6
+\]</div>
+<p>从乙厂也抽出 5 件产品, 测得其指标值为</p>
+<div class="arithmatex">\[
+110.5,106.3,122.2,113.8,117.2
+\]</div>
+<p>要根据这些数据去判断该两厂产品是否符合预定规格 120 .</p>
+<p>这可以提为假设检验问题 <span class="arithmatex">\(\theta=120: \theta \neq 120\)</span>, 方差 <span class="arithmatex">\(\sigma^{2}\)</span> 末知, 对 甲厂数据, 算出 <span class="arithmatex">\(\bar{X}=119.5, S=0.4\)</span>, 取 <span class="arithmatex">\(\alpha=0.05\)</span>, 查表得 <span class="arithmatex">\(t_{n-1}(\alpha)\)</span> <span class="arithmatex">\(2)=t_{+}(0.025)=2.776\)</span>. 有</p>
+<p>“更确切些, (2.15)和 (2.16)称为“一样本单侧 <span class="arithmatex">\(t\)</span> 检验(一样本表方只有一组样术 <span class="arithmatex">\(\left.X_{1}, \cdots, X_{n}\right),(2.17)\)</span> 称为 “一样本双侧 <span class="arithmatex">\(t\)</span> 检验”. 有时也把 <span class="arithmatex">\(\sigma\)</span> 已知时的检验 <span class="arithmatex">\(\Phi, \Phi^{\prime}\)</span> 利 <span class="arithmatex">\(\Phi^{\prime \prime}\)</span> 称 为 “ <span class="arithmatex">\(u\)</span> 检验”, 但不如 <span class="arithmatex">\(t\)</span> 检验的名称用得广”.</p>
+<div class="arithmatex">\[
+\sqrt{n}\left|\bar{X}-\theta_{0}\right| / S=\sqrt{5}|119.5-120| / 0.4=2.795&gt;2.776
+\]</div>
+<p>对乙厂数据,算出 <span class="arithmatex">\(\bar{X}=114, S=6.105\)</span>, 而</p>
+<div class="arithmatex">\[
+\sqrt{n}\left|\bar{X}-\theta_{0}\right| / S=\sqrt{5}|114-120| / 6.105=2.198&lt;2.776
+\]</div>
+<p>故按 0.05 的水平,结论是: 甲厂, 活品与规格不符,但求发现乙厂产 品不符合规格的有力证据.</p>
+<p>这个结论可能使不少人感到难以接受. 因为甲厂5 件产品都 与标准值 120 相差很少, 反倒认为不合规格; 而乙厂 5 件中除一件 外, 都比规格值 120 低不少, 反倒认为可以通过. 这是为什么?</p>
+<p>我们说,问题不能这么简单地看.</p>
+<p>a. 首先, 我们注意到, 甲厂的 <span class="arithmatex">\(S=0.4\)</span> 远低于乙厂的 <span class="arithmatex">\(S=\)</span> 6.105 , 这表明, 甲厂产品规格比乙厂稳定得多.</p>
+<p>b. 也正因为甲厂产品规格很齐整 (误差很小), 所以, 与标准值 120 的些微差别 (此处 <span class="arithmatex">\(\bar{X}=119.5\)</span> 比 120 只差 0.5 ) 也被检出来了. 不能不承认: 甲厂产品的平均规格, 有很大可能略低于标准值 120. 虽只略低些, 也是事实, 不能委之于随机误差. 至于这样一个 差别的实际重要性如何, 那要另当别论了, 此处只讲统计上的显著 性-一即差异不能用随机误差解释. 统计上显著的差异不一定有 现实重要性.</p>
+<p>c.乙厂抽出的几件产品的指标大多远低于标准值 120 , 使我 们很有理由怀疑,该厂产品平均规格达不到 120 . 但是, 由于该厂 产品质量波动太大, 所测得的数据尚不能很有把握认为, 其平均规 格确与 120 有差距, 而非随机性影响所致, 就是说, 现有数据可能 太少了些.</p>
+<p>所以,对乙厂我们首先认为: 其产品质量波动太大应当改进. 至于其平均规格是否与 120 有差距的问题, 可以再补充一些数据 再检定, 最好是先能采取措施把方差缩小些再决定这个问题.</p>
+<h3 id="02-2">0.2. 2 两个正态总体均值差的检验<a class="headerlink" href="#02-2" title="Permanent link">⚓︎</a></h3>
+<p>设 <span class="arithmatex">\(\mathrm{X}_{1}, \cdots, X_{n}\)</span> 是从正态总体 <span class="arithmatex">\(N\left(\theta_{1}, \sigma^{2}\right)\)</span> 中抽出的样本, <span class="arithmatex">\(Y_{1}\)</span>, <span class="arithmatex">\(\cdots, Y_{m}\)</span> 是从正态总体 <span class="arithmatex">\(N\left(\theta_{2}, \sigma^{2}\right)\)</span> 中抽出的样本. <span class="arithmatex">\(\theta_{1}, \theta_{2}\)</span> 都末知, <span class="arithmatex">\(\sigma^{2}\)</span> 可以是已知或末知. 注意两总体有同一方差 <span class="arithmatex">\(\sigma^{2}\)</span>.</p>
+<p>给定常数 <span class="arithmatex">\(\theta_{0}\)</span>, 所要考虑的检验问题是:</p>
+<div class="arithmatex">\[
+\begin{array}{ll}
+1^{\circ} &amp; H_{0}: \theta_{1}-\theta_{2} \geqslant \theta_{0}, H_{1}: \theta_{1}-\theta_{2}&lt;\theta_{0} \\
+2^{\circ} &amp; H_{0}^{\prime}: \theta_{1}-\theta_{2} \leqslant \theta_{0}, H_{1}: \theta_{1}-\theta_{2}&gt;\theta_{0} \\
+3^{\circ} &amp; H_{0}^{\prime \prime}: \theta_{1}-\theta_{2}=\theta_{0}, H^{\prime \prime}{ }_{1}: \theta_{1}-\theta_{2} \neq \theta_{0}
+\end{array}
+\]</div>
+<p>在应用上常见的情况是 <span class="arithmatex">\(\sigma^{2}\)</span> 末知，而 <span class="arithmatex">\(\theta_{0}=0\)</span>.</p>
+<p>所有概念上的讨论与前一段没有本质差异. 先说 <span class="arithmatex">\(\sigma^{2}\)</span> 已知的情 形. 以 <span class="arithmatex">\(\bar{X}\)</span> 和 <span class="arithmatex">\(\bar{Y}\)</span> 分别记 <span class="arithmatex">\(X\)</span> 样本和 <span class="arithmatex">\(Y\)</span> 样本的均值, 则 <span class="arithmatex">\(\bar{X}-\bar{Y}\)</span> 为 <span class="arithmatex">\(\theta_{1}-\theta_{2}\)</span> 的估计. 于是对问题 <span class="arithmatex">\(1^{\circ}\)</span> 而言, 一个合适的检验是当 <span class="arithmatex">\(\bar{X}-\bar{Y} \geqslant C\)</span> 时 接受 <span class="arithmatex">\(H_{0}\)</span>, 不然就否定 <span class="arithmatex">\(H_{0}\)</span>. 如何根据给定的检验水平 <span class="arithmatex">\(\alpha\)</span> 去决定常数 <span class="arithmatex">\(C\)</span>, 其过程与决定检验 (2.1) 中的 <span class="arithmatex">\(C\)</span> 而得到 (2.3) 一样. 所不闰的 是: 这里 <span class="arithmatex">\(\bar{X}-\bar{Y}\)</span> 的方差是 <span class="arithmatex">\((1 / n+1 / m) \sigma^{2}\)</span>, 因而相应地, <span class="arithmatex">\((2.3)\)</span> 式中 的 <span class="arithmatex">\(\sqrt{n}\)</span> 要改为 <span class="arithmatex">\(\sqrt{n m /(n+m)}\)</span>. 这样得到 <span class="arithmatex">\(C=\theta_{0}-\sigma u_{a}\)</span> <span class="arithmatex">\(\sqrt{(n+m) / n m}\)</span>. 如果引进统计量</p>
+<div class="arithmatex">\[
+U=\sqrt{\frac{n m}{n+m}}\left(\bar{X}-\bar{Y}-\theta_{0}\right) / \sigma
+\]</div>
+<p>则 1 “的一个水平 <span class="arithmatex">\(\alpha\)</span> 检验为</p>
+<div class="arithmatex">\[
+g \text { : 当 } U \geqslant-u_{\alpha} \text { 时接受 } H_{0} \text {, 不然就否定 } H_{0}
+\]</div>
+<p>类似地,问题 <span class="arithmatex">\(2^{\circ}, 3^{\circ}\)</span> 的水平 <span class="arithmatex">\(\alpha\)</span> 检验为</p>
+<div class="arithmatex">\[
+\begin{gathered}
+g^{\prime} \text { : 当 } U \leqslant u_{\alpha} \text { 时接受 } H_{0}^{\prime} \text {, 不然就否定 } H_{0}^{\prime} \\
+g^{\prime \prime} \text { : 当 }|U| \leqslant u_{\alpha / 2} \text { 时接受 } H_{0}^{\prime \prime} \text {, 不然就否定 } H_{0}^{\prime \prime}
+\end{gathered}
+\]</div>
+<p>对 <span class="arithmatex">\(\sigma^{2}\)</span> 末知的情况, 处理也与前一段一样, 即通过样本对之进行估 计, 以估计值代替 <span class="arithmatex">\(\sigma^{2}\)</span>. 这里有两组样本可用于估计 <span class="arithmatex">\(\sigma^{2}\)</span>, 将其综合, 得出较好的估计值</p>
+<div class="arithmatex">\[
+S^{2}=\frac{1}{n+m-2}\left(\sum_{i=1}^{n}\left(X_{i}-\bar{X}\right)^{2}+\sum_{j=1}^{m}\left(Y_{j}-\bar{Y}\right)^{2}\right)
+\]</div>
+<p>以 <span class="arithmatex">\(S\)</span> 代替 <span class="arithmatex">\(U\)</span> 中的 <span class="arithmatex">\(\sigma\)</span>, 得检验统计量</p>
+<div class="arithmatex">\[
+T=\sqrt{\frac{n m}{n+m}}\left(\bar{X}-\bar{Y}-\theta_{0}\right) / S
+\]</div>
+<p>按第 膏 (4.36) 式, 当 <span class="arithmatex">\(\theta_{1}-\theta_{2}=\theta_{0}\)</span> 时, <span class="arithmatex">\(T\)</span> 服从自由度为 <span class="arithmatex">\(n+m-2\)</span> 的 <span class="arithmatex">\(t\)</span> 分隹 <span class="arithmatex">\(t_{n+m}\)</span>. 基于 <span class="arithmatex">\(T\)</span>, 作出在 <span class="arithmatex">\(\sigma^{2}\)</span> 末知时, 检验问题 <span class="arithmatex">\(1^{\circ}-3^{\circ}\)</span> 的 水平 <span class="arithmatex">\(\alpha\)</span> 检验 <span class="arithmatex">\(h, h^{\prime}\)</span> 和 <span class="arithmatex">\(h^{\prime \prime}\)</span>, 分别为</p>
+<p><span class="arithmatex">\(h:\)</span> 年 <span class="arithmatex">\(T \geqslant-t_{n+m}(\alpha)\)</span> 时接受 <span class="arithmatex">\(H_{0}\)</span>, 不然就否定 <span class="arithmatex">\(H_{0}\)</span></p>
+<p><span class="arithmatex">\(h^{\prime}\)</span> : 奖 <span class="arithmatex">\(T \leqslant t_{n+m}(\alpha)\)</span> 时接受 <span class="arithmatex">\(H_{0}^{\prime}\)</span>, 不然就否定 <span class="arithmatex">\(H_{0}^{\prime}\)</span></p>
+<p><span class="arithmatex">\(h^{\prime \prime}\)</span> : 当 <span class="arithmatex">\(|T| \leqslant t_{n+\ldots-2}(\alpha / 2)\)</span> 时接受 <span class="arithmatex">\(H_{0}^{\prime \prime}\)</span>, 不然就否定 <span class="arithmatex">\(H_{0}^{\prime \prime}\)</span></p>
+<p>这二个检验 <span class="arithmatex">\(h, h^{\prime}, h^{\prime \prime}\)</span> ”都称为 “两样本 <span class="arithmatex">\(t\)</span> 检验”, <span class="arithmatex">\(h\)</span> 和 <span class="arithmatex">\(h^{\prime}\)</span> 是单侧 的而 <span class="arithmatex">\(h\)</span> ”是双侧的. 它们都属于应用上重要的检验. 问题提法中有 一个不大自然的条件一两总体有同一方差, 不作这一假定就无 法使用 <span class="arithmatex">\(t\)</span> 分布. 这是一个为了迁就数学上的简单化而对实用背景 有所损失的例子. 所幸的是: 只要两总体方差之比与 1 相差不太 大,则经验表明,使用 <span class="arithmatex">\(t\)</span> 检验是可以令人满意的.</p>
+<p>例 2.2 甲、乙两厂生产同一种产: 品, 其质量指标假定分别服 从正态分布 <span class="arithmatex">\(N\left(\theta_{1}, \sigma^{2}\right)\)</span> 和 <span class="arithmatex">\(N\left(\theta_{2}, \sigma^{2}\right)\)</span>. 现从该两厂分别抽出若干件 产品测得其指标值:</p>
+<div class="arithmatex">\[
+\begin{aligned}
+&amp; \text { 甲厂: } 2.74,2.75,2.72,2.69\left(X_{1}, \cdots, X_{4}\right) \\
+&amp; \text { 乙厂: } 2.75,2.78,2.74,2.76,2.72\left(Y_{1}, \cdots, Y_{5}\right)
+\end{aligned}
+\]</div>
+<p>要通过这些数据来检验这两厂产品质量何者为优.</p>
+<p>在这种问题中, 你可以用估计的方法去处理: 甲厂样本平均 <span class="arithmatex">\(\bar{X}=2.725\)</span>, 乙厂样本平均 <span class="arithmatex">\(\bar{Y}=2.75\)</span>, 因 <span class="arithmatex">\(\bar{Y}&gt;\bar{X}\)</span>, 从所抽样本看乙5 较优. 但这还不甚令人信服, 因为这个差距也可以是因为抽样的随 机性而来, 不一定反映本质。</p>
+<p>也可以用区间估计的方法来处理这个问题, 算出 <span class="arithmatex">\(\bar{X}-\bar{Y}=\)</span> -0.025 ,</p>
+<div class="arithmatex">\[
+\begin{aligned}
+S^{2} &amp; =\left[\sum_{i=1}^{+}\left(X_{i}-\bar{X}\right)^{2}+\sum_{j=1}^{5}\left(Y_{j}-\bar{Y}\right)^{2}\right] /(4+5-2) \\
+&amp; =0.00058571, \quad S=0.0242
+\end{aligned}
+\]</div>
+<p><span class="arithmatex">\(n=4, m=5\)</span>. 取置信系数 0.95 , 查表得 <span class="arithmatex">\(t_{7}(0.025)=2.365\)</span>. 用第四 章(4.6)式得 <span class="arithmatex">\(\theta_{1}-\theta_{2}\)</span> 的区间估计为</p>
+<div class="arithmatex">\[
+-0.025 \pm 0.0242 \times 2.365 \sqrt{9 / 20}=[-0.063,0.013]
+\]</div>
+<p>这个区间既包含大于 0 的值也包含小于 0 的值, 表示 <span class="arithmatex">\(\theta_{1}&gt;\theta_{2}, \theta_{1}=\)</span> <span class="arithmatex">\(\theta_{2}\)</span> 和 <span class="arithmatex">\(\theta_{1}&lt;\theta_{2} 三\)</span> 种情况都有可能. 区间整个偏向于负轴一边, 显示 情况略有利于乙厂. 但最大差距也只达到 0.063 . 如果这么大小的 差距并无实际重要性, 则可以说, 区间佔计的结果显示了两厂产品 的质量水平大体相当.</p>
+<p>如果要用假设检验来处理这个问题,则晴果取决于原假设的 提法, 而这要参考问题的背景.例如, 若以往的记录表明: 甲厂产品 质量一般或经常优于乙厂, 现在我们想通过实测检验一下目前情 况如何. 这时, 我们取 <span class="arithmatex">\(H_{0}: \theta_{1}-\theta_{2} \geqslant 0\)</span> 为原假设. 这个取法, 配之以 较低的检验水平, 保证了必须有很强的证据才能否定 <span class="arithmatex">\(H_{0}\)</span> 一即改 变对现状的看法. 这是因为, 这个现状, 即 <span class="arithmatex">\(H_{0}\)</span>, 已经历了一段时期 的考验, 除非实测结果表现出很不利于它, 人们还是倾问于把数据 中表现出来的不利于它的差异委之于随机性.</p>
+<p>按 <span class="arithmatex">\(\theta_{0}=0, \bar{X}-\bar{Y}=-0.025, S=0.024\)</span>, 算出 (2.19)式的统计 量 <span class="arithmatex">\(T\)</span> 之值为 -1.540 . 查表得 <span class="arithmatex">\(t_{7}(0.05)=1.895\)</span>. 因为 <span class="arithmatex">\(-1.540&gt;\)</span> -1.895 , 按 <span class="arithmatex">\(t\)</span> 检验, 应接受 <span class="arithmatex">\(H_{0}\)</span>, 即维持“甲厂严品质量优于乙厂” 的看法. 或者说, 实测数据没有提供改变这个看法的有力证据.</p>
+<p>如果我们一开始就采用 <span class="arithmatex">\(H_{0}^{\prime}: \theta_{1}-\theta_{2} \leqslant 0\)</span> 作为原假设,则所得 数据当然也使它通过. 这种表面上的矛盾已在前面解释过了.</p>
+<p>如果我们不涉及以往两厂产品质量上的表现, 而单纯以 “中 立” 的态度来对待这个比较问题, 则合适的原假设是 <span class="arithmatex">\(H_{0}^{\prime \prime}: \theta_{1}-\theta_{2}\)</span> <span class="arithmatex">\(=0\)</span>, 用所得数据检验的结果, 仍接受 <span class="arithmatex">\(H_{0}\)</span>. 这个结论也与我们上文 的分析一致.</p>
+<p>我们把上面的问题的提法作一点变化,借此解释一下显著性 和显著性检验这两个概念.</p>
+<p>一工厂用一定工艺生产某种产品有相当时间. 现有人提出对 工艺作些更改以图改进产品质量. 设在工艺改变前后产品质量指 标的分布分别为 <span class="arithmatex">\(N\left(\theta_{1}, \sigma^{2}\right)\)</span> 和 <span class="arithmatex">\(N\left(\theta_{2}, \sigma^{2}\right)\)</span>. 如果 <span class="arithmatex">\(\theta_{2}&gt;\theta_{1}\)</span>, 就表示产 品质量确有改进. 现要通过试验来决定此项工艺改变是否可取. 为 此, 抽取工艺改变前后的产品各若干个以测定其质量. 以 <span class="arithmatex">\(X_{1}, \cdots\)</span>, <span class="arithmatex">\(X_{n}\)</span> 和 <span class="arithmatex">\(Y_{1}, \cdots, Y_{m}\)</span> 分别记工艺改变前后的抽样测定数据.</p>
+<p>即便不从统计学方法的角度去考虑, 人们也多半会采用如下 的判据: 计算 <span class="arithmatex">\(\bar{Y}-\bar{X}\)</span>, 只有当 <span class="arithmatex">\(\bar{Y}-\bar{X}\)</span> 达到或超过某个界限 <span class="arithmatex">\(C\)</span> 时, 才 认为工艺改变后产品质量有“显著”提高因而值得采用. 这个界限 <span class="arithmatex">\(C\)</span> 可以通过改变工艺所需费用与所得收益的分析去确定,但这种 不涉及统计方法的分析有一点不足之处, 即它没有考虑随机误差 的影响. 采用假设检验的观点去分析这个问题, 是克服这一不足之 处的一个方法.</p>
+<p>按假设检验的观点, 我们应当把 <span class="arithmatex">\(H_{0}: \theta_{1} \geqslant \theta_{2}\)</span> 取为原假设. 如 以前多次讲过的, 这个取法, 辅之以较低的检验水平 <span class="arithmatex">\(\alpha\)</span>, 保证了它 不会轻易被否定, 必须有很强的证据才能使我们接受“工艺改变确 能提高产品质量”的看法. 按检验 <span class="arithmatex">\(h\)</span> (见 (2.20)), 这只有在</p>
+<div class="arithmatex">\[
+\bar{Y}-\bar{X}&gt;S t_{n+m-2}(\alpha) \sqrt{(n+m) / n m}
+\]</div>
+<p>时成立.</p>
+<p>当这种情况出现时一也就是说, 原假设 <span class="arithmatex">\(\theta_{1} \geqslant \theta_{2}\)</span> 在水平 <span class="arithmatex">\(\alpha\)</span> 上 被否定时,我们说 <span class="arithmatex">\(\bar{Y}-\bar{X}\)</span> 达到了“显著性”, 即差异如此显著, 以至 可以否定 <span class="arithmatex">\(\theta_{1} \geqslant \theta_{2}\)</span>. 以此之故,这一检验也就称为“业著性检验”.</p>
+<p>从统计学的观点看, 达到显著性无非是指: 在给定水平上, 差 异 <span class="arithmatex">\((\bar{Y}-\bar{X})\)</span> 已不能仅由随机性来解释, 而也有 <span class="arithmatex">\(\theta_{2} \geqslant \theta_{1}\)</span> 的原因. 统 计上的显著性不一定意味着 <span class="arithmatex">\(\bar{Y}-\bar{X}\)</span> 很大. 实际上, 由 (2.23) 看出: 若 <span class="arithmatex">\(n, m\)</span> 很大, 或 <span class="arithmatex">\(S\)</span> 很小, 则 <span class="arithmatex">\(\bar{Y}-\bar{X}\)</span> 只须略大于 0 就可以达到鼠 著性. 由此可见, 是否达到显著性并非应否采取某种行动(在此为 修改工艺)的唯一依据, 还须结合其他方面的考虑, 如前面所曾提 到的.</p>
+<p>从某种意义上说,任何一个检验都可以理解为显著性检验.但 显著性检验这个名词最常用于有关某种效应或差异是否存在的那 种问题，且我们主观上是希望该效应存在的.如在本例中,我们自 然希望,工艺的修改确有助于产品质量的提高. 这与例 2.2 那种种 情况选择原假设时所依据的考虑不同，在这种情况，我们有理由倾 向于相信原假设成立.</p>
+<p>所以,你可以简单地把“显著性检验”理解为“希望原假设被否 定的那种检验”. 显著性检验的特点不在于这检验自身, 而在于其 在使用中的含义如何.</p>
+<h3 id="03-3">0.3. 3 正态分布方差的检验<a class="headerlink" href="#03-3" title="Permanent link">⚓︎</a></h3>
+<p>包括一个正态分布方差的检验和两个正态分布的方差之比的 检验. 和正态分布均值的检验相比, 方差的检验在应用上较少一 些,但也有一些应用.例如，一种仪器或一种测定方法的精度 (指其 内在误差, 不是指由于没有调准而产生的偏离) 是否达到某种界 限,当一种产品的质量问题主要在于波动太大时,可能需要检验方 差; 方差比检验可用于检验两个方差相等的假定（如在两样本 <span class="arithmatex">\(t\)</span> 检 验中) 是否合理等.</p>
+<p>先考虑一个正态总体的情况. 设 <span class="arithmatex">\(X_{1}, \cdots, X_{n}\)</span> 是从正态总体 <span class="arithmatex">\(N\)</span> <span class="arithmatex">\(\left(\theta, \sigma^{2}\right)\)</span> 中抽出的样本. <span class="arithmatex">\(\sigma^{2}\)</span> 末知, <span class="arithmatex">\(\theta\)</span> 可以已知或末知. 以下只讨论 <span class="arithmatex">\(\theta\)</span> 末知的情况 ( <span class="arithmatex">\(\theta\)</span> 已知的情况读者自己给出). 设 <span class="arithmatex">\(\sigma_{0}^{2}\)</span> 为给定的数. 可 以提出以下几个检验问题:</p>
+<p><span class="arithmatex">\(1^{\circ} \quad H_{0}: \sigma^{2} \geqslant \sigma_{0}^{2}, H_{1}: \sigma^{2}&lt;\sigma_{0}^{2}\)</span></p>
+<p><span class="arithmatex">\(2^{\circ} \quad H_{0}^{\prime}: \sigma^{2} \leqslant \sigma_{0}^{2}, H_{1}^{\prime}: \sigma^{2}&gt;\sigma_{0}^{2}\)</span></p>
+<p><span class="arithmatex">\(3^{\circ} \quad H_{0}^{\prime \prime}: \sigma^{2}=\sigma_{0}^{2}, H_{1}^{\prime \prime}: \sigma^{2} \neq \sigma_{0}^{2}\)</span></p>
+<p>先考虑 <span class="arithmatex">\(1^{\circ}\)</span>. 取 <span class="arithmatex">\(\sigma^{2}\)</span> 的估计 <span class="arithmatex">\(S^{2}=\sum_{i=1}^{n}\left(X_{i}-\bar{X}\right)^{2} /(n-1) .1^{\circ}\)</span> 的… 个直观上合理的检验为</p>
+<div class="arithmatex">\[
+\varphi \text { : 当 } \sum_{i=1}^{n}\left(X_{i}-\bar{X}\right)^{2} \geqslant C \text { 时接受 } H_{0} \text {, 不然就否定 } H_{0}
+\]</div>
+<p>为定出 <span class="arithmatex">\(C\)</span>, 要计算 <span class="arithmatex">\(\varphi\)</span> 的功效函数. 以 <span class="arithmatex">\(K_{n-1}(x)\)</span> 记自由度为 <span class="arithmatex">\(n-1\)</span> 的卡方分布函数,则按第二章 <span class="arithmatex">\((4.33)\)</span>, 有</p>
+<div class="arithmatex">\[
+\begin{aligned}
+\beta_{\varphi}(\theta, \sigma) &amp; =P_{\theta, \sigma}\left(\sum_{i=1}^{n}\left(X_{i}-\bar{X}\right)^{2}&lt;C\right) \\
+&amp; =P_{\theta, \sigma}\left(\sum_{i=1}^{n}\left(X_{i}-\bar{X}\right)^{2} / \sigma^{2}&lt;C / \sigma^{2}\right) \\
+&amp; =K_{n-1}\left(C / \sigma^{2}\right)
+\end{aligned}
+\]</div>
+<p>注意 <span class="arithmatex">\(\beta_{\varphi}(\theta, \sigma)\)</span> 与均值 <span class="arithmatex">\(\theta\)</span> 无关, 且为 <span class="arithmatex">\(\sigma^{2}\)</span> 的下降函数. 故只须找 <span class="arithmatex">\(C\)</span>, 使 <span class="arithmatex">\(K_{n-1}\left(C / \sigma_{0}^{2}\right)=\alpha\)</span>. 这得出</p>
+<div class="arithmatex">\[
+C=\sigma_{0}^{2} \chi_{n-1}^{2}(1-\alpha)
+\]</div>
+<p>(2.24) 和 (2.26) 结合定出了问题 <span class="arithmatex">\(1^{\circ}\)</span> 的检验 <span class="arithmatex">\(\varphi\)</span>. 类似地, 得出问题 <span class="arithmatex">\(2^{\circ}\)</span> 的检验 <span class="arithmatex">\(\varphi^{\prime}\)</span> 和问题 <span class="arithmatex">\(3^{\circ}\)</span> 的检验 <span class="arithmatex">\(\varphi^{\prime \prime}\)</span>, 分别为</p>
+<div class="arithmatex">\[
+\begin{gathered}
+\varphi^{\prime} \text { : 当 } \sum_{i=1}^{n}\left(X_{i}-\bar{X}\right)^{2} \leqslant \sigma_{0}^{2} \chi_{n-1}^{2}(\alpha) \text { 时接受 } H_{0}^{\prime} \text {, 不然就否定 } H_{0}^{\prime} \\
+\varphi^{\prime \prime} \text { : 当 } \sigma_{0}^{2} \chi_{n-1}^{2}\left(1-\frac{\alpha}{2}\right) \leqslant \sum_{i=1}^{n}\left(X_{i}-\bar{X}\right)^{2} \leqslant \sigma_{0}^{2} \chi_{n-1}^{2}\left(\frac{\alpha}{2}\right) \text { 时接受 } \\
+H_{0}^{\prime \prime} \text {, 不然就否定 } H_{0}^{\prime \prime}
+\end{gathered}
+\]</div>
+<p>例如, 取样本大小 <span class="arithmatex">\(n=30, \alpha=0.05\)</span>. 查表得</p>
+<div class="arithmatex">\[
+\begin{aligned}
+&amp; \chi_{29}^{2}(0.025)=45.722, \chi_{29}^{2}(0.05)=42.557 \\
+&amp; \chi_{29}^{2}(0.975)=16.046
+\end{aligned}
+\]</div>
+<p>取水平 <span class="arithmatex">\(\alpha=0.05\)</span>, 检验 <span class="arithmatex">\(\varphi^{\prime}\)</span> 要求在</p>
+<div class="arithmatex">\[
+S^{2} \leqslant \sigma_{0}^{2}(42.557) / 29=1.467 \sigma_{0}^{2}
+\]</div>
+<p>时, 接受 <span class="arithmatex">\(\sigma^{2} \leqslant \sigma_{0}^{2}\)</span> 之假设. 就是说, 在方差估计值 <span class="arithmatex">\(S^{2}\)</span> 大约为 <span class="arithmatex">\(\sigma_{0}^{2}\)</span> 的 1.5 倍时, 仍得接受方差 <span class="arithmatex">\(\sigma_{0}^{2}\)</span>. 如果是双侧检验 <span class="arithmatex">\(\varphi^{\prime \prime}\)</span>, 则差距更大, 它 要求在</p>
+<div class="arithmatex">\[
+0.533 \sigma_{0}^{2} \leqslant S^{2} \leqslant 1.577 \sigma_{0}^{2}
+\]</div>
+<p>时接受 <span class="arithmatex">\(H_{0}^{\prime \prime}: \sigma^{2}=\sigma_{0}^{2}\)</span>. 上述不等式之上界约为下界之三倍，这说明： 直至像 30 这么大小的样本, 方差检验仍甚不可靠 (许多远离 <span class="arithmatex">\(\sigma_{0}^{2}\)</span> 之 值仍能被接受为等于 <span class="arithmatex">\(\sigma_{0}^{2}\)</span>, 即犯第二类错误的概率会甚大).</p>
+<p>现考虑两个正态总体的情况, 设 <span class="arithmatex">\(X_{1}, \cdots, X_{n}\)</span> 和 <span class="arithmatex">\(Y_{1}, \cdots, Y_{m}\)</span> 分 别是从正态总体 <span class="arithmatex">\(N\left(\theta_{1}, \sigma_{1}^{2}\right)\)</span> 和 <span class="arithmatex">\(N\left(\theta_{2}, \sigma_{2}^{2}\right)\)</span> 中抽出的样本, 可提出以 下几个检验问题:</p>
+<div class="arithmatex">\[
+\begin{array}{ll}
+1^{\circ} &amp; H_{0}: \sigma_{1}^{2} / \sigma_{2}^{2} \geqslant a, H_{1}: \sigma_{1}^{2} / \sigma_{2}^{2}&lt;a \\
+2^{\circ} &amp; H_{0}^{\prime}: \sigma_{1}^{2} / \sigma_{2}^{2} \leqslant a, H_{1}^{\prime}: \sigma_{1}^{2} / \sigma_{2}^{2}&gt;a \\
+3^{\circ} &amp; H_{0}^{\prime \prime}: \sigma_{1}^{2} / \sigma_{2}^{2}=a, H_{1}^{\prime \prime}: \sigma_{1}^{2} / \sigma_{2}^{2} \neq a
+\end{array}
+\]</div>
+<p><span class="arithmatex">\(a\)</span> 为给定的数. 事实上, <span class="arithmatex">\(2^{\circ}\)</span> 可转化为 <span class="arithmatex">\(1^{\circ}\)</span>, 只须掉换 <span class="arithmatex">\(\sigma_{1}^{2}\)</span> 和 <span class="arithmatex">\(\sigma_{2}^{2}\)</span> 的位置 即可. 故只须考虑 <span class="arithmatex">\(1^{\circ}\)</span> 和 <span class="arithmatex">\(3^{\circ}\)</span>.</p>
+<p>考虑 <span class="arithmatex">\(1^{\circ}\)</span>. 以 <span class="arithmatex">\(S_{1}^{2}\)</span> 和 <span class="arithmatex">\(S_{2}^{2}\)</span> 分别记 <span class="arithmatex">\(X\)</span> 样本和 <span class="arithmatex">\(Y\)</span> 样本的样本方差. 则 <span class="arithmatex">\(S_{1}^{2} / S_{2}^{2}\)</span> 为 <span class="arithmatex">\(\sigma_{1}^{2} / \sigma_{2}^{2}\)</span> 的一个估计值. 故问题 <span class="arithmatex">\(1^{\circ}\)</span> 的一个直观上合理的检 验为</p>
+<div class="arithmatex">\[
+\dot{\psi} \text { : 当 } S_{1}^{2} / S_{2}^{2} \geqslant C \text { 时接受 } H_{0} \text {, 不然就否定 } H_{0}
+\]</div>
+<p>其功效函数为</p>
+<div class="arithmatex">\[
+\begin{aligned}
+\beta_{\psi}\left(\theta_{1}, \theta_{2}, \sigma_{1}, \sigma_{2}\right) &amp; =P_{\theta_{1}, \theta_{2}, \sigma_{1}, \sigma_{2}}\left(S_{1}^{2} / S_{2}^{2}&lt;C\right) \\
+&amp; =P_{\theta_{1}, \theta_{2}, \sigma_{1}, \sigma_{2}}\left(\frac{1}{\sigma_{1}^{2}} S_{1}^{2} / \frac{1}{\sigma_{2}^{2}} S_{2}^{2}&lt;\frac{\sigma_{2}^{2}}{\sigma_{1}^{2}} C\right) \\
+&amp; =G_{n-1, m-1}\left(\sigma_{2}^{2} C / \sigma_{1}^{2}\right)
+\end{aligned}
+\]</div>
+<p>此处 <span class="arithmatex">\(G_{n-1, m-1}(x)\)</span> 是自由度为 <span class="arithmatex">\((n-1, m-1)\)</span> 的 <span class="arithmatex">\(F\)</span> 分布函数（见 第二章 <span class="arithmatex">\((4.35))\)</span>. 此函数是 <span class="arithmatex">\(\sigma_{1}^{2} / \sigma_{2}^{2}\)</span> 的下降函数. 故只须决定 <span class="arithmatex">\(C\)</span>, 使 <span class="arithmatex">\(G_{n-1, m-1}(C / a)=\alpha\)</span> 即可. 由此得</p>
+<div class="arithmatex">\[
+C=a F_{n-1, m-1}(1-a)=a / F_{m-1, n-1}(\alpha)
+\]</div>
+<p>最后一式见第二章习题.</p>
+<p>类似地导出检验问题 <span class="arithmatex">\(3^{\circ}\)</span> 的一个检验为: 当 <span class="arithmatex">\(C_{1} \leqslant S_{1}^{2} / S_{2}^{2} \leqslant C_{2}\)</span> 时接受原假设 <span class="arithmatex">\(H_{0}^{\prime \prime}\)</span>, 不然就否定 <span class="arithmatex">\(H_{0}^{\prime \prime}\)</span>, 其中</p>
+<div class="arithmatex">\[
+C_{1}=a / F_{m-1, n-1}(\alpha / 2), C_{2}=a F_{n-1, m-1}(\alpha / 2)
+\]</div>
+<p><span class="arithmatex">\(\alpha\)</span> 为检验的水平.</p>
+<h2 id="1-2-4">1. 2 .4 指数分布参数的检验<a class="headerlink" href="#1-2-4" title="Permanent link">⚓︎</a></h2>
+<p>指数分布的密度函数是第二章 <span class="arithmatex">\((1.20)\)</span> 式,分布函数则是该章 (1.21) 式. 它是一个单参数分布族一一只包含一个参数 <span class="arithmatex">\(\lambda\)</span>. 这个分 布的重要性在于: 如我们曾指出的, 它描述了在一定条件下元件等 的寿命分布, 因此在可靠性分析中是- - 个基础性的分布, 有不少的 应用。</p>
+<p>现设 <span class="arithmatex">\(X_{1}, \cdots, X_{n}\)</span> 是从这总体中抽出的样本. 在实际应用中, 这 可以是 <span class="arithmatex">\(n\)</span> 个抽来供试验的元件, 从开始试验起到失效为止,各元 件经历的时间, 要根据这些数据检验以下这些假设 <span class="arithmatex">\(\left(\lambda_{0}\right.\)</span> 给定):</p>
+<div class="arithmatex">\[
+\begin{array}{ll}
+1^{\circ} &amp; H_{0}: \lambda \geqslant \lambda_{0}, H_{1}: \lambda&lt;\lambda_{0} \\
+2^{\circ} &amp; H_{0}^{\prime}: \lambda \leqslant \lambda_{0}, H_{1}^{\prime}: \lambda&gt;\lambda_{0} \\
+3^{\circ} &amp; H_{0}^{\prime \prime}: \lambda=\lambda_{0}, H_{1}^{\prime \prime}: \lambda \neq \lambda_{0}
+\end{array}
+\]</div>
+<p>我们已经知道: <span class="arithmatex">\(\bar{X}\)</span> 是 <span class="arithmatex">\(1 / \lambda\)</span> 的无偏估计. 当 <span class="arithmatex">\(H_{0}\)</span> 成立时, <span class="arithmatex">\(\bar{X}\)</span> 应倾 向于取较小的值. 于是, 问题 <span class="arithmatex">\(1^{\circ}\)</span> 的一个直观上合理的检验为</p>
+<div class="arithmatex">\[
+\psi \text { : 当 } \widetilde{X} \leqslant C \text { 时接受 } H_{0} \text {, 不然就否定 } H_{0}
+\]</div>
+<p>这个检验的功效函数不难计算. 因为当参数值为 <span class="arithmatex">\(\lambda\)</span> 时, 有</p>
+<div class="arithmatex">\[
+2 \lambda\left(X_{1}+\cdots+X_{n}\right)=2 n \lambda \bar{X}-\chi^{\frac{2}{2} n} .
+\]</div>
+<p>因此</p>
+<div class="arithmatex">\[
+\begin{aligned}
+\beta_{\varphi}(\lambda) &amp; =P_{\lambda}(\bar{X}&gt;C)=P_{\lambda}(2 n \lambda \bar{X}&gt;2 n \lambda C) \\
+&amp; =1-K_{2 n}(2 n \lambda C)
+\end{aligned}
+\]</div>
+<p>这里 <span class="arithmatex">\(K_{2 n}(x)\)</span> 是 <span class="arithmatex">\(\chi^{\frac{2}{2} n}\)</span> 的分布函数, <span class="arithmatex">\(\beta_{\varphi}(\lambda)\)</span> 为 <span class="arithmatex">\(\lambda\)</span> 的下降函数,故为使 检验 <span class="arithmatex">\(\varphi\)</span> 有指定的水平 <span class="arithmatex">\(\alpha\)</span>, 只须取 <span class="arithmatex">\(C\)</span>, 使</p>
+<div class="arithmatex">\[
+\beta_{\varphi}\left(\lambda_{0}\right)=1-K_{2 n}\left(2 n \lambda_{0} C\right)=\alpha
+\]</div>
+<p>这导致 <span class="arithmatex">\(2 n \lambda_{0} C=\chi^{\frac{2}{2} n}(\alpha)\)</span> ，而</p>
+<div class="arithmatex">\[
+C=\chi_{2 n}^{2}(\alpha) /\left(2 n \lambda_{0}\right)
+\]</div>
+<p>若指定 <span class="arithmatex">\(\lambda_{1}&lt;\lambda_{0}\)</span>, 而要求当 <span class="arithmatex">\(\lambda \leqslant \lambda_{1}\)</span> 时，接受原假设 <span class="arithmatex">\(H_{0}\)</span> 的概率 不超过给定的相当小的数 <span class="arithmatex">\(\beta\)</span>, 则由 <span class="arithmatex">\(\beta_{\varphi}(\lambda)\)</span> 为 <span class="arithmatex">\(\lambda\)</span> 的下降函数,知只须 有 <span class="arithmatex">\(\beta_{\varphi}\left(\lambda_{1}\right)=1-\beta\)</span>, 即</p>
+<div class="arithmatex">\[
+K_{2 n}\left(\chi^{\frac{2}{2} n}(\alpha) \lambda_{1} / \lambda_{0}\right)=\beta
+\]</div>
+<p>利用此式可用试算法结合查 <span class="arithmatex">\(\chi^{2}\)</span> 分布表去决定 <span class="arithmatex">\(n\)</span>. 先取一个试探性 的 <span class="arithmatex">\(n\)</span> 代人上式左边. 若讨算结果小于 <span class="arithmatex">\(\beta\)</span>, 则 <span class="arithmatex">\(n\)</span> 取得太大. 若大于 <span class="arithmatex">\(\beta\)</span>, 则 <span class="arithmatex">\(n\)</span> 取得太小. 经过调整 <span class="arithmatex">\(n\)</span> 之值后再算. 类似地可得到检验问题 <span class="arithmatex">\(2^{\circ}\)</span> 和 <span class="arithmatex">\(3^{\circ}\)</span> 的水平 <span class="arithmatex">\(\alpha\)</span> 检验 <span class="arithmatex">\(\varphi^{\prime}\)</span> 和 <span class="arithmatex">\(\varphi^{\prime \prime}\)</span> : <span class="arithmatex">\(\varphi^{\prime}\)</span> : 当 <span class="arithmatex">\(\bar{X} \geqslant \chi_{2 n}^{2}(1-\alpha) /\left(2 n \lambda_{0}\right)\)</span> 时接受 <span class="arithmatex">\(H_{0}^{\prime}\)</span>, 不然就否定 <span class="arithmatex">\(H_{0}^{\prime}\)</span></p>
+<div class="arithmatex">\[
+\begin{gathered}
+\varphi^{\prime \prime} \text { : 当 } \chi^{\frac{2}{2} n}\left(1-\frac{\alpha}{2}\right) /\left(2 n \lambda_{0}\right) \leqslant \bar{X} \leqslant \chi_{2 n}^{2}\left(\frac{\alpha}{2}\right) /\left(2 n \lambda_{0}\right) \text { 时接受 } \\
+H_{0}^{\prime \prime} \text {, 不然就否定 } H_{0}^{\prime \prime}
+\end{gathered}
+\]</div>
+<p>可以证明 (见附录 <span class="arithmatex">\(A\)</span> ) : <span class="arithmatex">\(\varphi\)</span> 和 <span class="arithmatex">\(\varphi^{\prime}\)</span> 都是相应假设的一致最优检验, 而 <span class="arithmatex">\(\varphi^{\prime \prime}\)</span> 则不是一问题 <span class="arithmatex">\(3^{\circ}\)</span> 没有一致最优检验.</p>
+<p>我们来看看问题 <span class="arithmatex">\(2^{\circ}\)</span>. 假设 <span class="arithmatex">\(H_{0}^{\prime}\)</span> 可写为</p>
+<div class="arithmatex">\[
+H_{0}^{\prime} \text { : 元件平均寿命 } \geqslant 1 / \lambda_{0}
+\]</div>
+<p>而检验 <span class="arithmatex">\(\varphi^{\prime}\)</span> 可写为: “当 <span class="arithmatex">\((1 / \bar{X}) /\left(1 / \lambda_{0}\right) \geqslant \chi_{1 n}^{2}(1-\alpha) / 2 n\)</span> 时, 接受 <span class="arithmatex">\(H_{0}^{\prime}\)</span> ”. 这意思是说: 只要观察的平均寿命 <span class="arithmatex">\(1 / \bar{X}\)</span> 不小于设定的平均 寿命 <span class="arithmatex">\(1 / \lambda_{0}\)</span> 的 <span class="arithmatex">\(\chi^{\frac{2}{2} n}(1-\alpha) / 2 n\)</span> 倍, 假设 <span class="arithmatex">\(H_{0}^{\prime}\)</span> 就可以接受. 取 <span class="arithmatex">\(\alpha=\)</span> <span class="arithmatex">\(0.05, n=15\)</span>, 查表得</p>
+<div class="arithmatex">\[
+\chi^{\frac{2}{2} n}(1-\alpha) / 2 n=\chi_{30}^{2}(0.95) / 30=18.493 / 30=0.6184
+\]</div>
+<p>即, 只要观察到的平均寿命能达到设定值的约 <span class="arithmatex">\(62 \%\)</span>, 就可接受 “平 均寿命不小于 <span class="arithmatex">\(1 / \lambda_{0}\)</span> ” 的假设. 这看来不大能为人接受, 其解释是： 一则我们选择了较小的水平 <span class="arithmatex">\(\alpha\)</span> (要求不轻易否定 <span class="arithmatex">\(H_{0}\)</span> ), 一则样本大 小 15 太小了些. 对前者, 若将 <span class="arithmatex">\(\alpha\)</span> 上升为 0.3 , 则相应的界限约为 1 / <span class="arithmatex">\(\lambda_{0}\)</span> 的 <span class="arithmatex">\(85 \%\)</span>. 对后者, 若仍维持 <span class="arithmatex">\(\alpha=0.05\)</span>, 但取 <span class="arithmatex">\(n=100\)</span>, 将得出相应 的界限约为 <span class="arithmatex">\(1 / \lambda_{0}\)</span> 的 <span class="arithmatex">\(84 \%\)</span>,这已算比较合理了.</p>
+<p>因此,在解释假设检验的结果时, 切不能单纯只注意到是接受 还是否定. 接受是在什么条件下, 否定又是在什么情况下, 其含义 如何, 有哪些因素起作用, 都须进行估量, 这样才能得出切合实际 的看法.</p>
+<h2 id="2">2. 截尾寿命检验<a class="headerlink" href="#2" title="Permanent link">⚓︎</a></h2>
+<p>直接将前述检验用于元件寿命检验, 在实施上有一个不便之 处: 拿 <span class="arithmatex">\(n\)</span> 个元件同时开始使用, 到其全部失效时试验才能停住. 这 <span class="arithmatex">\(n\)</span> 个元件中难免有少数几个寿命特长的. 这么一来, 就必须等待很 长的时间才能结束试验, 为免除这个不便, 在实际工作中常采用所 谓截尾法.下面我们把这个方法的实施步骤介绍一下, 其中涉及的 分布问题就不能在此细讲了.</p>
+<ol>
+<li>定数截尾法</li>
+</ol>
+<p>取 <span class="arithmatex">\(n\)</span> 个元件做试验. 定下一个自然数 <span class="arithmatex">\(r&lt;n\)</span>, 试验进行到有 <span class="arithmatex">\(r\)</span> 个元件失效时为止. 把到此时为止, 全部 <span class="arithmatex">\(n\)</span> 个元件的工作时间加 起来记为 <span class="arithmatex">\(T\)</span>, 即</p>
+<div class="arithmatex">\[
+T=Y_{1}+\cdots+Y_{r}+(n-r) Y_{r}
+\]</div>
+<p>这里 <span class="arithmatex">\(Y_{1}\)</span> 是最先失效的那个元件的失效时刻 (从时刻 0 开始算 起), <span class="arithmatex">\(Y_{2}\)</span> 为第二失效的元件的失效时刻. 以此类推,第 <span class="arithmatex">\(r\)</span> 个失效元 件在时刻 <span class="arithmatex">\(Y_{r}\)</span>, 试验也就到此为止, 余下尚有 <span class="arithmatex">\(n-r\)</span> 个末失效元件, 它们已工作的总时间为 <span class="arithmatex">\((n-r) Y_{r}\)</span>. 这样得到 <span class="arithmatex">\(T\)</span> 的表达式(2.34). 不难理解: <span class="arithmatex">\(T\)</span> 愈大, 就愈使我们相信元件的平均寿命大. 因此, 比 如说, 问题 <span class="arithmatex">\(2^{\circ}\)</span> 的一个合理检验为</p>
+<p><span class="arithmatex">\(\psi\)</span> : 当 <span class="arithmatex">\(T \geqslant C\)</span> 时接受原假设 <span class="arithmatex">\(H_{0}^{\prime}\)</span>, 不然就否定 <span class="arithmatex">\(H_{0}^{\prime}\)</span> (2.35) 可以证明 * : 当参数值为 <span class="arithmatex">\(\lambda\)</span> 时, <span class="arithmatex">\(2 \lambda T \sim \chi^{2} r\)</span>. 由此出发, 仿前面的推 理, 就不难在给定检验水平 <span class="arithmatex">\(\alpha\)</span> 之下定出 (2.35) 中的 <span class="arithmatex">\(C\)</span> 为</p>
+<div class="arithmatex">\[
+C=\chi^{\frac{2}{2}}(1-\alpha) /\left(2 \lambda_{0}\right)
+\]</div>
+<p>例如, 要检验某种元件平均寿命不小于 5000 小时这个原假 设. 这相当于问题 <span class="arithmatex">\(2^{\circ}\)</span>, 并且 <span class="arithmatex">\(\lambda_{0}=1 / 5000\)</span>. 取 15 个元件做试验, 预定 到第 5 个失效时, 试验停止. 于是 <span class="arithmatex">\(n=15, r=5\)</span>. 设前 5 个失效元件 的工作时间依次是</p>
+<div class="arithmatex">\[
+800,1200,1500,2000,2200 \text { (小时) }
+\]</div>
+<p>则 <span class="arithmatex">\(T=800+1200+1500+2000+2200+10 \times 2200=27500 \alpha=\)</span> 0.05 , 查表得</p>
+<div class="arithmatex">\[
+C=\chi_{10}^{2}(0.95) \times 2500=3.940 \times 2500=9850
+\]</div>
+<p>因为 <span class="arithmatex">\(27500&gt;9850\)</span>, 应接受原假设 <span class="arithmatex">\(\lambda \leqslant 1 / 5000\)</span>.</p>
+<ul>
+<li>见本章习题 15</li>
+</ul>
+<h2 id="3-2">3. 2. 定时截尾法<a class="headerlink" href="#3-2" title="Permanent link">⚓︎</a></h2>
+<p>指定一个时刻 <span class="arithmatex">\(T_{0}\)</span>, 拿 <span class="arithmatex">\(n\)</span> 个元件做试验, 直到时刻 <span class="arithmatex">\(T_{0}\)</span> 为止. 把 到这时为止全部 <span class="arithmatex">\(n\)</span> 个元件的工作总时间加起来记为 <span class="arithmatex">\(T^{*}\)</span>, 算法是： 若某个元件在 <span class="arithmatex">\(T_{0}\)</span> 之前的某个时刻 <span class="arithmatex">\(t\)</span> 已失效,则该元件的工作时 间为 <span class="arithmatex">\(t\)</span>. 若到 <span class="arithmatex">\(T_{0}\)</span> 时刻仍末失效, 则该元件的工作时间为 <span class="arithmatex">\(T_{0} \cdot{ }^{*}\)</span> 显 然, 平均寿命愈大, 则 <span class="arithmatex">\(T^{*}\)</span> 愈倾向于取较大之值, 于是得出检验：</p>
+<div class="arithmatex">\[
+\dot{\psi}^{\prime} \text { : 当 } T^{*} \geqslant C \text { 时接受 } H_{0}^{\prime} \text {, 不然就否定 } H_{0}^{\prime}
+\]</div>
+<p>可以证明: 近似地有 <span class="arithmatex">\(2 \lambda T^{*} \sim \chi_{2}^{2} u+1\)</span>. 这里 <span class="arithmatex">\(u\)</span> 是到时刻 <span class="arithmatex">\(T_{0}\)</span> 停试时已 失效的元件个数. 由此出发,仿前面的推理,即可定出在给定水平 <span class="arithmatex">\(\alpha\)</span> 时 <span class="arithmatex">\(C\)</span> 的近似值 (因 <span class="arithmatex">\(2 \lambda T^{*}-\chi_{2: 4+1}^{2}\)</span> 只是近似成立), 为</p>
+<div class="arithmatex">\[
+C=\chi_{2 u+1}^{2}(1-\alpha) /\left(2 \lambda_{0}\right)
+\]</div>
+<p>例如，仍取 <span class="arithmatex">\(\lambda_{0}=1 / 5000, \alpha=0.05\)</span>, 取 10 个元件做试验,把 <span class="arithmatex">\(T_{0}\)</span> 定为 1000 . 到时刻 <span class="arithmatex">\(T_{0}\)</span> 时, 已有 5 个元件失效, 时刻分别为 100 , <span class="arithmatex">\(150,230,500\)</span> 和 580 , 则</p>
+<div class="arithmatex">\[
+T^{*}=100+150+230+500+580+5 \times 1000=6560
+\]</div>
+<p>此处 <span class="arithmatex">\(u=5\)</span>, 按 <span class="arithmatex">\((2.37)\)</span>, 有</p>
+<div class="arithmatex">\[
+C=\chi_{11}^{2}(0.95) \times 2500=4.575 \times 2500=11437.5
+\]</div>
+<p>因为 <span class="arithmatex">\(6560&lt;11437.5\)</span>, 应否定原假设 <span class="arithmatex">\(H_{0}^{\prime}\)</span>.</p>
+<h3 id="31-5-p">3.1. 5 二项分布参数 <span class="arithmatex">\(p\)</span> 的检验<a class="headerlink" href="#31-5-p" title="Permanent link">⚓︎</a></h3>
+<p>设某事件的概率为 <span class="arithmatex">\(p, p\)</span> 末知. 作 <span class="arithmatex">\(n\)</span> 次独立试验,每次观察该 事件是否发生. 以 <span class="arithmatex">\(X\)</span> 记该事件发生的次数, 则 <span class="arithmatex">\(X\)</span> 服从二项分布 <span class="arithmatex">\(B\)</span> <span class="arithmatex">\((n, p)\)</span>. 要根据 <span class="arithmatex">\(X\)</span> 去检验以下一些假设：</p>
+<p><span class="arithmatex">\(1^{\circ} H_{0}: p \leqslant p_{0}, H_{1}: p&gt;p_{0}\)</span></p>
+<p><span class="arithmatex">\(2^{\circ} \quad H_{0}^{\prime}: p \geqslant p_{0}, H_{1}^{\prime}: p&lt;p_{0}\)</span></p>
+<p><span class="arithmatex">\(3^{\circ} \quad H_{0}^{\prime \prime}: p=p_{0}, H_{1}^{\prime \prime}: p \neq p_{0}\)</span></p>
+<ul>
+<li>也可以更一般一些, 对参试的 <span class="arithmatex">\(n\)</span> 个元件的每一个规定不同的停试时刻 <span class="arithmatex">\(T_{1}, \cdots\)</span>, <span class="arithmatex">\(T_{n}\)</span> ，总工作时间 <span class="arithmatex">\(T\)</span> 计算方法与上述相同 先考虑 <span class="arithmatex">\(1^{\circ}\)</span>. 从直观上看, 一个显然的检验法为</li>
+</ul>
+<div class="arithmatex">\[
+\varphi \text { : 当 } X \leqslant C \text { 时接受 } H_{0} \text {, 不然就否定 } H_{0}
+\]</div>
+<p>因 <span class="arithmatex">\(X\)</span> 只取整数值, 故 <span class="arithmatex">\(C\)</span> 可限于整数. 此检验的功效函数为</p>
+<div class="arithmatex">\[
+\begin{aligned}
+\beta_{\varphi}(p) &amp; =P_{p}(X&gt;C)=1-P_{p}(X \leqslant C) \\
+&amp; =1-\sum_{i=0}^{c}\left(\begin{array}{l}
+n \\
+i
+\end{array}\right) p^{i}(1-p)^{n-i}
+\end{aligned}
+\]</div>
+<p>据第二章习题 <span class="arithmatex">\(7, \beta_{\varphi}(p)\)</span> 为 <span class="arithmatex">\(p\)</span> 的增函数. 故只须取 <span class="arithmatex">\(C\)</span>, 使 <span class="arithmatex">\(\beta_{\varphi}\left(p_{0}\right)=\)</span> <span class="arithmatex">\(\alpha\)</span>, 则检验 <span class="arithmatex">\(\varphi\)</span> 将有水平 <span class="arithmatex">\(\alpha\)</span>. 这相当于要选择整数 <span class="arithmatex">\(C\)</span>, 使</p>
+<div class="arithmatex">\[
+\sum_{i=0}^{c}\left(\begin{array}{l}
+n \\
+i
+\end{array}\right) p_{0}^{i}\left(1-p_{0}\right)^{n-i}=1-\alpha
+\]</div>
+<p>麻烦的是, 不一定正好有一个整数 <span class="arithmatex">\(C\)</span> 使 (2.40) 成立. 较常见的情 况是: 存在这样一个 <span class="arithmatex">\(C_{0}\)</span>. 使</p>
+<div class="arithmatex">\[
+\sum_{i=0}^{c_{0}}\left(\begin{array}{l}
+n \\
+i
+\end{array}\right) p_{0}^{i}\left(1-p_{0}\right)^{n-i}&lt;1-\alpha&lt;\sum_{i=0}^{c_{0}+1}\left(\begin{array}{l}
+n \\
+i
+\end{array}\right) p_{0}^{i}\left(1-p_{0}\right)^{n-i}
+\]</div>
+<p>这时, 我们只好 取 <span class="arithmatex">\(C\)</span> 为 <span class="arithmatex">\(C_{0}\)</span> 或 <span class="arithmatex">\(C_{0}+1\)</span>. 当取 <span class="arithmatex">\(C\)</span> 为 <span class="arithmatex">\(C_{0}\)</span> 时, 相当于把 水平 <span class="arithmatex">\(\alpha\)</span> 升高一些, 即允许犯第一类错误的概率略大一点. 当取 <span class="arithmatex">\(C\)</span> 为 <span class="arithmatex">\(C_{0}+1\)</span> 时,则相当于把水平 <span class="arithmatex">\(\alpha\)</span> 降一点,只要 <span class="arithmatex">\(n\)</span> 充分大,则</p>
+<div class="arithmatex">\[
+\left(\begin{array}{c}
+n \\
+C_{0}+1
+\end{array}\right) p_{0}^{C_{0}+1}\left(1-p_{0}\right)^{n-C_{0}-1}
+\]</div>
+<p>这一项一般很小, 这种修改也就很小, 不会太影响实际. 因为水平 <span class="arithmatex">\(\alpha\)</span> 取为 0.05 或 0.01 等并无特殊含义,这样的修改也不产生原则 问题.</p>
+<p>但是, 在 <span class="arithmatex">\(n\)</span> 不很大时, 有可能 (2.41) 的左右两边都与 <span class="arithmatex">\(1-\alpha\)</span> 有 不可忽略的距离, 这时如屈从一端, 则对水平 <span class="arithmatex">\(\alpha\)</span> 的修改太大, 可能 对当事的一方不利.举例如下:</p>
+<p>例 2.3 一工厂向商店供货, 商店要求废品率不超过 <span class="arithmatex">\(p=\)</span> 0.05 . 经双方同意制定抽样方案: 每批 (假定批量很大) 抽 <span class="arithmatex">\(n=24\)</span> 件,检查其中废品个数 <span class="arithmatex">\(X\)</span>, 当 <span class="arithmatex">\(X \leqslant C\)</span> 时,商店接受该批产品,否则 就拒收. 双方约定检验水平为 <span class="arithmatex">\(\alpha=0.05\)</span>, 这意味着废品率为 0.05 的批, 有 <span class="arithmatex">\(95 \%\)</span> 可通过检查 (若 <span class="arithmatex">\(p&lt;0.05\)</span>, 通过的比率当然比 0.95 更高). 问题是决定 <span class="arithmatex">\(C\)</span>, 按 (2.40), 要找 <span class="arithmatex">\(C\)</span> 使</p>
+<div class="arithmatex">\[
+I=\sum_{i=0}^{c}\left(\begin{array}{l}
+24 \\
+i
+\end{array}\right)(0.05)^{i}(0.95)^{24-i}=0.95
+\]</div>
+<p>查二项分布表 <span class="arithmatex">\({ }^{*}\)</span>,知</p>
+<div class="arithmatex">\[
+C=2 \text { 时, } I=0.884 ; C=3 \text { 时, } I=0.970
+\]</div>
+<p>此两值都与约定的 0.95 有相当距离. 若取 <span class="arithmatex">\(C=2\)</span>, 对商店有利; 取 <span class="arithmatex">\(C=3\)</span> 则对工厂有利.</p>
+<p>照数字看, 0.97 与 0.95 距离较近, 似以把 <span class="arithmatex">\(C\)</span> 取为 3 较合理. 但如商店不同意,一定要坚持 0.95 这个数,则只好按如下的方式 处理:</p>
+<p>a. 当 <span class="arithmatex">\(X \leqslant 2\)</span> 时接受产品 (接受假设 <span class="arithmatex">\(p \leqslant 0.05\)</span> ), 当 <span class="arithmatex">\(X \geqslant 4\)</span> 时拒收.</p>
+<p>b. 若 <span class="arithmatex">\(X=3\)</span>, 则既不完全接受也不完全拒绝, 而按一定的概率接 受. 接受的概率是</p>
+<div class="arithmatex">\[
+r=(0.95-0.884) /(0.97-0.884)=0.767
+\]</div>
+<p>可以这样设想: 拿一个袋子, 其中含白球 767 个, 红球 233 个. 每次 抽样得出 <span class="arithmatex">\(X=3\)</span> 时, 即随机从袋子中抽出 - 个球, 如为白球, 产品 通过:否则就拒收.</p>
+<p><span class="arithmatex">\(\mathrm{a}, \mathrm{b}\)</span> 二者结合就严格维持了 0.05 这个约定的水平. 这样的检 验叫做“随机化检验”, 因为在 <span class="arithmatex">\(\mathrm{b}\)</span> 这个步骤中, 包含了一个随机机制 去决定原假设是否被接受. 在所有涉及离散型分布的检验中,如要 坚持约定的水平, 往往得通过这样的随机化. 但这种做法,一则䋆 赘,二则对实用工作者而言往往觉得不自然. 因此,除非确有必要, 实用上不大采用. 这里交代了以后, 以下我们就不再提这个问题.</p>
+<p>继续把问题 <span class="arithmatex">\(1^{\circ}\)</span> 看成一个产品抽样验收的问题, 在实际使用</p>
+<ul>
+<li>目前国内较仔细的二项分布表, 以及其他儿种常用统计表,包括正态分存, 统计 三大分布及波哇松分布等的表,是由全国统计方法应用标准化技术委员会制定的国家 标准,统计分布数值表 GB4086. 中, 除规定 <span class="arithmatex">\(p_{0}\)</span> 和水平 <span class="arithmatex">\(\alpha\)</span> 外, 还要指定一个较 <span class="arithmatex">\(p_{0}\)</span> 大一些的数 <span class="arithmatex">\(p_{1}\)</span> 及 充分小的数 <span class="arithmatex">\(\beta\)</span>, 并要求检验能满足如下的条件: 若 <span class="arithmatex">\(p \geqslant p_{1}\)</span>, 则原假 设 <span class="arithmatex">\(H_{0}\)</span> 被接受的概率不超过 <span class="arithmatex">\(\beta\)</span>. 就是说, 废品率不小于 <span class="arithmatex">\(p_{1}\)</span> 的批, 只 有至多 <span class="arithmatex">\(100 \beta \%\)</span> 的批能通过检验. 在抽样验收中,一般使用 <span class="arithmatex">\(1-\beta_{\varphi}\)</span> <span class="arithmatex">\((p)\)</span> 而不使用 <span class="arithmatex">\(\beta_{\varphi}(p) .1-\beta_{\varphi}(p)\)</span> 称为检验 <span class="arithmatex">\(\varphi\)</span> 的操作特征函数或 <span class="arithmatex">\(O C\)</span> 函数, 暂记为 <span class="arithmatex">\(L_{\varphi}(p)\)</span>. 有</li>
+</ul>
+<div class="arithmatex">\[
+L_{\varphi}(p)=\sum_{i=0}^{c}\left(\begin{array}{l}
+n \\
+i
+\end{array}\right) p^{i}(1-p)^{n-i}
+\]</div>
+<p>于是所提的要求可综合为</p>
+<div class="arithmatex">\[
+L_{\varphi}\left(p_{0}\right)=1-\alpha, L_{\varphi}\left(p_{1}\right)=\beta
+\]</div>
+<p>如图 5.3 所示, 为实现 (2.43), 可能试着选一 个 <span class="arithmatex">\(n\)</span>, 按 <span class="arithmatex">\((2.40)\)</span> 决定 <span class="arithmatex">\(C\)</span>. 定出 <span class="arithmatex">\(C\)</span> 后, 把 <span class="arithmatex">\(p=p_{1}\)</span> 代人 (2.42) 算出 <span class="arithmatex">\(L_{\varphi}\left(p_{1}\right)\)</span>. 若 <span class="arithmatex">\(L_{\varphi}\left(p_{1}\right)&lt;\beta\)</span>, 则 <span class="arithmatex">\(n\)</span> 取得太大了. 若 <span class="arithmatex">\(L_{\varphi}\left(p_{1}\right)&gt;\beta\)</span>, 则 <span class="arithmatex">\(n\)</span> 取得太 小,经调整 <span class="arithmatex">\(n\)</span> 值之后再重复上述试算。应用 上,对一些特定的 <span class="arithmatex">\(p_{0}, p_{1}\)</span> 和 <span class="arithmatex">\(\alpha, \beta\)</span> 值,把 <span class="arithmatex">\(n\)</span> 和 <span class="arithmatex">\(C\)</span> 的值造了表.</p>
+<p>产品抽样验收是二项分布参数问题的一</p>
+<p><img alt="" src="https://cdn.mathpix.com/cropped/2023_07_12_609603e01e9aadde063ag-23.jpg?height=372&amp;width=394&amp;top_left_y=1119&amp;top_left_x=1348" /></p>
+<p>图 5.3 项重要应用, 它已经发展成为数理统计学的一个应用分支, 刚才所 讲只是一种最简单的情况. 实际应用中, 为了对付各种情况一例 如, 每批产品个数不大, 而需要用超几何分布代替二项分布; - 次 完成抽样可能不经济, 而可以考虑多次完成, 如复式抽样方案 (见 习题)及序贯抽样方案; 产品也可以不单纯只看其是否合格, 而要 测定其指标值 (数量验收方案); 验收可以是针对孤立的一些批,或 是连续性的,因而可以考虑在何时放宽或加严检查,等等.</p>
+<p>检验问题 <span class="arithmatex">\(2^{\circ}, 3^{\circ}\)</span> 的处理方法类似. 给定水平 <span class="arithmatex">\(\alpha\)</span>, 其检验分别为</p>
+<div class="arithmatex">\[
+\varphi^{\prime} \text { : 当 } X \geqslant C \text { 时接受 } H_{0}^{\prime} \text {, 不然就否定 } H_{0}^{\prime}
+\]</div>
+<p>其中 <span class="arithmatex">\(C\)</span> 由关系式</p>
+<div class="arithmatex">\[
+\sum_{i=0}^{C-1}\left(\begin{array}{l}
+n \\
+i
+\end{array}\right) p_{0}^{i}\left(1-p_{0}\right)^{n-i}=\alpha
+\]</div>
+<p>确定.</p>
+<div class="arithmatex">\[
+\varphi^{\prime \prime} \text { : 当 } C_{1} \leqslant X \leqslant C_{2} \text { 时接受 } H_{0}^{\prime \prime} \text {, 不然就否定 } H_{0}^{\prime \prime}(2.45)
+\]</div>
+<p>其中 <span class="arithmatex">\(C_{1}, C_{2}\)</span> 分别由关系式</p>
+<div class="arithmatex">\[
+\left.\begin{array}{l}
+\sum_{i=0}^{c_{1}-1}\left(\begin{array}{l}
+n \\
+i
+\end{array}\right) p_{0}^{i}\left(1-p_{0}\right)^{n-i}=\alpha / 2 \\
+\sum_{i=c_{2}+1}^{n}\left(\begin{array}{l}
+n \\
+i
+\end{array}\right) p_{0}^{i}\left(1-p_{0}\right)^{n-i}=\alpha / 2
+\end{array}\right\}
+\]</div>
+<p>确定. 可以证明: <span class="arithmatex">\(\varphi\)</span> 和 <span class="arithmatex">\(\varphi^{\prime}\)</span> 都是所给水平下的一致最优检验,而问题 <span class="arithmatex">\(3^{\circ}\)</span> 没有一致最优检验.</p>
+<p>符号检验</p>
+<p>符号检验的原始形态如下: 假定有甲、乙两种牌号的同一产品 (例如两种椑酒). 为了解大众的反映如何, 挑选了 <span class="arithmatex">\(n\)</span> 个人, 每人给 以甲、乙两牌号的产品各一份, 请他们使用后作出评定,规定: 若你 认为甲优于乙, 则给一个 “+ ” 号; 若认为乙优于甲, 则给一个 “- ” 号.以 <span class="arithmatex">\(p\)</span> 记“认为甲比乙优”的人在整个大众 (而不止限于挑出的 这 <span class="arithmatex">\(n\)</span> 个人) 中所占比例, 若 <span class="arithmatex">\(p=1 / 2\)</span>, 则甲、乙两种牌子谁也不占优 势. 为检验是否如此 (检验原假设 <span class="arithmatex">\(p=1 / 2\)</span> ), 看这 <span class="arithmatex">\(n\)</span> 个人的回答中 正号的个数 <span class="arithmatex">\(X . X\)</span> 服从二项分布 <span class="arithmatex">\(B(n, p)\)</span>. 于是可以使用检验 (2.45), <span class="arithmatex">\(C_{1}, C_{2}\)</span> 由 (2.46) 给出, 其中 <span class="arithmatex">\(p_{0}=1 / 2\)</span>. 若 <span class="arithmatex">\(X&lt;C_{1}\)</span>, 则判甲 不如乙. 若 <span class="arithmatex">\(X&gt;C_{2}\)</span>, 则判乙不如甲. 若 <span class="arithmatex">\(C_{1} \leqslant X \leqslant C_{2}\)</span>, 则认为在水平 <span class="arithmatex">\(\alpha\)</span> 上尚不足作出判断一尽管在样本中+、一号个数有差别, 但差 别不够大, 还不能认为它一定不是由抽样的随机性所引起.</p>
+<p>更进一步,在有些场合下, 可以要求参试的人打分. 如定下 0-100 分的范围, 可以要求每个参试者对甲、乙两牌号的产品各 给一个分,如下表前两行所示.</p>
+<p><img alt="" src="https://cdn.mathpix.com/cropped/2023_07_12_609603e01e9aadde063ag-24.jpg?height=268&amp;width=1425&amp;top_left_y=2353&amp;top_left_x=287" /></p>
+<p>对这批数据可以考虑用 <span class="arithmatex">\(t\)</span> 检验法: 一是把 <span class="arithmatex">\(X_{1}, \cdots, X_{n}\)</span> 和 <span class="arithmatex">\(Y_{1}, \cdots, Y_{n}\)</span> 分别看作从正态总体 <span class="arithmatex">\(N\left(\theta_{1}, \sigma^{2}\right)\)</span> 和 <span class="arithmatex">\(N\left(\theta_{2}, \sigma^{2}\right)\)</span> 中抽出的样本，用两 样本 <span class="arithmatex">\(t\)</span> 检验 (2.22) 去检验原假设 <span class="arithmatex">\(\theta_{1}=\theta_{2}\)</span>. 这个做法的问题在于: 各人品味和打分尺度不同. 品味较高的人也许倾向于把分给得低 一些, 反之则给得高一些.这不仅会破坏正态性, 也会使方差 <span class="arithmatex">\(\sigma^{2}\)</span> 加 大而降低检验的功效. 另一种想法是取差</p>
+<div class="arithmatex">\[
+Z_{i}=X_{i}-Y_{i}, i=1, \cdots, n
+\]</div>
+<p>把 <span class="arithmatex">\(Z_{1}, \cdots, Z_{n}\)</span> 视为取自 <span class="arithmatex">\(N\left(\mu, \sigma_{1}^{2}\right)\)</span> 的样本 <span class="arithmatex">\(\left(\mu\right.\)</span> 作为 <span class="arithmatex">\(\theta_{1}-\theta_{2}\)</span> 而 <span class="arithmatex">\(\sigma_{1}^{2}\)</span> 可视 为上文的 <span class="arithmatex">\(2 \sigma^{2}\)</span>. 或者, 根本不必与上文的 <span class="arithmatex">\(\theta_{1}, \theta_{2}\)</span> 和 <span class="arithmatex">\(\sigma^{2}\)</span> 发生联系)，而 用一样本 <span class="arithmatex">\(t\)</span> 检验 (2.17) 去检验假设 <span class="arithmatex">\(\mu=0\)</span>. 这个做法部分地弥补了 前一做法的缺点,但仍有其问题: 各人在差距如何以分数反映上尺 度也可能不一, 同是感觉上这一点差距, 有人觉得用 5 分的相差就 够了. 而有人可能愿意用 20 分. 这也会破坏上文正态性假设和使 方差 <span class="arithmatex">\(\sigma_{1}^{2}\)</span> 增大.</p>
+<p>现在看表上最后一行: <span class="arithmatex">\(X_{i}-Y_{i}\)</span> 的符号. 这就免除了前面所讲 的可能的缺点, 因为此处只要一个好坏对比的意见, 而不问具体程 度如何,这样就回到了符号检验.</p>
+<p>当然, 符号检验也有其缺点, 即它丢失了 <span class="arithmatex">\(X_{i}, Y_{i}\)</span> 这些数据中 相当部分的信息,如果有把握认为参试人给分的尺度并无重大差 别, 用 <span class="arithmatex">\(t\)</span> 检验比用符号检验很可能给出更高的分辨率. 因此, 要不 要把分数转化为符号, 这是一个个要依据对实际背景的了解去考虑 的问题.</p>
+<p>在符号检验中,我们对样本 <span class="arithmatex">\(X_{i}, Y_{i}\)</span> 所来自的总体的分布，不 需有什么特殊的假定. 这样的检验在数理统计学上称为“非参数检 验”, 意即它不是只适用于某种特定的参数分布族, 如正态分布族 或指数分布族之类. 非参数方法是数量统计学中的一个重要分支.</p>
+<p>顺便说一句: 符号检验中那种回答问题的方式, 是在民意测验 中对某问题作二者取一的回答的那种方式 (你是否赞同某项措施, 两位候选人中你打算投谁的票之类). 在西方每值大选或总统选举 之前, 进行多次民意测验, 每次挑选数百至数干(以至更多) 的人进 行调查. 历史证明: 这种调查与事后的结果惊人地一致. 不懂统计 学的人对此可能觉得难以理解: 一国人民多至千万以至以亿计, 为 什么区区数干人的意见与全体的意见相距如此之近, 其实不难解 释. 以 <span class="arithmatex">\(n\)</span> 计调查人数, <span class="arithmatex">\(m\)</span> 记某种特定回答 (如准备投 <span class="arithmatex">\(A\)</span> 的票) 的人 数, 以 <span class="arithmatex">\(m / n=\hat{p}\)</span> 估计 <span class="arithmatex">\(p\)</span>. 因 <span class="arithmatex">\(n\)</span> 甚大, 可以用第四章 (4.13) 式作 <span class="arithmatex">\(p\)</span> 的 区间估计, 它大体上就是 <span class="arithmatex">\(\hat{p} \pm \mu_{\alpha} \sqrt{\hat{p}(1-\hat{p}) / n}\)</span>. 如取 <span class="arithmatex">\(n=2500\)</span>, <span class="arithmatex">\(\alpha=0.05\)</span>, 则</p>
+<div class="arithmatex">\[
+\begin{aligned}
+\mu_{\alpha / 2} \sqrt{\hat{p}(1-\hat{p}) / n} &amp; \leqslant 1.96 \sqrt{\frac{1}{2}\left(1-\frac{1}{2}\right) / 2500} \\
+&amp; =1.96 \% \approx 2 \%
+\end{aligned}
+\]</div>
+<p>即用 <span class="arithmatex">\(\bar{p}\)</span> 估计 <span class="arithmatex">\(p\)</span>,大约只有 <span class="arithmatex">\(\pm 2 \%\)</span> 的误差. 如果一个候选人比另一个 领先 5 个百分点,则在民意测验中就能有确定的反映了.</p>
+<h3 id="32-6-lambda">3.2. 6 波哇松分布参数 <span class="arithmatex">\(\lambda\)</span> 的检验<a class="headerlink" href="#32-6-lambda" title="Permanent link">⚓︎</a></h3>
+<p>设有一个取非负整数值的离散总体, 其分布为包含末知参数 <span class="arithmatex">\(\lambda\)</span> 的波哇松分布,如第二章(1.7)式所示. 现设 <span class="arithmatex">\(X\)</span> 为抽自该总体的 样本 <span class="arithmatex">\({ }^{*}\)</span>,要考虑以下的一些检验问题 ( <span class="arithmatex">\(\lambda_{0}&gt;0\)</span> 为给定常数):</p>
+<div class="arithmatex">\[
+\begin{array}{ll}
+1^{\circ} &amp; H_{0}: \lambda \leqslant \lambda_{0}, H_{1}: \lambda&gt;\lambda_{0} \\
+2^{\circ} &amp; H_{0}^{\prime}: \lambda \geqslant \lambda_{0}, H_{1}^{\prime}: \lambda&lt;\lambda_{0} \\
+3^{\circ} &amp; H_{0}^{\prime \prime}: \lambda=\lambda_{0}, H_{1}^{\prime \prime}: \lambda=\lambda_{0}
+\end{array}
+\]</div>
+<p>先考虑 <span class="arithmatex">\(1^{\circ}\)</span>. 由于 <span class="arithmatex">\(X\)</span> 的均值为 <span class="arithmatex">\(\lambda\)</span>, 当 <span class="arithmatex">\(H_{0}\)</span> 成立时, <span class="arithmatex">\(X\)</span> 倾向于取较 小之值, 由此得出下述直观上合理的检验:</p>
+<div class="arithmatex">\[
+\varphi \text { : 当 } X \leqslant C \text { 时接受 } H_{0} \text {, 不然就否定 } H_{0}
+\]</div>
+<p>其功效函数为</p>
+<div class="arithmatex">\[
+\beta_{\varphi}(\lambda)=1-P_{\lambda}(X \leqslant C)=1-\sum_{i=0}^{C_{0}} \mathrm{e}^{-\lambda} \lambda^{i} / i !
+\]</div>
+<p>× 可以一般地设 <span class="arithmatex">\(X_{1}, \cdots, X_{n}\)</span> 为抽自该总体中的样本, 但只要取 <span class="arithmatex">\(X=X_{1}+\cdots+X_{n}\)</span>, 则据第二章例 <span class="arithmatex">\(4.3, X\)</span> 仍为波哇松分布, 只参数政为 <span class="arithmatex">\(n \lambda\)</span>, 因此, 只抽一个样本的限制并 无损于一般性。 根据第二章习题 <span class="arithmatex">\(10, \beta_{\varphi}(\lambda)\)</span> 是 <span class="arithmatex">\(\lambda\)</span> 的增加函数. 故为决定 <span class="arithmatex">\(C\)</span> 使检验 <span class="arithmatex">\(\varphi\)</span> 有给定的水平 <span class="arithmatex">\(\alpha\)</span>, 只须取 <span class="arithmatex">\(C\)</span>, 使 <span class="arithmatex">\(\beta_{\varphi}\left(\lambda_{0}\right)=\alpha\)</span>, 即</p>
+<div class="arithmatex">\[
+\sum_{i=0}^{c} \mathrm{e}^{-\lambda_{0}} \lambda_{0}^{i} / i !=1-\alpha
+\]</div>
+<p>这里也有我们在讲二项分布参数的检验问题时碰到的情况, 即不 一定存在整数 <span class="arithmatex">\(C\)</span> 使 (2.49) 恰好成立, 而是存在 <span class="arithmatex">\(C_{0}\)</span>, 使</p>
+<div class="arithmatex">\[
+\sum_{i=0}^{c} \mathrm{e}^{-\lambda_{0}} \lambda_{0}^{i} / i !&lt;1-\alpha&lt;\sum_{i=0}^{c_{0}^{+1}} \mathrm{e}^{-\lambda_{0}} \lambda_{0}^{i} / i !
+\]</div>
+<p>这时, 或者调整 <span class="arithmatex">\(\alpha\)</span> 之值, 或者施行随机化(当 <span class="arithmatex">\(X=C_{0}+1\)</span> 时), 步骤 与以前讲的相同.</p>
+<p>适合条件 (2.50) 时 <span class="arithmatex">\(C_{0}\)</span> 还可以由等式(第二章习题 10)</p>
+<div class="arithmatex">\[
+\sum_{i=0}^{c_{0}} \mathrm{e}^{-\lambda} \lambda_{0}^{i} / i !=\int_{\lambda_{0}}^{\infty} \mathrm{e}^{-t} t^{c} / c ! \mathrm{d} t
+\]</div>
+<p>通过卡方分布表得出. 事实上, 在上式右端的积分中作变数代换 <span class="arithmatex">\(t=x / 2\)</span>, 得</p>
+<div class="arithmatex">\[
+\begin{aligned}
+\frac{1}{c !} \int_{\lambda_{0}}^{\infty} \mathrm{e}^{-t} t^{c} \mathrm{~d} t &amp; =\frac{1}{2^{c+1} c !} \int_{2 \lambda_{0}}^{\infty} \mathrm{e}^{-x / 2} x^{c / 2} \mathrm{~d} x \\
+&amp; =\frac{1}{2^{(2 c+2) / 2} \Gamma\left(\frac{2 c+2}{2}\right)} \int_{2 \lambda_{0}}^{\infty} \mathrm{e}^{-x / 2} x^{\frac{2 c+2}{2}-1} \mathrm{~d} x \\
+&amp; =1-K_{2 c+2}\left(2 \lambda_{0}\right)
+\end{aligned}
+\]</div>
+<p>此处 <span class="arithmatex">\(K_{2 c+2}(x)\)</span> 为自由度 <span class="arithmatex">\(2 c+2\)</span> 的卡方分布函数. 由 (2.49), (2.51) 和 (2.52), 得 <span class="arithmatex">\(K_{2 c+2}\left(2 \lambda_{0}\right)=\alpha\)</span>, 即</p>
+<div class="arithmatex">\[
+2 \lambda_{0}=\chi_{2 C+2}^{2}(1-\alpha)
+\]</div>
+<p>然后查 <span class="arithmatex">\(\chi^{2}\)</span> 表用试探法. 先取定一个 <span class="arithmatex">\(C\)</span> 值查表得出 <span class="arithmatex">\(\chi_{2}^{2} C+2(1-\alpha)\)</span>. 若此值小于 <span class="arithmatex">\(2 \lambda_{0}\)</span>, 则表示 <span class="arithmatex">\(C\)</span> 取得太小, 反之则太大, 实际上, 从表上 “1- <span class="arithmatex">\(\alpha\)</span> ”那一列从上往下看就直接可以找到满足 (2.49) 或 (2.50) 的 <span class="arithmatex">\(C\)</span>. 例如, 取 <span class="arithmatex">\(\lambda_{0}=1.752, \alpha=0.05\)</span>, 则 <span class="arithmatex">\(2 \lambda_{0}=3.504\)</span>. 从 <span class="arithmatex">\(\chi^{2}\)</span> 表中头 上为 <span class="arithmatex">\(1-\alpha=0.95\)</span> 的那一列往下看, 见到</p>
+<div class="arithmatex">\[
+\chi_{8}^{2}(0.95)=2.733, \chi_{10}^{2}(0.95)=3.940
+\]</div>
+<p>故满足 (2.50) 的 <span class="arithmatex">\(C_{0}\)</span> 为 <span class="arithmatex">\(C_{0}=3\)</span>. 这个方法的缺点是: 它没有给出 (2.50) 左、名两端之值. 因而在 <span class="arithmatex">\(C_{0}+1\)</span> 处施行随机化时的概率 (即 例 2.3 中 0.767 这个数) 算不出来 (如果所用的 <span class="arithmatex">\(\chi^{2}\)</span> 表的表头上恰 有“ <span class="arithmatex">\(2 \lambda_{0}\)</span> ”这一栏, 当然就不成问题).</p>
+<p>例 2.4 假定一指定地区内的人口中, 每年患某种特殊疾病 的人数服从波哇松分布, 且过去相当长一段时间, 平均每年发病人 数为 2.3 人. 但近 4 年内记录到的发病人数分别为 <span class="arithmatex">\(3,4,1,5\)</span>. 问是 否有明显证据表明发病率上升了?</p>
+<p>从数字上看, 发病率的上升甚为明显. 从统计学的角度观察问 题, 就是要检验一下这表面上的增加是否达到了在一定水平 <span class="arithmatex">\(\alpha\)</span> 之 下的显著性, 即不能仅从偶然波动的角度去解释</p>
+<p>为此, 以 <span class="arithmatex">\(\lambda \leqslant 2.3\)</span> 作为原假设, 把 4 个年份的数字相加, 得 <span class="arithmatex">\(X\)</span> <span class="arithmatex">\(=3+4+1+5=13\)</span>. 要注意 <span class="arithmatex">\(X\)</span> 的分布为参数是 <span class="arithmatex">\(4 \lambda\)</span> 的波哇松分布, 因此据 <span class="arithmatex">\(X\)</span> 去进行检验时, 原假设要改为 <span class="arithmatex">\(\lambda \leqslant \lambda_{0}=4 \times 2.3=9.2\)</span>. 取 <span class="arithmatex">\(\alpha=0.05\)</span>. 查表有</p>
+<div class="arithmatex">\[
+\chi^{\frac{2}{30}}(0.95)=18.493&gt;2 \lambda_{0}, \chi_{28}^{2}(0.95)=16.928&lt;2 \lambda_{0}
+\]</div>
+<p>由此知应当在 <span class="arithmatex">\(X \leqslant 13\)</span> 时接受 <span class="arithmatex">\(\lambda \leqslant 9.2, X \geqslant 15\)</span> 时否定 <span class="arithmatex">\((X=14\)</span> 要施 行随机化, 或把 14 放到否定域内). 总之, 按所得数据 <span class="arithmatex">\(X=13\)</span> 尚不 能否定“年平均发病人数末上升”之假设。</p>
+<p>若取 <span class="arithmatex">\(a=0.20\)</span>, 则查表得</p>
+<div class="arithmatex">\[
+\chi_{26}^{2}(0.80)=19.820&gt;2 \lambda_{0}, \chi_{24}^{2}(0.80)=18.062&lt;2 \lambda_{0}
+\]</div>
+<p>相当于 <span class="arithmatex">\((2.50)\)</span> 式中的 <span class="arithmatex">\(C_{0}=11\)</span>, 现 <span class="arithmatex">\(X=13\)</span>, 该否定原假设 <span class="arithmatex">\(\lambda \leqslant 9.2\)</span>.</p>
+<p>随着所取水平 <span class="arithmatex">\(a\)</span> 的不同, 在同一数据下一个假设的接受与否 也可以不同, 而水平的选择是人为的. 由此可知, 不能把检验的结 果按其表面意义解释得太死. 拿本例而言, 如果你认为事态并非很 严重, 而采纳“发病人数增加”的结论将导致需要巨额经费的措施, 你可以慎重一些而采取一个较低的水平, 如 <span class="arithmatex">\(\alpha=0.05\)</span>. 这时你的结 论是: 目前尚无十分有力的证据表明情况已恶化了, 可再观察一段 时间. 但如你只是把这个问题作为一个单纯的科研题目, 你也许会 倾向于认为不必过于保守, 即宁取较大一点的水平, 例如 <span class="arithmatex">\(\alpha=\)</span> 0.20 . 这时你的结论将是: 已有较充分的证据表明情况有了恶化, 值得注意,采取这个看法犯错误的机会不超过 0.2. 这两种看法并 无矛盾. 恰恰相反,也许这两种看法的结合, 使我们对本题中随机 性的影响如何,得到了更深人一步的理解.</p>
+<p>对问题 <span class="arithmatex">\(2^{\circ}\)</span> 和 <span class="arithmatex">\(3^{\circ}\)</span>, 类似的讨论得到水平 <span class="arithmatex">\(\alpha\)</span> 的检验 <span class="arithmatex">\(\varphi^{\prime}\)</span> 与 <span class="arithmatex">\(\varphi^{\prime \prime}\)</span> 如下:</p>
+<p><span class="arithmatex">\(\varphi^{\prime}\)</span> : 当 <span class="arithmatex">\(X \geqslant C\)</span> 时接受 <span class="arithmatex">\(H_{0}^{\prime}\)</span>, 不然就否定 <span class="arithmatex">\(H_{0}^{\prime}\)</span></p>
+<p>其中 <span class="arithmatex">\(C\)</span> 由关系式</p>
+<div class="arithmatex">\[
+\sum_{i=0}^{C-1} \mathrm{e}^{-\lambda_{0}} \lambda_{0}^{i} / i !=\alpha
+\]</div>
+<p>确定，或用</p>
+<div class="arithmatex">\[
+\begin{gathered}
+2 \lambda_{0}=\chi_{2 C}^{2}(\alpha) \\
+\varphi^{\prime \prime} \text { : 当 } C_{1} \leqslant X \leqslant C_{2} \text { 时接受 } H_{0}^{\prime \prime} \text {, 不然就否定 } H_{0}^{\prime \prime}
+\end{gathered}
+\]</div>
+<p><span class="arithmatex">\(C_{1}, C_{2}\)</span> 分别由</p>
+<p>确定,或用</p>
+<div class="arithmatex">\[
+\sum_{i=0}^{C_{1}-1} \mathrm{e}^{-\lambda_{0}} \lambda_{0}^{i} / i !=\alpha / 2, \sum_{i=0}^{C_{2}} \mathrm{e}^{-\lambda_{0}} \lambda_{0}^{i} / i !=1-\alpha / 2
+\]</div>
+<div class="arithmatex">\[
+2 \lambda_{0}=\chi_{2 C_{1}}^{2}(\alpha / 2), 2 \lambda_{0}=\chi_{2 C_{2}+2}^{2}(1-\alpha / 2)
+\]</div>
+<p>波哇松分布参数检验有一个有趣的应 用, 即用于本节 (5.2.4)中讲过的定时截尾 寿命检验的情形. 前面我们讲的定时截尾 是预定一个时刻 <span class="arithmatex">\(T_{0}\)</span>, 在时刻 0 时对 <span class="arithmatex">\(n\)</span> 个 元件 (其寿命都服从参数为 <span class="arithmatex">\(\lambda\)</span> 的指数分 布)进行测试. 每个参试元件如在时刻 <span class="arithmatex">\(T_{0}\)</span> 前失效,则记下其失效时刻而并不替换该</p>
+<p><img alt="" src="https://cdn.mathpix.com/cropped/2023_07_12_609603e01e9aadde063ag-29.jpg?height=268&amp;width=445&amp;top_left_y=1822&amp;top_left_x=1271" /></p>
+<ul>
+<li>元件失效时刻 图 5.4 元件. 现在对试验作一点修改: 开始时 <span class="arithmatex">\(n\)</span> 个元件参试,不论在 <span class="arithmatex">\(T_{0}\)</span> 之前的哪个时刻其中哪个元件失效了, 就立即用一个新的替换上 去. 到时刻 <span class="arithmatex">\(T_{0}\)</span> 时结束试验, 把到那时为止失效的元件总数记为 <span class="arithmatex">\(X\)</span>. 如图 5.4 , 表示在时刻 0 有 3 个元件参试, 到时刻 <span class="arithmatex">\(T_{0}\)</span> 结束, 共 有 <span class="arithmatex">\(X=11\)</span> 个元件失效.</li>
+</ul>
+<p>用第二章习题 25 容易推出: <span class="arithmatex">\(X\)</span> 服从参数 <span class="arithmatex">\(\nu=n T_{0} \lambda\)</span> 的波哇松 分布. 如要检验 “元件平均寿命不小于 <span class="arithmatex">\(1 / \lambda_{0}\)</span> ” 即 “ <span class="arithmatex">\(\lambda \leqslant \lambda_{0}\)</span> ”, 可归结为 在波哇松总体中观察了 <span class="arithmatex">\(X\)</span>, 要检验假设 “ <span class="arithmatex">\(\nu \leqslant n T_{0} \lambda_{0}\)</span> ”. 这正是我们 讨论过的问题.</p>
+<h3 id="33-7">3.3. 7 大样本检验<a class="headerlink" href="#33-7" title="Permanent link">⚓︎</a></h3>
+<p>在上面讲的一些检验问题中, 我们都知道了有关检验统计量 的确切分布. 据此, 就可以在给定的检验水平 <span class="arithmatex">\(\alpha\)</span> 之下, 决定检验统 计量的临界值, 即我们前面多次提到的常数 <span class="arithmatex">\(C\)</span> (或 <span class="arithmatex">\(C_{1}, C_{2}\)</span>, 如在双 侧情形).</p>
+<p>但在不少问题中, 检验统计量在直观上看合理,但其确切分布 求不出. 这时, 往往就求助于其极限分布, 依据它去决定临界值 <span class="arithmatex">\(C\)</span>. 举一个例子。</p>
+<p>例 2.5 (贝伦斯-费歇尔问题) 设 <span class="arithmatex">\(X_{1}, \cdots, X_{n}\)</span> 和 <span class="arithmatex">\(Y_{1}, \cdots, Y_{m}\)</span> 分别是抽自正态总体 <span class="arithmatex">\(N\left(\theta_{1}, \sigma_{1}^{2}\right)\)</span> 和 <span class="arithmatex">\(N\left(\theta_{2}, \sigma_{2}^{2}\right)\)</span> 的样本. <span class="arithmatex">\(\theta_{1}, \sigma_{1}^{2}, \theta_{2}, \sigma_{2}^{2}\)</span> 全都末知,也没有假定 <span class="arithmatex">\(\sigma_{1}^{2}\)</span> 与 <span class="arithmatex">\(\sigma_{2}^{2}\)</span> 相等. 要检验原假设 “ <span class="arithmatex">\(\theta_{1}=\theta_{2}\)</span> ”, 对 立假设是 “ <span class="arithmatex">\(\theta_{1} \neq \theta_{2}\)</span> ”. 也可以考虑单侧的情形, 即 “ <span class="arithmatex">\(\theta_{1} \leqslant \theta_{2}\)</span> ”为原假 设.</p>
+<p>据正态分布的性质有</p>
+<div class="arithmatex">\[
+\frac{(\bar{X}-\bar{Y})-\left(\theta_{1}-\theta_{2}\right)}{\sqrt{\sigma_{1}^{2} / n+\sigma_{1}^{2} / m}} \sim N(0,1)
+\]</div>
+<p>因为 <span class="arithmatex">\(\sigma_{1}^{2}, \sigma_{2}^{2}\)</span> 末知, 虽则 (2.60) 为确切分布, 仍无法据以确定检验的 临界值. 于是以 <span class="arithmatex">\(X\)</span> 样本的样本方差 <span class="arithmatex">\(S_{1}^{2}\)</span> 作为 <span class="arithmatex">\(\sigma_{1}^{2}\)</span> 的估计, 以 <span class="arithmatex">\(Y\)</span> 样本 的样本方差 <span class="arithmatex">\(S_{2}^{2}\)</span> 作为 <span class="arithmatex">\(\sigma_{2}^{2}\)</span> 的估计, 分别取代 (2.60) 中的 <span class="arithmatex">\(\sigma_{1}^{2}\)</span> 和 <span class="arithmatex">\(\sigma_{2}^{2}\)</span> 得 到</p>
+<div class="arithmatex">\[
+T=\frac{(\bar{X}-\bar{Y})-\left(\theta_{1}-\theta_{2}\right)}{\sqrt{S_{1}^{2} / n+S_{2}^{2} / m}}
+\]</div>
+<p>其确切分布很复杂, 但当 <span class="arithmatex">\(n, m\)</span> 都较大时, 其分布接近 <span class="arithmatex">\(N(0,1)\)</span>. 姑 且认为它就是 <span class="arithmatex">\(N(0,1)\)</span>, 则得到原假设 <span class="arithmatex">\(\theta_{1}=\theta_{2}\)</span> 的下述检验法: 当</p>
+<div class="arithmatex">\[
+|\bar{X}-\bar{Y}| / \sqrt{S_{1}^{2} / n+S_{2}^{2} / m} \leqslant u_{\alpha / 2}
+\]</div>
+<p>时接受原假设,不然就否定.</p>
+<p>大样本检验,例如 (2.62), 在下述意义下是近似的: 原先预定 的检验水平是 <span class="arithmatex">\(\alpha\)</span>, 而该检验的实际水平与 <span class="arithmatex">\(\alpha\)</span> 有差距. 这是由于 (2.61) 式的 <span class="arithmatex">\(T\)</span> 的分布与 <span class="arithmatex">\(N(0,1)\)</span> 的分布有距离. 如果 <span class="arithmatex">\(n\)</span> 和 <span class="arithmatex">\(m\)</span> 都较 大,则 <span class="arithmatex">\(T\)</span> 的分布与 <span class="arithmatex">\(N(0,1)\)</span> 的差异就很小, 而检验 <span class="arithmatex">\((2.62)\)</span> 的实际水 平就与其预定水平 <span class="arithmatex">\(\alpha\)</span> 相差很小. 问题在于, 我们一般并不清楚对 一定的 <span class="arithmatex">\(n\)</span> 和 <span class="arithmatex">\(m, T\)</span> 的分布与 <span class="arithmatex">\(N(0,1)\)</span> 的差异有多大, 因而也就不能 估计检验的实际水平与其名义水平究竟差多少. 在区间估计中也 有这个问题: 由于使用了有关变量的近似分布,所作出的区间估 计, 其实际置信系数与名义 (预定的) 置信系数之间, 有一个我们不 了解的差距.</p>
+<p>因此,大样本方法是一个 “不得已而为之”的办法,只要有基于 精确分布的方法 (小样本方法), 我们总是乐于采用的, 可惜的是: 在数理统计学的许多问题中,能找出形式足够简单且便于使用的 精确分布的情况, 到底还是不多. 因此,大样本方法在数理统计学 中占有重要的地位.</p>
+<p>也有的情况, 精确分布是知道的, 但在样本大小 <span class="arithmatex">\(n\)</span> 太大时, 计 算不便, 我们也时常用其较简单的极限分布去取代之.下面是一个 例子.</p>
+<p>例 2.6 再考虑 5.2.5 段讨论过的二项分布参数 <span class="arithmatex">\(p\)</span> 的检验 问题. 以该处的问题 <span class="arithmatex">\(3^{\circ}\)</span> (原假设 <span class="arithmatex">\(p=p_{0}\)</span> ) 为例, 前面我们已找出检 验 (2.45), 其中 <span class="arithmatex">\(C_{1}, C_{2}\)</span> 由 (2.46) 决定. 当 <span class="arithmatex">\(n\)</span> 很大时, (2.46) 中的和 无法从二项分布表上查得,因而 <span class="arithmatex">\(C_{1}, C_{2}\)</span> 的决定就不易.</p>
+<p>但根据中心极根定理 (第三章定理 4.3 ), 当原假设 <span class="arithmatex">\(p=p_{0}\)</span> 成 立而 <span class="arithmatex">\(n \rightarrow \infty\)</span> 时, <span class="arithmatex">\(\left(X-n p_{0}\right) / \sqrt{n p_{0}\left(1-p_{0}\right)}\)</span> 的分布趋向于 <span class="arithmatex">\(N(0\)</span>, <span class="arithmatex">\(1)\)</span>. 近似地就把 <span class="arithmatex">\(N(0,1)\)</span> 作为其分布, 则可提出如下的检验: 当</p>
+<div class="arithmatex">\[
+\left|\left(X-n p_{0}\right)\right| / \sqrt{n p_{0}\left(1-p_{0}\right)} \leqslant u_{\alpha / 2}
+\]</div>
+<p>即</p>
+<div class="arithmatex">\[
+n p_{0}-u_{\alpha / 2} \sqrt{p_{0}\left(1-p_{0}\right)} \leqslant X \leqslant n p_{0}+u_{\alpha / 2} \sqrt{p_{0}\left(1-p_{0}\right)}
+\]</div>
+<p>时接受原假设 <span class="arithmatex">\(p=p_{0}\)</span>, 不然就拒绝.与 (2.45) 比较, 这等于以 (2.63) 两端之值作为 <span class="arithmatex">\(C_{1}\)</span> 和 <span class="arithmatex">\(C_{2}\)</span> 的近似值. 这两个值比 <span class="arithmatex">\(C_{1}, C_{2}\)</span> 的 确切值 (由 (2.46) 决定的)要容易计算得多.</p>
+<p>我们再提醒一下以前曾解释过的一件事情: 统计方法的大小 样本之分, 不在于样本大小 <span class="arithmatex">\(n\)</span> 多大(这无清楚界线), 而全看其是 否使用有关变量的极限分布. 拿本例而言, 若用检验 (2.63), 无论 <span class="arithmatex">\(n\)</span> 多小, 总是大样本方法; 若用检验 (2.45) 而 <span class="arithmatex">\(C_{1}, C_{2}\)</span> 由 (2.46) 㹟 定,则无论 <span class="arithmatex">\(n\)</span> 多大, 仍是小样本方法.</p>
+<h3 id="34-8">3.4. 8 贝叶斯方法<a class="headerlink" href="#34-8" title="Permanent link">⚓︎</a></h3>
+<p>贝叶斯方法的一般原则已经在 4.2 节 4.2.4 段中阐述过, 并 已曾用于点估计和区间估计问题.贝叶斯方法用于检验问题至为 简单: 如已经选定了先验分布, 则在有了样本 <span class="arithmatex">\(X_{1}, \cdots, X_{n}\)</span> 后,分别 算出原假设 <span class="arithmatex">\(H_{0}\)</span> 的条件概率 <span class="arithmatex">\(P\left(H_{0} \mid X_{1}, \cdots, X_{n}\right)\)</span> 和对立假设 <span class="arithmatex">\(H_{1}\)</span> 的 条件概率 <span class="arithmatex">\(P\left(H_{1} \mid X_{1}, \cdots, X_{n}\right)\)</span>. 若前者大于后者, 则接受原假设 <span class="arithmatex">\(H_{0}\)</span>; 若后者大于前者，则否定原假设 <span class="arithmatex">\(H_{0}\)</span> ，如果二者相等(都等于 <span class="arithmatex">\(1 /\)</span> 2 ), 则可让其悬而不决 (留待进一步考察), 或随机地取其一, 举例 说明之.</p>
+<p>例 2.7 考虑第四章例 2.14 , 但此处我们讨论有关 <span class="arithmatex">\(\theta\)</span> 的检验 问题.</p>
+<p><span class="arithmatex">\(1^{\circ}\)</span> 设原假设 <span class="arithmatex">\(H_{0}: \theta \leqslant 0\)</span>, 对立假设 <span class="arithmatex">\(H_{1}: \theta&gt;0\)</span>, 就该例给的先验 分布 <span class="arithmatex">\(N\left(\mu, \sigma^{2}\right)\)</span>, 已求出后验分布为正态 <span class="arithmatex">\(N\left(t, \eta^{2}\right)\)</span>, 其中 <span class="arithmatex">\(t, \eta^{2}\)</span> 分别 见第四章 (2.17) 和(2.18) 式.</p>
+<p>当 <span class="arithmatex">\(\theta \sim N\left(t, \eta^{2}\right)\)</span> 时, <span class="arithmatex">\(\theta \leqslant 0\)</span> 的概率易算出, 此处我们只关心它 是否小于 <span class="arithmatex">\(1 / 2\)</span>. 显然, 若 <span class="arithmatex">\(t&gt;0\)</span>, 此概率小于 <span class="arithmatex">\(1 / 2\)</span>, 若 <span class="arithmatex">\(t&lt;0\)</span>, 则大于 <span class="arithmatex">\(1 /\)</span> 2 . 当 <span class="arithmatex">\(t=0\)</span> 时则恰为 <span class="arithmatex">\(1 / 2\)</span>. 因此, 得出在所给先验分布之下的贝叶 斯检验为:</p>
+<div class="arithmatex">\[
+\left\{\begin{array}{l}
+\text { 当 } t&lt;0 \text { 即 } \bar{X}&lt;-\mu /\left(n \sigma^{2}\right) \text { 时接受 } H_{0}: \theta \leqslant 0 \\
+\text { 当 } t&gt;0 \text { 即 } \bar{X}&gt;-\mu /\left(n \sigma^{2}\right) \text { 时否定 } H_{0} \\
+\text { 当 } t=0 \text { 即 } \bar{X}=-\mu /\left(n \sigma^{2}\right) \text { 时,悬而不决 }
+\end{array}\right.
+\]</div>
+<p>从其中看出先验信息的影响. 设 <span class="arithmatex">\(\mu&gt;0\)</span>, 则先验信息较有利于 <span class="arithmatex">\(H_{1}\)</span> : <span class="arithmatex">\(\theta&gt;0\)</span>. 所产生的后果是: <span class="arithmatex">\(\bar{X}\)</span> 必须小于一个比 0 更小的数 <span class="arithmatex">\(-\mu /\)</span> <span class="arithmatex">\(\left(n \sigma^{2}\right)\)</span>, 才能接受 <span class="arithmatex">\(\theta \leqslant 0\)</span>,若无这一先验信息的“先人之见”,则公平 的看法是 : 当 <span class="arithmatex">\(\bar{X}&lt;0\)</span> 时认为 <span class="arithmatex">\(\theta \leqslant 0\)</span> 的可能性较大,因而接受它. 先验 信息的存在使我们要求更强的证据.从其影响上看, 与选择检验水 平 <span class="arithmatex">\(\alpha\)</span> 有其相通之处: 我们愈是相信原假设, 就愈是倾向于选择较 低的 <span class="arithmatex">\(\alpha\)</span>, 而使检验更有利于原假设. 当然,这只是一个比喻. 在贝叶 斯方法中没有“检验水平” 的概念, 其方法的精神与奈曼一皮尔逊理 论根本不同.</p>
+<p><span class="arithmatex">\(2^{\circ}\)</span> 若取原假设为 <span class="arithmatex">\(H_{0}: \theta_{1} \leqslant \theta \leqslant \theta_{2}\left(\theta_{1}, \theta_{2}\right.\)</span> 给定), 则原则上完 全一样: 在 <span class="arithmatex">\(\theta-N\left(t, \eta^{2}\right)\)</span> 时, 算出 <span class="arithmatex">\(\theta_{1} \leqslant \theta \leqslant \theta_{2}\)</span> 的概率为</p>
+<div class="arithmatex">\[
+P\left(\theta_{1} \leqslant \theta \leqslant \theta_{2} \mid X_{1}, \cdots, X_{n}\right)=\Phi\left(\frac{\theta_{2}-t}{\eta}\right)-\Phi\left(\frac{\theta_{1}-t}{\eta}\right)
+\]</div>
+<p>我们留给读者去证明: 这函数作为 <span class="arithmatex">\(t\)</span> 的函数, 当 <span class="arithmatex">\(t\)</span> 由 <span class="arithmatex">\(-\infty\)</span> 升至 <span class="arithmatex">\(\infty\)</span> 时,先增后减. 由此可知, 使此表达式大于 <span class="arithmatex">\(1 / 2\)</span> 的 <span class="arithmatex">\(t\)</span> 是落在某区间 <span class="arithmatex">\((a, b)\)</span> 内 (可以是空集). 相应地, <span class="arithmatex">\(\bar{X}\)</span> 落在某区间 <span class="arithmatex">\((A, B)\)</span> 内, 即贝叶 斯检验为:</p>
+<div class="arithmatex">\[
+\left\{\begin{array}{l}
+\text { 当 } A&lt;\bar{X}&lt;B \text { 时, 接受原假设 } H_{0}: \theta_{1} \leqslant \theta \leqslant \theta_{2} \\
+\text { 当 } \bar{X}&lt;A \text { 或 } \bar{X}&gt;B \text { 时,否定 } H_{0} \\
+\text { 当 } \bar{X}=A \text { 或 } B \text { 时, 悬而不决 }
+\end{array}\right.
+\]</div>
+<p>用非贝叶斯方法, 即奈曼一皮尔逊的方法, 也可以得到形式一 样的检验, 但临界值不同, 这留作为一个三题.</p>
+<p><span class="arithmatex">\(3^{\circ}\)</span> 最后考虑检验问题 <span class="arithmatex">\(H_{0}: \theta=0, H_{1}: \theta \neq 0\)</span>. 因为后验分布为正态, <span class="arithmatex">\(\theta\)</span> 取一个值 0 的后验概率为 <span class="arithmatex">\(0: P\left(H_{0}\right.\)</span> <span class="arithmatex">\(\left.\mid X_{1}, \cdots, X_{n}\right)\)</span> 总为 0 . 故依贝叶斯检验, 不论样本如何, 总要否定 <span class="arithmatex">\(H_{0}\)</span>.</p>
+<p>这样的解看来很不吸引人. 这里面就有些思想得弄清楚.</p>
+<p>首先, 就贝叶斯方法而言, 它只看后验概率的大小. 0 这个值 的先验概率为 0 , 即根本不可能之事, 就是说, 先天地已知道 “ <span class="arithmatex">\(\theta=\)</span> 0 ”不可能, 还有什么值得去检验的。</p>
+<p>问题就出在这个“绝对”上. 如果你要检验某个物件的重量“绝 对地”等于 2.567959 克, 我说你不必检验, 世间找不出其重量与 2.567959 克一丝不差的物体. 在这个意义上,你可以不经检验否 定 <span class="arithmatex">\(\theta=\theta_{0}\)</span> 这种假设, 可是在实用中, 人们并不这么绝对的看问题. 当人们检验 <span class="arithmatex">\(\theta=\theta_{0}\)</span> 这假设时,他是理解为: 所检验的其实是: <span class="arithmatex">\(\theta\)</span> 在 <span class="arithmatex">\(\theta_{0}\)</span> 附近一个可允许的限度内, 且只要样本中包含的证据不与这一 点相去太远, 就可考虑接受. 这是我们日常处理这种问题的看法. 我们以前讲过的, 以奈曼一皮尔逊思想为基础的检验法, 很好地体 现了这一点.</p>
+<p>在此,如一定要用贝旪斯方法来检验 <span class="arithmatex">\(\theta=0\)</span> 这个假设,就必须 给 0 这个点以一正的先验概率 <span class="arithmatex">\(p_{0}\)</span>. 剩下的 <span class="arithmatex">\(1-p_{0}\)</span> 的概率以某种方 式分布在 <span class="arithmatex">\(\theta \neq 0\)</span> 的范围内, 例如按正态分布. 此处不涉及细节, 有 兴趣的读者可参看陈希擩、倪国熙合著的《数理统计学教程》p. 204 例 5.8. 大家可能觉得: <span class="arithmatex">\(p_{0}\)</span> 这个值毫无定准, 如何给法? 在并无确 实的先验信息可依时, 只好凭考虑两类错误的后果去选择: 如果你 认为错误地否定 <span class="arithmatex">\(\theta=0\)</span> 后果较严重, 你可以选择一个略大的 <span class="arithmatex">\(p_{0}\)</span>, 以 使“ <span class="arithmatex">\(\theta=0\)</span> ”难于被否定一些. 这与在奈曼一皮尔逊方法中选择检验 水平 <span class="arithmatex">\(\alpha\)</span> 有同一效应一须知, 水平 <span class="arithmatex">\(\alpha\)</span> 的选定也并无理论依据, 而 是基于实际考虑. 此处 <span class="arithmatex">\(p_{0}\)</span> 的选择,不妨也作如是观.</p>
+<p>贝叶斯方法的最大的好处是: 一经选定了先验分布, 则剩下的 只是计算问题, 而没有找检验统计量的问题, 特别是没有找检验统 计量的精确分布的问题,看一个例子. 例 2.8 设 <span class="arithmatex">\(X_{1}, \cdots, X_{n}\)</span> 为抽自正态总体 <span class="arithmatex">\(N\left(\theta, \sigma^{2}\right)\)</span> 的样本, <span class="arithmatex">\(\theta\)</span> 和 <span class="arithmatex">\(\sigma\)</span> 都末知, 考虑检验问题</p>
+<div class="arithmatex">\[
+H_{0}: a \leqslant \theta \leqslant b, H_{1}: \theta&lt;a \text { 或 } \theta&gt;b .
+\]</div>
+<p>其中 <span class="arithmatex">\(a, b\)</span> 都是给定的有限常数, <span class="arithmatex">\(a&lt;b\)</span>.</p>
+<p>在本节 (5.2.1) 段中, 我们曾讨论过 <span class="arithmatex">\(\theta \leqslant \theta_{0}, \theta \geqslant \theta_{0}\)</span> 和 <span class="arithmatex">\(\theta=\theta_{0}\)</span> 等 原假设的检验问题,但就是没有提到过 (2.66), 其实这个问题在应 用上也有其重要性. 原因就在于: 用非贝叶斯的方法, 这个检验所 涉及的分布问题不易解决.</p>
+<p>现用贝叶斯法, 给 <span class="arithmatex">\(\theta\)</span> 以广义先验密度 1 , 给 <span class="arithmatex">\(\sigma\)</span> 以广义先验密度 <span class="arithmatex">\(\sigma^{-1}\)</span>, 并设二者独立. 这等于说给 <span class="arithmatex">\((\theta, \sigma)\)</span> 以广义先验密度 <span class="arithmatex">\(\sigma^{-1}\)</span>, 当 <span class="arithmatex">\(-\infty&lt;\theta&lt;\infty, \sigma&gt;0\)</span>. 由第四章 (2.10) 和 (2.11) 式, 得知在有了样 本 <span class="arithmatex">\(X_{1}, \cdots, X_{n}\)</span> 时 <span class="arithmatex">\((\theta, \sigma)\)</span> 的后验密度为</p>
+<div class="arithmatex">\[
+C_{n} \sigma^{-(n+1)} \exp \left[-\frac{1}{2 \sigma^{2}} \sum_{i=1}^{n}\left(X_{i}-\theta\right)^{2}\right](-\infty&lt;\theta&lt;\infty, \sigma&gt;0)
+\]</div>
+<p>这里</p>
+<div class="arithmatex">\[
+C_{n}=\left(\int_{0}^{\infty} \int_{-\infty}^{\infty} \sigma^{-(n+1)} \exp \left[-\frac{1}{2 \sigma^{2}} \sum_{i=1}^{n}\left(X_{i}-\theta\right)^{2}\right] \mathrm{d} \theta \mathrm{d} \sigma\right)^{-1}
+\]</div>
+<p><span class="arithmatex">\(C_{n}\)</span> 是一个与 <span class="arithmatex">\(\theta, \sigma\)</span> 无关但与样本有关的常数, 以下的常数 <span class="arithmatex">\(D_{n}, E_{n}\)</span> 等也如此, 它们没有必要去计算. 将 (2.67) 对 <span class="arithmatex">\(\sigma\)</span> 从 0 到 <span class="arithmatex">\(\infty\)</span> 积分, 得 到 <span class="arithmatex">\(\theta\)</span> 的边缘后验密度, 为</p>
+<div class="arithmatex">\[
+\begin{aligned}
+&amp; C_{n} \int_{0}^{\infty} \sigma^{-(n+1)} \exp \left[-\frac{1}{2 \sigma^{2}} \sum_{i=1}^{n}\left(X_{i}-\theta\right)^{2}\right] \mathrm{d} \sigma \\
+&amp; \quad=D_{n}\left(\sum_{i=1}^{n}\left(X_{i}-\theta\right)^{2}\right)^{-n / 2}=D_{n}\left(S_{0}^{2}+n(\bar{X}-\theta)^{2}\right)^{-n / 2} \\
+&amp; \quad=D_{n} S_{0}^{-n}\left[1+n(\bar{X}-\theta)^{2} / S_{0}^{2}\right]^{-n / 2} \\
+&amp; \quad=E_{n}\left[1+n(\bar{X}-\theta)^{2} /(n-1) S^{2}\right]^{-n / 2}
+\end{aligned}
+\]</div>
+<p>其中 <span class="arithmatex">\(S_{0}^{2}\)</span> 为 <span class="arithmatex">\(\sum_{i=1}^{n}(X-\bar{X})^{2}\)</span>, 即 <span class="arithmatex">\((n-1) S^{2}, S^{2}\)</span> 为样本方差. <span class="arithmatex">\(S_{0}, S\)</span> 都 与 <span class="arithmatex">\(\sigma, \theta\)</span> 无关. 令</p>
+<div class="arithmatex">\[
+\theta^{*}=\sqrt{n}(\theta-\bar{X}) / S
+\]</div>
+<p>它是 <span class="arithmatex">\(\theta\)</span> 的线性函数. 由 <span class="arithmatex">\(\theta\)</span> 有密度 (2.68), 易算出 <span class="arithmatex">\(\theta^{*}\)</span> 有密度函数</p>
+<div class="arithmatex">\[
+F_{n}\left(1+\frac{\theta^{* 2}}{n-1}\right)^{-n / 2},-\infty&lt;\theta^{*}&lt;\infty
+\]</div>
+<p>把这个表达式和第二章 (4.31) 式比较, 即知它是自由度为 <span class="arithmatex">\(n-1\)</span> 的 <span class="arithmatex">\(t\)</span> 分布密度, 因而常数 <span class="arithmatex">\(F_{n}\)</span> 就必然是 <span class="arithmatex">\(\Gamma\left(\frac{n}{2}\right) /\left(\sqrt{2 \pi} \Gamma\left(\frac{n-1}{2}\right)\right)\)</span>. 以 <span class="arithmatex">\(T_{n-1}\)</span> 记自由度 <span class="arithmatex">\(n-1\)</span> 的 <span class="arithmatex">\(t\)</span> 分布函数,用 (2.69), (2.70), 即得</p>
+<div class="arithmatex">\[
+\begin{aligned}
+&amp; P\left(H_{0} \mid X_{1}, \cdots, X_{n}\right)=P\left(a \leqslant \theta \leqslant b \mid X_{1}, \cdots, X_{n}\right) \\
+= &amp; P\left(\sqrt{n}(a-\bar{X}) / S \leqslant \theta^{*} \leqslant \sqrt{n}(b-\bar{X}) / S \mid X_{1}, \cdots, X_{n}\right) \\
+= &amp; T_{n-1}\left(\frac{\sqrt{n}(b-\bar{X})}{S}\right)-T_{n-1}\left(\frac{\sqrt{n}(a-\bar{X})}{S}\right)
+\end{aligned}
+\]</div>
+<p>看它是否大于 <span class="arithmatex">\(1 / 2\)</span>, 即决定是否接受原假设 <span class="arithmatex">\(H_{0}\)</span>.</p>
+<p>例如, 取原假设为 <span class="arithmatex">\(-1 \leqslant \theta \leqslant 1\)</span>, 样本大小 <span class="arithmatex">\(n=16\)</span>, 且设由样本算 出 <span class="arithmatex">\(\bar{X}=0.8, S=2\)</span>. 则</p>
+<div class="arithmatex">\[
+\begin{aligned}
+&amp; \sqrt{n}(b-\bar{X}) / S=4(1-0.8) / 2=0.4 \\
+&amp; \sqrt{n}(a-\bar{X}) / S=4(-1-0.8) / 2=-3.6
+\end{aligned}
+\]</div>
+<p>因而</p>
+<div class="arithmatex">\[
+P\left(-1 \leqslant \theta \leqslant 1 \mid X_{1}, \cdots, X_{n}\right)=T_{15}(0.4)-T_{15}(-3.6)
+\]</div>
+<p>查 <span class="arithmatex">\(t\)</span> 分布表知上式右边为 <span class="arithmatex">\(0.621119-0.086245=0.537874&gt;\)</span> <span class="arithmatex">\(1 / 2\)</span>. 故应当接受原假设.</p>
+<p>有意思的是看 (2.69) 式的 <span class="arithmatex">\(\theta^{*}\)</span>, 若回到非贝叶斯的看法, 即把 <span class="arithmatex">\(\bar{X}, S\)</span> 看作是随机的而 <span class="arithmatex">\(\theta\)</span> 为末知常数,则如第二章 (4.34) 所示, <span class="arithmatex">\(\theta^{*}\)</span> 的分布为自由度 <span class="arithmatex">\(n-1\)</span> 的 <span class="arithmatex">\(t\)</span> 分布 <span class="arithmatex">\(t_{n-1}\)</span>. 刚才我们又证明了: 在所给 的 (广义) 先验密度之下, <span class="arithmatex">\(\theta^{*}\)</span> 的后验分布是 <span class="arithmatex">\(t_{n-1}\)</span>, 殊途而同归,但解 释截然不同. 在非贝叶斯意义下得到的 <span class="arithmatex">\(\theta^{*} \sim t_{n-1}\)</span> 无助于解决此处 的检验问题, 而在贝叶斯方法之下, 由 <span class="arithmatex">\(\theta^{*}\)</span> 的后验分布为 <span class="arithmatex">\(t_{n-1}\)</span> 立即 导致检验问题的解.</p>
+<p>顺便交代一下: 30 年代初, R. A. 费歇尔从非贝叶斯的结果</p>
+<div class="arithmatex">\[
+\sqrt{n}(\bar{X}-\theta) / S-t_{n-1}
+\]</div>
+<p>出发, 用如下的推理: 在上式中把 <span class="arithmatex">\(\bar{X}, S\)</span> 看作已知常数而将 <span class="arithmatex">\(\theta\)</span> 看成 是随机的, 则 (2.71) 式可看作决定了 <span class="arithmatex">\(\theta\)</span> 的一个分布, 他称之为 <span class="arithmatex">\(\theta\)</span> 的 信仰分布 (fiducial distribution). 其解释如下: 在抽样前, 我们对 <span class="arithmatex">\(\theta\)</span> 茫然无所知. 有了样本后, 仍不能确切地定出 <span class="arithmatex">\(\theta\)</span>. 但根据样本所提 供的信息,我们对 <span class="arithmatex">\(\theta\)</span> 取各种值的“信仰程度”有了不同: 例如,我们 相信 <span class="arithmatex">\(\theta\)</span> 取 <span class="arithmatex">\(\bar{X}\)</span> 附近值的程度, 比相信 <span class="arithmatex">\(\theta\)</span> 取远离 <span class="arithmatex">\(\bar{X}\)</span> 的值的程度要大 些. 信仰分布从数量上刻画了这个相信程度. 若以 <span class="arithmatex">\(F\)</span> 记 <span class="arithmatex">\(\theta\)</span> 的信仰 分布, 则 <span class="arithmatex">\(F(b)-F(a)\)</span> 就是我们对 “ <span class="arithmatex">\(\theta\)</span> 落在区间 <span class="arithmatex">\((a, b)\)</span> 内” 的信仰 概率 (fiducial probability). 利用这个就可以进行统计推断——作 区间估计, 检验等, 这个方法在数理统计学中称为信仰推断法 (fiducial inference).</p>
+<p>费歇尔的思想与贝叶斯学派的基本思想有共同之处, 即都是 把末知参数视为随机变量, 可以谈论其概率分布. 二者不同之处在 于贝叶斯学派要求先验分布而费歇尔不要求. 贝叶斯方法中的后 验分布与费歇尔的信仰分布可以作等量观, 但是, 在贝叶斯方法 中, 由先验分布到后验分布有一定的规则遵循, 即求条件分布的规 则. 因此, 一旦先验分布指定了, 后验分布并无岐义. 费歇尔的信仰 分布则不然, 它虽不依赖什么先验分布, 但不仅无一定的法则可遵 循, 且在较复杂的场合, 简直不知从何着手. 正是由于这个原因, 信 仰推断的方法没有能推开来, 与频率学派和贝叶斯学派鼎足而三. 但是，这方法在有些情况下有其应用，特别是在我们多次提到过的 贝伦斯一费歇尔问题中, 此方法颇为成功 (参看前引陈希孺、倪国 熙书 p. 182-183), 目前仍有些学者对它进行研究.</p>
+<p>再回过头说说贝叶斯检验. 上面提到的那个准则, 即在 <span class="arithmatex">\(P\left(H_{0}\right.\)</span> <span class="arithmatex">\(\left(X_{1}, \cdots, X_{n}\right)&gt;1 / 2\)</span> 时接受原假设, 并非一成不变的. 在实际问题 中, 不论接受或是否定 <span class="arithmatex">\(H_{0}\)</span>, 往往都意味着一种可能带来经济上或 其他方面后果的行动. 由于后果的严重性不同及当事者的承受力 不同, 他在作出决定时所采用的 “临界概率” 就不一定是 <span class="arithmatex">\(1 / 2\)</span>, 可以 大一些或小一些. 举例言之: 接受 <span class="arithmatex">\(H_{0}\)</span> 表示兴办某一商业活动. 这 活动一旦成功, 大有利可图, 但也很可能失败而招致一定的经济损 失.一个有实力能承担这样的风险且又富于冒险精神的实业家, 可 能决定只要在 <span class="arithmatex">\(30 \%\)</span> 的成功机会就准备一试, 这时他把接受 <span class="arithmatex">\(H_{0}\)</span> 的 标准定为 <span class="arithmatex">\(P\left(H_{0} \mid X_{1}, \cdots, X_{n}\right) \geqslant 0.3\)</span>. 反之, 一个实力不强且较稳健 的人, 也许会要求有八成把提才干. 这已不单纯是统计推断问题, 而是一种统计决策问题, 其特点是不仅要考虑到样本提供的信息, 还须考虑到种种决定可能带来的后果 *</p>
+
+
+
+
+
+
+
+  
+    
+  
+  
+    
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="最后更新">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">December 21, 2023</span>
+  </span>
+
+    
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="创建日期">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3h-2Z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">December 21, 2023</span>
+  </span>
+
+    
+    
+    
+  </aside>
+
+
+  
+
+
+
+  <form class="md-feedback" name="feedback" hidden>
+    <fieldset>
+      <legend class="md-feedback__title">
+        对当前页面有任何疑问吗？
+      </legend>
+      <div class="md-feedback__inner">
+        <div class="md-feedback__list">
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="This page was helpful" data-md-value="1">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 9v12H1V9h4m4 12a2 2 0 0 1-2-2V9c0-.55.22-1.05.59-1.41L14.17 1l1.06 1.06c.27.27.44.64.44 1.05l-.03.32L14.69 8H21a2 2 0 0 1 2 2v2c0 .26-.05.5-.14.73l-3.02 7.05C19.54 20.5 18.83 21 18 21H9m0-2h9.03L21 12v-2h-8.79l1.13-5.32L9 9.03V19Z"/></svg>
+            </button>
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="This page could be improved" data-md-value="0">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 15V3h4v12h-4M15 3a2 2 0 0 1 2 2v10c0 .55-.22 1.05-.59 1.41L9.83 23l-1.06-1.06c-.27-.27-.44-.64-.44-1.06l.03-.31.95-4.57H3a2 2 0 0 1-2-2v-2c0-.26.05-.5.14-.73l3.02-7.05C4.46 3.5 5.17 3 6 3h9m0 2H5.97L3 12v2h8.78l-1.13 5.32L15 14.97V5Z"/></svg>
+            </button>
+          
+        </div>
+        <div class="md-feedback__note">
+          
+            <div data-md-value="1" hidden>
+              
+              
+                
+              
+              感谢您的反馈！
+            </div>
+          
+            <div data-md-value="0" hidden>
+              
+              
+                
+              
+              感谢您的反馈！请点击这里<a href="https://github.com/EanYang7/Probability-and-Statistics/issues" target="_blank" rel="noopener">这里</a>提供问题反馈.
+            </div>
+          
+        </div>
+      </div>
+    </fieldset>
+  </form>
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/EanYang7/cs231n" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant", "navigation.top", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.path", "toc.follow", "content.action.edit", "content.action.view"], "search": "../../javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../../javascripts/bundle.d7c377c4.min.js"></script>
+      
+        <script src="../../../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

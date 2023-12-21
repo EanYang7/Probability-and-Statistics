@@ -1,0 +1,2591 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="《概率论与数理统计》陈希孺，中国科学技术大学出版社">
+      
+      
+      
+        <link rel="canonical" href="https://eanyang7.github.io/Probability-and-Statistics/courses/6-Regression-Correlation-and-Analysis-of-Variance/5-Analysis-of-variance/">
+      
+      
+        <link rel="prev" href="../4-Correlation-analysis/">
+      
+      
+        <link rel="next" href="../appendix/">
+      
+      
+      <link rel="icon" href="../../../cover.jpg">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.2">
+    
+    
+      
+        <title>6.5 方差分析 - 概率论与数理统计</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.50c56a3b.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-GEDRLMN4ML"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-GEDRLMN4ML",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-GEDRLMN4ML",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#65" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../.." title="概率论与数理统计" class="md-header__button md-logo" aria-label="概率论与数理统计" data-md-component="logo">
+      
+  <img src="../../../cover.jpg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            概率论与数理统计
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              6.5 方差分析
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换为暗黑模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换为暗黑模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5c-.84 0-1.65.15-2.39.42L12 2M3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29L3.34 7m.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14L3.36 17M20.65 7l-1.77 3.79a7.023 7.023 0 0 0-2.38-4.15l4.15.36m-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29L20.64 17M12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44L12 22Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换为浅色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换为浅色模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3 3.19.09m3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95 2.06.05m-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/EanYang7/Probability-and-Statistics" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    EanYang7/Probability-and-Statistics
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../.." class="md-tabs__link">
+          
+  
+  首页
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      
+  
+  
+    
+  
+  
+    
+    
+      
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../1-Probability-of-events/1-What-is-the-probability/" class="md-tabs__link">
+          
+  
+  课程
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../%E3%80%8A%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1%E3%80%8B%E9%99%88%E5%B8%8C%E5%AD%BA%EF%BC%8C%E4%B8%AD%E5%9B%BD%E7%A7%91%E5%AD%A6%E6%8A%80%E6%9C%AF%E5%A4%A7%E5%AD%A6%E5%87%BA%E7%89%88%E7%A4%BE.pdf" class="md-tabs__link">
+        
+  
+    
+  
+  PDF
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="概率论与数理统计" class="md-nav__button md-logo" aria-label="概率论与数理统计" data-md-component="logo">
+      
+  <img src="../../../cover.jpg" alt="logo">
+
+    </a>
+    概率论与数理统计
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/EanYang7/Probability-and-Statistics" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    EanYang7/Probability-and-Statistics
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    首页
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            首页
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    简介
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    课程
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            课程
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    章节
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            章节
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1_1" id="__nav_2_1_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    第1章 事件的概率
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1_1">
+            <span class="md-nav__icon md-icon"></span>
+            第1章 事件的概率
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1-Probability-of-events/1-What-is-the-probability/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1.1 概率是什么
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1-Probability-of-events/2-Classical-Probability-Calculation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1.2 古典概率计算
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1-Probability-of-events/3-Operation-Conditional-probability-and-independence-of-events/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1.3 事件的运算、条件概率与独立性
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1-Probability-of-events/exercises/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    习题
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1-Probability-of-events/answers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    答案
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1_2" id="__nav_2_1_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    第2章 随机变量及概率分布
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1_2">
+            <span class="md-nav__icon md-icon"></span>
+            第2章 随机变量及概率分布
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2-Random-Variables-and-Probability-Distribution/1-One-dimensional-random-variable/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2.1 一维随机变量
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2-Random-Variables-and-Probability-Distribution/2-Multidimensional-random-variables-random-vectors/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2.2 多维随机变量（随机向量）
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2-Random-Variables-and-Probability-Distribution/3-Independence-of-Conditional-probability-distribution-and-random-variable/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2.3 条件概率分布与随机变量的独立性
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2-Random-Variables-and-Probability-Distribution/4-Probability-Distribution-of-Functions-of-Random-Variables/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2.4 随机变量的函数的概率分布
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2-Random-Variables-and-Probability-Distribution/appendix/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    附录
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2-Random-Variables-and-Probability-Distribution/exercises/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    习题
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2-Random-Variables-and-Probability-Distribution/answers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    答案
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1_3" id="__nav_2_1_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    第3章 随机变量的数字特征
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1_3">
+            <span class="md-nav__icon md-icon"></span>
+            第3章 随机变量的数字特征
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3-Numerical-Characteristics-of-Random-Variables/1-Mathematica-Expectations-Mean-and-Median/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3.1 数学期望（均值）与中位数
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3-Numerical-Characteristics-of-Random-Variables/2-Variance-and-Moment/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3.2 方差与矩
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3-Numerical-Characteristics-of-Random-Variables/3-Covariance-and-correlation-coefficient/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3.3 协方差与相关系数
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3-Numerical-Characteristics-of-Random-Variables/4-Theorem-of-Large-Numbers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3.4 大数定理和中心极限定理
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3-Numerical-Characteristics-of-Random-Variables/exercises/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    习题
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3-Numerical-Characteristics-of-Random-Variables/answers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    答案
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1_4" id="__nav_2_1_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    第4章 参数估计
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1_4">
+            <span class="md-nav__icon md-icon"></span>
+            第4章 参数估计
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../4-Parameter-Estimates/1-Basic-concepts-of-Mathematical-statistics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4.1 数理统计学的基本概念
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../4-Parameter-Estimates/2-Moment-estimation-maximum-likelihood-estimation-and-Bayesian-estimation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4.2 矩估计、极大似然估计和贝叶斯估计
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../4-Parameter-Estimates/3-Excellence-criterion-of-Point-estimation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4.3 点估计的优良性准则
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../4-Parameter-Estimates/4-Interval-estimation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4.4 区间估计
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../4-Parameter-Estimates/exercises/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    习题
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../4-Parameter-Estimates/answers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    答案
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1_5" id="__nav_2_1_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    第5章 假设检验
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1_5">
+            <span class="md-nav__icon md-icon"></span>
+            第5章 假设检验
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../5-Hypothesis-Testing/1-Problem-formulation-and-basic-concepts/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5.1 问题提法和基本概念
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../5-Hypothesis-Testing/2-Important-parameter-inspection/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5.2 重要参数检验
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../5-Hypothesis-Testing/3-goodness-of-fit-test/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5.3 拟合优度检验
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../5-Hypothesis-Testing/appendix/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    附录
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../5-Hypothesis-Testing/exercises/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    习题
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../5-Hypothesis-Testing/answers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    答案
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1_6" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2_1_6" id="__nav_2_1_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    第6章 回归、相关与方差分析
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_1_6">
+            <span class="md-nav__icon md-icon"></span>
+            第6章 回归、相关与方差分析
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1-Basic-concepts-of-regression-analysis/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6.1 回归分析基本概念
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2-Univariate-linear-regression/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6.2 一元线性回归
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3-Multiple-linear-regression/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6.3 多元线性回归
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4-Correlation-analysis/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6.4 相关分析
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    6.5 方差分析
+  </span>
+  
+
+      </a>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../appendix/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    附录
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../exercises/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    习题
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../answers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    答案
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../appendix/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    附表
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../%E3%80%8A%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1%E3%80%8B%E9%99%88%E5%B8%8C%E5%AD%BA%EF%BC%8C%E4%B8%AD%E5%9B%BD%E7%A7%91%E5%AD%A6%E6%8A%80%E6%9C%AF%E5%A4%A7%E5%AD%A6%E5%87%BA%E7%89%88%E7%A4%BE.pdf" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    PDF
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+  
+<nav class="md-tags" >
+  
+    
+    
+    
+      <a href="../../../tags/#" class="md-tag">校订中……</a>
+    
+  
+</nav>
+
+
+  
+    <a href="https://github.com/EanYang7/Probability-and-Statistics/tree/main/docs/courses/6-Regression-Correlation-and-Analysis-of-Variance/5-Analysis-of-variance.md" title="编辑此页" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
+    </a>
+  
+  
+    
+      
+    
+    <a href="https://github.com/EanYang7/Probability-and-Statistics/tree/main/docs/courses/6-Regression-Correlation-and-Analysis-of-Variance/5-Analysis-of-variance.md" title="查看本页的源代码" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0 8a5 5 0 0 1-5-5 5 5 0 0 1 5-5 5 5 0 0 1 5 5 5 5 0 0 1-5 5m0-12.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5Z"/></svg>
+    </a>
+  
+
+
+<h1 id="65">6.5 方差分析<a class="headerlink" href="#65" title="Permanent link">⚓︎</a></h1>
+<object data="https://eanyang7.github.io/Probability-and-Statistics/assets/6/6.5.pdf" type="application/pdf" width="700px" height="700px">
+    <embed src="https://eanyang7.github.io/Probability-and-Statistics/assets/6/6.5.pdf">
+        <p>This browser does not support PDFs. Please download the PDF to view it: <a href="https://eanyang7.github.io/Probability-and-Statistics/assets/6/6.5.pdf">下载 PDF</a>.</p>
+    </embed>
+</object>
+<h1 id="65_1">6.5 方差分析<a class="headerlink" href="#65_1" title="Permanent link">⚓︎</a></h1>
+<p>方差分析是我们多次提到过的英国大统计学家费歇尔在本世 纪 20 年代创立的. 那时他在英国一个农业试验站工作,需要进行 许多田间试验, 为分析这种试验的结果. 他发明了方差分析法. 尔 后这个方法被用于其他的领域, 尤其是工业试验数据的分析中, 取 得了很大的成功.</p>
+<p>这里已经点明: 方差分析所针对的数据，是经过一定的“设计” 的试验的数据, 并非任何杂乱无章的数据都适于使用方差分析法 的. 说清楚一些, 为了能有效地使用方差分析法,试验在安排上必 须满足一定的要求. 在数理统计学中有一个专门分支, 叫 “试验的 设计与分析”, 就是专为讨论这个问题. 其中的“分析”, 主要是指方 差分析, 但也不限于此.</p>
+<p>本书以其性质所限, 不可能深人地从理论上阐述这些问题,或 涉及过多细节. 这一节的目的, 只在于结合几种最简单的情况, 介 绍一下方差分析的基本思想和做法, 也顺便解释一下试验设计的 某些重要概念.</p>
+<h3 id="01-1">0.1. 1 单因素完全随机化设计<a class="headerlink" href="#01-1" title="Permanent link">⚓︎</a></h3>
+<p>假定某个农业地区原来不曾种植小麦，现在打算种植这种作 物. 各地已有过一些优良品种, 但因本地区并无种植小麦的经验, 不知道哪一个品种最适合本地区 (有最高的产量), 甚至也不知道 这些品种对本地区是否有差别. 为此进行一个田间试验. 取一大块 地将其分成形状大小都相同的 <span class="arithmatex">\(n\)</span> 小块. 设供选择的品种有 <span class="arithmatex">\(k\)</span> 个, 我们打算其中的 <span class="arithmatex">\(n_{1}\)</span> 小块种植品种 <span class="arithmatex">\(1, n_{2}\)</span> 小块种植品种 2 , 等等, <span class="arithmatex">\(n_{1}+n_{2}+\cdots n_{k}=n \cdot n_{1}, n_{2}, \cdots, n_{k}\)</span> 的选取并无严格限制. 例如, 让 <span class="arithmatex">\(n_{1}=n_{2}=\cdots=n_{k}\)</span> (如 <span class="arithmatex">\(n / k\)</span> 为整数), 就是一种常用的选择. 当然, 也可能有某种原因使得另外的选择更好.这没有关系, 不妨碍试验 数据的分析.</p>
+<p>分配数目定了,接着就要定出哪些小块分给哪些品种. 而这是 用随机化的方法来定, 做法如下: 取 <span class="arithmatex">\(n\)</span> 张纸片, 上面分别写上数字 <span class="arithmatex">\(1,2, \cdots, n\)</span>. 把它混乱并放人一个盒子里, 然后一张一张地依次抽 出来. 最先抽出的 <span class="arithmatex">\(n_{1}\)</span> 个号码给品种 1 , 其次抽出的 <span class="arithmatex">\(n_{2}\)</span> 个号码给品 种 2 , 以此类推一一当然, 事先已把上述 <span class="arithmatex">\(n\)</span> 小块地从 1 到 <span class="arithmatex">\(n\)</span> 标了 号. 例如, <span class="arithmatex">\(n_{1}=3\)</span>. 若最先抽出的 3 张纸条上面的数字依次是 10 , 12,3 , 则品种 1 种植在标号为 3,10 和 12 这 3 小块地上.</p>
+<p>以上就是这个简单的品种试验的设计过程. 不要看它简单, 它 却包含了由费歇尔指出的“试验设计三原则”中的两条 (另一条将 在 6.5.4 小节中解释):</p>
+<ol>
+<li>重复. 即上述 <span class="arithmatex">\(n_{1}, n_{2}, \cdots, n_{k}\)</span> 都大于 <span class="arithmatex">\(1:\)</span> 每个品种不是只种 植在一个小块, 而是多个小块, 即有重复. 这样做的原因就是因为 有随机误差存在, 而只有通过重复才能对这种误差的影响作出估 计. 在本例中, 随机误差的来源, 有各小块地在条件上的差别, 有在 进行田间操作和管理上的不均匀性 (如施肥时各小块受肥总会略 有差别), 及其他可以设想和末曾注意到的种种原因.</li>
+</ol>
+<p>随机误差的存在干扰了我们发现品种间差别的工作. 两品种 间如果虽有些差别，但相对于随机误差来说没有大到一定的程度， 就可能被随机误差所掩盖. 品种间由数据上显示的差别, 究竟是实 质性的还是表面的, 只有拿随机误差这把尺子去衡量才有定准. 由 此可见随机误差的影响的估计的重要性, 而重复的目的正在于此.</p>
+<ol>
+<li>随机化. 在本试验中共有 <span class="arithmatex">\(n\)</span> 个小地块. 虽然在选择哪一大 块地时我们可能已力求其各部分条件尽量均匀, 但在划分为 <span class="arithmatex">\(n\)</span> 小 块后, 各块的条件总会有些差别. 如果某个品种正好分到了条件好 的那些小块, 则它可能显示出较高产量, 而这并非由于该品种优于 其他品种。</li>
+</ol>
+<p>为了使小块的分配不致因为人为的因素而偏于某一或某些品 种, 我们采用前面所描述的那种随机化分配方式, 即哪些小块分配 于哪些品种完全凭机会. 这种设计之所以称为“完全随机化”, 是指 在分配小块时, 除了随机化这一原则外, 别无其他条件限制. 这是 相对于有些试验而言, 在那些试验中, 除随机化以外, 还有别的条 件限制小块的分配一只是部分地随机化.</p>
+<p>现在可以说, 随机化这个原则在统计学中算是确立了. 在其提 出的早期, 部分地以至于今, 并非没有反对的意思. 支持随机化原 则的主要理由有二: 一是人为的选择并不能保证有好的效果, 人们 对各试验单元 (在此为各小块) 的情况往往并无充分了解, 甚至有 时了解的情况是错误的; 二是用随机化设计所取得的试验数据, 往 往有便于进行分析的统计模型.</p>
+<p>在本例中, 影响我们感兴趣的指标一亩产量的因素只有一 个, 即种子品种. 所考志的不同的种子品种有 <span class="arithmatex">\(k\)</span> 个. 每一个具体的 品种,都称为品种这个因素的一个 “水平”, 故品种这个因素一共有 <span class="arithmatex">\(k\)</span> 个水平. 以此之故, 本试验称为单因素 <span class="arithmatex">\(k\)</span> 水平的试验. <span class="arithmatex">\(n_{i}\)</span> 称为水 平 <span class="arithmatex">\(i\)</span> 的“重复度”。</p>
+<p>如果要考虑几种不同的配方对一种工业产品质量的影响, 则 是一个以“配方”为因素的单因素试验, 有几个配方参与试验, 就有 几个水平. 如要比较几种降压药对治疗高血压的作用,则是一个以 “药品”为因素的单因素试验, 水平数就是参与试验的药品数, 等 等. 在实际问题中, 往往有若干个因素参与试验, 这时就有多因素 试验, 见本节 6.5 .3 和 6.5.5.</p>
+<h3 id="02-2">0.2. 2 单因素完全随机化试验的方差分析<a class="headerlink" href="#02-2" title="Permanent link">⚓︎</a></h3>
+<p>设问题中涉及一个因素 <span class="arithmatex">\(A\)</span>, 有 <span class="arithmatex">\(k\)</span> 个水平, 如上例的 <span class="arithmatex">\(k\)</span> 个种子 品种. 以 <span class="arithmatex">\(Y_{i j}\)</span> 记第 <span class="arithmatex">\(i\)</span> 个水平的第 <span class="arithmatex">\(j\)</span> 个观察值. 如上例, <span class="arithmatex">\(Y_{i j}\)</span> 是种植品种 <span class="arithmatex">\(i\)</span> 的第 <span class="arithmatex">\(j\)</span> 小块地上的亩产量. 模型为</p>
+<div class="arithmatex">\[
+Y_{i j}=a_{i_{.}}+e_{i j}, j=1, \cdots, n_{i}, i=1, \cdots, k
+\]</div>
+<p><span class="arithmatex">\(a_{i}\)</span> 表示水平 <span class="arithmatex">\(i\)</span> 的理论平均值,称为水平 <span class="arithmatex">\(i\)</span> 的效应. 拿上例来说, <span class="arithmatex">\(a_{i}\)</span> 就是品种 <span class="arithmatex">\(i\)</span> 的平均亩产量, <span class="arithmatex">\(e_{i j}\)</span> 为随机误差. 假定:</p>
+<div class="arithmatex">\[
+E\left(e_{i j}\right)=0,0&lt;\operatorname{Var}\left(e_{i j}\right)=\sigma^{2}&lt;\infty \text {, 一切 } e_{i j} \text { 独立同分布 }
+\]</div>
+<p>因素 <span class="arithmatex">\(A\)</span> 的各水平的高低优劣, 取决于其理论平均 <span class="arithmatex">\(a_{i}\)</span> 的大小. 故对模型 (5.1), 我们头一个关心的事情, 就是诸 <span class="arithmatex">\(a_{i}\)</span> 是否全相同. 如果是, 则表示因素 <span class="arithmatex">\(A\)</span> 对所考察的指标 <span class="arithmatex">\(Y\)</span> 其实无影响. 这时我们 就说因素 <span class="arithmatex">\(A\)</span> 的效应不显著, 否则就说它显著. 当然, 在实际应用 中,所谓“显著”, 是指诸 <span class="arithmatex">\(a_{i}\)</span> 之间的差异要大到一定的程度. 这个 “一定的程度”, 是从其实用上的意义着眼, 而“统计显著性”, 则是 与随机误差相比而言.这一点在下文的讨论中会有所体现. 我们把 所要检验的假设写为</p>
+<div class="arithmatex">\[
+H_{0}: a_{1}=a_{2}=\cdots=a_{k}
+\]</div>
+<p>为检验这个假设,我们作如下的分析: (5.1) 中全部 <span class="arithmatex">\(n=n_{1}+\)</span> <span class="arithmatex">\(\cdots+n_{k}\)</span> 个观察值各不相同. 为什么各 <span class="arithmatex">\(Y_{i j}\)</span> 的值会有差异? 从模型 (5.1) 看, 不外乎两个原因:一是各 <span class="arithmatex">\(a_{i}\)</span> 可能有差异. 例如, 若 <span class="arithmatex">\(a_{1}&gt;a_{2}\)</span>, 这就使 <span class="arithmatex">\(Y_{1 j}\)</span> 倾向于大于 <span class="arithmatex">\(Y_{2 j}\)</span>.二是随机误差的存在. 这一分 析启发了如下的想法:找一个衡量全部 <span class="arithmatex">\(Y_{i j}\)</span> 的变异的量, 它自然地 取为 <span class="arithmatex">\(\left(n=n_{1}+\cdots+n_{k}\right)\)</span></p>
+<div class="arithmatex">\[
+S S=\sum_{i=1}^{k} \sum_{j=1}^{n_{i}}\left(Y_{i j}-\bar{Y}\right)^{2}, \bar{Y}=\sum_{i=1}^{k} \sum_{j=1}^{n_{i}} Y_{i j} / n
+\]</div>
+<p><span class="arithmatex">\(S S\)</span> 愈大, 表示 <span class="arithmatex">\(Y_{i j}\)</span> 之间的差异愈大. 然后, 设法把 <span class="arithmatex">\(S S\)</span> 分解为两部 分,一部分表示随机误差的影响, 记为 <span class="arithmatex">\(S S_{e}\)</span>; 一部分表示因素 <span class="arithmatex">\(A\)</span> 的 各水平理论平均值 <span class="arithmatex">\(a_{1}, \cdots, a_{k}\)</span> 之不同带 来的影响, 记为 <span class="arithmatex">\(S S_{A}\)</span>.</p>
+<p><span class="arithmatex">\(S S_{e}\)</span> 这一部分可如下分析: 固定一个 <span class="arithmatex">\(i\)</span>, 考虑其一切观察值 <span class="arithmatex">\(Y_{i 1}, Y_{i 2}, \cdots, Y_{i n}\)</span>. 它们之间的差异与诸 <span class="arithmatex">\(a_{i}\)</span> 之不等无关, 而可以完 全委之于随机误差. 反映 <span class="arithmatex">\(Y_{i 1}, \cdots, Y_{i n}\)</span> 的差异程度的量是 <span class="arithmatex">\(\sum_{j=1}^{n_{i}}\left(Y_{i j}\right.\)</span> <span class="arithmatex">\(\left.-\bar{Y}_{i}\right)^{2}\)</span>, 其中</p>
+<div class="arithmatex">\[
+\bar{Y}_{i}=\left(Y_{i 1}+\cdots+Y_{i n_{i}}\right) / n_{i}, i=1, \cdots, k
+\]</div>
+<p><span class="arithmatex">\(\bar{Y}_{i}\)</span> 是水平 <span class="arithmatex">\(i\)</span> 观察值的算术平均, 它可以作为 <span class="arithmatex">\(a_{i}\)</span> 的估计. 把上述平 方和对 <span class="arithmatex">\(i\)</span> 相加, 得</p>
+<div class="arithmatex">\[
+S S_{e}=\sum_{i=1}^{k} \sum_{j=1}^{n_{i}}\left(Y_{i j}-\bar{Y}_{i}\right)^{2}
+\]</div>
+<p><span class="arithmatex">\(S S_{A}\)</span> 就是 <span class="arithmatex">\(S S\)</span> 与 <span class="arithmatex">\(S S_{e}\)</span> 之差. 可以证明</p>
+<div class="arithmatex">\[
+S S_{A}=S S-S S_{e}=\sum_{i=1}^{k} n_{i}\left(\bar{Y}_{i}-\bar{Y}\right)^{2}
+\]</div>
+<p>为证此式,只须把分解式</p>
+<div class="arithmatex">\[
+Y_{i j}-\bar{Y}=\left(Y_{i j}-\bar{Y}_{i}\right)+\left(\bar{Y}_{i}-\bar{Y}\right)
+\]</div>
+<p>两边平方, 先固定 <span class="arithmatex">\(i\)</span> 对 <span class="arithmatex">\(j\)</span> 求和, 注意</p>
+<div class="arithmatex">\[
+\sum_{j=1}^{n_{i}}\left(Y_{i j}-\bar{Y}_{i}\right)\left(\bar{Y}_{i}-\bar{Y}\right)=\left(\bar{Y}_{i}-\bar{Y}\right) \sum_{j=1}^{n_{i}}\left(Y_{i j}-\bar{Y}_{i}\right)=0
+\]</div>
+<p>然后对 <span class="arithmatex">\(i=1, \cdots, k\)</span> 求和即可. 细察 <span class="arithmatex">\(S S_{A}\)</span> 的表达式,这确可以用于 衡量诸 <span class="arithmatex">\(a_{i}\)</span> 之间的差异程度. 因 <span class="arithmatex">\(\bar{Y}_{i}\)</span> 是 <span class="arithmatex">\(a_{i}\)</span> 的估计, <span class="arithmatex">\(a_{i}\)</span> 之间差异愈大, <span class="arithmatex">\(\bar{Y}_{i}\)</span> 之间的差异也就倾向于大, 而由 (5.7)式看出, <span class="arithmatex">\(S S_{A}\)</span> 之值也会倾 向于大.</p>
+<p>在统计学上通常把上文的 <span class="arithmatex">\(S S\)</span> 称为“总平方和”, <span class="arithmatex">\(S S_{A}\)</span> 称为 “因 素 <span class="arithmatex">\(A\)</span> 的平方和”, <span class="arithmatex">\(S S_{e}\)</span> 称为 “误差平方和”, 而分解式 <span class="arithmatex">\(-S S=S S_{A}+\)</span> <span class="arithmatex">\(S S_{e}\)</span> 就称为 (本模型的) “方差分析”. 名称的来由显然: 像 <span class="arithmatex">\(S S\)</span>, <span class="arithmatex">\(S S_{A}, S_{e}\)</span> 这种表达式,都是属于样本方差那一类的形状.</p>
+<p>从上面的分析就得到假设 (5.3) 的一个检验法: 当比值 <span class="arithmatex">\(\mathrm{SS}_{\mathrm{A}} / \mathrm{SS}_{e}\)</span> 大于某一给定界限时, 否定 <span class="arithmatex">\(H_{0}\)</span>, 不然就接受 <span class="arithmatex">\(H_{0}\)</span>. 为了根 据所给的检验水平 <span class="arithmatex">\(\alpha\)</span> 确定这一界限, 要假定随机误差 <span class="arithmatex">\(e_{i j}\)</span> 满足正态 分布 <span class="arithmatex">\(N\left(0, \sigma^{2}\right)\)</span>. 可以证明,若记</p>
+<div class="arithmatex">\[
+M S_{A}=S S_{A} /(k-1), M S_{e}=S S_{e} /(n-k)
+\]</div>
+<p>则在正态假定之下且当 <span class="arithmatex">\(H_{0}\)</span> 成立时, 有</p>
+<div class="arithmatex">\[
+M S_{A} / M S_{e} \sim F_{k-1, n-k}
+\]</div>
+<p>据 (5.9), 即得 (5.3) 的假设 <span class="arithmatex">\(H_{0}\)</span> 的检验如下: 当 <span class="arithmatex">\(M S_{.1} / M S_{e} \leqslant F_{k-1, n-k}(\alpha)\)</span> 时, 接受 <span class="arithmatex">\(H_{0}\)</span>, 不然就否定 <span class="arithmatex">\(H_{0}\)</span></p>
+<p>这检验称为 (5.3)的 <span class="arithmatex">\(F\)</span> 检验, 名称显然来由于 (4.31).</p>
+<p>(5.8) 式中的 <span class="arithmatex">\(M S_{A}\)</span> 和 <span class="arithmatex">\(M S_{e}\)</span>, 分别称为因素 <span class="arithmatex">\(A\)</span> 和随机误差的 “平均平方和”. 被除数 <span class="arithmatex">\(k-1\)</span> 和 <span class="arithmatex">\(n-k\)</span>, 分别称为这两个平方和的 当由度. <span class="arithmatex">\(M S\)</span> 的自由度为 <span class="arithmatex">\(n-k\)</span> 比较好理解, 因按以前多次指出 的:平方和 <span class="arithmatex">\(\sum_{j-1}^{n_{i}}\left(Y_{i j}-\bar{Y}_{i}\right)^{2}\)</span> 的自由度为 <span class="arithmatex">\(n_{i}-1\)</span>, 故对 <span class="arithmatex">\(i\)</span> 求和, 得自由 度 <span class="arithmatex">\(\left(n_{1}-1\right)+\cdots+\left(n_{k}-1\right)=n-k . M S_{A}\)</span> 自由度为 <span class="arithmatex">\(k-1\)</span>, 初一看 好像难于理解, 因为一共有 <span class="arithmatex">\(k\)</span> 个平均值 <span class="arithmatex">\(a_{1}, \cdots, a_{k}\)</span>. 但我们重视的 是它们之间大小的比较, 因此, 不同的有关量其实只有 <span class="arithmatex">\(a_{2}-a_{1}\)</span>, <span class="arithmatex">\(a_{3}-a_{1}, \cdots, a_{k}-a_{1}\)</span> (以 <span class="arithmatex">\(a_{1}\)</span> 为基准) 等 <span class="arithmatex">\(k-1\)</span> 个, 故自由度只应为 <span class="arithmatex">\(k-1\)</span>. 一者自由度之和为 <span class="arithmatex">\((n-k)+(k-1)=n-1\)</span>, 恰好是总平方 和的自由度。</p>
+<p>在统计应用上常把上述计算列成表格,称为方差分析表</p>
+<p>表 6.1 单因素完全随机化试验的方差分析表</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">项 月</th>
+<th style="text-align: center;"><span class="arithmatex">\(S S\)</span></th>
+<th style="text-align: center;">自由度</th>
+<th style="text-align: center;"><span class="arithmatex">\(M S\)</span></th>
+<th style="text-align: center;"><span class="arithmatex">\(F\)</span> 比</th>
+<th style="text-align: center;">显著性</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><span class="arithmatex">\(A\)</span> (例如，品种 <span class="arithmatex">\()\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(S S_{A}\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(k-1\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(M S_{A}\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(M S_{A} / M S_{e}\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(*\)</span> * * * , 或无</td>
+</tr>
+<tr>
+<td style="text-align: center;">误 羞</td>
+<td style="text-align: center;"><span class="arithmatex">\(S S_{e}\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(n-k\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(M S_{e}\)</span></td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">-</td>
+</tr>
+<tr>
+<td style="text-align: center;">总 和</td>
+<td style="text-align: center;"><span class="arithmatex">\(S S\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(n-1\)</span></td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">-</td>
+</tr>
+</tbody>
+</table>
+<p>表 6.1 中的备栏, 除显著性一栏外, 都已解释过了. 显著性一 栏是这样的: 把算出的 <span class="arithmatex">\(F\)</span> 比, 即 <span class="arithmatex">\(M S_{\Lambda} / M S_{k}\)</span>, 与 <span class="arithmatex">\(F_{k-1, n-k}(0.05)=\)</span> <span class="arithmatex">\(c_{1}\)</span> 和 <span class="arithmatex">\(F_{k-1,{ }^{\prime}-k}(0.01)=c_{2}\)</span> 比较. 若 <span class="arithmatex">\(F\)</span> 比&gt; <span class="arithmatex">\(c_{2}\)</span>, 用双星“<em><em>”, 表示 <span class="arithmatex">\(A\)</span> 这个因素的效应 “高度显著”, 意思是, 即使指定 <span class="arithmatex">\(\alpha=0.01\)</span> 这样 的检验水平, 原假设 <span class="arithmatex">\((5.3)\)</span> 也要被否定. 如果 <span class="arithmatex">\(c_{1}&lt;F\)</span> 比 <span class="arithmatex">\(\leqslant c_{2}\)</span>, 则用 一个星“</em>”表示 <span class="arithmatex">\(A\)</span> 的效应“显著”, 意即在 <span class="arithmatex">\(\alpha=0.05\)</span> 的水平上, 原 假设 (4.25) 要被否定. 如果 <span class="arithmatex">\(F\)</span> 比 <span class="arithmatex">\(\leqslant c_{1}\)</span>, 则不加“</em>”（显著性一栏空 着),表示因素 <span class="arithmatex">\(A\)</span> 的效应“不显著”. 当然,这里用的 <span class="arithmatex">\(\alpha=0.05,0.01\)</span> 是比较通用的习惯, 并非一定要如此不可. 应用者可根据特定的需 要改用其他值, 如 <span class="arithmatex">\((0.05,0.10),(0.10,0.20),(0.001,0.01)\)</span> 等.</p>
+<p>例 5.1 设上述品种试验中, 包含有 <span class="arithmatex">\(k=3\)</span> 个品种, 分别重复 <span class="arithmatex">\(4 、 5\)</span> 和 3 次, 数据为 (单位: 斤/亩)</p>
+<p>品种 <span class="arithmatex">\(1: 390,410,372,385\)</span>.</p>
+<p>品种 <span class="arithmatex">\(2: 375,348,354,364,362\)</span>.</p>
+<p>品种 3: <span class="arithmatex">\(413,383,408\)</span>.</p>
+<p>全部 12 个数的算术平均为 380.33 . 总平方和为</p>
+<div class="arithmatex">\[
+\begin{aligned}
+S S &amp; =(390-377)^{2}+(410-377)^{2}+\cdots+(408-377)^{2} \\
+&amp; =5274: 67
+\end{aligned}
+\]</div>
+<p>其自由度为 <span class="arithmatex">\(12-1=11\)</span>.</p>
+<p>3 个品种各自数据的算术平均, 分别为 <span class="arithmatex">\(389.25,360.60\)</span> 和 401.33. 因此算出误差平方和为</p>
+<div class="arithmatex">\[
+\begin{aligned}
+S S_{e}= &amp; (390-389.25)^{2}+\cdots+(385-389.25)^{2} \\
+&amp; +(375-360.60)^{2}+\cdots+(362-360.60)^{2} \\
+&amp; +(413-401.33)^{2}+\cdots+(408-401.33)^{2} \\
+= &amp; 1686.62
+\end{aligned}
+\]</div>
+<p>其自由度为 <span class="arithmatex">\(n-k=12-3=9\)</span>.</p>
+<p>品种平方和 <span class="arithmatex">\(S S_{A}\)</span> 可由 <span class="arithmatex">\(S S_{A}=S S-S S_{e}\)</span> 算出. 但为了验算, 常 单独算出, 再验证式子 <span class="arithmatex">\(S S=S S_{A}+S S_{e}\)</span> 是否成立 (由于计算中取 的位数有限, 不一定严格相同). 如果不成立, 就表示计算中有错 误, 必须从头查一查. 对此例按 (4.29) 有</p>
+<div class="arithmatex">\[
+\begin{aligned}
+S S_{A}= &amp; 4 \times(389.25-380.33)^{2}+5 \times(360.60-380.33)^{2} \\
+&amp; +3 \times(401.33-380.33)^{2}=3588.05
+\end{aligned}
+\]</div>
+<p>自由度为 <span class="arithmatex">\(3-1=2\)</span>. 于是</p>
+<div class="arithmatex">\[
+M S_{A}=3588.05 / 2=1794.03, M S_{e}=1686.62 / 9=187.40
+\]</div>
+<p>因素 <span class="arithmatex">\(A\)</span> 的 <span class="arithmatex">\(F\)</span> 比为</p>
+<div class="arithmatex">\[
+M S_{A} / M S_{e}=1794.68 / 187.40=9.00
+\]</div>
+<p>查表得 <span class="arithmatex">\(F_{2,9}(0.05)=4.26, F_{2,9}(0.01)=8.02\)</span>. 因 <span class="arithmatex">\(9.00&gt;8.02\)</span>, 故 品种效应是高度显著的. 以上计算结果列成彷差分析表如下:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">项 j</th>
+<th style="text-align: center;">11</th>
+<th style="text-align: center;"><span class="arithmatex">\(S 5\)</span></th>
+<th style="text-align: center;">自林度</th>
+<th style="text-align: center;"><span class="arithmatex">\(M S\)</span></th>
+<th style="text-align: center;"><span class="arithmatex">\(F\)</span> 比</th>
+<th style="text-align: center;">界苦州</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">in</td>
+<td style="text-align: center;">利</td>
+<td style="text-align: center;">3588.05</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">1794.68</td>
+<td style="text-align: center;">9.00</td>
+<td style="text-align: center;"><span class="arithmatex">\(* *\)</span></td>
+</tr>
+<tr>
+<td style="text-align: center;">鉄</td>
+<td style="text-align: center;"><span class="arithmatex">\(Y_{i}\)</span></td>
+<td style="text-align: center;">1686.62</td>
+<td style="text-align: center;">9</td>
+<td style="text-align: center;">187.40</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td style="text-align: center;">irs</td>
+<td style="text-align: center;">利</td>
+<td style="text-align: center;">5274.67</td>
+<td style="text-align: center;">11</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<p>检验的结果表明: 不同品种的产量之间的差异, 在统计上高度显 渚。</p>
+<p>就本例而言, 如检验的结果不显著, 则一般就不再作进一步的 分析了. 因为, 既然假设 (5.3) 被接受, 各品种的效果视作同一, 也 就没有多少好说的了. 但在实际工作中, 最好还不这么简单地下结 论. 有两点还可以考察-下:</p>
+<ol>
+<li>各水平理论平均值的点估计 <span class="arithmatex">\(\bar{Y}_{1}, \cdots, \bar{Y}_{k}\)</span> 之间的差异如何. 若这个差异没有大到有实际意义的程度, 则加强了上述结论, 即各 品科间的差异, 即使存在, 其实际意义也很有限。</li>
+<li>若 <span class="arithmatex">\(\bar{Y}_{1}, \cdots, \bar{Y}_{k}\)</span> 的差异, 从应用观点看, 达到了比较重要的 程度, 则原假设 (5.3) 之被接受, 是由于随机误差的影响太大. 误差 方差 <span class="arithmatex">\(\sigma^{2}\)</span> 的一个无偏估计量是 <span class="arithmatex">\(M S_{e}\)</span>. 可以考察一下 <span class="arithmatex">\(\sqrt{M S_{e}}\)</span> 之值. 若 从应用的角度看这个值太大, 则看来本试验在精度上欠理想一 这不止是 (5.3) 的检验问题, 还有下文要谈到的区间估计问题. 这 时, 如条件允许, 应考虑增大试验规模, 以及改进试验以图尽量缩 小随机误差的影响.</li>
+</ol>
+<p>如果检验的结果为显著, 则等于说有充分理由相信各理论平 均值 <span class="arithmatex">\(a_{1}, \cdots, a_{k}\)</span> 并不全相问。但这新不是说它们中一定没有相同 的. 如 <span class="arithmatex">\(k=3\)</span> 时, 可能 <span class="arithmatex">\(a_{1}\)</span> 与 <span class="arithmatex">\(a_{2}\)</span> 之间差别不显著, 而它们与 <span class="arithmatex">\(a_{3}\)</span> 之间 的差别鼠著. 就指定的一对 <span class="arithmatex">\(a_{u}, a_{i x}\)</span> 之间的比较, 可通过求 <span class="arithmatex">\(a_{u}-a_{i n}\)</span> 的区间估计，方法如下: 按(5.2) 及 <span class="arithmatex">\(e_{i j}\)</span> 服从证态分布的假定, 不难 知道</p>
+<div class="arithmatex">\[
+\bar{Y}_{u}-\bar{Y}_{\cdots}-N\left(a_{u}-a_{v},\left(\frac{1}{n_{u}}+\frac{1}{n_{u^{\prime}}}\right) \sigma^{2}\right)
+\]</div>
+<p><span class="arithmatex">\(f\)</span> 是</p>
+<div class="arithmatex">\[
+\sqrt{\frac{n_{u} n_{z^{\prime}}}{n_{u}+n_{u^{\prime}}}}\left[\left(\bar{Y}_{u}-\bar{Y}_{i^{\prime}}\right)-\left(a_{u}-a_{v^{\prime}}\right)\right] / \sigma \sim N(0,1)
+\]</div>
+<p>记 <span class="arithmatex">\(\hat{\sigma}^{2}=M S_{e}, \hat{\sigma}^{2}\)</span> 为 <span class="arithmatex">\(\sigma^{2}\)</span> 的无偏估计. 以 <span class="arithmatex">\(\hat{\sigma}\)</span> 代替上式中的 <span class="arithmatex">\(\sigma\)</span>, 可以证明</p>
+<div class="arithmatex">\[
+\sqrt{\frac{n_{u} n_{v}}{n_{u}+n_{v}}}\left[\left(\bar{Y}_{u}-\bar{Y}_{v}\right)-\left(a_{u}-a_{i}\right)\right] / \hat{\sigma} \sim t_{n-k}
+\]</div>
+<p>由此出发, 就得出 <span class="arithmatex">\(a_{u}-a_{u}\)</span> 的䈯信系数 <span class="arithmatex">\(1-\alpha\)</span> 的置信区间是</p>
+<div class="arithmatex">\[
+\begin{aligned}
+&amp; \left(\bar{Y}_{u}-\bar{Y}_{v}\right)-\sqrt{\frac{n_{u}+n_{v}}{n_{u} n_{v}}} \hat{\sigma} t_{n-k}\left(\frac{\alpha}{2}\right) \leqslant a_{u}-a_{v} \\
+&amp; \leqslant\left(\bar{Y}_{u}-\bar{Y}_{v}\right)+\sqrt{\frac{n_{u}+n_{v}}{n_{u d} n_{v}}} \hat{\sigma} t_{n-k}\left(\frac{\alpha}{2}\right)
+\end{aligned}
+\]</div>
+<p>取 <span class="arithmatex">\(\alpha=0.05\)</span>,算出本例中各 <span class="arithmatex">\(a_{u}-a_{v}\)</span> 的区间估计为</p>
+<div class="arithmatex">\[
+\begin{aligned}
+&amp; a_{1}-a_{2}: 28.65 \pm 16.96 \\
+&amp; a_{3}-a_{1}: 12.08 \pm 23.65 \\
+&amp; a_{3}-a_{2}: 40.73 \pm 22.62
+\end{aligned}
+\]</div>
+<p>第一和第三个区间不含 0 且全在 0 的在边, 这显示 <span class="arithmatex">\(a_{3}\)</span> 和 <span class="arithmatex">\(a_{1}\)</span> 都在 给定的水平 <span class="arithmatex">\(\alpha=0.05\)</span> 上显著地大于 <span class="arithmatex">\(a_{2}\)</span>. 第二个区间包含 0 . 故虽然 从点估计上看 <span class="arithmatex">\(a_{3}\)</span> 大于 <span class="arithmatex">\(a_{1}\)</span>, 但在 0.05 的水平上达不到显著性. 所 以, 单从统计分析的角度看, 如果要在品种 <span class="arithmatex">\(1,2,3\)</span> 中挑一个最好 的, 则除品种 2 外, 品种 <span class="arithmatex">\(1 、 3\)</span> 都可考虑. 因为毕竟 <span class="arithmatex">\(a_{3}\)</span> 的点估计大于 <span class="arithmatex">\(a_{1}\)</span> 的点估计, 若无其他的特殊理由, 我们就宁肯挑品种 3 .</p>
+<p>读者想必已注意到: 区间估计 (5.12) 与第四章中所讲的两样 本 <span class="arithmatex">\(t\)</span> 区间估计基本上一致,不同之处在于: 这里误差方差 <span class="arithmatex">\(\sigma^{2}\)</span> 的估 计 <span class="arithmatex">\(\hat{\sigma}^{2}\)</span> 用到了全部样本, 而不只是 <span class="arithmatex">\(Y_{u 1}, \cdots, Y_{u n_{u}}\)</span> 及 <span class="arithmatex">\(Y_{\tau \cdot 1}, \cdots, Y_{\tau m_{v}}\)</span>. 如 果品种数很多, 则涉及的相互比较非常之多. 例如, 若有 5 个品种, 则总共将涉及 <span class="arithmatex">\(\left(\begin{array}{l}5 \\ 2\end{array}\right)=10\)</span> 组比较, 即有 10 个区间估计要做. 这不仅 很不方便,而睡论上也有问题. 问题在于: 虽则对…对固定的 <span class="arithmatex">\(u\)</span>, <span class="arithmatex">\(v\)</span>,置信区间 (5.12) 成立的概率为 <span class="arithmatex">\(1-\alpha\)</span>, 但多个区间 (每个区间的 概率为 <span class="arithmatex">\(1-\alpha)\)</span> )问时成立的概率就会小于 <span class="arithmatex">\(1-\alpha\)</span>. 区间数愈多, 差距 愈大. 例如, 取 5 个品种, 有 10 组 <span class="arithmatex">\(a_{u}-a_{v}\)</span> 要作区间估计, 若每个区 间估计的置信系数为 0.95 , 则这 10 个区间估计同时都包含所要 估计的参数的概率, 将降至 0.6 左右. 为了克服这一困难, 统计学 中引进了一种叫做“多重比较法”的方法, 它考虑到了上面指出的 那个问题. 这个内容已超出本招范围之外, 不能在此介绍了.</p>
+<h3 id="03-3">0.3. 3 两因素完全试验的方差分析<a class="headerlink" href="#03-3" title="Permanent link">⚓︎</a></h3>
+<p>一般情况下, 在一个试验中要考虑好几个对指标可能有影响 的因素.例如在…项工业试验中,影响产品质量指标 <span class="arithmatex">\(Y\)</span> 的因素可 能有反应温度、反应压力、反应时问和某种催化剂的添加量. 若反 应温度有 <span class="arithmatex">\(k_{1}\)</span> 个不同的可能选择, 其他三个因素分别有 <span class="arithmatex">\(k_{2}, k_{3}\)</span> 和 <span class="arithmatex">\(k_{4}\)</span> 种不同的选择, 则可供选择的试验组合一共有 <span class="arithmatex">\(k_{1} \times k_{2} \times k_{3} \times k_{4}\)</span> 种, 而这个试验也就称为一个 <span class="arithmatex">\(k_{1} \times k_{2} \times k_{3} \times k_{4}\)</span> 试验, 如果每一可 能的组合都做一次试验, 则试验称为是 “完全” 的. 若只对一部分组 合做试验, 则称为“部分实施”. 在实际应用中部分实施很常见, 因 为完全试验往往规模太大, 为条件所不允许, 且有时并无必要. 要 作部分实施, 就有一个如何去选择那些实际进行试验的组合的问 题. 这里面有很多数学和统计问题, 它们构成“试验设计”这门学科 的主要内容之一. 本节的第 6.5 .5 小节与这个内容有关.</p>
+<p>这种试验, 不论是完全试验或部分实施, 都有一个随机化的问 题(或分区组的问题), 见 6.5 .4 小节. 如在上述工业试验中,若全 部试验要由儿个人和几台设备去做, 则因人的技术和操作水平有 差异, 设备性能优劣有差异,需要用在前面描述过的随机化方法, 把要做的试验随机地分配给这几个人和几台设备.</p>
+<p>为书写简便计, 这里我们讨论两因素完全试验的情况. 设有两 因素 <span class="arithmatex">\(A, B\)</span>, 分别有 <span class="arithmatex">\(k, l\)</span> 个水平 (例如 <span class="arithmatex">\(A\)</span> 为品种, 有 <span class="arithmatex">\(k\)</span> 个; <span class="arithmatex">\(B\)</span> 为播种 量, 考虑 <span class="arithmatex">\(l\)</span> 种不同的数值, 如 20 斤 /亩, 25 斤 /亩, …). A 的水平</p>
+<p><span class="arithmatex">\(-i\)</span> 与 <span class="arithmatex">\(B\)</span> 的水平 <span class="arithmatex">\(j\)</span> 的组合记为 <span class="arithmatex">\((i, j)\)</span>, 其试验结果记为 <span class="arithmatex">\(Y_{i j}, i=1, \cdots\)</span>, <span class="arithmatex">\(k, j=1, \cdots, l\)</span>. 统计模型定为</p>
+<div class="arithmatex">\[
+Y_{i j}=\mu+a_{i}+b_{j}+e_{i j}, i=1, \cdots, k, j=1, \cdots, l
+\]</div>
+<p>为解释这模型, 首先把右边分成两部分: <span class="arithmatex">\(e_{i j}\)</span> 为随机误差, 它包含了 末加控制的因素 ( <span class="arithmatex">\(A, B\)</span> 以外的因素)及大量随机因素的影响. 假定</p>
+<div class="arithmatex">\[
+E\left(e_{i j}\right)=0,0&lt;\operatorname{Var}\left(e_{i j}\right)=\sigma^{2}&lt;\infty \text {, 全体 } e_{i j} \text { 独立 }
+\]</div>
+<p>另一部分 <span class="arithmatex">\(\mu+a_{i}+b_{j}\)</span>, 它显示水平组合 <span class="arithmatex">\((i, j)\)</span> 的平均效应. 它又分 解为三部分: <span class="arithmatex">\(\mu\)</span> 是总平均 (一切水平组合效应的平均), 是一个基 准. <span class="arithmatex">\(a_{i}\)</span> 表示由 <span class="arithmatex">\(A\)</span> 的水平 <span class="arithmatex">\(i\)</span> 带来的增加部分. <span class="arithmatex">\(a_{i}\)</span> 愈大, 表示因素 <span class="arithmatex">\(A\)</span> 的水平 <span class="arithmatex">\(i\)</span> 愈好 (设指标愈大愈好), 故 <span class="arithmatex">\(a_{i}\)</span> 称为因素 <span class="arithmatex">\(A\)</span> 的水平 <span class="arithmatex">\(i\)</span> 的效 应. <span class="arithmatex">\(b_{j}\)</span> 有类似的解释. 调整 <span class="arithmatex">\(\mu\)</span> 之值, 我们可以补充要求:</p>
+<div class="arithmatex">\[
+a_{1}+\cdots+a_{k}=0, b_{1}+\cdots+b_{l}=0
+\]</div>
+<p>事实上,如(5.15)不成立, 则分别以 <span class="arithmatex">\(\bar{a}\)</span> 和 <span class="arithmatex">\(\bar{b}\)</span> 记各 <span class="arithmatex">\(a_{i}\)</span> 的平均值和 各 <span class="arithmatex">\(b_{j}\)</span> 的平均值, 把 <span class="arithmatex">\(\mu\)</span> 换为 <span class="arithmatex">\(\mu+\bar{a}+\bar{b}, a_{i}\)</span> 换为 <span class="arithmatex">\(a_{i}-\bar{a}, b_{j}\)</span> 换成 <span class="arithmatex">\(b_{j}-\)</span> <span class="arithmatex">\(\bar{b}\)</span>, 则 (5.13)式不变, 而 (5.15)成立.</p>
+<p>约束条件 (5.15)给了 <span class="arithmatex">\(a_{i}, b_{j}\)</span> 的意义一种更清晰的解释: <span class="arithmatex">\(a_{i}&gt;0\)</span> 表示 <span class="arithmatex">\(A\)</span> 的水平 <span class="arithmatex">\(i\)</span> (的效应) 在 <span class="arithmatex">\(A\)</span> 的全部水平的平均效应之上, <span class="arithmatex">\(a_{i}&lt;\)</span> 0 则相反. 另外, 这个约束条件也给了 <span class="arithmatex">\(\mu, a_{i}\)</span> 和 <span class="arithmatex">\(b_{j}\)</span> 的一个适当的估 计法: 把 <span class="arithmatex">\(Y_{i j}\)</span> 对一切 <span class="arithmatex">\(i, j\)</span> 相加. 注意到 (5.15), 有</p>
+<p>因上式右边第二项有均值 0 , 即知</p>
+<div class="arithmatex">\[
+\sum_{i=1}^{k} \sum_{j=1}^{l} Y_{i j}=k l \mu+\sum_{i=1}^{k} \sum_{j=1}^{l} e_{i j}
+\]</div>
+<div class="arithmatex">\[
+Y_{\ldots}=\sum_{i=1}^{k} \sum_{j=1}^{l} Y_{i j} / k l
+\]</div>
+<p>是 <span class="arithmatex">\(\mu\)</span> 的一个无偏估计. 其次,有</p>
+<p>于是,记</p>
+<div class="arithmatex">\[
+\sum_{j=1}^{l} Y_{i j}=l \mu+l a+\sum_{j=1}^{l} e_{i j}
+\]</div>
+<div class="arithmatex">\[
+Y_{i} .=\sum_{j=1}^{l} Y_{i j} / l, Y_{\cdot j}=\sum_{i=1}^{k} Y_{i j} / k
+\]</div>
+<p>知 <span class="arithmatex">\(Y_{i}\)</span>. 为 <span class="arithmatex">\(\mu+a_{i}\)</span> 的一个无偏估计. 于是得到 <span class="arithmatex">\(a_{i}\)</span> 的一个无偏估计为</p>
+<div class="arithmatex">\[
+\hat{a}_{i}=Y_{i \cdot}-Y_{\ldots, i}=1, \cdots, k
+\]</div>
+<p>问法得到 <span class="arithmatex">\(b_{j}\)</span> 的一个无偏估计为</p>
+<div class="arithmatex">\[
+\hat{b}_{j}=Y_{\cdot j}-Y_{.,}, j=1, \cdots, l
+\]</div>
+<p>它们适合约束条件: <span class="arithmatex">\(\hat{a}_{1}+\cdots+\hat{a}_{k}=0, \hat{b}_{1}+\cdots+\hat{b}_{l}=0\)</span>.</p>
+<p>下面要进行方差分析, 即要设法把总平方和</p>
+<div class="arithmatex">\[
+\mathrm{SS}=\sum_{i=1}^{k} \sum_{j=1}^{l}\left(Y_{i j}-Y_{.}\right)^{2}
+\]</div>
+<p>分解为三个部分: <span class="arithmatex">\(S S_{A}, S S_{B}\)</span> 和 <span class="arithmatex">\(S S_{e}\)</span>, 分别表示因素 <span class="arithmatex">\(A, B\)</span> 和随机误 差的影响. 这种分解的主要目的是检验假设：</p>
+<div class="arithmatex">\[
+H_{0 A}: a_{1}=\cdots=a_{k}=0
+\]</div>
+<p>和</p>
+<div class="arithmatex">\[
+H_{0 B}: b_{1}=\cdots=b_{l}=0
+\]</div>
+<p><span class="arithmatex">\(H_{0 A}\)</span> 成立表示因素 <span class="arithmatex">\(A\)</span> 对指标其实无影响. 在实际问题中, 绝对无影 响的场合少见, 但如影响甚小以致被随机误差所掩盖时, 这种影响 事实上等于没有. 因此,拿 <span class="arithmatex">\(S S_{A}\)</span> 和 <span class="arithmatex">\(S S_{e}\)</span> 的比作为检验统计量正符 合这一想法.</p>
+<p>所要作的分解可如下得到: 把 <span class="arithmatex">\(Y_{i j}-Y\)</span>.. 写为</p>
+<div class="arithmatex">\[
+\begin{aligned}
+Y_{i j}-Y_{. .}= &amp; \left(Y_{i .}-Y_{. .}\right)+\left(Y_{\cdot j}-Y_{. .}\right) \\
+&amp; +\left(Y_{i j}-Y_{i \cdot}-Y_{\cdot j}+Y_{.}\right)
+\end{aligned}
+\]</div>
+<p>两边平方,对 <span class="arithmatex">\(i, j\)</span> 求和. 注意到</p>
+<div class="arithmatex">\[
+\begin{aligned}
+&amp; \sum_{i=1}^{k}\left(Y_{i} .-Y_{.}\right)=0, \sum_{j=1}^{l}\left(Y_{\cdot j}-Y_{.}\right)=0 \\
+&amp; \sum_{i=1}^{k}\left(Y_{i j}-Y_{i \cdot}-Y_{\cdot j}+Y_{. .}\right) \\
+&amp;= \sum_{j=1}^{l}\left(Y_{j}-Y_{i}-Y_{\cdot j}+Y_{. .}\right)=0
+\end{aligned}
+\]</div>
+<p>即知所有交叉积之和皆为 0 , 而得到</p>
+<div class="arithmatex">\[
+\begin{aligned}
+S S= &amp; l \sum_{i=1}^{k}\left(Y_{i}-Y_{\ldots}\right)^{2}+k \sum_{j=1}^{l}\left(Y_{\cdot j}-Y_{\ldots}\right)^{2} \\
+&amp; +\sum_{i=1}^{k} \sum_{j=1}^{\prime}\left(Y_{i j}-Y_{i \cdot}-Y_{\cdot j}+Y_{\ldots}\right)^{2}
+\end{aligned}
+\]</div>
+<div class="arithmatex">\[
+=S S_{A}+S S_{B}+S S_{e}
+\]</div>
+<p>第- - 个平方和可以作为因素 <span class="arithmatex">\(A\)</span> 的影响的衡量, 从前述 <span class="arithmatex">\(Y_{i} .-Y\)</span>. 作为 <span class="arithmatex">\(a_{i}\)</span> 的估计可以理解. 第二个平方和同样解释. 至于第三个平 方和可作为随机误差的影响这一点, 直接看不甚明显. 可以从两个 角度去理解: 在 <span class="arithmatex">\(S S\)</span> 中去掉 <span class="arithmatex">\(S S_{A}\)</span> 和 <span class="arithmatex">\(S S_{B}\)</span> 后, 剩余下的再没有其他系 统性因素的影响, 故只能作为 <span class="arithmatex">\(S S_{\ell}\)</span>. 另外, 由模型 (5.13) 及约束条 件 (5.15), 易知</p>
+<div class="arithmatex">\[
+Y_{i j}-Y_{i .}-Y_{. j}+Y_{.}=e_{i j}-e_{i .}-e_{. j}+e_{.}
+\]</div>
+<p>这里面已毫无 <span class="arithmatex">\(\mu, a_{i}, b_{j}\)</span> 的影响, 而只含随机误差.</p>
+<p>读者可能不很满足于上面的推导, 即怎么想到把 <span class="arithmatex">\(Y_{i j}-Y\)</span>. 拆 成 (5.22) 式而得出 (5.23)? 对此,我们的回答是:</p>
+<ol>
+<li>并非在任何模型中总平方和 SS 都有适当的分解,这要看 设计如何. 比方说, 如在全部 <span class="arithmatex">\(k l\)</span> 个组合中少做了1 个(即有一个 <span class="arithmatex">\(Y_{i j}\)</span> 末观察), 则分解式作不出来.</li>
+<li>在能进行分解时, 方差分析提供了进行分解的一般方法. 使用这个一般方法也能得到 (5.23). 但是, 由于在本模型下通过 （5.22）更易实现，我们就不用这一般方法.</li>
+</ol>
+<p>得到分解式 (5.23) 后, 我们就可以像单因素情况那样, 写出下 面的方差分析表:</p>
+<p><span class="arithmatex">\(S S_{A}, S S_{B}\)</span> 自由度分别为其水平数减去 1 , 这一点与单因素情 况相同. 总和自由度为全部观察值数目 <span class="arithmatex">\(k l\)</span> 减去 1 . 剩下的就是误 差平方和自由度：</p>
+<div class="arithmatex">\[
+(k l-1)-(k-1)-(l-1)=(k-1)(l-1)
+\]</div>
+<p><span class="arithmatex">\(M S\)</span> 就是 <span class="arithmatex">\(S S\)</span> 除以其自由度. 显著性的意义也与单因素的情况相 同. 如果 <span class="arithmatex">\(A\)</span> 那一行的显著性位置标上了一个星号, 即表示在水平 0.05 之下原假设 <span class="arithmatex">\(H_{0 A}\)</span> 被否定. 双星则相当于水平 0.01 , 称为高度 显著. 如以前曾指出过的, 0.05 和 0.01 这两个数字只是一种习 惯，不…定拘泥。 表 6.2 两因素完全试验的方差分析表</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">项</th>
+<th style="text-align: center;">H</th>
+<th style="text-align: center;"><span class="arithmatex">\(S S\)</span></th>
+<th style="text-align: center;">自由度:</th>
+<th style="text-align: center;">MS</th>
+<th style="text-align: center;">F比</th>
+<th style="text-align: center;">鼠著性:</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"><span class="arithmatex">\(\frac{1}{3}\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(\begin{array}{l}S S_{H} \\ S S_{H}\end{array}\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(\begin{array}{l}k-1 \\ l-1\end{array}\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(\begin{array}{l}M S_{d} \\ M S_{R}\end{array}\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(\begin{array}{l}M S_{A} / M S_{r} \\ M S_{H} / M S_{e}\end{array}\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(\begin{array}{l}\text { 加“*”, } \\ \text { “* * 或正加 }\end{array}\)</span></td>
+</tr>
+<tr>
+<td style="text-align: center;">谈</td>
+<td style="text-align: center;"><span class="arithmatex">\(y_{\mathrm{F}}\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(S S_{e}\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\((k-1)(l-1)\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(M S\)</span>,</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">-</td>
+</tr>
+<tr>
+<td style="text-align: center;">总</td>
+<td style="text-align: center;">和</td>
+<td style="text-align: center;">SS</td>
+<td style="text-align: center;"><span class="arithmatex">\(k l-1\)</span></td>
+<td style="text-align: center;">_-</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">_</td>
+</tr>
+</tbody>
+</table>
+<p>例 5.2 在一个农业试验中, 考虑 4 种不同的种子品种 <span class="arithmatex">\((k=\)</span> <span class="arithmatex">\(4)\)</span> 和 3 种不同的施肥方法 <span class="arithmatex">\((l=3)\)</span>. 试验数据为 (单位: 斤/亩):</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">施肥 <span class="arithmatex">\(j\)</span> 法</th>
+<th style="text-align: center;">1</th>
+<th style="text-align: center;">3</th>
+<th style="text-align: center;"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">292</td>
+<td style="text-align: center;">316</td>
+<td style="text-align: center;">325</td>
+</tr>
+<tr>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">310</td>
+<td style="text-align: center;">318</td>
+<td style="text-align: center;">317</td>
+</tr>
+<tr>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">320</td>
+<td style="text-align: center;">318</td>
+<td style="text-align: center;">310</td>
+</tr>
+<tr>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">370</td>
+<td style="text-align: center;">365</td>
+<td style="text-align: center;">330</td>
+</tr>
+</tbody>
+</table>
+<p>算出</p>
+<div class="arithmatex">\[
+\begin{gathered}
+Y_{. .}=324.25, Y_{1 .}=311, Y_{2 .}=315, Y_{3 .}=316, Y_{4 \cdot}=355 \\
+Y_{.1}=323, \quad Y_{.2}=329.25, \quad Y_{.3}=320.50 \\
+S S=(292-324.25)^{2}+\cdots+(330-324.25)^{2}=5444.75 \\
+S S_{A}=3\left[(311-324.25)^{2}+\cdots+(355-324.25)^{2}\right] \\
+=3824.25 \\
+S S_{B}=4\left[(323-324.25)^{2}+\cdots+(320.50-324.25)^{2}\right] \\
+=162.50 \\
+S S_{e}=5444.75-3834.25-162.50=1458
+\end{gathered}
+\]</div>
+<p>列出方差分析表如下:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">项 目</th>
+<th style="text-align: center;"><span class="arithmatex">\(S S\)</span></th>
+<th style="text-align: center;">自由度</th>
+<th style="text-align: center;"><span class="arithmatex">\(M S\)</span></th>
+<th style="text-align: center;"><span class="arithmatex">\(F\)</span> 比</th>
+<th style="text-align: center;">显著性</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><span class="arithmatex">\(A\)</span> (品种)</td>
+<td style="text-align: center;">3824.25</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">1274.75</td>
+<td style="text-align: center;">5.246</td>
+<td style="text-align: center;"><span class="arithmatex">\(*\)</span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><span class="arithmatex">\(B\)</span> (施肥法)</td>
+<td style="text-align: center;">162.50</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">81.25</td>
+<td style="text-align: center;">0.344</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td style="text-align: center;">误 差</td>
+<td style="text-align: center;">1458.00</td>
+<td style="text-align: center;">6</td>
+<td style="text-align: center;">243.00</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td style="text-align: center;">总 和</td>
+<td style="text-align: center;">5444.75</td>
+<td style="text-align: center;">11</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<p>只有品种因素达到了显著性,而“施肥方法”这个因素末达到 鼠著性. 在 <span class="arithmatex">\(a=0.05\)</span> 的水平上, 没有充分证据证明: 不同的施肥法 对产量有显著的影响.</p>
+<p>任一因素两个不同水平的效应差的区间估计，与 (5.12)相似. 此处更简单一些: 如估计的是 <span class="arithmatex">\(a_{u}-a_{v}\)</span>, 则 <span class="arithmatex">\(n_{u}=n_{v}=l\)</span>; 如估计的是 <span class="arithmatex">\(b_{u}-b_{v}\)</span>, 则 <span class="arithmatex">\(n_{u}=n_{v}=k . \hat{\sigma}\)</span> 仍是 <span class="arithmatex">\(\left(M S_{e}\right)^{1 / 2}\)</span>. 当 <span class="arithmatex">\(k\)</span> 或 <span class="arithmatex">\(l\)</span> 较大时, 涉及的 比较为数甚多,因而也存在单因素情况下曾指出的那种问题.</p>
+<p>应用上的一个重要问题, 是选择一个水平组合 <span class="arithmatex">\((i, j)\)</span>, 使其平 均产量 <span class="arithmatex">\(\mu+a_{i}+b_{j}\)</span> 达到最大. 选择的方法如下: 如在本例, 因素 <span class="arithmatex">\(A\)</span> 的效应显著, 则选 <span class="arithmatex">\(i\)</span>, 使 <span class="arithmatex">\(a_{i}\)</span> 在 <span class="arithmatex">\(a_{1}, \cdots, a_{k}\)</span> 中达到最大. 从统计上说, 若 <span class="arithmatex">\(a_{i}\)</span> 和 <span class="arithmatex">\(a_{r}\)</span> 的差异不显著(即 <span class="arithmatex">\(a_{i}-a_{r}\)</span> 的区间估计包含 0 ), 则选 <span class="arithmatex">\(a_{r}\)</span> 也可以. 但若无特别理由, 总是选使 <span class="arithmatex">\(a_{1}, \cdots, a_{k}\)</span> 达到最大的那个 <span class="arithmatex">\(i\)</span>. 因素 <span class="arithmatex">\(B\)</span> 的效应不显著. 故从统计上说, 选择其任一水平 <span class="arithmatex">\(j\)</span> 都可以. 但一般如无特殊原因,总是选 <span class="arithmatex">\(j\)</span>, 使 <span class="arithmatex">\(b_{j}\)</span> 在 <span class="arithmatex">\(b_{1}, \cdots, b_{l}\)</span> 中达到最大. 拿 本例来说, 应选取 <span class="arithmatex">\(i=4, j=2\)</span>. 注意在 <span class="arithmatex">\(Y_{41}, Y_{42}, Y_{43}\)</span> 中, 最大的并 非 <span class="arithmatex">\(Y_{42}\)</span> 而是 <span class="arithmatex">\(Y_{41}\)</span>.</p>
+<p>还有一点要注意: 在采纳模型 (5.13) 时, 我们事实上引进了一 种假定, 即两因素 <span class="arithmatex">\(A, B\)</span> 对指标的效应是可以叠加的. 换一种方式 说: 因素 <span class="arithmatex">\(A\)</span> 的各水平的优少比较, 与因素 <span class="arithmatex">\(B\)</span> 处在哪个水平无关, 反之亦然. 更一般的情况是: <span class="arithmatex">\(A, B\)</span> 两因子有“交互作用”. 这时在模 型 (5.13)中, 还要加上表示交互作用的项 <span class="arithmatex">\(c_{i j}\)</span>. 这时不仅统计分析 复杂化了, 尤其是分析结果的解释也复杂化了. 本书不涉及这种情 况. 在一个特定的问题中, 交互作用是否需要考虑, 在很大程度上 取决于问题的实际背景和经验. 有时, 通过试验数据的分析也可以 看出一些问题. 例如, 若误差方差 <span class="arithmatex">\(\sigma^{2}\)</span> 的估计 <span class="arithmatex">\(M S_{e}\)</span> 反常地大, 则有 可能是由于交互作用所致. 因为可以证明: 若交互作用确实存在而 末加考虑, 则它的影响进入随机误差而增大了 <span class="arithmatex">\(M S_{e}\)</span>.</p>
+<h3 id="04-4">0.4. 4 单因素随机区组试验的方差分析<a class="headerlink" href="#04-4" title="Permanent link">⚓︎</a></h3>
+<p>在本节 (6.5.1)段中, 我们讲述了费歇尔的试验设计三原则中 的两个, 即重复和随机化. 第三个原则是“分区组”, 就是我们现在 要介绍的.</p>
+<p>为解释“区组”这个概念, 看一个简单例子. 设有一个包含 3 个 品种的试验, 每个品种重复 5 次. 于是一共要准备 15 小块形状大 小一样的田地. 这些地可能散布在一个很大的范围内, 因而各小块 的条件会存在较大的差别, 以致使试验误差加大，固然我们可以通 过完全随机化的方法保证不发生人为的系统性偏差, 但这并不能 克服由于这 15 小块的内在不均匀性而带来的误差.</p>
+<p>因此我们考虑如下的设计,选择 5 个村子, 每个村准备 3 小块 地,条件尽可能均匀,但不同村的地块在条件上可以有较大的差 别. 由于 3 这个数字较小, 准备 3 小块相当均勺的地块, 比之准备 15 小块均匀地块, 就更容易做到。</p>
+<p>然后我们让每个品种在每个村子里的 3 小块中各占一块,哪 个品种占哪一块由随机化决定. 这样, 我们就有一种不完全的随机 化: 每个村子中的 3 块地必须种 3 个品种, 这一条不能变 (如用完 全随机化, 有可能某个品种在某个村子里占 2 或 3 块), 但在同一 村子里则用随机化.</p>
+<p>同一村子里的 3 小块地, 就构成一个区组. 区组的大小, 在本 例中即小块地的数目, 为 3 . 它正好等于品种这个因素的水平数.</p>
+<p>上述设计就叫做“随机区组设计”.“随机”的含义是在每个区 组内实行随机化. 这设计的优点, 从本例中看得很清楚: 由于每个 品种在 5 个村子里各占有一块, 即使各村子之间有较大差异, 也不 会使任一品种有利或不利,因此可以缩小误差.</p>
+<p>一般地, 区组就是一组其条件尽可能均匀的试验单元. 区组大 小, 即所含试验单元个数,等于所考察的因素的水平数 <span class="arithmatex">\({ }^{*}\)</span>, 因而在 每…组内, 各水平都可以实现一次且仅一次. 在区组内实行随机 化.区组的数目则没有限制, 可多可少.</p>
+<p><img alt="" src="https://cdn.mathpix.com/cropped/2023_07_12_22d3790e6a90da669c02g-16.jpg?height=70&amp;width=1451&amp;top_left_y=2529&amp;top_left_x=288" />
+含试验单元数, 比因素水平数少. 这种风组称为“不完全区组”, 其设计问题很复杂。 区组的例子很多.例如, 要比较一种产品的 4 种不同的配方, 每配方重复 5 次,一共作 20 次. 如果由 5 个人操作, 则考虑到各人 操作水平不同而带来的误差, 可让每一个人对这 4 个配方都操作 一次, 抵消人的影响. 这时, 可以迳直把每个人看作一个区组 (严格 地说, 是每人所做的那 4 个配方构成一区组); 为要比较一种病的 几种治疗方法, 要对一些患者作临床试验. 病情不同, 病人年龄、身 体条件等的不同, 会带来误差. 因此要把病人分组: 条件尽可能相 似的病人分在一组, 病人个数即治疗方法个数, 在每一组内, 每个 治疗方法施加于…个病人 (用随机化) 时, 每…组病人就构成一个 区组, 等等.</p>
+<p>随机区组试验的统计分析,与上段讲的两因素试验完全一样, 只消把其中的一个因素看作是区组就行，例如因素 <span class="arithmatex">\(A\)</span> 有 <span class="arithmatex">\(k\)</span> 个水 平, 每水平做 <span class="arithmatex">\(l\)</span> 次试验, 分 <span class="arithmatex">\(l\)</span> 个区组 (每区组大小为 <span class="arithmatex">\(k\)</span> ). 以 <span class="arithmatex">\(Y_{i j}\)</span> 记因 素 <span class="arithmatex">\(A\)</span> 的水平 <span class="arithmatex">\(i\)</span> 在第 <span class="arithmatex">\(j\)</span> 个区组内的试验值(例如,第 <span class="arithmatex">\(i\)</span> 个种子品种在 第 <span class="arithmatex">\(j\)</span> 个村子里那小块上的亩产量), 则有模型 (5.13), 其中 <span class="arithmatex">\(\mu, a_{i}, e_{j}\)</span> 的意义同前，而 <span class="arithmatex">\(b_{j}\)</span> 则称为 (第 <span class="arithmatex">\(j\)</span> 个区组的) “区组效应”, 意思是第 <span class="arithmatex">\(j\)</span> 个区组优于和劣于全部区组的平均的量.拿上述品种试验来说,若 某个村一田地条件特别好, 则该村子 (区组) 的 <span class="arithmatex">\(b_{j}\)</span> 值就高. 这样, 表 6.2 的方差分析表, 及其计算过程, 完全适用于此处. 所不同的是 现在因素 <span class="arithmatex">\(B\)</span> 解释为区组, 而 <span class="arithmatex">\(S S_{B}\)</span> 则是 “区组平方和”.</p>
+<p>由于我们所关心的只有一个因素 <span class="arithmatex">\(A\)</span>, 故在方差分析表 6.2 中, 我们首先感兴趣的是因素 <span class="arithmatex">\(A\)</span> 的效应是否达到显著. 但区组效 应是否达到显著也有一定的意义: 它表明区组的划分是否成功（即 是否真达到了如下的要求: 区组内各试验单元很均匀,而不同区组 内的试验单元则有较大差异). 如区组效应达到显著, 则表明区组 划分至少有一定的效果, 否则就难说, 甚或可能有反效果. 这个问 题我们略多说几句. 若在 (5.13) 中去掉标志区组的那一项 <span class="arithmatex">\(b_{j}\)</span>, 即 当成一个完全随机化的模型去分析, 则 <span class="arithmatex">\(S S\)</span> 和 <span class="arithmatex">\(S S_{A}\)</span> 仍不变, 而 <span class="arithmatex">\(S S_{e}\)</span> 则将成为 (5.23) 式中的 <span class="arithmatex">\(S S_{B}\)</span> 与 <span class="arithmatex">\(S S_{e}\)</span> 之和. 由此看出: 如果 <span class="arithmatex">\(M S_{B}&lt;\)</span> <span class="arithmatex">\(M S_{e}\)</span> (指表 6.2 中的 <span class="arithmatex">\(M S_{e}\)</span> ), 则在完全随机化模型之下误差方差的 估计, 反而比在随机区组设计之下为低, 再加上自由度的损失 (完 全随机化设计之下, 误差方差估计的自由度为 <span class="arithmatex">\(k(l-1)\)</span>, 而在随机 区组设计之下只有 <span class="arithmatex">\((k-1)(l-1))\)</span>, 就使 <span class="arithmatex">\(A\)</span> 和 <span class="arithmatex">\(F\)</span> 比要达到显著性 更难, 即: 如果因素 <span class="arithmatex">\(A\)</span> 确有效应, 则当区组划分不当时, 会降低发 现这种效应的机会。</p>
+<p>由此可见,不是在任何场合下划分区组都好.若没有足够理由 显示不同区组间确有显著差异, 则宁肯不分. 如以前提过的那个比 较 4 种配方, 由 5 个人操作的例子. 不同的人在操作技术上总多少 会有差异, 但如没有根据认为他们之间有颇大差异, 则分区组不一 定有利. 在实际工作中, 这种界限不易掌握, 这里只能作为一条一 般性的原则谈一下.</p>
+<p>例 5.3 重新考察例 5.2 , 把 “施肥方法” 这个因子理解为区 组. 即例 (5.2.4) 中的数据, 看作为 4 个品种在 3 个村子里种植的 结果.据该例分析,品种 <span class="arithmatex">\(A\)</span> 的效应在 <span class="arithmatex">\(\alpha=0.05\)</span> 的水平上达到显著 (但在 <span class="arithmatex">\(\alpha=0.01\)</span> 的水平上则否), 区组效应达不到显著. 更有甚者, 区组的 <span class="arithmatex">\(M S(81.25)\)</span> 还小于误差的 <span class="arithmatex">\(M S(243.00)\)</span>, 说明在本例中分 区组没有带来什么好处.</p>
+<p>现如果把 (5.24) 当作为一个完全随机化试验的结果,则</p>
+<div class="arithmatex">\[
+\begin{aligned}
+S S= &amp; 5444.75, S S_{A}=3824.25(\text { 与以前相同 }) \\
+&amp; S S_{e}=162.50+1458=1620.50
+\end{aligned}
+\]</div>
+<p><span class="arithmatex">\(S S_{e}\)</span> 的自由度为 <span class="arithmatex">\(4(3-1)=8\)</span>, 而 <span class="arithmatex">\(M S_{e}=1620.50 / 8=202.56 . A\)</span> 的 <span class="arithmatex">\(F\)</span> 比为 <span class="arithmatex">\(M S_{A} / M S_{e}=6.29\)</span>, 也超过了 <span class="arithmatex">\(F_{3,8}(0.05)=4.07\)</span>, 即也得出 <span class="arithmatex">\(A\)</span> 的效应为显著的结论.</p>
+<h3 id="05-5">0.5. 5 多因素正交表设计及方差分析<a class="headerlink" href="#05-5" title="Permanent link">⚓︎</a></h3>
+<p>例如,若一个试验中涉及 4 个因素 <span class="arithmatex">\(A, B, C, D\)</span>, 分别有 <span class="arithmatex">\(k, l\)</span>, <span class="arithmatex">\(p\)</span> 和 <span class="arithmatex">\(q\)</span> 个水平, 在效应叠加 (无交互作用) 的假定下, 模型为</p>
+<div class="arithmatex">\[
+Y_{i j u v}=\mu+a_{i}+b_{j}+c_{u}+d_{i j}+e_{i j w w}
+\]</div>
+<p>其意义与 (5.13) 相似. 如做全面试验, 即对</p>
+<div class="arithmatex">\[
+1 \leqslant i \leqslant k, 1 \leqslant j \leqslant l, 1 \leqslant u \leqslant p, 1 \leqslant v \leqslant q
+\]</div>
+<p>范围内的 <span class="arithmatex">\((i, j, u, v)\)</span> 都观察了 <span class="arithmatex">\(Y_{i j w v}\)</span>, 则方差分析与模型 <span class="arithmatex">\((5.13)\)</span> 相 似. 但是, 这个作法需要做 <span class="arithmatex">\(k l p q\)</span> 次试验, 这往往太多了. 如果因素 数目更多,则所需试验次数大得不现实.</p>
+<p>因此,在实用中一般只做部分实施, 即对 (5.26) 范围内的部分 <span class="arithmatex">\((i, j, u, v)\)</span> 做试验. 问题在于: 这一部分不能随心所欲地取, 其取 法必须保持某种平衡性, 以达到以下两个目的:</p>
+<ol>
+<li>模型 (5.25) 中的有关参数 <span class="arithmatex">\(\mu, a_{i}, b_{j}, c_{u}, d_{v}\)</span> 等仍能得到适 当的估计.</li>
+<li>总平方和 SS 仍能进行分解, 以列出像表 6.2 那样的方差 分析表.</li>
+</ol>
+<p>这个问题如何解决, 其细节已远超出本课程的范围. 在这里, 我们只介绍一种叫做“正交表”的工具,它简便易用,在实用中广为 流传。</p>
+<p>看下面这张表</p>
+<p>表 6.3 <span class="arithmatex">\(L_{8}\left(4 \times 2^{4}\right)\)</span> 正交表</p>
+<p><img alt="" src="https://cdn.mathpix.com/cropped/2023_07_12_22d3790e6a90da669c02g-19.jpg?height=711&amp;width=1499&amp;top_left_y=1558&amp;top_left_x=244" /></p>
+<p>这个表一共有 8 行、5 列. 这两个数字 <span class="arithmatex">\((8,5)\)</span> 有其意义: 8 表示 如用这个表安排试验, 则必须做 8 次试验, 不能多也不能少. 5 表 示最多能安排 5 个因素, 不能多, 可以少.</p>
+<p><span class="arithmatex">\(L\)</span> 是正交表记号. <span class="arithmatex">\(L_{8}\)</span> 表示表有 8 行. <span class="arithmatex">\(4 \times 2^{4}\)</span> 表示: 表中有 1 列 (即第 1 列) 含有数字 <span class="arithmatex">\(1,2,3,4\)</span>, 有 4 列含数字 1 , 2 . 其所以称为正 交表, 是因为这表满足以下两个条件:</p>
+<ol>
+<li>每列中含不同数字的个数一样. 例如, 第 1 列含不同数字 <span class="arithmatex">\(1,2,3,4\)</span>, 每种 2 个, 第 <span class="arithmatex">\(2-5\)</span> 列都是含不同数字 1,2 , 每种 4 个.</li>
+<li>任一列中同一数字那些位置, 在其他列中被该列所有不问 数字占据, 且个数相同. 例如, 第 3 列中数字 1 占据 <span class="arithmatex">\(1,3,6,8\)</span> 行的 位置, 而在第 1 列中, 这 4 个位置恰被该列不同数字 <span class="arithmatex">\(1,2,3,4\)</span> 各占 据 1 次. 在第 5 列中, 这 4 个位置则被该列不同数字 1,2 各上据 2 次。</li>
+</ol>
+<p>凡是满足这两个条件的表就叫做正交表, 至于如何去构造出 这种表,那涉及许多深刻的数学问题. 实用上, 把已造出的有实用 价值的正交表汇集起来附于种种统计学著作中, 实用者按需要取 用即可.</p>
+<p>下面来谈谈乍样利用证交表 <span class="arithmatex">\(L_{8}\left(4 \times 2^{-}\right)\)</span>安排试验. 这所讲的 当然也适用于一般的正交表。归纳起来有以下几条:</p>
+<ol>
+<li>因素的水平只能是 4 或 2 , 为 4 的至多只能有一个, 为 2 的 至多4个.</li>
+<li>若试验要分区组 (例如在两台设备上做), 则区组大小只能 为 2 或 4 .</li>
+<li>为确定计, 设试验中涉及 4 种配㡴 (因素 <span class="arithmatex">\(A\)</span>, 水平 4), 2 种 温度（因素 <span class="arithmatex">\(B\)</span>, 水平 2), 2 种压力 (因素 <span class="arithmatex">\(C\)</span>, 水平 2 ), 并分两个区组. 则配方这因子 <span class="arithmatex">\(A\)</span> 必须标在第 1 列的头上, <span class="arithmatex">\(B 、 C\)</span> 和区组都是 2 水 平, 可在 2-5 列中任选 3 列标上, 还有一个个空白列. 设选定表 6.3 的 1-4 列 ( <span class="arithmatex">\(I\)</span> 表区组), 则设计的意义如下: 每一行读 <span class="arithmatex">\(A, B, C\)</span> 所 在的三列. 例如, 第…行为 <span class="arithmatex">\((1,1,1)\)</span>. 这表示第 1 号试验是: <span class="arithmatex">\(A, B, C\)</span> 都处在 1 水平. 第二行为 <span class="arithmatex">\((1,2,2)\)</span>, 表示第 2 号试验为: <span class="arithmatex">\(A\)</span> 处在 1 水 平, <span class="arithmatex">\(B, C\)</span> 都处在 2 水平. 第七行为 <span class="arithmatex">\((4,1,2)\)</span>, 表示 <span class="arithmatex">\(A\)</span> 处在 4 水平, <span class="arithmatex">\(B\)</span> 在 1 水平, <span class="arithmatex">\(C\)</span> 在 2 水平, 等等. 区组划分则看 <span class="arithmatex">\(D\)</span> 这一列. 同一数字 属于一个区组. 在这里, <span class="arithmatex">\(I\)</span> 列的数字 1 在第 <span class="arithmatex">\(1,4,5,8\)</span> 行, 故第 1,4 , 5,8 号试验划在一个区组内, 剩下的第 <span class="arithmatex">\(2,3,6,7\)</span> 号试验划在一个 区组内。</li>
+</ol>
+<p>这样…个设计必能达到表 6.3 前面提出的两条要求. 第 1 条 很容易证明, 第 2 条不能在此细证了. 考虑 (5.25), 其中 <span class="arithmatex">\(k=4, l=\)</span> <span class="arithmatex">\(p=q=2\)</span>. 对 <span class="arithmatex">\(a_{i}, b_{i}, c_{u}, d_{w}\)</span> 等也抇上约束条件(类似 (5.15)):</p>
+<div class="arithmatex">\[
+\sum_{1}^{+} a_{i}=0, \sum_{1}^{2} b_{j}=0, \sum_{1}^{2} c_{u}=0, \sum_{1}^{2} d_{c}=0
+\]</div>
+<p>按 (5.25)导出上述 8 号试验的方程:</p>
+<div class="arithmatex">\[
+\begin{aligned}
+&amp; Y_{1111}=\mu+a_{1}+b_{1}+c_{1}+d_{1}+e_{1111} \\
+&amp; Y_{1222}=\mu+a_{1}+b_{2}+c_{2}+d_{2}+e_{1222} \\
+&amp; Y_{2112}=\mu+a_{2}+b_{1}+c_{1}+d_{2}+e_{2112} \\
+&amp; Y_{2221}=\mu+a_{2}+b_{2}+c_{2}+d_{1}+e_{2221} \\
+&amp; Y_{3121}=\mu+a_{3}+b_{1}+c_{2}+d_{1}+e_{3121} \\
+&amp; Y_{3212}=\mu+a_{3}+b_{2}+c_{1}+d_{2}+e_{3212} \\
+&amp; Y_{4122}=\mu+a_{4}+b_{1}+c_{2}+d_{2}+e_{4122} \\
+&amp; Y_{4211}=\mu+a_{4}+b_{2}+c_{1}+d_{1}+e_{4211}
+\end{aligned}
+\]</div>
+<p>把这 8 个方程相加, 各 <span class="arithmatex">\(Y\)</span> 之和记为 <span class="arithmatex">\(\sum Y\)</span>, 各 <span class="arithmatex">\(e\)</span> 之和记为 <span class="arithmatex">\(\sum e\)</span>, 则 由 (5.27) 易见</p>
+<div class="arithmatex">\[
+\sum Y=8 \mu+\sum e
+\]</div>
+<p>由此可知 <span class="arithmatex">\(\bar{Y}=\sum Y / 8\)</span> 为 <span class="arithmatex">\(\mu\)</span> 的一个无偏估计.</p>
+<p>把第 1 列为 1 处的那些 <span class="arithmatex">\(Y\)</span> 相加, 得 (仍用(5.27))</p>
+<div class="arithmatex">\[
+Y_{1111}+Y_{1222}=2 \mu+2 a_{1}+e_{1111}+e_{1222}
+\]</div>
+<p>由此知, <span class="arithmatex">\(\left(Y_{1111}+Y_{1222}\right) / 2-\bar{Y}\)</span> 为 <span class="arithmatex">\(a_{1}\)</span> 的无偏估计. 顺此以往, 对任 何 <span class="arithmatex">\(a_{i}, b_{j}, c_{u}, d_{\mathrm{i}}\)</span>, 都可求得其无偏估计. 例如, 要求 <span class="arithmatex">\(c_{2}\)</span> 的无偏估计, 只须把 <span class="arithmatex">\(c\)</span> 所在那列数字 2 对应的试验值相加, 用 (5.27), 得</p>
+<div class="arithmatex">\[
+\begin{aligned}
+&amp; Y_{1222}+Y_{2221}+Y_{3121}+Y_{4122} \\
+&amp; =4 \mu+4 c_{2}+e_{1222}+e_{2221}+e_{3121}+e_{4122}
+\end{aligned}
+\]</div>
+<p>于是得到 <span class="arithmatex">\(\left(Y_{1222}+Y_{2221}+Y_{3121}+Y_{4122}\right) / 4-\bar{Y}\)</span> 是 <span class="arithmatex">\(c_{2}\)</span> 的一个无偏 估计。</p>
+<p>总之, 在任何一个正交裏中, 某因素水平 <span class="arithmatex">\(i\)</span> 的效应 (例如本例 的 <span class="arithmatex">\(\left.a_{i}\right)\)</span> 的估计, 等于该因素水平 <span class="arithmatex">\(i\)</span> 的所有观察值的算术平均, 减去 全部观察值的算术平均.</p>
+<p>接着就是计算各因素的平方和,例如 <span class="arithmatex">\(S S_{A}\)</span>. 如 <span class="arithmatex">\(A\)</span> 有 <span class="arithmatex">\(k\)</span> 个水平, 其各水平的效应 <span class="arithmatex">\(a_{i}\)</span> 的估计记为 <span class="arithmatex">\(\hat{a}_{1}, \cdots, \hat{a}_{k}\)</span> (其计算已如上述), 又 总试验次数为 <span class="arithmatex">\(n\)</span>, 则</p>
+<div class="arithmatex">\[
+S S_{A}=n\left(\hat{a}_{\overline{1}}^{2}+\cdots+\hat{a}_{k}^{2}\right) / k
+\]</div>
+<p>误差平方和可以由总平方和 <span class="arithmatex">\(S S=\circlearrowright(Y-\bar{Y})^{2}\)</span> 减去各因素的平. 方和求得. 其自由度等于 <span class="arithmatex">\(n-1\)</span> 减去各因素的自由度一一每一因 素的自由度等于其水平数减去 1 .</p>
+<p>例 5.4 设表 6.3 中各次试验的结果如该表右边一列所示, 我们来作出上述计算.</p>
+<ol>
+<li>首先算出全部试验值的算术平均</li>
+</ol>
+<div class="arithmatex">\[
+\bar{Y}=(134+220+\cdots+320) / 8=250
+\]</div>
+<p>及总平方和</p>
+<div class="arithmatex">\[
+\begin{aligned}
+S S &amp; =(134-250)^{2}+(220-250)^{2}+\cdots+(320-250)^{2} \\
+&amp; =32832
+\end{aligned}
+\]</div>
+<ol>
+<li>估计各因素 <span class="arithmatex">\(A, B, C\)</span> 各水平的效应及区组 <span class="arithmatex">\((D)\)</span> 效应</li>
+</ol>
+<div class="arithmatex">\[
+\begin{aligned}
+&amp; \hat{a}_{1}=(134+220) / 2-250=-73, \hat{a}_{2}=-35 \\
+&amp; \hat{a}_{3}=29, \hat{a}_{4}=79
+\end{aligned}
+\]</div>
+<p>这四者之和应为 0 , 这可以作为计算是否有错的一个验证. 又</p>
+<div class="arithmatex">\[
+\hat{b}_{1}=-18, \hat{b}_{2}=18 ; \hat{c}_{1}=-17, \hat{c}_{2}=17 ; \hat{d}_{1}=-9, \hat{d}_{2}=9
+\]</div>
+<ol>
+<li>按公式 (5.28)算出各效应及区组平方和</li>
+</ol>
+<div class="arithmatex">\[
+\begin{aligned}
+&amp; S S_{A}=8\left(73^{2}+35^{2}+29^{2}+79^{2}\right) / 4=27272 \\
+&amp; S S_{B}=8\left(18^{2}+18^{2}\right) / 2=2592, S S_{C}=2312, S S_{D}=648
+\end{aligned}
+\]</div>
+<p>其自由度分别为 <span class="arithmatex">\(3,1,1,1\)</span>. 误差平方和为</p>
+<div class="arithmatex">\[
+S S_{e}=32832-27272-2592-2312-648=8
+\]</div>
+<p>其自由度为 <span class="arithmatex">\((8-1)-3-1-1-1=1\)</span>. 于是</p>
+<div class="arithmatex">\[
+M S_{A}=S S_{A} / 3=9090.67, M S_{B}=S S_{B}, \cdots, M S_{e}=S S_{e}
+\]</div>
+<p>列出方差分析表:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">项</th>
+<th style="text-align: center;">H</th>
+<th style="text-align: center;">SS</th>
+<th style="text-align: center;">自由度</th>
+<th style="text-align: center;">MS</th>
+<th style="text-align: center;"><span class="arithmatex">\(F\)</span> 比</th>
+<th style="text-align: center;">显著性</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><span class="arithmatex">\(A(\)</span> 配方)</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">27272</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">9090.7</td>
+<td style="text-align: center;">1136.33</td>
+<td style="text-align: center;">* <span class="arithmatex">\(\quad *\)</span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><span class="arithmatex">\(B\)</span> (滥度 <span class="arithmatex">\()\)</span></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">2592</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">2592</td>
+<td style="text-align: center;">324</td>
+<td style="text-align: center;">*</td>
+</tr>
+<tr>
+<td style="text-align: center;"><span class="arithmatex">\(C(\)</span> 退力 <span class="arithmatex">\()\)</span></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">2312</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">2312</td>
+<td style="text-align: center;">289</td>
+<td style="text-align: center;">*</td>
+</tr>
+<tr>
+<td style="text-align: center;"><span class="arithmatex">\(D(\)</span> 继 <span class="arithmatex">\()\)</span></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">648</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">648</td>
+<td style="text-align: center;">81</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td style="text-align: center;">误</td>
+<td style="text-align: center;">差</td>
+<td style="text-align: center;">8</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">8</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td style="text-align: center;">总</td>
+<td style="text-align: center;">和</td>
+<td style="text-align: center;">32832</td>
+<td style="text-align: center;">7</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<p>查 <span class="arithmatex">\(F\)</span> 分布表,得</p>
+<div class="arithmatex">\[
+\begin{aligned}
+&amp; F_{3,1}(0.05)=216, F_{1,1}(0.05)=161 \\
+&amp; F_{3,1}(0.01)=540, F_{1,1}(0.01)=405
+\end{aligned}
+\]</div>
+<p>故配方这个因素的效应达到高度显著, 温度和压力这两个因素则 达到显著, 区组效应末达到显著.</p>
+<p>某些正交表(不是所有的)也可以考虑因素间的交互作用. 这 时, 表头的安排就不能像无交互作用时那么自由, 而要受到某种规 则的限制, 具体规则由一个与该正交表配套的“交互作用表”给出. 这些都已超出本书范围, 不能在此多讲了.</p>
+
+
+
+
+
+
+
+  
+    
+  
+  
+    
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="最后更新">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">December 21, 2023</span>
+  </span>
+
+    
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="创建日期">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3h-2Z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">December 21, 2023</span>
+  </span>
+
+    
+    
+    
+  </aside>
+
+
+  
+
+
+
+  <form class="md-feedback" name="feedback" hidden>
+    <fieldset>
+      <legend class="md-feedback__title">
+        对当前页面有任何疑问吗？
+      </legend>
+      <div class="md-feedback__inner">
+        <div class="md-feedback__list">
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="This page was helpful" data-md-value="1">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 9v12H1V9h4m4 12a2 2 0 0 1-2-2V9c0-.55.22-1.05.59-1.41L14.17 1l1.06 1.06c.27.27.44.64.44 1.05l-.03.32L14.69 8H21a2 2 0 0 1 2 2v2c0 .26-.05.5-.14.73l-3.02 7.05C19.54 20.5 18.83 21 18 21H9m0-2h9.03L21 12v-2h-8.79l1.13-5.32L9 9.03V19Z"/></svg>
+            </button>
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="This page could be improved" data-md-value="0">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 15V3h4v12h-4M15 3a2 2 0 0 1 2 2v10c0 .55-.22 1.05-.59 1.41L9.83 23l-1.06-1.06c-.27-.27-.44-.64-.44-1.06l.03-.31.95-4.57H3a2 2 0 0 1-2-2v-2c0-.26.05-.5.14-.73l3.02-7.05C4.46 3.5 5.17 3 6 3h9m0 2H5.97L3 12v2h8.78l-1.13 5.32L15 14.97V5Z"/></svg>
+            </button>
+          
+        </div>
+        <div class="md-feedback__note">
+          
+            <div data-md-value="1" hidden>
+              
+              
+                
+              
+              感谢您的反馈！
+            </div>
+          
+            <div data-md-value="0" hidden>
+              
+              
+                
+              
+              感谢您的反馈！请点击这里<a href="https://github.com/EanYang7/Probability-and-Statistics/issues" target="_blank" rel="noopener">这里</a>提供问题反馈.
+            </div>
+          
+        </div>
+      </div>
+    </fieldset>
+  </form>
+
+
+<h2 id="__comments">评论</h2>
+<p>登录github的账号后，可以直接在下方评论框中输入。</p>
+<p>
+  如果想进行更详细的讨论(如排版、上传图片等)，选择一个反应后并点击上方的文字，进入论坛页面。
+</p>
+<!-- Insert generated snippet here -->
+<script
+  src="https://giscus.app/client.js"
+  data-repo="EanYang7/Probability-and-Statistics"
+  data-repo-id="R_kgDOJszf0w"
+  data-category="Q&A"
+  data-category-id="DIC_kwDOJszf084CXnYR"
+  data-mapping="title"
+  data-strict="0"
+  data-reactions-enabled="1"
+  data-emit-metadata="0"
+  data-input-position="top"
+  data-theme="preferred_color_scheme"
+  data-lang="zh-CN"
+  crossorigin="anonymous"
+  async
+></script>
+<!-- Synchronize Giscus theme with palette -->
+<script>
+  var giscus = document.querySelector("script[src*=giscus]");
+
+  /* Set palette on initial load */
+  var palette = __md_get("__palette");
+  if (palette && typeof palette.color === "object") {
+    var theme = palette.color.scheme === "slate" ? "dark" : "light";
+    giscus.setAttribute("data-theme", theme);
+  }
+
+  /* Register event handlers after documented loaded */
+  document.addEventListener("DOMContentLoaded", function () {
+    var ref = document.querySelector("[data-md-component=palette]");
+    ref.addEventListener("change", function () {
+      var palette = __md_get("__palette");
+      if (palette && typeof palette.color === "object") {
+        var theme = palette.color.scheme === "slate" ? "dark" : "light";
+
+        /* Instruct Giscus to change theme */
+        var frame = document.querySelector(".giscus-frame");
+        frame.contentWindow.postMessage(
+          { giscus: { setConfig: { theme } } },
+          "https://giscus.appa"
+        );
+      }
+    });
+  });
+</script>
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/EanYang7/cs231n" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant", "navigation.top", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.path", "toc.follow", "content.action.edit", "content.action.view"], "search": "../../../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.d7c377c4.min.js"></script>
+      
+        <script src="../../../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

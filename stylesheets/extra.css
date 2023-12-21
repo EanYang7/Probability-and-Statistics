@@ -1,0 +1,21 @@
+p {
+    text-indent: 2em;
+    font-family: "思源黑体";
+    margin: 1em 0;
+  }
+h1{
+  text-align: center;
+  font-family: "楷体";
+  color: #2E8555  ;
+  margin: 1em 0;
+}
+h2{
+    text-align: center;
+    font-family: "楷体";
+    margin: 1em 0;
+  }
+
+#the-canvas {
+  border: 1px solid black;
+  direction: ltr;
+}
